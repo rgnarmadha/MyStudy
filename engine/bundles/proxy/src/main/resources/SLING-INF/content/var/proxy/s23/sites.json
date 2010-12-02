@@ -1,0 +1,9 @@
+{
+    "sling:resourceType": "sakai/proxy",
+    "sakai:request-proxy-endpoint": "http://${hostname}:${port}/sakai-hybrid/sites",
+    "sakai:request-proxy-method": "GET",
+    "sakai:title" : "Sakai2: sites",
+    "sakai:preprocessor" : "trusted-token",
+    "sakai:description" : ["Get the sites from Sakai2 for the current logged in user."],
+    "sakai:postprocessor" : "trustedLoginTokenProxyPostProcessor"
+}

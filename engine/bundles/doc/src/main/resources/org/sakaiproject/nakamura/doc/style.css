@@ -1,0 +1,48 @@
+body
+{ background-color:#fff; color:#333; font-family:Tahoma,Arial,sans-serif; font-size:1em; line-height:140%; margin:0; padding:0;}
+
+h1
+{ background:#00669F none repeat scroll 0 0; color:#fff; font-size:1.5em; margin:0; padding:20px; }
+
+h2
+{ border-bottom:1px solid #DDDDDD; color:#00527F; font-size:1.3em; margin:0; padding:25px 0 10px 20px; }
+
+h3
+{ border-bottom:1px solid #BBBBBB; color:#00527F; font-size:1.2em; margin:0; padding:25px 0 10px 20px;}
+
+h4
+{ color:#00527F; font-size:1.2em; font-weight: bold; margin:0; padding: 25px 0 10px 0px;}
+
+p
+{ color:#222222; font-family:Times,Verdana,serif; font-size:1.1em; line-height:120%; margin:0; padding:10px 10px 10px 20px; }
+
+ul
+{ list-style: none; margin:0; padding: 10px 10px 10px 20px; }
+
+ul li
+{ margin: 0 0 0 -20px; padding:0 0 20px 20px; }
+
+ul li p
+{ padding: 2px 0; }
+
+ul > li > p:first-child
+{ font-weight: bold; font-family:Tahoma,Arial,sans-serif; font-size: 1em; }
+
+pre
+{ background:#000000 none repeat scroll 0 0; color:#FFFFFF; font-size: 1em; font-family:monospace; margin:5px; padding:10px; }
+
+code
+{ font-family:monospace; font-weight:bold; font-size: 1em; }
+
+a
+{ color: #00759F; font-size: 1.05em; text-decoration: none; }
+
+a:hover
+{ color: #00759F; text-decoration: underline; cursor: pointer; }
+
+a:visited
+{ color: #003D5F; }
+
+.parameter-name { display:block; }
+
+ul.documentation-list li span.path, ul.documentation-list li span.short-description {display:block; font-size:0.8em; margin-left:5px }

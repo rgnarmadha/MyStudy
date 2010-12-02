@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--
+/*
+ * Licensed to the Sakai Foundation (SF) under one
+ * or more contributor license agreements. See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership. The SF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License. You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Welcome To 3akai Event Explorer</title>
+</head>
+<script type="text/javascript">
+
+function load()
+{
+	document.testform.chk1.checked=false;
+	document.testform.chk2.checked=false;
+	document.testform.chk3.checked=false;
+	document.testform.chk4.checked=false;
+
+	document.testform.userid.disabled=true;
+	document.testform.date.disabled=true;
+	
+	document.testform.event.disabled=true;
+	document.testform.lowTime.disabled=true;
+	document.testform.highTime.disabled=true;
+
+}
+function chk1Change()
+{
+if(	document.testform.chk1.checked==true)
+{
+	document.testform.userid.disabled=false;		
+}
+else
+{
+	document.testform.userid.disabled=true;			
+}
+}
+function chk2Change()
+{
+if(	document.testform.chk2.checked==true)
+{
+	document.testform.date.disabled=false;	
+	document.testform.dateimg.disabled=false;
+}
+else
+{
+	document.testform.date.disabled=true;
+	document.testform.dateimg.disabled=true;			
+}
+}
+function chk3Change()
+{
+if(	document.testform.chk3.checked==true)
+{
+	document.testform.event.disabled=false;		
+}
+else
+{
+	document.testform.event.disabled=true;			
+}
+}
+function chk4Change()
+{
+if(	document.testform.chk4.checked==true)
+{
+	document.testform.lowTime.disabled=false;
+	document.testform.highTime.disabled=false;		
+}
+else
+{
+	document.testform.highTime.disabled=true;
+	document.testform.lowTime.disabled=true;			
+}
+}
+
+
+</script>
+<script language="javascript" type="text/javascript" src="datetimepicker.js">
+
+</script>
+<body onload="load()">
+<form action="simile.jsp" name="testform" >
+<br/><br/>
+<input type="checkbox" name="chk1" onchange="chk1Change()"></input>UserID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&nbsp;		<input type="text" name="userid"></input><br/><br/>
+<input type="checkbox" name="chk2" onchange="chk2Change()"></input>Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		<input name="date" id="dat" type="text" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Input format : mmm dd yyyy)<br/><br/>
+<input type="checkbox" name="chk3" onchange="chk3Change()"></input>Event Definition&nbsp;&nbsp;&nbsp;		<input type="text" name="event" size="150"></input><br/><br/>
+<input type="checkbox" name="chk4" onchange="chk4Change()"></input>Time Range&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		<input type="text" name="lowTime" size="20"></input>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="highTime" size="20"></input><br/><br/><br/>
+<input type="submit" value="SUBMIT"></input>
+
+
+</form>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+    "email": "admin@sakai.invalid",
+    "firstName": "Admin",
+    "lastName": "User",
+    "sakai:search-exclude-tree": true,
+    ":sakai:profile-import": "{'basic': {'access': 'everybody', 'elements': {'email': {'value': 'admin@sakai.invalid'}, 'firstName': {'value': 'Admin'}, 'lastName': {'value': 'User'}}}}"
+}

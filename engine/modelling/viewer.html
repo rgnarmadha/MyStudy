@@ -1,0 +1,133 @@
+<html>
+ <head>
+    <META HTTP-EQUIV="CONTENT-TYPE" 
+CONTENT="text/html; charset=UTF-8">
+    <title>Sakai 3 Model</title>
+  
+    <link href="types.json" type="application/json" rel="exhibit/data" />
+    <link href="model.json" type="application/json" rel="exhibit/data" />
+    <link href="requirements.json" type="application/json" rel="exhibit/data" />
+    <link href="johnusermap.json" type="application/json" rel="exhibit/data" />
+    <link href="screens.json" type="application/json" rel="exhibit/data" />
+    <link href="eddmaster1.json" type="application/json" rel="exhibit/data" />
+    <link href="nyuedd.json" type="application/json" rel="exhibit/data" />
+  
+    <script src="http://static.simile.mit.edu/exhibit/api-2.0/exhibit-api.js"
+            type="text/javascript"></script>
+
+    <style>
+    .smaller { font-size:60% }
+    </style>
+ </head> 
+ <body>
+    <h1>Sakai 3 Model</h1>
+    <table width="100%">
+        <tr valign="top">
+            <td ex:role="viewPanel">
+				 <div ex:role="view"
+                            ex:showAll="true"
+                            ex:orders=".label"
+                            ex:possibleOrders=".label, .tower, .last-name, .group, .floor"> 
+                            <div ex:role="lens" ex:itemTypes="Screens" style="display: none;"> 
+                            	<div class="exhibit-lens-title" title=".label"><span ex:content=".label" ></span></div>
+                            	<div class="exhibit-lens-body">
+                                	<div><span ex:content=".description-of-screen"></span></div>
+                                	<div class="smaller" >
+                                		<ul>
+                               	 			<li>ID: <span ex:content=".label"></span></li>
+                                			<li>In: <span ex:content=".requirementpath"></span></li>
+                                		</ul>
+                                	</div>
+                                	<div><a ex:href-content=".url" target="_blank"><img ex:src-content=".thumbnail" /></a></div>
+                                </div>
+                            </div> 		 
+                            <div ex:role="lens" ex:itemTypes="LearningCapability" style="display: none;"> 
+                            	<div class="exhibit-lens-title" title=".label"><span ex:content=".label" ></span></div>
+                            	<div class="exhibit-lens-body">
+                                	<div><span ex:content=".sakai-capability"></span></div>
+                                	<div class="smaller" >
+                                		<ul>
+                               	 			<li>Point Of View: <span ex:content=".sakai-pov"></span></li>
+                               	 			<li>Goal Type: <span ex:content=".sakai-name"></span></li>
+                               	 			<li>ID: <span ex:content=".label"></span></li>
+                                			<li>In: <span ex:content=".requirementpath"></span></li>
+                                		</ul>
+                                	</div>
+                                </div>
+                            </div> 		 
+                            <div ex:role="lens" ex:itemTypes="EddMaster1" style="display: none;"> 
+                            	<div class="exhibit-lens-title" title=".label"> <span ex:content=".label" ></span> <span ex:content=".users-story" ></span></div>
+                            	<div class="exhibit-lens-body">
+                                	<div><p ex:content=".functional-requirement"></p></div>
+                                	<div class="smaller" >
+                                		<ul>
+                               	 			<li>Point Of View: <span ex:content=".sakai-pov"></span></li>
+                               	 			<li>Theme: <span ex:content=".theme"></span></li>
+                               	 			<li>Users: <span ex:content=".users"></span></li>
+                               	 			<li>Website-Section: <span ex:content=".website-section"></span></li>
+                               	 			<li>ID: <span ex:content=".label"></span></li>
+                                			<li>In: <span ex:content=".requirementpath"></span></li>
+                                		</ul>
+                                	</div>
+                                </div>
+                            </div> 		 
+                            <div ex:role="lens" ex:itemTypes="NYUviaEdd" style="display: none;"> 
+                            	<div class="exhibit-lens-title" title=".label"> <span ex:content=".label" ></span> <span ex:content=".users-story" ></span></div>
+                            	<div class="exhibit-lens-body">
+                                	<div><p ex:content=".functional-requirement"></p></div>
+                                	<div class="smaller" >
+                                		<ul>
+                               	 			<li>Point Of View: <span ex:content=".sakai-pov"></span></li>
+                               	 			<li>Theme: <span ex:content=".theme"></span></li>
+                               	 			<li>Users: <span ex:content=".users"></span></li>
+                               	 			<li>Website-Section: <span ex:content=".website-section"></span></li>
+                               	 			<li>References: <span ex:content=".sakai-requirment"></span></li>
+                               	 			<li>ID: <span ex:content=".label"></span></li>
+                                			<li>In: <span ex:content=".requirementpath"></span></li>
+                                		</ul>
+                                	</div>
+                                </div>
+                            </div> 		 
+                          
+                            <div ex:role="lens" ex:itemTypes="Persona" style="display: none;"> 
+                            	<div class="exhibit-lens-title" title=".label"><span ex:content=".label" ></span></div>
+                            	<div class="exhibit-lens-body">
+                                	<h2><span ex:content=".label"></span></h2>
+                                	<div><img ex:src-content=".image" /></div>
+                                	<h3>As a Student</h3>
+                                	<div><p ex:content=".as-student" ></p></div>
+                                	<h3>As a Postgraduate</h3>
+                                	<div><p ex:content=".as-postgraduate" ></p></div>
+                                	<h3>As a Researcher</h3>
+                                	<div><p ex:content=".as-researcher" ></p></div>
+                                	<h3>As a Lecturer</h3>
+                                	<div><p ex:content=".as-lecturer" ></p></div>
+                                </div>
+                            </div> 		 
+                            
+				 </div>   
+		    </td>
+            <td width="25%">
+				<div ex:role="facet" 
+					ex:facetClass="TextSearch" >
+				</div>
+				<div ex:role="facet" 
+					ex:expression=".type" ex:showMissing="false" ex:scroll="false" >
+				</div>
+				<div ex:role="facet" 
+					ex:expression=".implementationphase" ex:showMissing="false" ex:scroll="false" >
+				</div>
+				<div ex:role="facet" 
+					ex:expression=".requirementpath" ex:showMissing="false" ex:scroll="false" >
+				</div>
+				<div ex:role="facet" 
+					ex:expression=".sakai-pov" ex:showMissing="false" ex:scroll="false" >
+				</div>
+				<div ex:role="facet" 
+					ex:expression=".sakai-name" ex:showMissing="false" ex:scroll="false" >
+				</div>
+             </td>
+        </tr>
+    </table>
+ </body>
+ </html>

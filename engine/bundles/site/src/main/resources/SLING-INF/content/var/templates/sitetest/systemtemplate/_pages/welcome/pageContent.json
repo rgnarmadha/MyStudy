@@ -1,0 +1,6 @@
+{
+	"jcr:primaryType": "nt:folder",
+	"jcr:mixinTypes" : ["sakai:propertiesmix"],
+	"sling:resourceType": "sakai/pagecontent",
+	"sakai:pagecontent":"<p>This is a system template that should NOT be used in any UI. It's just here so the backend team can do regression tests!</p>"
+}

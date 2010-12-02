@@ -1,0 +1,16 @@
+{
+ "principals" : [
+ ],
+ "acl" : [
+ 	{
+ 		"path":"/sites",
+ 		"principal":"everyone",
+ 		"privilege@jcr:removeChildNodes":"granted"
+ 	},
+ 	{
+ 		"path":"/sites",
+ 		"principal":"anonymous",
+    "privilege@jcr:removeChildNodes":"denied"
+ 	}
+]
+}

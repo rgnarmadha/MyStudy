@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Sakai 3 Event explorer</title>
+	
+	<!-- Get the simile js -->
+	<script src="http://static.simile.mit.edu/timeline/api-2.3.0/timeline-api.js?bundle=true" type="text/javascript"></script>
+
+	<!-- Get jQuery -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
+
+</head>
+<body>
+	<h1>Event explorer</h1>
+	<div id="content">
+		<h2>Options</h2>
+		<form method="post" action="/system/events">
+			<fieldset>
+				<legend>Options</legend>
+			
+				<label for="explorer-form-user">User ID</label>
+				<input type="text" id="explorer-form-user" name="userid" /><br />
+			
+				<label for="explorer-form-timerange-from">Time range</label>
+				<input type="text" id="explorer-form-timerange-from" name="timerange-from" /> - 
+				<input type="text" id="explorer-form-timerange-to" name="timerange-to" /> (ddmmyyyy)<br />
+				<label>&nbsp;</label>
+				<input type="button" id="explorer-form-filter" value="Filter" />
+			</fieldset>
+		</form>
+		
+		<h2>Timeline</h2>
+		<div id="explorer-timeline" style="height: 150px; border: 1px solid #aaa"></div>
+		<noscript>
+			This page uses Javascript to show you a Timeline. Please enable Javascript in your browser to see the full page. Thank you.
+		</noscript>
+	</div>
+	<script type="text/javascript">
+		// On our page load we show a timeline
+		var resizeTimerID = null;
+        var eventSource = new Timeline.DefaultEventSource();
+		
+		
+	    $(document).ready(function(){
+            var bandInfos = [Timeline.createBandInfo({
+                eventSource: eventSource,
+                date: "Jul 12 2010 13:50:00 GMT",
+                width: "70%",
+                intervalUnit: Timeline.DateTime.MINUTE,
+                intervalPixels: 100
+            }), Timeline.createBandInfo({
+                eventSource: eventSource,
+                date: "Jul 12 2010 13:50:00 GMT",
+                width: "30%",
+                intervalUnit: Timeline.DateTime.HOUR,
+                intervalPixels: 200
+            })];
+            bandInfos[1].syncWith = 0;
+            bandInfos[1].highlight = true;
+            
+            tl = Timeline.create(document.getElementById("explorer-timeline"), bandInfos);
+
+			
+			// Load our JSON
+			Timeline.loadJSON("/system/data", function(json, url) { eventSource.loadJSON(json, url); });
+	    });
+		
+		// On the page resize, we resize the timeline
+		$(document).resize(function() {
+			if (resizeTimerID == null) {
+		         resizeTimerID = window.setTimeout(function() {
+		             resizeTimerID = null;
+		             tl.layout();
+		         }, 500);
+		     }
+		});
+		
+		
+		$("#explorer-form-filter").click(function() {
+			var user = $("#explorer-form-user").val();
+			// TODO clear the timeline.
+			
+			// Redraw the timeline.
+			Timeline.loadJSON("/system/data?user=" + user, function(json, url) { eventSource.loadJSON(json, url); });
+		});
+	</script>
+</body>
+</html>

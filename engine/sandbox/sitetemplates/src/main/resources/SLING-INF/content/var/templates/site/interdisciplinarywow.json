@@ -1,0 +1,211 @@
+{
+    "sakai:is-site-template": "true",
+    "sakai:site-template-description" : "This is an example of the interdisciplini template done with the new structure.",
+    "groups" : {
+        "sling:resourceType" : "sakai/template-groups",
+        "group0" : {
+            "sling:resourceType": "sakai/template-group",
+            "sakai:template-group-principalname": "@@groups.collaborators.name@@",
+            "sakai:template-group-managers" : ["@@groups.collaborators.members(...)@@"],
+            "sakai:template-group-viewers" : ["@@groups.collaborators.members(...)@@"],
+            "sakai:template-group-issitemanager" : true
+        },
+        "group1" : {
+            "sling:resourceType": "sakai/template-group",
+            "sakai:template-group-principalname": "@@groups.viewers.name@@",
+            "sakai:template-group-managers" : ["@@groups.collaborators.members(...)@@"],
+            "sakai:template-group-viewers" : ["@@groups.viewers.members(...)@@"],
+        }
+    },
+    "site" : {
+    	"@@site.properties.status==online?@@" : {
+		    "ace0" : {
+		        "sling:resourceType" : "sakai/template-ace",
+		        "sakai:template-ace-principal" : "@@groups.collaborators.name@@",
+		        "sakai:template-ace-granted" : ["jcr:all"],
+		        "sakai:template-ace-denied" : []
+		    },
+		    "ace1" : {
+		        "sling:resourceType" : "sakai/template-ace",
+		        "sakai:template-ace-principal" : "@@groups.viewers.name@@",
+		        "sakai:template-ace-granted" : ["jcr:read"],
+		        "sakai:template-ace-denied" : []
+		    },
+		    "ace2" : {
+		        "sling:resourceType" : "sakai/template-ace",
+		        "sakai:template-ace-principal" : "everyone",
+		        "sakai:template-ace-granted" : [],
+		        "sakai:template-ace-denied" : ["jcr:read"]
+		    }
+    	},
+    	"@@site.properties.status==offline?@@" : {
+		    "ace0" : {
+		        "sling:resourceType" : "sakai/template-ace",
+		        "sakai:template-ace-principal" : "@@groups.collaborators.name@@",
+		        "sakai:template-ace-granted" : ["jcr:all"],
+		        "sakai:template-ace-denied" : []
+		    },
+		    "ace1" : {
+		        "sling:resourceType" : "sakai/template-ace",
+		        "sakai:template-ace-principal" : "@@groups.viewers.name@@",
+		        "sakai:template-ace-granted" : [],
+		        "sakai:template-ace-denied" : ["jcr:read"]
+		    },
+		    "ace2" : {
+		        "sling:resourceType" : "sakai/template-ace",
+		        "sakai:template-ace-principal" : "everyone",
+		        "sakai:template-ace-granted" : [],
+		        "sakai:template-ace-denied" : ["jcr:read"]
+		    }
+    	},
+    	"@@site.properties.status==everyone?@@" : {
+		    "ace0" : {
+		        "sling:resourceType" : "sakai/template-ace",
+		        "sakai:template-ace-principal" : "@@groups.collaborators.name@@",
+		        "sakai:template-ace-granted" : ["jcr:all"],
+		        "sakai:template-ace-denied" : []
+		    },
+		    "ace1" : {
+		        "sling:resourceType" : "sakai/template-ace",
+		        "sakai:template-ace-principal" : "@@groups.viewers.name@@",
+		        "sakai:template-ace-granted" : ["jcr:read"],
+		        "sakai:template-ace-denied" : []
+		    },
+		    "ace2" : {
+		        "sling:resourceType" : "sakai/template-ace",
+		        "sakai:template-ace-principal" : "everyone",
+		        "sakai:template-ace-granted" : ["jcr:read"],
+		        "sakai:template-ace-denied" : []
+		    }
+    	},
+        "sling:resourceType" : "sakai/site",
+        "name" : "@@site.properties.title@@",
+        "id" : "@@site.properties.id@@",
+        "sakai:skin" : "@@site.properties.skin@@",
+        "sakai:site-private" : "@@site.properties.private@@",
+        "sakai:savedBy" : "@@site.user.creator@@",
+        "sakai:rolemembers" : [
+                               "@@groups.viewers.name@@",
+                               "@@groups.collaborators.name@@"
+                               ],
+        "sakai:roles": [
+    		"Viewer",
+    		"Collaborator"
+    	],
+        "_files" : {
+    		"sling:resourceType" : "sakai/folder"
+    	},
+        "_pages" : {
+            "welcome" : {
+                "sling:resourceType" : "sakai/page",
+                "pageTitle" : "Welcome",
+                "pageType" : "webpage",
+                "pagePosition" : 10000,
+                "jcr:mixinTypes" : "sakai:propertiesmix",
+                "_pages" : {
+                },
+                "pageContent" : {
+                    "jcr:primaryType": "nt:folder",
+                    "jcr:mixinTypes" : ["sakai:propertiesmix"],
+                     "sling:resourceType": "sakai/pagecontent",
+                     "sakai:pagecontent":"<p>Welcome to your new default site!</p>"
+                }
+            },
+            "introduction" : {
+                "sling:resourceType" : "sakai/page",
+                "pageTitle" : "Introduction",
+                "pageType" : "webpage",
+                "pagePosition" : 20000,
+                "jcr:mixinTypes" : "sakai:propertiesmix",
+                "_pages" : {
+                },
+                "pageContent" : {
+                    "jcr:primaryType": "nt:folder",
+                    "jcr:mixinTypes" : ["sakai:propertiesmix"],
+                     "sling:resourceType": "sakai/pagecontent",
+                     "sakai:pagecontent":"<div id=\"main\"><div class=\"box\"><h3>About us</h3><p><strong>Cambridge has a strong tradition in neuroscience</strong> having been host to the first analyses of neural signalling in the 1930s, determined the mechanisms of neuronal firing in the 1950s, and heralded some of the early theoretical approaches to the functions of neural circuitry in the 1960s. Neuroscience continues to grow at Cambridge, with an <a href=\"http://www.neuroscience.cam.ac.uk/research/cameos/\">impressive record of achievement</a> in multi-disciplinary research.</p><h3>An introduction by Andrew Huxley</h3><div class=\"breakout right\"><p>Perhaps the most difficult, and at the same time, the most   interesting problem in neuroscience, is the nature of consciousness</p></div><div class=\"illustration left\"><img style=\"float: left; padding: 5px; padding-left: 0px;\" src=\"http://www.neuroscience.cam.ac.uk/images/AndrewHuxley.jpg\" alt=\"Andrew Huxley\" /></div><p>The brain is by far the most interesting organ in the body. It is also the most complicated. The cerebral cortex alone contains something like ten million million cells, and the number of connections from one cell to another is perhaps one hundred times greater. My own tendency has been to stick to simple problems, such as conduction in a single nerve fibre and contraction in a single muscle fibre. Even simple problems are not necessarily easy, and one of my hobbies has been looking into the totally wrong theories previously held by highly intelligent people in these and other fields.</p><p>If one examines a section of brain under the microscope, after staining each nerve fibre, a totally unintelligible tangle is revealed. One of the most important advances in the study of the brain was the invention, about 1880, of the Golgi method of staining, which picks out only a few cells but stains these and all their projections in the entirety. As far as I know, the chemical basis for this feature of the method is not yet understood.</p><div class=\"breakout left\"><p>I have watched with interest as neuroscience has moved from its origins in physiology</p></div><p>Perhaps the most difficult, and at the same time the most interesting problem in neuroscience, is the nature of consciousness and its relationship to physical events in the brain. Until a moderate number of years ago, this topic was avoided by neuroscientists, with the honourable exception of Sir John Eccles. He had been brought up as a Catholic and believed in the existence of a soul in each individual. In contrast, this has now become a fashionable topic, with several societies and journals devoted to it. It seems to me that this is the biggest problem facing neuroscience at the present time. Whoever solves it will have earned a place in the history of science comparable to that of Newton and Darwin. A related problem is whether any non-human animals are conscious. My own guess is that all mammals are conscious, and very likely all vertebrates and possibly some invertebrates, especially squids and octopuses, but I know that several highly reputable neuroscientists hold the belief that only Man is conscious.</p><p>These and many other aspects of how the nervous system works have been of much interest to me ever since arriving in Cambridge to read for the Natural Sciences Tripos at Trinity in 1935. I have watched with interest as neuroscience has moved from its origins in physiology to involve the many other disciplines now represented in the University and associated Institutions.</p><p>We shall expect that <em>Cambridge Neuroscience</em> will solve at least some of these problems.</p><p><img src=\"http://www.neuroscience.cam.ac.uk/images/HuxleySignature.gif\" alt=\"\" /></p><p><strong>Andrew Huxley</strong><br /><em>Trinity College, Cambridge</em></p></div></div>"
+                }
+            },
+            "a-short-history" : {
+                "sling:resourceType" : "sakai/page",
+                "pageTitle" : "A short history",
+                "pageType" : "webpage",
+                "pagePosition" : 30000,
+                "jcr:mixinTypes" : "sakai:propertiesmix",
+                "_pages" : {
+                },
+                "pageContent" : {
+                    "jcr:primaryType": "nt:folder",
+                    "jcr:mixinTypes" : ["sakai:propertiesmix"],
+                     "sling:resourceType": "sakai/pagecontent",
+                     "sakai:pagecontent":"<p>It has been 115 years since the nerve cell was clearly recognized as the structural and functional unit of the nervous system; only 115 years of the modern era, yet the achievements over that time have been staggering. During those years anatomists, physiologists, zoologists and many others, all of whom now go by the name of &lsquo;neuroscientists&rsquo;, sought to understand some of the most fundamental properties of the nervous system. Until the latter part of the 19th and the early years of the 20th centuries these properties were considered to be &lsquo;mysteries&rsquo;: the structure of neurons, the ways in which they are interconnected, the architecture of the brain, the physiological bases of reflexes, the mechanisms by which messages from the sense organs are signalled to the brain, and the nature of the nerve impulse.</p><div class=\"breakout left\"><p>Many of these mysteries were dispelled by work done in Cambridge</p></div><p>Many of these mysteries were dispelled by work done in Cambridge, such as that of Adrian, Langley, Matthews Hodgkin and Huxley, and through work done by people who had been trained in Cambridge, one of whom was Sherrington who held the George Henry Lewes Studentship in the Department of Physiology.</p><div class=\"illustration right\"><img style=\"float: right; padding: 5px; padding-right: 0px;\" src=\"http://www.neuroscience.cam.ac.uk/images/RiversAndHenry.jpg\" alt=\"WJR Rivers and Henry Head performing one of their most   famous experiments in St John's College\" /><p style=\"width: 300px;\">WJR Rivers and Henry Head in St John's College, performing one of their most   famous experiments on the regeneration of nerve tissue</p></div><p>During the years in which this work was being conducted there was, understandably, little need for scientific interactions between members of different University departments. However, by the 1950s, with this basic information about the organisation of the nervous system available, the intellectual climate was to change. Many neuroscientists sought to understand the role of the brain in controlling behaviour, perception, attention, learning and memory. But other factors also played a part in the change. New techniques were appearing that made it possible to address these questions experimentally: the microelectrode allowed the activity of individual nerve cells to be studied in behaving animals and in humans; oscilloscopes could be bought off the shelf instead of having to be made in the laboratory; and computers began to arrive on the scene. Furthermore, new ideas were emerging, such as those of information technology and cybernetics, ideas that Kenneth Craik correctly predicted would influence future developments in neuroscience.</p><div class=\"breakout right\"><p>Cambridge was quick to appreciate the need for cross- departmental, interdisciplinary interactions</p></div><p>Cambridge was quick to appreciate the need for cross-departmental, interdisciplinary interactions, and in 1952 appointed Oliver Zangwill as Professor of Experimental Psychology. Zangwill had wide experience of clinical neuropsychology, and had a special interest in the effects of brain lesions on memory and perception. He gathered together a group of people whose interest in the brain extended to encompass behaviour &ndash; then almost a unique combination of interests.</p><p>Zhangwill teamed up with WH Thorpe in the Department of Zoology. Thorpe was a major figure in the relatively new discipline of ethology that sought to study the behaviour of animals in nature, rather than in the training boxes. This approach initially brought ethologists and psychologists into conflict, and the two men sought to resolve the conflict. To do so, they formed a small discussion group, which came to be known as the Thorpe-Zangwill club, and they brought in people from several disciplines. Thorpe and Zangwill were crucially important in creating an interdisciplinary approach to behaviour and also to neuroscience in Cambridge. Members of the club met over the period 1953 &ndash; early 1960s in Thorpe&rsquo;s room in Jesus College. Later, the Neurobiology club was formed and weekly meetings were held ion Saturday mornings in the attic of the Department of Zoology. The meetings were attended by neuroscientists from different Departments, and the discussions were vigorous and intense. The club was active over several years.</p><p>During this time, the Science Research Council expressed an informal interest in, but not a commitment, to establishing a neurobiology centre in the UK. The interested departments in the School of Biology and in the Clinical School joined forces &ndash; until then an almost unheard of alliance &ndash; and submitted a detailed programme of research. But the SRC got cold feet and did not proceed with the scheme. Twenty years later, the MRC made a firm request for bids for a neurobiology centre. The departments joined forces again and submitted an application. This one was successful and the funds awarded made possible the foundation of Interdisciplinary Research Centre for Brain Repair.</p><div class=\"breakout left\"><p>Cohorts of students who no longer recognise subject boundaries are being trained in neuroscience</p></div><p>By 1992 the Cambridge Neuroscience Seminars began. These seminars are held annually. Each seminar consists of a number of lectures and poster sessions followed by a dinner for participants. Members of all University departments, research institutions and industrial organisations in the region that have interests in the field of neuroscience are welcome to attend. The seminars continue to flourish. Around the same time the Clinical School strengthened its interests in the clinical neurosciences, culminating, in 2004, with the establishment of a University Department of Clinical Neurosciences. All these ventures had consequences. Not only had neuroscientists joined forces at the level of research, but a new third year course &ndash; a Part II in Neuroscience established in 1988 &ndash; is still going strong and is highly successful. Cohorts of students who no longer recognise subject boundaries are being trained in neuroscience; and they can talk and understand the language of molecular neurobiology, psychology, neurophysiology, neuropharmacology, and much else of what it takes to comprehend modern neuroscience.</p><p>Because of all of these developments Cambridge has, over the past 50 or so years, gained wide experience of studying the nervous system across all disciplines and across all levels of analysis: from molecules to mental processes; from the giant axon of the squid to synapses in the locust brain; from neural development in the nematode worm and the fruit fly to the functioning of the avian and mammalian brains; from modelling of neuronal networks to &ndash; dramatically &ndash; human brain imaging. This latter technique provides a powerful tool for investigating brain function in health and disease, and raises issues that have led to the creation of new fields of enquiry, such as neuroethics and neuroeconomics. Human brain imaging studies also impinge on the law and are likely to generate a new area of enquiry that might, perhaps, be called &ldquo;neuroprudence&rdquo;.</p><div class=\"breakout right\"><p>There has never been a greater need for interdisciplinary   interactions</p></div><p>With all the techniques available, there has never been a greater     need, now and in the future, for interdisciplinary interactions, not only within the biomedical and clinical sciences, but also between them and the physical sciences and technology; there has never been     greater promise for the clinical application of basic neuroscientific knowledge; and there has never been greater promise than there is now for the transfer of knowledge gained from the field of neuroscience to the pharmaceutical industry, to the health sciences, computer sciences, engineering &ndash; and to yet other, unforeseen fields.</p><p>Cambridge is uniquely placed to meet the challenges of neuroscience in the future and there is no doubt that the <em>Cambridge Neuroscience</em> initiative will meet these needs and fulfil its expectations.</p><p><img src=\"http://www.neuroscience.cam.ac.uk/images/HornSignature.gif\" alt=\"\" /></p><p><strong>Professor Sir Gabriel Horn</strong><br /> <em>Sub-Department of Animal Behaviour, Department of Zoology, University of Cambridge</em></p>"
+                }
+            },
+            "latest-news" : {
+                "sling:resourceType" : "sakai/page",
+                "pageTitle" : "Latest news",
+                "pageType" : "webpage",
+                "pagePosition" : 40000,
+                "jcr:mixinTypes" : "sakai:propertiesmix",
+                "_pages" : {
+                },
+                "pageContent" : {
+                    "jcr:primaryType": "nt:folder",
+                    "jcr:mixinTypes" : ["sakai:propertiesmix"],
+                     "sling:resourceType": "sakai/pagecontent",
+                     "sakai:pagecontent":"<p><img id=\"widget_rss_id767036439\" class=\"widget_inline\" style=\"display:block; padding: 10px; margin: 4px\" src=\"/devwidgets/rss/images/rss.png\" border=\"1\" alt=\"\" /></p>"
+                }
+            },
+            "all-members" : {
+                "sling:resourceType" : "sakai/page",
+                "pageTitle" : "All members",
+                "pageType" : "webpage",
+                "pagePosition" : 50000,
+                "jcr:mixinTypes" : "sakai:propertiesmix",
+                "_pages" : {
+                },
+                "pageContent" : {
+                    "jcr:primaryType": "nt:folder",
+                    "jcr:mixinTypes" : ["sakai:propertiesmix"],
+                     "sling:resourceType": "sakai/pagecontent",
+                     "sakai:pagecontent":"<p><img id=\"widget_sitemembers_id865995047\" class=\"widget_inline\" style=\"display:block; padding: 10px; margin: 4px\" src=\"/devwidgets/sitemembers/images/sitemembers.png\" border=\"1\" alt=\"\" /></p>"
+                }
+            },
+            "contact-us" : {
+                "sling:resourceType" : "sakai/page",
+                "pageTitle" : "Contact us",
+                "pageType" : "webpage",
+                "pagePosition" : 60000,
+                "jcr:mixinTypes" : "sakai:propertiesmix",
+                "_pages" : {
+                },
+                "pageContent" : {
+                    "jcr:primaryType": "nt:folder",
+                    "jcr:mixinTypes" : ["sakai:propertiesmix"],
+                     "sling:resourceType": "sakai/pagecontent",
+                     "sakai:pagecontent":"<h2>Media enquiries</h2><p>Be sure to check our <a href=\"http://www.neuroscience.cam.ac.uk/resources/media/\">media area</a>.</p><p>Media enquiries are always welcome. Cambridge University has a <a href=\"http://www.admin.cam.ac.uk/news/\">dedicated Press Office</a>,  who are happy to answer any queries or requests for help. All neuroscience-related enquiries should be directed to Genevieve Maul at the Press Office.</p><h2>All other enquiries</h2><h3>To contact a member of Cambridge Neuroscience</h3><p>Many of our members provide details of their email address on their profile or webpage. If this is not provided, then please call the University Switchboard on <strong>+44 (0)1223 337733</strong> and they will be able to put you through.</p><p class=\"link\"><a href=\"http://www.neuroscience.cam.ac.uk/directory/\">Search the directory</a></p><h3>Cambridge Neuroscience Coordinator</h3><p>For information about Cambridge Neuroscience please contact the Coordinator:</p><p><strong><a href=\"http://www.neuroscience.cam.ac.uk/directory/profile.php?hannahcritchlow\">Dr. Hannah Critchlow</a></strong><br /> <a href=\"mailto:coordinator@neuroscience.cam.ac.uk\">coordinator@neuroscience.cam.ac.uk</a></p><address>University of Cambridge<br /> Department of Experimental Psychology<br /> Cambridge, CB2 3EB, UK<br /> Tel: +44 (0)1223 333178</address>"
+                }
+            }
+        },
+        "_widgets" : {
+        	"id767036439" : {
+	        	"rss" : {
+	        		"feeds":[],
+	        		"title":"Research",
+	        		"numEntries":10,
+	        		"displaySource":false,
+	        		"displayHeadlines":false,
+	        		"urlFeeds":["http://feeds.nap.edu/nap/new"]
+        		}
+        	},
+        	"id865995047" : {
+        		"sitemembers" : {
+        			"display":"wide",
+        			"data":"[]", 
+        			"sort":"lastname" 
+        		}
+        	}
+        
+        }
+    }
+}

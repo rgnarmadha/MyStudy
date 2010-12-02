@@ -1,0 +1,6 @@
+{
+    "sling:resourceType":"sakai/external-repository-search",
+    "sakai:repository-ref":"/remotefiles",
+    "sakai:search-prop-q":"{search|*}"
+}
+

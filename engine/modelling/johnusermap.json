@@ -1,0 +1,1450 @@
+{"items": [
+    {
+        "id": "User",
+        "implementationphase": "phase1",
+        "label": "User",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact",
+        "parent": "User",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.anonymous",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.anonymous",
+        "parent": "User.View-Interact",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.anonymous.Can-browse-public-pages-spaces",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.anonymous.Can-browse-public-pages-spaces",
+        "parent": "User.View-Interact.anonymous",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.anonymous.Can-browse-public-pages-spaces.Can-view-public-pages-spaces",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.anonymous.Can-browse-public-pages-spaces.Can-view-public-pages-spaces",
+        "parent": "User.View-Interact.anonymous.Can-browse-public-pages-spaces",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.anonymous.Can-browse-public-pages-spaces.Can-edit-public-pages-spaces-if-permitted",
+        "implementationphase": "phase2",
+        "label": "User.View-Interact.anonymous.Can-browse-public-pages-spaces.Can-edit-public-pages-spaces-if-permitted",
+        "parent": "User.View-Interact.anonymous.Can-browse-public-pages-spaces",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.anonymous.Can-browse-public-pages-spaces.Can-create-public-pages-spaces-if-permitted",
+        "implementationphase": "phase2",
+        "label": "User.View-Interact.anonymous.Can-browse-public-pages-spaces.Can-create-public-pages-spaces-if-permitted",
+        "parent": "User.View-Interact.anonymous.Can-browse-public-pages-spaces",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.anonymous.Can-browse-people-public-information",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.anonymous.Can-browse-people-public-information",
+        "parent": "User.View-Interact.anonymous",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.anonymous.Can-browse-events-public-information",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.anonymous.Can-browse-events-public-information",
+        "parent": "User.View-Interact.anonymous",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.anonymous.Can-browse-events-public-information.Can-view-events",
+        "implementationphase": "phase2",
+        "label": "User.View-Interact.anonymous.Can-browse-events-public-information.Can-view-events",
+        "parent": "User.View-Interact.anonymous.Can-browse-events-public-information",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.anonymous.Can-browse-events-public-information.Can-create-events",
+        "implementationphase": "phase3",
+        "label": "User.View-Interact.anonymous.Can-browse-events-public-information.Can-create-events",
+        "parent": "User.View-Interact.anonymous.Can-browse-events-public-information",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.anonymous.Can-browse-events-public-information.Can-create-events.Can-edit-events",
+        "implementationphase": "phase3",
+        "label": "User.View-Interact.anonymous.Can-browse-events-public-information.Can-create-events.Can-edit-events",
+        "parent": "User.View-Interact.anonymous.Can-browse-events-public-information.Can-create-events",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.anonymous.Can-browse-events-public-information.Can-create-event-series",
+        "implementationphase": "phase3",
+        "label": "User.View-Interact.anonymous.Can-browse-events-public-information.Can-create-event-series",
+        "parent": "User.View-Interact.anonymous.Can-browse-events-public-information",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.anonymous.Can-browse-shared-resources",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.anonymous.Can-browse-shared-resources",
+        "parent": "User.View-Interact.anonymous",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.logged-in",
+        "parent": "User.View-Interact",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-",
+        "parent": "User.View-Interact.logged-in",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-.Can-Join-open-groups",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-.Can-Join-open-groups",
+        "parent": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-.Can-request-membership",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-.Can-request-membership",
+        "parent": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-.Can-contact-administrator",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-.Can-contact-administrator",
+        "parent": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-.Multiple-views",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-.Multiple-views",
+        "parent": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-.Multiple-views.Most-active",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-.Multiple-views.Most-active",
+        "parent": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-.Multiple-views",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-.Multiple-views.Last-viewed",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-.Multiple-views.Last-viewed",
+        "parent": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-.Multiple-views",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-.Multiple-views.By-hierarchy",
+        "implementationphase": "phase2",
+        "label": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-.Multiple-views.By-hierarchy",
+        "parent": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-.Multiple-views",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-.Multiple-views.Tag-cloud",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-.Multiple-views.Tag-cloud",
+        "parent": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-.Multiple-views",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-.Can-follow-group-",
+        "implementationphase": "phase3",
+        "label": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-.Can-follow-group-",
+        "parent": "User.View-Interact.logged-in.Can-browse-groups--public-shared-with-",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-Browse-People",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.logged-in.Can-Browse-People",
+        "parent": "User.View-Interact.logged-in",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-Browse-People.Can-invite-people-as-contacts",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.logged-in.Can-Browse-People.Can-invite-people-as-contacts",
+        "parent": "User.View-Interact.logged-in.Can-Browse-People",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-Browse-People.Can-invite-people-as-contacts.Can-chat-with-contacts",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.logged-in.Can-Browse-People.Can-invite-people-as-contacts.Can-chat-with-contacts",
+        "parent": "User.View-Interact.logged-in.Can-Browse-People.Can-invite-people-as-contacts",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-Browse-People.Can-invite-people-as-contacts.Can-see-activity-of-contacts-",
+        "implementationphase": "phase3",
+        "label": "User.View-Interact.logged-in.Can-Browse-People.Can-invite-people-as-contacts.Can-see-activity-of-contacts-",
+        "parent": "User.View-Interact.logged-in.Can-Browse-People.Can-invite-people-as-contacts",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-Browse-People.Can--follow--people",
+        "implementationphase": "phase3",
+        "label": "User.View-Interact.logged-in.Can-Browse-People.Can--follow--people",
+        "parent": "User.View-Interact.logged-in.Can-Browse-People",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-browse-pages-spaces--public-shared-with-",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.logged-in.Can-browse-pages-spaces--public-shared-with-",
+        "parent": "User.View-Interact.logged-in",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-browse-pages-spaces--public-shared-with-.Can-edit-pages-spaces--shared-with-as-collaborator-",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.logged-in.Can-browse-pages-spaces--public-shared-with-.Can-edit-pages-spaces--shared-with-as-collaborator-",
+        "parent": "User.View-Interact.logged-in.Can-browse-pages-spaces--public-shared-with-",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-Suggest-group-to-potential-member",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.logged-in.Can-Suggest-group-to-potential-member",
+        "parent": "User.View-Interact.logged-in",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-browse-content",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.logged-in.Can-browse-content",
+        "parent": "User.View-Interact.logged-in",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-browse-content.View-related-content",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.logged-in.Can-browse-content.View-related-content",
+        "parent": "User.View-Interact.logged-in.Can-browse-content",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-browse-content.Most-viewed-content",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.logged-in.Can-browse-content.Most-viewed-content",
+        "parent": "User.View-Interact.logged-in.Can-browse-content",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-browse-content.Highest-rated-content",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.logged-in.Can-browse-content.Highest-rated-content",
+        "parent": "User.View-Interact.logged-in.Can-browse-content",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-browse-content.View-by-tag-tag-hierarchy",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.logged-in.Can-browse-content.View-by-tag-tag-hierarchy",
+        "parent": "User.View-Interact.logged-in.Can-browse-content",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-browse-content.View-by-personal-map-desktop-layout",
+        "implementationphase": "phase2",
+        "label": "User.View-Interact.logged-in.Can-browse-content.View-by-personal-map-desktop-layout",
+        "parent": "User.View-Interact.logged-in.Can-browse-content",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-interact-with-content",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.logged-in.Can-interact-with-content",
+        "parent": "User.View-Interact.logged-in",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-interact-with-content.Can-comment",
+        "implementationphase": "phase2",
+        "label": "User.View-Interact.logged-in.Can-interact-with-content.Can-comment",
+        "parent": "User.View-Interact.logged-in.Can-interact-with-content",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-interact-with-content.Can-rate",
+        "implementationphase": "phase2",
+        "label": "User.View-Interact.logged-in.Can-interact-with-content.Can-rate",
+        "parent": "User.View-Interact.logged-in.Can-interact-with-content",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-interact-with-content.Can-have-Q&A-with-others",
+        "implementationphase": "phase2",
+        "label": "User.View-Interact.logged-in.Can-interact-with-content.Can-have-Q&A-with-others",
+        "parent": "User.View-Interact.logged-in.Can-interact-with-content",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-network",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.logged-in.Can-network",
+        "parent": "User.View-Interact.logged-in",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-network.Can-find-and-invite-contacts",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.logged-in.Can-network.Can-find-and-invite-contacts",
+        "parent": "User.View-Interact.logged-in.Can-network",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-network.Can-chat-with-contacts",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.logged-in.Can-network.Can-chat-with-contacts",
+        "parent": "User.View-Interact.logged-in.Can-network",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-network.Can-see-if-contacts-online",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.logged-in.Can-network.Can-see-if-contacts-online",
+        "parent": "User.View-Interact.logged-in.Can-network",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-network.Can-see-activity-of-contacts",
+        "implementationphase": "phase3",
+        "label": "User.View-Interact.logged-in.Can-network.Can-see-activity-of-contacts",
+        "parent": "User.View-Interact.logged-in.Can-network",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-network.Can-classify-contacts-",
+        "implementationphase": "phase2",
+        "label": "User.View-Interact.logged-in.Can-network.Can-classify-contacts-",
+        "parent": "User.View-Interact.logged-in.Can-network",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-network.Can-remove-contacts",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.logged-in.Can-network.Can-remove-contacts",
+        "parent": "User.View-Interact.logged-in.Can-network",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.logged-in.Can-network.Can-annotate-contacts",
+        "implementationphase": "phase3",
+        "label": "User.View-Interact.logged-in.Can-network.Can-annotate-contacts",
+        "parent": "User.View-Interact.logged-in.Can-network",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.Can-Search-anything-anywhere",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.Can-Search-anything-anywhere",
+        "parent": "User.View-Interact",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.Can-Search-anything-anywhere.Full-text-search",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.Can-Search-anything-anywhere.Full-text-search",
+        "parent": "User.View-Interact.Can-Search-anything-anywhere",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.Can-Search-anything-anywhere.Keyword-search",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.Can-Search-anything-anywhere.Keyword-search",
+        "parent": "User.View-Interact.Can-Search-anything-anywhere",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.Can-Search-anything-anywhere.Keyword-search.Free-text-keywords-tags",
+        "implementationphase": "phase1",
+        "label": "User.View-Interact.Can-Search-anything-anywhere.Keyword-search.Free-text-keywords-tags",
+        "parent": "User.View-Interact.Can-Search-anything-anywhere.Keyword-search",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.Can-Search-anything-anywhere.Keyword-search.Controlled-keywords-tags",
+        "implementationphase": "phase3",
+        "label": "User.View-Interact.Can-Search-anything-anywhere.Keyword-search.Controlled-keywords-tags",
+        "parent": "User.View-Interact.Can-Search-anything-anywhere.Keyword-search",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.Can-Search-anything-anywhere.Keyword-search.Controlled-keywords-tags.Ontology",
+        "implementationphase": "phase3",
+        "label": "User.View-Interact.Can-Search-anything-anywhere.Keyword-search.Controlled-keywords-tags.Ontology",
+        "parent": "User.View-Interact.Can-Search-anything-anywhere.Keyword-search.Controlled-keywords-tags",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.Can-Search-anything-anywhere.Keyword-search.Controlled-keywords-tags.Thesaurus",
+        "implementationphase": "phase3",
+        "label": "User.View-Interact.Can-Search-anything-anywhere.Keyword-search.Controlled-keywords-tags.Thesaurus",
+        "parent": "User.View-Interact.Can-Search-anything-anywhere.Keyword-search.Controlled-keywords-tags",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.Can-Search-anything-anywhere.Keyword-search.Controlled-keywords-tags.Word-list",
+        "implementationphase": "phase3",
+        "label": "User.View-Interact.Can-Search-anything-anywhere.Keyword-search.Controlled-keywords-tags.Word-list",
+        "parent": "User.View-Interact.Can-Search-anything-anywhere.Keyword-search.Controlled-keywords-tags",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.View-Interact.Can-Search-anything-anywhere.Faceted-results-filtering",
+        "implementationphase": "phase2",
+        "label": "User.View-Interact.Can-Search-anything-anywhere.Faceted-results-filtering",
+        "parent": "User.View-Interact.Can-Search-anything-anywhere",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create",
+        "parent": "User",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In",
+        "parent": "User.Manage-Create",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Has-Profile",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Has-Profile",
+        "parent": "User.Manage-Create.Logged-In",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Has-Profile.Data-from-external-sources",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Has-Profile.Data-from-external-sources",
+        "parent": "User.Manage-Create.Logged-In.Has-Profile",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Has-Profile.Data-from-external-sources.Link-to-external-source-for-editing-data",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Has-Profile.Data-from-external-sources.Link-to-external-source-for-editing-data",
+        "parent": "User.Manage-Create.Logged-In.Has-Profile.Data-from-external-sources",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Has-Profile.Data-from-external-sources.Read-only",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Has-Profile.Data-from-external-sources.Read-only",
+        "parent": "User.Manage-Create.Logged-In.Has-Profile.Data-from-external-sources",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Has-Profile.Data-from-external-sources.Read-Write",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Has-Profile.Data-from-external-sources.Read-Write",
+        "parent": "User.Manage-Create.Logged-In.Has-Profile.Data-from-external-sources",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Has-Profile.Data-edited-by-user",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Has-Profile.Data-edited-by-user",
+        "parent": "User.Manage-Create.Logged-In.Has-Profile",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Has-Profile.Can-control-data-visibility--privacy-settings-",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Has-Profile.Can-control-data-visibility--privacy-settings-",
+        "parent": "User.Manage-Create.Logged-In.Has-Profile",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Has-Profile.Data-edited-by-others-",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Has-Profile.Data-edited-by-others-",
+        "parent": "User.Manage-Create.Logged-In.Has-Profile",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Has-Profile.Data-edited-by-others-.Can-nominate-profile-maintainer",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Has-Profile.Data-edited-by-others-.Can-nominate-profile-maintainer",
+        "parent": "User.Manage-Create.Logged-In.Has-Profile.Data-edited-by-others-",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Has-Profile.Data-edited-by-others-.Can-accept-request-from-another-user-for-them-to-become-maintainer-of-my-profile",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Has-Profile.Data-edited-by-others-.Can-accept-request-from-another-user-for-them-to-become-maintainer-of-my-profile",
+        "parent": "User.Manage-Create.Logged-In.Has-Profile.Data-edited-by-others-",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Has-Profile.Has-portfolio",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Has-Profile.Has-portfolio",
+        "parent": "User.Manage-Create.Logged-In.Has-Profile",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Has-Profile.Has-portfolio.Has-additional-portfolios-for-special-audiences",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Has-Profile.Has-portfolio.Has-additional-portfolios-for-special-audiences",
+        "parent": "User.Manage-Create.Logged-In.Has-Profile.Has-portfolio",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Has-Profile.Has-portfolio.Can-add-content-to-portfolio",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Has-Profile.Has-portfolio.Can-add-content-to-portfolio",
+        "parent": "User.Manage-Create.Logged-In.Has-Profile.Has-portfolio",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Has-Profile.Has-portfolio.Can-control-who-sees-portfilio",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Has-Profile.Has-portfolio.Can-control-who-sees-portfilio",
+        "parent": "User.Manage-Create.Logged-In.Has-Profile.Has-portfolio",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-create-group",
+        "parent": "User.Manage-Create.Logged-In",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-invite-members",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-invite-members",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-invite-members.Set-group-to-open",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-invite-members.Set-group-to-open",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-invite-members",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-invite-members.Set-group-to--on-request-",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-invite-members.Set-group-to--on-request-",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-invite-members",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-invite-members.Set-group-to--on-request-.select-operate-request-management-workflow",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-invite-members.Set-group-to--on-request-.select-operate-request-management-workflow",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-invite-members.Set-group-to--on-request-",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-invite-members.Closed-group---by-invitation-only",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-invite-members.Closed-group---by-invitation-only",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-invite-members",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-directly-add-remove-members",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-directly-add-remove-members",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-directly-add-remove-members.can-use-contact-list",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-directly-add-remove-members.can-use-contact-list",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-directly-add-remove-members",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-directly-add-remove-members.can-use-search-browse",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-directly-add-remove-members.can-use-search-browse",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-directly-add-remove-members",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-block-suspend-members",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-block-suspend-members",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-allow-prevent-members-leaving",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-allow-prevent-members-leaving",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-use-external-data",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-use-external-data",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-use-external-data.Can-link-to-external-membership-list",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-use-external-data.Can-link-to-external-membership-list",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-use-external-data",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-use-external-data.Can-link-to-external-membership-list.closed-group---external-list-controls-membership",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-use-external-data.Can-link-to-external-membership-list.closed-group---external-list-controls-membership",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-use-external-data.Can-link-to-external-membership-list",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-use-external-data.Can-link-to-external-membership-list.external-list-informs-member-status--not-really-about-controlling-membership-needs-more-definition---badge-concept--",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-use-external-data.Can-link-to-external-membership-list.external-list-informs-member-status--not-really-about-controlling-membership-needs-more-definition---badge-concept--",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-use-external-data.Can-link-to-external-membership-list",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-use-external-data.Can-upload-membership-file",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-use-external-data.Can-upload-membership-file",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-control-membership.Can-use-external-data",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-control-visibility--group-privacy-settings--default=members-visible-",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-control-visibility--group-privacy-settings--default=members-visible-",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-control-visibility--group-privacy-settings--default=members-visible-.set-from-template",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-control-visibility--group-privacy-settings--default=members-visible-.set-from-template",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-control-visibility--group-privacy-settings--default=members-visible-",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-control-visibility--group-privacy-settings--default=members-visible-.set-manually",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-control-visibility--group-privacy-settings--default=members-visible-.set-manually",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-control-visibility--group-privacy-settings--default=members-visible-",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-control-Group-Profile--add--features--",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-control-Group-Profile--add--features--",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-control-Group-Profile--add--features--.view-members",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-control-Group-Profile--add--features--.view-members",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-control-Group-Profile--add--features--",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-control-Group-Profile--add--features--.group-messaging",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-control-Group-Profile--add--features--.group-messaging",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-control-Group-Profile--add--features--",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-control-who-is-able-to-do-what",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-control-who-is-able-to-do-what",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-control-who-is-able-to-do-what.Can-add-group-administrator",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-control-who-is-able-to-do-what.Can-add-group-administrator",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-control-who-is-able-to-do-what",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-control-who-is-able-to-do-what.Can-delete-group-if-no-other-administrators",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-control-who-is-able-to-do-what.Can-delete-group-if-no-other-administrators",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-control-who-is-able-to-do-what",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-control-who-is-able-to-do-what.Can-delete-group-if-no-other-administrators.More-sophisticated-deletion-rules",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-control-who-is-able-to-do-what.Can-delete-group-if-no-other-administrators.More-sophisticated-deletion-rules",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-control-who-is-able-to-do-what.Can-delete-group-if-no-other-administrators",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-control-who-is-able-to-do-what.Can-define-and-assign-roles--beyond-admin-member-",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-control-who-is-able-to-do-what.Can-define-and-assign-roles--beyond-admin-member-",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-control-who-is-able-to-do-what",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-place-the-group-into-hierarchies",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-place-the-group-into-hierarchies",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-place-the-group-into-hierarchies.Hierarchy-controls-permissions",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-place-the-group-into-hierarchies.Hierarchy-controls-permissions",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-place-the-group-into-hierarchies",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-place-the-group-into-hierarchies.Hierarchy-doesn-t-control-permissions",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-place-the-group-into-hierarchies.Hierarchy-doesn-t-control-permissions",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-place-the-group-into-hierarchies",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-place-the-group-into-hierarchies.Hierarchy-determined-by-external-data",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-place-the-group-into-hierarchies.Hierarchy-determined-by-external-data",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-place-the-group-into-hierarchies",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-place-the-group-into-hierarchies.Hierarchy-determined-by-external-data.live-link",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-place-the-group-into-hierarchies.Hierarchy-determined-by-external-data.live-link",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-place-the-group-into-hierarchies.Hierarchy-determined-by-external-data",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-place-the-group-into-hierarchies.Hierarchy-determined-by-external-data.uploaded-file",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-place-the-group-into-hierarchies.Hierarchy-determined-by-external-data.uploaded-file",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-place-the-group-into-hierarchies.Hierarchy-determined-by-external-data",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-prepare-group-before--go-live-",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-prepare-group-before--go-live-",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-prepare-group-before--go-live-.-go-live--on-preset-date",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-prepare-group-before--go-live-.-go-live--on-preset-date",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-prepare-group-before--go-live-",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-prepare-group-before--go-live-.-go-live--manually",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-prepare-group-before--go-live-.-go-live--manually",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-prepare-group-before--go-live-",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-prepare-group-before--go-live-.Can-preview-as-role-member",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-prepare-group-before--go-live-.Can-preview-as-role-member",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-prepare-group-before--go-live-",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-give-group-a--life-cycle-",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-give-group-a--life-cycle-",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-give-group-a--life-cycle-.by-date--start---end-",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-give-group-a--life-cycle-.by-date--start---end-",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-give-group-a--life-cycle-",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-give-group-a--life-cycle-.by-rule--e-g--inactive-for-6-months",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-give-group-a--life-cycle-.by-rule--e-g--inactive-for-6-months",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-give-group-a--life-cycle-",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-create-sub-groups",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-create-sub-groups",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-create-sub-groups.May-not-use-full-group-features",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-create-sub-groups.May-not-use-full-group-features",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-create-sub-groups",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-create-sub-groups.Can-auto-define-from-membership-rules",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-create-sub-groups.Can-auto-define-from-membership-rules",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-create-sub-groups",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-create-sub-groups.Rules-of-sub-group-can-be-different-to-parent",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-create-sub-groups.Rules-of-sub-group-can-be-different-to-parent",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-create-sub-groups",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-create-sub-groups.Rules-of-sub-group-can-be-different-to-parent.Sub-groups-open-closed-to-non-members-of-parent",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-create-sub-groups.Rules-of-sub-group-can-be-different-to-parent.Sub-groups-open-closed-to-non-members-of-parent",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group.Can-create-sub-groups.Rules-of-sub-group-can-be-different-to-parent",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-group.Can-clone-existing-group",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-group.Can-clone-existing-group",
+        "parent": "User.Manage-Create.Logged-In.Can-create-group",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-manage-group",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-manage-group",
+        "parent": "User.Manage-Create.Logged-In",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-manage-group.Export-data",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Can-manage-group.Export-data",
+        "parent": "User.Manage-Create.Logged-In.Can-manage-group",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-manage-group.Export-data.export-membership-file",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Can-manage-group.Export-data.export-membership-file",
+        "parent": "User.Manage-Create.Logged-In.Can-manage-group.Export-data",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-manage-group.Export-data.export-list-of-sub-groups",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Can-manage-group.Export-data.export-list-of-sub-groups",
+        "parent": "User.Manage-Create.Logged-In.Can-manage-group.Export-data",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-manage-group.Can-apply-work-flow-to-accepting-content",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-manage-group.Can-apply-work-flow-to-accepting-content",
+        "parent": "User.Manage-Create.Logged-In.Can-manage-group",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-manage-group.Can-apply-work-flow-to-accepting-content.Accept-automatically-from-people-groups",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-manage-group.Can-apply-work-flow-to-accepting-content.Accept-automatically-from-people-groups",
+        "parent": "User.Manage-Create.Logged-In.Can-manage-group.Can-apply-work-flow-to-accepting-content",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-manage-group.Can-apply-work-flow-to-accepting-content.Accept-after-vetting",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-manage-group.Can-apply-work-flow-to-accepting-content.Accept-after-vetting",
+        "parent": "User.Manage-Create.Logged-In.Can-manage-group.Can-apply-work-flow-to-accepting-content",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-manage-group.Can-apply-work-flow-to-accepting-content.Accept-after-vetting.Vetting-by-individual-group-role",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-manage-group.Can-apply-work-flow-to-accepting-content.Accept-after-vetting.Vetting-by-individual-group-role",
+        "parent": "User.Manage-Create.Logged-In.Can-manage-group.Can-apply-work-flow-to-accepting-content.Accept-after-vetting",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-manage-group.Can-change-place-in-hierarchy--if-permitted-",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Can-manage-group.Can-change-place-in-hierarchy--if-permitted-",
+        "parent": "User.Manage-Create.Logged-In.Can-manage-group",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-manage-group.Can-delete-group",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-manage-group.Can-delete-group",
+        "parent": "User.Manage-Create.Logged-In.Can-manage-group",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-manage-group.Can-delete-group.Can-apply-deletion-rules-workflow",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-manage-group.Can-delete-group.Can-apply-deletion-rules-workflow",
+        "parent": "User.Manage-Create.Logged-In.Can-manage-group.Can-delete-group",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-manage-group.Can-delete-group.Last-admin-can-delete",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-manage-group.Can-delete-group.Last-admin-can-delete",
+        "parent": "User.Manage-Create.Logged-In.Can-manage-group.Can-delete-group",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-Content",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-create-Content",
+        "parent": "User.Manage-Create.Logged-In",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files",
+        "parent": "User.Manage-Create.Logged-In.Can-create-Content",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Can-share-with-individuals-groups",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Can-share-with-individuals-groups",
+        "parent": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Can-download-for-editing",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Can-download-for-editing",
+        "parent": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Can-allow-others-to-download",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Can-allow-others-to-download",
+        "parent": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Can-add-remove-administrators--change-owner-",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Can-add-remove-administrators--change-owner-",
+        "parent": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Must-create-Profile--IPR--Tagging--etc--",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Must-create-Profile--IPR--Tagging--etc--",
+        "parent": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Must-create-Profile--IPR--Tagging--etc--.Can-set-privacy",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Must-create-Profile--IPR--Tagging--etc--.Can-set-privacy",
+        "parent": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Must-create-Profile--IPR--Tagging--etc--",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Must-create-Profile--IPR--Tagging--etc--.Can-set-privacy.Can-view-admins",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Must-create-Profile--IPR--Tagging--etc--.Can-set-privacy.Can-view-admins",
+        "parent": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Must-create-Profile--IPR--Tagging--etc--.Can-set-privacy",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Must-create-Profile--IPR--Tagging--etc--.Can-set-privacy.Can-contact-admins",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Must-create-Profile--IPR--Tagging--etc--.Can-set-privacy.Can-contact-admins",
+        "parent": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Must-create-Profile--IPR--Tagging--etc--.Can-set-privacy",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Uploaded-files-scanned-for-viruses",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Uploaded-files-scanned-for-viruses",
+        "parent": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Can-add-upload-workflows",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Can-add-upload-workflows",
+        "parent": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Can-add-upload-workflows.Can-process-thumbnails-previews-on-upload",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Can-add-upload-workflows.Can-process-thumbnails-previews-on-upload",
+        "parent": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Can-add-upload-workflows",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Can-add-upload-workflows.Can-issue-admin-warnings-about-file-type-size--etc-",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Can-add-upload-workflows.Can-issue-admin-warnings-about-file-type-size--etc-",
+        "parent": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Can-add-upload-workflows",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Can-add-upload-workflows.Can-apply-upload-rules--e-g--max-file-size-",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Can-add-upload-workflows.Can-apply-upload-rules--e-g--max-file-size-",
+        "parent": "User.Manage-Create.Logged-In.Can-create-Content.Can-upload-multiple-files.Can-add-upload-workflows",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-Content.Can-create-content-links-as-content--e-g--URL-",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-create-Content.Can-create-content-links-as-content--e-g--URL-",
+        "parent": "User.Manage-Create.Logged-In.Can-create-Content",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-Content.Can-create-content-links-as-content--e-g--URL-.Must-create-Profile--IPR--Tagging-Local-title-etc--",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-create-Content.Can-create-content-links-as-content--e-g--URL-.Must-create-Profile--IPR--Tagging-Local-title-etc--",
+        "parent": "User.Manage-Create.Logged-In.Can-create-Content.Can-create-content-links-as-content--e-g--URL-",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-Content.Can-create-content-links-as-content--e-g--URL-.Streaming-Video-content--with-thumbnail-",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-Content.Can-create-content-links-as-content--e-g--URL-.Streaming-Video-content--with-thumbnail-",
+        "parent": "User.Manage-Create.Logged-In.Can-create-Content.Can-create-content-links-as-content--e-g--URL-",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-Content.Can-create-content-elements--e-g--reading-list-from-content-links--as-content",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-Content.Can-create-content-elements--e-g--reading-list-from-content-links--as-content",
+        "parent": "User.Manage-Create.Logged-In.Can-create-Content",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-Content.Can-create-content-elements--e-g--reading-list-from-content-links--as-content.Must-create-Profile--IPR--Tagging--etc--",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-Content.Can-create-content-elements--e-g--reading-list-from-content-links--as-content.Must-create-Profile--IPR--Tagging--etc--",
+        "parent": "User.Manage-Create.Logged-In.Can-create-Content.Can-create-content-elements--e-g--reading-list-from-content-links--as-content",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-Content.Can-clone-content",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-create-Content.Can-clone-content",
+        "parent": "User.Manage-Create.Logged-In.Can-create-Content",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-Content.Can-download-content",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-create-Content.Can-download-content",
+        "parent": "User.Manage-Create.Logged-In.Can-create-Content",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-Content.Can-download-content.Can-download-in-a-different-format--e-g--Word-->-PDF-",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Can-create-Content.Can-download-content.Can-download-in-a-different-format--e-g--Word-->-PDF-",
+        "parent": "User.Manage-Create.Logged-In.Can-create-Content.Can-download-content",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-Content.Can-access-previous-versions",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-create-Content.Can-access-previous-versions",
+        "parent": "User.Manage-Create.Logged-In.Can-create-Content",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-create-Content.Can-see-what-s-new",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-create-Content.Can-see-what-s-new",
+        "parent": "User.Manage-Create.Logged-In.Can-create-Content",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-",
+        "parent": "User.Manage-Create.Logged-In",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-share-with-individuals-groups",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-share-with-individuals-groups",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-share-with-individuals-groups.View-only",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-share-with-individuals-groups.View-only",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-share-with-individuals-groups",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-share-with-individuals-groups.Collaborate",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-share-with-individuals-groups.Collaborate",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-share-with-individuals-groups",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-share-with-individuals-groups.Administer",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-share-with-individuals-groups.Administer",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-share-with-individuals-groups",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.Discussion",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.Discussion",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.Discussion.Wall",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.Discussion.Wall",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.Discussion",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.Discussion.Forum-",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.Discussion.Forum-",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.Discussion",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.Discussion.Thread--",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.Discussion.Thread--",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.Discussion",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.Discussion.Pedagogical-Thread",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.Discussion.Pedagogical-Thread",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.Discussion",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.Discussion.Pedagogical-Thread.Grading",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.Discussion.Pedagogical-Thread.Grading",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.Discussion.Pedagogical-Thread",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.Discussion.Pedagogical-Thread.Tracking",
+        "implementationphase": "phase3",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.Discussion.Pedagogical-Thread.Tracking",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.Discussion.Pedagogical-Thread",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.-Sociable--content-from-social-bookmarking-sites-etc-",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.-Sociable--content-from-social-bookmarking-sites-etc-",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.DSpace-widget",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.DSpace-widget",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.iTunesU",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.iTunesU",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.RSS-Widget",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets.RSS-Widget",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-edit-content-and-add-widgets",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-PLACE-content-on-page-space",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-PLACE-content-on-page-space",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-PLACE-content-on-page-space.Placement-metadata-can-include-learning-objectives--grading-criteria--etc-",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-PLACE-content-on-page-space.Placement-metadata-can-include-learning-objectives--grading-criteria--etc-",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-PLACE-content-on-page-space",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-PLACE-content-on-page-space.Appropriate-content-player-if-needed",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-PLACE-content-on-page-space.Appropriate-content-player-if-needed",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-PLACE-content-on-page-space",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Must-create-Profile--IPR--Tagging--etc--",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Must-create-Profile--IPR--Tagging--etc--",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-compose-from-content-elements",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can-compose-from-content-elements",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can--reuse--page",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can--reuse--page",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can--reuse--page.Can-clone-a-page",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can--reuse--page.Can-clone-a-page",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can--reuse--page",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can--reuse--page.Can-clone-a-page.In-current-context--site-",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can--reuse--page.Can-clone-a-page.In-current-context--site-",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can--reuse--page.Can-clone-a-page",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can--reuse--page.Can-clone-a-page.To-new-context--site-",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can--reuse--page.Can-clone-a-page.To-new-context--site-",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can--reuse--page.Can-clone-a-page",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can--reuse--page.Turn-a-page-into-a-template",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can--reuse--page.Turn-a-page-into-a-template",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can--reuse--page",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can--reuse--page.Turn-a-page-into-a-template.Can-be-used-to-create-pages-in-new-context",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can--reuse--page.Turn-a-page-into-a-template.Can-be-used-to-create-pages-in-new-context",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-pages-spaces.Can--reuse--page.Turn-a-page-into-a-template",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-site-navigation",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-site-navigation",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.[discover-site-by-multiple-paths]",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.[discover-site-by-multiple-paths]",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.[discover-site-by-multiple-paths].Can-associate-site-with-group",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.[discover-site-by-multiple-paths].Can-associate-site-with-group",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.[discover-site-by-multiple-paths]",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.[discover-site-by-multiple-paths].Can-associate-site-with-group.Hierarchy-may-control-permissions",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.[discover-site-by-multiple-paths].Can-associate-site-with-group.Hierarchy-may-control-permissions",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.[discover-site-by-multiple-paths].Can-associate-site-with-group",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.[discover-site-by-multiple-paths].Can-associate-site-with-tag-hierarchies",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.[discover-site-by-multiple-paths].Can-associate-site-with-tag-hierarchies",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.[discover-site-by-multiple-paths]",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.[discover-site-by-multiple-paths].Can-associate-site-with-tag-hierarchies.Hierarchy-doesn-t-control-permissions",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.[discover-site-by-multiple-paths].Can-associate-site-with-tag-hierarchies.Hierarchy-doesn-t-control-permissions",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.[discover-site-by-multiple-paths].Can-associate-site-with-tag-hierarchies",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-classify-site",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-classify-site",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-classify-site.Portfolio",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-classify-site.Portfolio",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-classify-site",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-classify-site.Network",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-classify-site.Network",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-classify-site",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-classify-site.Project",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-classify-site.Project",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-classify-site",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-classify-site.Course",
+        "implementationphase": "phase1",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-classify-site.Course",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-classify-site",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-site-from-template",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Can-create-site-from-template",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Versioning",
+        "implementationphase": "phase2",
+        "label": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-.Versioning",
+        "parent": "User.Manage-Create.Logged-In.Can-Create-Content-Container-Presentation--site-",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Institutional-Administration",
+        "implementationphase": "phase1",
+        "label": "User.Institutional-Administration",
+        "parent": "User",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Institutional-Administration.can-set-features-of-many-groups-at-once-",
+        "implementationphase": "phase3",
+        "label": "User.Institutional-Administration.can-set-features-of-many-groups-at-once-",
+        "parent": "User.Institutional-Administration",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Super-Admin",
+        "implementationphase": "phase1",
+        "label": "User.Super-Admin",
+        "parent": "User",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Super-Admin.Can-split-merge-groups",
+        "implementationphase": "phase3",
+        "label": "User.Super-Admin.Can-split-merge-groups",
+        "parent": "User.Super-Admin",
+        "type": "UserDesire"
+    },
+    {
+        "id": "User.Super-Admin.can-split-merge-accounts-",
+        "implementationphase": "phase3",
+        "label": "User.Super-Admin.can-split-merge-accounts-",
+        "parent": "User.Super-Admin",
+        "type": "UserDesire"
+    }
+]}

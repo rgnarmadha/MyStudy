@@ -1,0 +1,92 @@
+Manifest-Version: 1.0
+Sakai-Modifications-Doc: Added org.apache.sling.jcr.jackrabbit.server.
+ security.dynamic to the list of Exports. Added Bundle-Activator: org.
+ apache.sling.jcr.jackrabbit.server.impl.security.dynamic.SakaiActivat
+ or. Removed: Bundle-Activator: org.apache.sling.jcr.jackrabbit.server
+ .impl.Activator Added:org.apache.sling.jcr.jackrabbit.server.index to
+ list of exports
+Service-Component: OSGI-INF/serviceComponents.xml
+Note: Built by bundle profile, edited by hand
+Built-By: hand edited
+Old-Bundle-Activator: org.apache.sling.jcr.jackrabbit.server.impl.Acti
+ vator
+Bundle-Activator: org.apache.sling.jcr.jackrabbit.server.impl.security
+ .dynamic.SakaiActivator
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Created-By: Apache Maven Bundle Plugin
+Import-Package: com.microsoft.sqlserver.jdbc;resolution:=optional,java
+ x.imageio.spi,javax.jcr;version="2.0",javax.jcr.lock;version="2.0",ja
+ vax.jcr.nodetype;version="2.0",javax.jcr.observation;version="2.0",ja
+ vax.jcr.query;version="2.0",javax.jcr.query.qom;version="2.0",javax.j
+ cr.retention;version="2.0",javax.jcr.security;version="2.0",javax.jcr
+ .util;version="2.0",javax.jcr.version;version="2.0",javax.naming,java
+ x.naming.spi,javax.security.auth,javax.security.auth.callback,javax.s
+ ecurity.auth.login,javax.security.auth.spi,javax.sql,javax.swing;reso
+ lution:=optional,javax.swing.border;resolution:=optional,javax.transa
+ ction.xa,javax.xml.parsers,javax.xml.transform,javax.xml.transform.do
+ m,javax.xml.transform.stream,oracle.jdbc;resolution:=optional,org.apa
+ che.derby.jdbc;resolution:=optional,org.apache.jackrabbit.api;version
+ ="2.0",org.apache.jackrabbit.api.management;version="2.0",org.apache.
+ jackrabbit.api.observation;version="2.0",org.apache.jackrabbit.api.se
+ curity;version="2.0",org.apache.jackrabbit.api.security.principal;ver
+ sion="2.0",org.apache.jackrabbit.api.security.user;version="2.0",org.
+ apache.jackrabbit.commons;version="2.1",org.apache.jackrabbit.commons
+ .cnd;version="2.1",org.apache.jackrabbit.commons.iterator;version="2.
+ 1",org.apache.jackrabbit.commons.query;version="2.1",org.apache.jackr
+ abbit.commons.query.qom;version="2.1",org.apache.jackrabbit.rmi.remot
+ e;version="2.0",org.apache.jackrabbit.rmi.server;version="2.0",org.ap
+ ache.jackrabbit.spi;version="2.1",org.apache.jackrabbit.spi.commons;v
+ ersion="2.1",org.apache.jackrabbit.spi.commons.conversion;version="2.
+ 1",org.apache.jackrabbit.spi.commons.name;version="2.1",org.apache.ja
+ ckrabbit.spi.commons.namespace;version="2.1",org.apache.jackrabbit.sp
+ i.commons.nodetype;version="2.1",org.apache.jackrabbit.spi.commons.no
+ detype.compact;version="2.1",org.apache.jackrabbit.spi.commons.nodety
+ pe.constraint;version="2.1",org.apache.jackrabbit.spi.commons.query;v
+ ersion="2.1",org.apache.jackrabbit.spi.commons.query.qom;version="2.1
+ ",org.apache.jackrabbit.spi.commons.value;version="2.1",org.apache.ja
+ ckrabbit.util;version="2.1",org.apache.jackrabbit.value;version="2.1"
+ ,org.apache.sling.jcr.api;version="2.0",org.apache.sling.jcr.base;ver
+ sion="2.1",org.apache.sling.jcr.jackrabbit.server;version="2.0",org.a
+ pache.sling.jcr.jackrabbit.server.security;version="2.0",org.apache.s
+ ling.jcr.jackrabbit.server.security.accessmanager;version="2.0",org.a
+ pache.tika.config,org.apache.tika.exception,org.apache.tika.metadata,
+ org.apache.tika.parser,org.apache.tika.parser.html,org.apache.tika.pa
+ rser.image,org.apache.tika.parser.microsoft,org.apache.tika.parser.od
+ f,org.apache.tika.parser.pdf,org.apache.tika.parser.rtf,org.apache.ti
+ ka.parser.txt,org.apache.tika.parser.xml,org.gjt.mm.mysql;resolution:
+ =optional,org.h2;resolution:=optional,org.osgi.framework;version="1.4
+ ",org.osgi.service.cm;version="1.2",org.osgi.service.component;versio
+ n="1.0",org.osgi.service.log;version="1.3",org.osgi.util.tracker;vers
+ ion="1.3",org.postgresql;resolution:=optional,org.slf4j;version="1.5"
+ ,org.w3c.dom,org.xml.sax,org.xml.sax.helpers
+Bnd-LastModified: 1282504205185
+Export-Package: org.apache.sling.jcr.jackrabbit.server;uses:="javax.jc
+ r";version="2.1.0",org.apache.sling.jcr.jackrabbit.server.security.ac
+ cessmanager;uses:="javax.security.auth,javax.jcr";version="2.0.4.incu
+ bator",org.apache.sling.jcr.jackrabbit.server.security;uses:="javax.j
+ cr,javax.security.auth.login,javax.security.auth.callback";version="2
+ .0.4.incubator",org.apache.jackrabbit.core.security.principal;uses:="
+ org.apache.jackrabbit.api.security.principal,org.slf4j,org.apache.jac
+ krabbit.api.security.user,javax.jcr,javax.jcr.observation,org.apache.
+ jackrabbit.util,org.apache.jackrabbit.spi.commons.conversion,org.apac
+ he.jackrabbit.spi,javax.security.auth,org.apache.jackrabbit.commons.i
+ terator";version="2.1.1",org.apache.sling.jcr.jackrabbit.server.secur
+ ity.dynamic,org.apache.sling.jcr.jackrabbit.server.index
+Bundle-Version: 2.1.0.sakai
+Ignore-Package: org.apache.jackrabbit.test
+Bundle-Name: Apache Sling Jackrabbit Embedded Repository
+Bundle-Description: Bundle providing support to embed Jackrabbit Repos
+ itory        instances and publish via RMI and/or JNDI
+Bundle-ClassPath: .,jackrabbit-core-2.1.1.jar,lucene-core-2.4.1.jar,co
+ ncurrent-1.3.4.jar,commons-dbcp-1.2.2.jar,commons-pool-1.3.jar
+Build-Jdk: 1.5.0_22
+Bundle-DocURL: http://sling.apache.org
+Bundle-ManifestVersion: 2
+Bundle-Vendor: The Apache Software Foundation
+Bundle-SymbolicName: org.apache.sling.jcr.jackrabbit.server
+Tool: Bnd-0.0.357
+Bundle-Category: sling,jcr,jackrabbit
+DynamicImport-Package: *
+
+
+

@@ -1,0 +1,31 @@
+For a non developers, the front end is pulled from SVN and loaded into the JCR, so there is no action necessary,
+you can mount the JCR repository with webdav and work from there, however, you may want to work with SVN directly
+in which case the procedure outlined below can be used to mount normal file system space from your development machine into 
+the URL space of the SlingK2 server.
+
+
+
+The front end is stored on the filesystem, at least for now. Checkout dev and devwidgets somewhere on
+your filesystem.
+
+The next thing you need to do is to tell the backend where you've put that, so that it can map it into the
+URL space. That mapping is done by the currently poorly named uxloader service. This uses the 
+uxloader.config configuration parameter. The syntax of that is as follows:
+
+A semicolon-separated list of colon-separated pairs. The first part is the url prefix, and the second part
+the corresponding filesystem prefix. The default is /dev:/tmp/dev;/devwidgets:/tmp/devwidgets .
+
+If that's not acceptable to you, you will need to override that setting by providing an overrides.properties.
+
+override.properties can be in any directory between where the app thinks it's running and /. You might want to
+put it into "osgikernel" or perhaps your homedirectory or /usr/local if you're running it from there.
+
+For example
+
+uxloader.config=/dev:/Users/dan/Desktop/k2/dev;/devwidgets:/Users/dan/Desktop/k2/devwidgets
+
+That's for these frontend checkouts:
+
+  svn co https://source.sakaiproject.org/svn/ux/branches/K2/trunk/uxportal/src/main/webapp/ dev
+  svn co https://source.sakaiproject.org/svn/ux/branches/K2/trunk/uxwidgets/src/main/webapp/ devwidgets
+

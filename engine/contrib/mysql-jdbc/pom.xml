@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.sakaiproject.nakamura</groupId>
+		<artifactId>base</artifactId>
+		<version>0.10-SNAPSHOT</version>
+	</parent>
+	<groupId>org.sakaiproject.nakamura</groupId>
+	<artifactId>org.sakaiproject.nakamura.mysqljdbc</artifactId>
+	<version>0.10-SNAPSHOT</version>
+	<packaging>bundle</packaging>
+	<name>mysql jdbc bundle</name>
+	<description>
+        This bundle simply wraps mysql-connector-java.jar.
+    </description>
+	<organization>
+		<name>The Sakai Foundation</name>
+		<url>http://sakaiproject.org/</url>
+	</organization>
+	<dependencies>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.12</version>
+		</dependency>
+	  <dependency>
+		  <groupId>c3p0</groupId>
+		  <artifactId>c3p0</artifactId>
+		  <version>0.9.1.2</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>1.4.0</version>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Bundle-SymbolicName>
+							mysqljdbc
+            </Bundle-SymbolicName>
+						<Include-Resource>@mysql-connector-java-5.1.12.jar!/**,@c3p0-0.9.1.2.jar!/**</Include-Resource>
+						<Export-Package>
+						    com.mysql.jdbc;version=5.1.12,
+						    com.mysql.jdbc.exceptions;version=5.1.12,
+						    com.mysql.jdbc.log;version=5.1.12,
+						</Export-Package>
+            <Import-Package>
+              javax.management;resolution:=optional,
+              javax.naming;resolution:=optional,
+              javax.naming.spi;resolution:=optional,
+              javax.net;resolution:=optional,
+              javax.net.ssl;resolution:=optional,
+              javax.sql;resolution:=optional,
+              javax.xml.parsers;resolution:=optional,
+              javax.xml.transform.*;resolution:=optional,
+              org.w3c.dom;resolution:=optional,
+              org.xml.sax;resolution:=optional,
+              org.xml.sax.helpers;resolution:=optional,
+              org.jboss.resource.adapter.jdbc;resolution:=optional,
+              org.jboss.resource.adapter.jdbc.vendor;resolution:=optional,
+              com.mchange.v2.c3p0;resolution:=optional,
+              *
+            </Import-Package>
+          </instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

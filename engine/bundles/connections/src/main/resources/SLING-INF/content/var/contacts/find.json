@@ -1,0 +1,19 @@
+{
+  "sakai:query-language": "xpath",
+  "sakai:query-template": "/jcr:root/{_connectionstore}//*[@sling:resourceType='sakai/contact' and jcr:contains(@sakai:state,'{state|ACCEPTED}') and @sakai:state!=\"NONE\"]/jcr:deref(@jcr:reference, '*')[(jcr:contains(., '{q|*}') or jcr:contains(*/*/*,'{q|*}'))] order by @{sortOn|jcr:score} {sortOrder|descending}",
+  "sling:resourceType": "sakai/search",
+  "sakai:propertyprovider" : "Connection",
+  "sakai:resultprocessor": "ConnectionFinder",
+  "sakai:title": "Contacts - Search.",
+  "sakai:shortDescription": "Search trough contacts based on firstName, lastName or email.  You can also specify contact state: ie ACCEPTED, BLOCKED, IGNORED, INVITED, PENDING, REJECTED, ect.  The default search value is ACCEPTED.  To search all contacts do: q=*&state=*",
+  "sakai:parameters" : [
+                        "{\"name\" : \"q\", \"description\" : \"Filter for the firstName, lastName or email.\"}",
+                        "{\"name\" : \"state\", \"description\" : \"Filter for the state of a contact: ie ACCEPTED, BLOCKED, IGNORED, INVITED, PENDING, REJECTED, ect.  The default state is ACCEPTED\"}"
+                        ],
+  "sakai:description": [
+                      "Search trough contacts based on firstName, lastName or email.  You can also specify contact state: ie ACCEPTED, BLOCKED, IGNORED, INVITED, PENDING, REJECTED, ect.  The default search value is ACCEPTED.  To search all contacts do: q=*&state=*"
+                      ],
+  "sakai:response": [
+                   "Find all the contacts who have 'John' in either their firstname, lastname or email addres and has a state of ACCEPTED.<br /> Example: Request to: /_user/contacts/find.json?q=John<br /><pre class=\"json\">{\n   \"query\": \"//_user/contacts/_x0037_9/_x0039_4/ea/_x0034_6/simong//*[@sling:resourceType='sakai/contact' and @sakai:state='ACCEPTED']/jcr:deref(@jcr:reference, '*')[jcr:contains(@firstName, '*John*') or jcr:contains(@lastName, '*John*') or jcr:contains(@email, '*John*')]\",\n   \"items\": 25,\n   \"total\": 1,\n   \"results\": [\n       {\n           \"firstName\": \"John\",\n           \"rep:userId\": \"user5\",\n           \"sling:resourceType\": \"sakai/user-profile\",\n           \"jcr:created\": \"2009-12-22T11:18:23\",\n           \"lastName\": \"Doe\",\n           \"basic\": \"{\"status\":\"\"}\",\n           \"jcr:primaryType\": \"sling:Folder\",\n           \"jcr:mixinTypes\": [\n               \"mix:referenceable\"\n           ],\n           \"sid\": \"0.3462252092504169\",\n           \"jcr:uuid\": \"a7bc6941-78c3-49b6-b03e-fc0d3afe2a0a\"\n       }\n   ]}</pre>"
+                  ]
+}

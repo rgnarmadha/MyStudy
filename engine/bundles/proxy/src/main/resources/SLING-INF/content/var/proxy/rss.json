@@ -1,0 +1,20 @@
+{
+    "sling:resourceType": "sakai/proxy",
+    "sakai:proxy-limit-length": "102400",
+    "sakai:request-proxy-endpoint": "${rss}",
+    "sakai:request-proxy-method": "GET",
+    "sakai:postprocessor": "rss",
+    "sakai:preprocessor": "rss",
+    "sakai:title": "RSS.",
+    "sakai:shortDescription": "Get the content of a remote RSS feed. (no more than 100K or RSS)",
+    "sakai:parameters" : [
+      "{\"name\" : \"rss\", \"description\" : \"The URL of the RSS feed.\"}"
+      ],
+    "sakai:description": [
+                        "Will retrieve the content of a remote URL, check if it is XML-valid and check some basic RSS rules.",
+                        "It will then send the response back."
+                        ],
+    "sakai:response": [
+                     "Doing a standard query for the rss from bbc news.<br /> Example: Request to: /var/proxy/rss.xml?rss=http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/front_page/rss.xml",
+                    ],
+}

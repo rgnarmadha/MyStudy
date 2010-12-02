@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>base</artifactId>
+    <groupId>org.sakaiproject.nakamura</groupId>
+    <version>0.10-SNAPSHOT</version>
+  </parent>
+  <groupId>org.sakaiproject.nakamura</groupId>
+  <artifactId>drools-subsystem</artifactId>
+  <version>0.10-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>Sakai Nakamura :: Drools</name>
+  <modules>
+     <module>example-rules</module>
+     <module>drools-engine</module>
+     <module>drools-maven-plugin</module>
+     <module>drools-repository</module>
+  </modules>
+</project>

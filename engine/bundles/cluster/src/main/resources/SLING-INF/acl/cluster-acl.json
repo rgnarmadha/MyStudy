@@ -1,0 +1,43 @@
+{
+
+ "principals" : [
+    { 
+    	"name":"owner", 
+    	"isgroup":"true",
+    	"members":[],
+    	"dynamic":"true"
+    },
+    { 
+    	"name":"everyone", 
+    	"isgroup":"true",
+    	"members":[],
+    	"dynamic":"true"
+    }
+ ],
+ "acl" : [
+ 	{
+ 		"path":"/var/cluster",
+ 		"principal":"everyone",
+ 		"privilege@jcr:read":"denied",
+ 		"privilege@jcr:all":"denied"	
+ 	},
+ 	{
+ 		"path":"/var/cluster",
+ 		"principal":"admin",
+ 		"privilege@jcr:all":"granted"
+ 	}
+ ],
+
+"privileges" : [
+	"jcr:read",
+	"jcr:modifyProperties",
+	"jcr:addChildNodes",
+	"jcr:removeNode",
+	"jcr:removeChildNodes",
+	"jcr:write",
+	"jcr:readAccessControl",
+	"jcr:modifyAccessControl",
+	"jcr:all"
+]
+ 
+}

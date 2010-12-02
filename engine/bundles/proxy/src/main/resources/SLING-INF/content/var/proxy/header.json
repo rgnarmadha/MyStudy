@@ -1,0 +1,19 @@
+{
+    "sling:resourceType": "sakai/proxy",
+    "sakai:request-proxy-endpoint": "${url}",
+    "sakai:request-proxy-method": "HEAD",
+    "sakai:postprocessor": "header",
+    "sakai:title": "Header Retrieval Proxy",
+    "sakai:shortDescription": "Retrieve headers from a remote URL.",
+    "sakai:parameters": [
+      "{'name':'url', 'description':'The URL to get the headers of.'}",
+      "{'name':'header', 'description':'The header to return. Multiple can be submitted as separate parameters. Omission will return all headers.'}"
+    ],
+    "sakai:description": [
+        "Will retrieve the headers of a remote URL."
+    ],
+    "sakai:response": [
+        "The 'url' parameter can be sent as an encoded string or as a form field.",
+        "Examples: POST: url=http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/front_page/rss.xml to: /var/proxy/contentType.json"
+    ]
+}

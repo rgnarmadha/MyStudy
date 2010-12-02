@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+  version="1.0" xmlns="http://java.sun.com/xml/ns/persistence">
+  <persistence-unit name="default">
+    <class>org.sakaiproject.nakamura.jpaprovider.model.SystemUser</class>
+    <class>org.sakaiproject.nakamura.jpaprovider.model.SystemUser2</class>
+    <properties>
+      <property name="testproperty" value="testvalue" />
+    </properties>
+  </persistence-unit>
+</persistence>

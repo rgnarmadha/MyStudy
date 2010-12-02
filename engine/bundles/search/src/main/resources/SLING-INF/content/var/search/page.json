@@ -1,0 +1,24 @@
+{
+  "sakai:query-language": "xpath",
+  "sakai:query-template": "/{_path}//*[@sling:resourceType=\"sakai/page\"{_filter?}] order by @{sortOn|jcr:score} {sortOrder|descending}",
+  "sling:resourceType": "sakai/search",
+  "sakai:propertyprovider": "Page",
+  "sakai:title": "Pages.",
+  "sakai:shortDescription": "Get page nodes out of the repository.",
+  "sakai:parameters" : [
+      "{\"name\" : \"path\", \"description\" : \"The node where you want to look under.<br />Example: /sites/my-course-site/_pages\"}",
+      "{\"name\" : \"properties\", \"description\" : \"A multi-valued request parameter containing all the propertynames you wish to filter on.\"}",
+      "{\"name\" : \"values\", \"description\" : \"A multi-valued request parameter containing all the values.\"}",
+      "{\"name\" : \"operators\", \"description\" : \"A multi-valued request parameter containing the operators.\"}",
+      "{\"name\" : \"sortOn\", \"description\" : \"The name of the property you wish to sort on. This only has any affect if it is used with the sortOrder parameter. The default is jcr:score\"}",
+      "{\"name\" : \"sortOrder\", \"description\" : \"The order you wish to sort in. Either 'ascending' or 'descending'.\"}"
+      ],
+  "sakai:description": [
+                        "Get page nodes out of the repository filtered by path and/or extra constraints.",
+                        "If you want to add extra constraints the length of the properties, values and operators request parameters should match."
+                        ],
+  "sakai:response": [
+                     "Doing a standard query searching for all pages at /sites/my-course-site/_pages.<br /> Example: Request to: /var/search/page.json?path=/sites/my-course-sites/_pages<br /><pre class=\"json\">{\n    \"query\": \"//sites/my-course-site/_pages//*[@sling:resourceType=\"sakai/page\"]\",\n    \"items\": 25,\n    \"total\": 2,\n    \"results\": [\n        {\n            \"sakai:savedBy\": \"simong\",\n            \"jcr:versionHistory\": \"0aab9fa9-1930-4833-9bcc-bd89f4e11dfe\",\n            \"acl\": \"parent\",\n            \"jcr:isCheckedOut\": \"true\",\n            \"type\": \"webpage\",\n            \"id\": \"welcome\",\n            \"sling:resourceType\": \"sakai/page\",\n            \"jcr:mixinTypes\": [\n                \"mix:versionable\"\n            ],\n            \"jcr:predecessors\": [\n                \"bcd390ca-9277-46d8-bae5-ae01c11beee6\"\n            ],\n            \"jcr:created\": \"2009-11-26T11:20:43\",\n            \"position\": \"100000\",\n            \"jcr:baseVersion\": \"bcd390ca-9277-46d8-bae5-ae01c11beee6\",\n            \"jcr:primaryType\": \"sling:Folder\",\n            \"jcr:uuid\": \"efdc629f-9e6b-4882-ac81-635c90e843d1\",\n            \"title\": \"Welcome\",\n            \"path\": \"/sites/my-course-site/_pages/welcome\"\n        },\n        {\n            \"acl\": \"parent\",\n            \"type\": \"webpage\",\n            \"id\": \"dummy-page\",\n            \"sling:resourceType\": \"sakai/page\",\n            \"position\": \"300000\",\n            \"jcr:created\": \"2009-12-21T18:18:15\",\n            \"jcr:primaryType\": \"sling:Folder\",\n            \"title\": \"Dummy page\",\n            \"path\": \"/sites/my-course-site/_pages/dummy-page\"\n        }\n    ]\n}</pre>",
+                     "Doing a query for pages with a property called rank who has a value higher then 100.<br />Example: Request to: /var/search/page.json?path=/sites/my-course-site/_pages&properties=rank&values=100&operators=><br /><pre>{\n    \"query\": \"//sites/my-course-site/_pages//*[@sling:resourceType=\"sakai/page\" and @rank>\"100\"]\",\n    \"items\": 25,\n    \"total\": 1,\n    \"results\": [\n        {\n            \"sakai:savedBy\": \"simong\",\n            \"jcr:isCheckedOut\": \"true\",\n            \"acl\": \"parent\",\n            \"jcr:versionHistory\": \"0aab9fa9-1930-4833-9bcc-bd89f4e11dfe\",\n            \"rank\": \"200\",\n            \"type\": \"webpage\",\n            \"id\": \"welcome\",\n            \"sling:resourceType\": \"sakai/page\",\n            \"jcr:mixinTypes\": [\n                \"mix:versionable\"\n            ],\n            \"jcr:predecessors\": [\n                \"bcd390ca-9277-46d8-bae5-ae01c11beee6\"\n            ],\n            \"position\": \"100000\",\n            \"jcr:created\": \"2009-11-26T11:20:43\",\n            \"jcr:baseVersion\": \"bcd390ca-9277-46d8-bae5-ae01c11beee6\",\n            \"jcr:primaryType\": \"sling:Folder\",\n            \"jcr:uuid\": \"efdc629f-9e6b-4882-ac81-635c90e843d1\",\n            \"title\": \"Welcome\",\n            \"path\": \"/sites/my-course-site/_pages/welcome\"\n        }\n    ]\n}</pre>"
+                    ]
+}

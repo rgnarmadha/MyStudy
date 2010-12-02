@@ -1,0 +1,14 @@
+Sakai Nakamura 
+Copyright 2009 The Sakai Foundation
+
+This product includes software developed at
+The Sakai Foundation (http://www.sakaiproject.org/).
+
+-----------------------------------------------------------
+
+This product includes software (Apache Sling, Apache Felix, Apache Shindig and many other Apache products)
+The Apache Software Foundation (http://www.apache.org/).
+
+Binary distributions of this product contain jars developed and licensed by other third parties, identified by the 
+LICENSE and NOTICE files included within each jar under the META-INF directory.
+

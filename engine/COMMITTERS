@@ -1,0 +1,35 @@
+The following people have commit access to the Sakai K2 sources.
+Note that this is not a full list of Sakai K2's authors, however --
+for that, you'd need to look over the log messages to see all the
+patch contributors.
+
+If you have a question or comment, it's probably best to mail
+sakai-nakamura@googlegroups.com, rather than mailing any of these
+people directly.
+
+PMC Members:
+
+            ian@caret.cam.ac.uk              Ian Boston
+            pbristow@csu.edu.au              Paul Bristow
+            ray@media.berkeley.edu           Ray Davis
+            stuart.freeman@et.gatech.edu     Stuart Freeman
+            gaeremyncks@gmail.com            Simon Gaeremynck
+            carl@hallwaytech.com             Carl Hall
+            daniel@caret.cam.ac.uk           Daniel Parry
+            lance@speelmon.com               Lance Speelmon
+            zach@aeroplanesoftware.com       Zach Thomas
+            vueringschristian@gmail.com      Christian Vuerings 
+            arwhyte@umich.edu                Anthony Whyte
+
+Committers:
+            
+            jmarca@translab.its.uci.edu      James E. Marca
+
+Committers who have contributed in the past.
+            tpamsler@ucdavis.edu             Thomas Amsler
+            jpgorrono@ucdavis.edu            Jon Gorrono
+            pctony@apache.org                Tony Stevenson
+            arthur@caret.cam.ac.uk           Arthur Taylor
+            aaron@caret.cam.ac.uk            Aaron Zeckoski
+
+

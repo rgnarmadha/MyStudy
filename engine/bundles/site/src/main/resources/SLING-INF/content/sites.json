@@ -1,0 +1,6 @@
+{
+   "sling:resourceType":"sakai/sites",
+   "sakai:sitegroupcreate":[
+       "everyone"
+       ]
+}

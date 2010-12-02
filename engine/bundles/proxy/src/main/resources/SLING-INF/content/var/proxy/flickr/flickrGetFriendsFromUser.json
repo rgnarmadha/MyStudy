@@ -1,0 +1,14 @@
+{
+    "sling:resourceType": "sakai/proxy",
+    "sakai:request-proxy-endpoint": 'http://api.flickr.com/services/rest/?method=flickr.contacts.getPublicList&api_key=${config.flickr_api_key}&user_id=${userid}&page=1&per_page=15&format=json&nojsoncallback=1',
+    "sakai:request-proxy-method": "GET",
+    "sakai:title": "flickr- Get the public contacts from a user",
+    "sakai:shortDescription": "Get the contacts form a person",
+    "sakai:description": [
+        "This proxy will get the public contacts from a user.",
+        "This template requires an API key. It can be defined at ./load/org.sakaiproject.nakamura.proxy.ProxyClientServiceImpl-config.cfg<br /><code>flickr_api_key=93a86c06dc382a19bff0d4d24872ecab</code>"
+    ],
+     "sakai:parameters" : [
+        "{\"name\" : \"userid\", \"description\" : \"(Required)The user id\"}"
+    ]
+}

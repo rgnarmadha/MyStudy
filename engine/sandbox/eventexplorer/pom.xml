@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>base</artifactId>
+    <groupId>org.sakaiproject.nakamura</groupId>
+    <version>0.10-SNAPSHOT</version>
+  </parent>
+  <packaging>pom</packaging>
+  <name>Sakai Nakamura :: Event Explorer</name>
+  <groupId>org.sakaiproject.nakamura</groupId>
+  <artifactId>eventexplorer</artifactId>
+  <modules>
+    <module>ui</module>
+    <module>explorer</module>
+  </modules>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.apache.thrift</groupId>
+        <artifactId>libthrift</artifactId>
+        <version>r917130</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.cassandra.thrift</groupId>
+        <artifactId>apache-cassandra</artifactId>
+        <version>0.6.5</version>
+        <scope>provided</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+</project>
+

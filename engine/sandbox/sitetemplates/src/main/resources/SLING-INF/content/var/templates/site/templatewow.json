@@ -1,0 +1,116 @@
+{
+    "sakai:is-site-template": "true",
+    "sakai:site-template-description" : "This is an example of the basic template done with the new structure.",
+    "groups" : {
+        "sling:resourceType" : "sakai/template-groups",
+        "group0" : {
+            "sling:resourceType": "sakai/template-group",
+            "sakai:template-group-principalname": "@@groups.collaborators.name@@",
+            "sakai:template-group-managers" : ["@@groups.collaborators.members(...)@@"],
+            "sakai:template-group-viewers" : ["@@groups.collaborators.members(...)@@"],
+            "sakai:template-group-issitemanager" : true
+        },
+        "group1" : {
+            "sling:resourceType": "sakai/template-group",
+            "sakai:template-group-principalname": "@@groups.viewers.name@@",
+            "sakai:template-group-managers" : ["@@groups.collaborators.members(...)@@"],
+            "sakai:template-group-viewers" : ["@@groups.viewers.members(...)@@"],
+        }
+    },
+    "site" : {
+    	"@@site.properties.status==online?@@" : {
+		    "ace0" : {
+		        "sling:resourceType" : "sakai/template-ace",
+		        "sakai:template-ace-principal" : "@@groups.collaborators.name@@",
+		        "sakai:template-ace-granted" : ["jcr:all"],
+		        "sakai:template-ace-denied" : []
+		    },
+		    "ace1" : {
+		        "sling:resourceType" : "sakai/template-ace",
+		        "sakai:template-ace-principal" : "@@groups.viewers.name@@",
+		        "sakai:template-ace-granted" : ["jcr:read"],
+		        "sakai:template-ace-denied" : []
+		    },
+		    "ace2" : {
+		        "sling:resourceType" : "sakai/template-ace",
+		        "sakai:template-ace-principal" : "everyone",
+		        "sakai:template-ace-granted" : [],
+		        "sakai:template-ace-denied" : ["jcr:read"]
+		    }
+    	},
+    	"@@site.properties.status==offline?@@" : {
+		    "ace0" : {
+		        "sling:resourceType" : "sakai/template-ace",
+		        "sakai:template-ace-principal" : "@@groups.collaborators.name@@",
+		        "sakai:template-ace-granted" : ["jcr:all"],
+		        "sakai:template-ace-denied" : []
+		    },
+		    "ace1" : {
+		        "sling:resourceType" : "sakai/template-ace",
+		        "sakai:template-ace-principal" : "@@groups.viewers.name@@",
+		        "sakai:template-ace-granted" : [],
+		        "sakai:template-ace-denied" : ["jcr:read"]
+		    },
+		    "ace2" : {
+		        "sling:resourceType" : "sakai/template-ace",
+		        "sakai:template-ace-principal" : "everyone",
+		        "sakai:template-ace-granted" : [],
+		        "sakai:template-ace-denied" : ["jcr:read"]
+		    }
+    	},
+    	"@@site.properties.status==everyone?@@" : {
+		    "ace0" : {
+		        "sling:resourceType" : "sakai/template-ace",
+		        "sakai:template-ace-principal" : "@@groups.collaborators.name@@",
+		        "sakai:template-ace-granted" : ["jcr:all"],
+		        "sakai:template-ace-denied" : []
+		    },
+		    "ace1" : {
+		        "sling:resourceType" : "sakai/template-ace",
+		        "sakai:template-ace-principal" : "@@groups.viewers.name@@",
+		        "sakai:template-ace-granted" : ["jcr:read"],
+		        "sakai:template-ace-denied" : []
+		    },
+		    "ace2" : {
+		        "sling:resourceType" : "sakai/template-ace",
+		        "sakai:template-ace-principal" : "everyone",
+		        "sakai:template-ace-granted" : ["jcr:read"],
+		        "sakai:template-ace-denied" : []
+		    }
+    	},
+        "sling:resourceType" : "sakai/site",
+        "name" : "@@site.properties.title@@",
+        "id" : "@@site.properties.id@@",
+        "sakai:skin" : "@@site.properties.skin@@",
+        "sakai:site-private" : "@@site.properties.private@@",
+        "sakai:savedBy" : "@@site.user.creator@@",
+        "sakai:rolemembers" : [
+                               "@@groups.viewers.name@@",
+                               "@@groups.collaborators.name@@"
+                               ],
+        "sakai:roles": [
+    		"Viewer",
+    		"Collaborator"
+    	],
+        "_files" : {
+    		"sling:resourceType" : "sakai/folder"
+    	},
+        "_pages" : {
+            "welcome" : {
+                "sling:resourceType" : "sakai/page",
+                "pageTitle" : "Welcome",
+                "pageType" : "webpage",
+                "pagePosition" : 10000,
+                "jcr:mixinTypes" : "sakai:propertiesmix",
+                "_pages" : {
+                },
+                "pageContent" : {
+                    "jcr:primaryType": "nt:folder",
+                    "jcr:mixinTypes" : ["sakai:propertiesmix"],
+                     "sling:resourceType": "sakai/pagecontent",
+                     "sakai:pagecontent":"<p>Welcome to your new default site!</p>It's going to be the best page since chocolate bunnies."
+                }
+            }
+        }
+    }
+}

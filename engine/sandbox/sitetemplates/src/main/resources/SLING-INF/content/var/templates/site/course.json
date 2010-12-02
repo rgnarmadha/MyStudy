@@ -1,0 +1,92 @@
+{
+	"groups" : {
+		"sling:resourceType" : "sakai/template-groups",
+		"group0" : {
+			"sling:resourceType": "sakai/template-group",
+			"sakai:template-group-principalname": "@@groups.collaborators.name@@",
+			"sakai:template-group-members" : ["@@groups.collaborators.members(...)@@"]
+		},
+		"group1" : {
+			"sling:resourceType": "sakai/template-group",
+			"sakai:template-group-principalname": "@@groups.viewers.name@@",
+			"sakai:template-group-members" : ["@@groups.viewers.members(...)@@"]
+		}
+	},
+	"site" : {
+		"sling:resourceType" : "sakai/site",
+		"sakai:site-title" : "@@site.properties.title@@",
+		"sakai:site-id" : "@@site.properties.id@@",
+		"sakai:site-skin" : "@@site.properties.skin@@",
+		"sakai:site-private" : "@@site.properties.private@@",
+		"sakai:savedBy" : "@@site.user.creator@@",
+		"_pages" : {
+			"welcome" : {
+				"sling:resourceType" : "sakai/site-page",
+				"sakai:site-page-type" : "webpage",
+				"sakai:site-page-position" : "100000",
+				"sakai:site-page-title" : "Welcome",
+				"sakai:savedBy" : "@@site.user.creator@@",
+				"section0" : {
+					"sakai:site-page-section-content" : "<h1>Welcome</h1>"
+				},
+				"section1" : {
+					"sakai:site-page-section-content" : "You can find us at:<br /><ul><li>Acme Labs</li><li>Acme loop 7</li><li>Foobar city</li></ul>"
+				},
+				"section2" : {
+					"sakai:site-page-section-content" : "<div class=\"widget_inline\" id=\"widget_googlemaps\"></div>",
+					"settings" : {
+						"lat" : 51.71950,
+						"long" : 1.405,
+						"mapzoom" : 7,
+						"mapsize" : "LARGE",
+						"maphtml" : "Cambridge, UK",
+						"jcr:mixinTypes": "sakai:propertiesmix"
+					}
+				},
+				"section3" : {
+					"sakai:site-page-section-content" : "Note to collaborators: I don't think we should expose our address!",
+					"ace0" : {
+		                "sling:resourceType" : "sakai/template-ace",
+		                "sakai:template-ace-principal" : "@@groups.collaborators.name@@",
+		                "sakai:template-ace-granted" : ["jcr:all"],
+		                "sakai:template-ace-denied" : []
+		            },
+		            "ace1" : {
+		                "sling:resourceType" : "sakai/template-ace",
+		                "sakai:template-ace-principal" : "everyone",
+		                "sakai:template-ace-granted" : [],
+		                "sakai:template-ace-denied" : ["jcr:all"]
+		            }
+	
+				}
+			},
+			"foobar" : {
+				"sling:resourceType" : "sakai/site-page",
+				"sakai:site-page-type" : "webpage",
+				"sakai:site-page-position" : "100000",
+				"sakai:site-page-title" : "Welcome",
+				"sakai:savedBy" : "@@site.user.creator@@",
+				"section0" : {
+					"sakai:site-page-section-content" : "<h1>Foobar</h1>"
+				},
+				"section1" : {
+					"sakai:site-page-section-content" : "Random content"
+				}
+			},
+			"@@site.pages(...)@@" : {
+				"@@site.pages(...).id@@" : {
+					"sling:resourceType" : "sakai/site-page",
+					"sakai:site-page-type" : "@@site.pages(...).type@@",
+					"sakai:site-page-position" : "@@site.pages(...).position@@",
+					"sakai:site-page-title" : "@@site.pages(...).title@@",
+					"sakai:savedBy" : "@@site.user.creator@@",
+					"@@site.pages(...).sections(...)@@" : {
+						"@@site.pages(...).sections(...).id@@" : {
+							"sakai:site-page-section-content" : "@@site.pages(...).sections(...).content@@"
+						}
+					}
+				}
+			}
+		}
+	}
+}

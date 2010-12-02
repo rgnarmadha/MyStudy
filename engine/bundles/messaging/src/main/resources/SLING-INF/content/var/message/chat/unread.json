@@ -1,0 +1,19 @@
+{
+  "sakai:query-language": "xpath",
+  "sakai:query-template": "/{_userMessagePath}//element(*)MetaData[(@sling:resourceType='sakai/message' and @sakai:type='chat' and @sakai:created >= xs:dateTime('{t}')){_from?}] order by @{sortOn|jcr:created} {sortOrder|descending}",
+  "sling:resourceType": "sakai/search",
+  "sakai:propertyprovider" : "ChatMessage",
+  "sakai:resultprocessor": "Message",
+  "sakai:title": "Messaging - User - Chat - Unread.",
+  "sakai:shortDescription": "Get all the chat messages in your message store after a certain timestamp",
+  "sakai:parameters" : [
+                        "{\"name\" : \"t\", \"description\" : \"Timestamped value. Only messages who were sent after this timestamp will be retrieved. Timestamp should be of the following format: 2009-12-22T02:58:14.603Z - Required\"}",
+                        "{\"name\" : \"_from\", \"description\" : \"Comma seperated list of userid's of sender's - Optional.\"}",
+                        "{\"name\" : \"sortOn\", \"description\" : \"Sort the results on this property - Optional.\"}",
+                        "{\"name\" : \"sortOrder\", \"description\" : \"Either 'ascending' or 'descending' - Optional.\"}"
+    ],
+  "sakai:description": [
+                      "This search will dump all the chat messages in your message store after a certain timestamp.",
+                      "You can further filter it down by providing userid's in the _from parameter."
+                      ]
+}

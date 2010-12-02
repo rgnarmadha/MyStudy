@@ -1,0 +1,4 @@
+{
+  "sakai:search-exclude-tree": true,
+  "jcr:primaryType": "sling:Folder"
+}

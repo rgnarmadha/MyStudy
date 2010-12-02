@@ -1,0 +1,356 @@
+Delivered-To: ianboston@googlemail.com
+Received: by 10.204.61.70 with SMTP id s6cs170460bkh;
+        Sun, 14 Feb 2010 11:52:39 -0800 (PST)
+Received: by 10.102.214.19 with SMTP id m19mr3074451mug.96.1266177158835;
+        Sun, 14 Feb 2010 11:52:38 -0800 (PST)
+Return-Path: <extra+ieb=tfd.co.uk@bounce.chronicle.com>
+Received: from mailex.atlas.pipex.net (mailex.atlas.pipex.net [194.154.164.64])
+        by mx.google.com with ESMTP id i5si29888112mue.42.2010.02.14.11.52.38;
+        Sun, 14 Feb 2010 11:52:38 -0800 (PST)
+Received-SPF: neutral (google.com: 194.154.164.64 is neither permitted nor denied by best guess record for domain of extra+ieb=tfd.co.uk@bounce.chronicle.com) client-ip=194.154.164.64;
+Authentication-Results: mx.google.com; spf=neutral (google.com: 194.154.164.64 is neither permitted nor denied by best guess record for domain of extra+ieb=tfd.co.uk@bounce.chronicle.com) smtp.mail=extra+ieb=tfd.co.uk@bounce.chronicle.com
+Received: from 202963-web1.chronicle.com ([98.129.181.35])
+	by mail5.atlas.pipex.net with esmtp (Exim 4.63)
+	(envelope-from <extra+ieb=tfd.co.uk@bounce.chronicle.com>)
+	id 1NgkWE-00009P-0O
+	for ieb@tfd.co.uk; Sun, 14 Feb 2010 19:52:38 +0000
+Received: from 202999-wcm1.chronicle.com (wcm [10.225.1.41])
+	by 202963-web1.chronicle.com (Postfix) with ESMTP id 75F9D2F193C
+	for <ieb@tfd.co.uk>; Sun, 14 Feb 2010 14:51:40 -0500 (EST)
+Received: by 202999-wcm1.chronicle.com (Postfix, from userid 48)
+	id D72CA107877; Sun, 14 Feb 2010 14:50:01 -0500 (EST)
+From: The Chronicle <daily@chronicle.com>
+To: The Chronicle <daily@chronicle.com>
+Subject: Breaking News Extra: Husband of Accused Huntsville Killer Says She Was Bitter Over Tenure
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="------------f3b190387c2b219c0963513dca170ceb"
+Message-Id: <20100214195001.D72CA107877@202999-wcm1.chronicle.com>
+Date: Sun, 14 Feb 2010 14:50:01 -0500 (EST)
+
+
+
+--------------f3b190387c2b219c0963513dca170ceb
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+
+
+
+
+Breaking News Extra
+Sunday February 14, 2010
+
+Subscribe to the Chronicle!
+http://chronicle.com/subscribe/
+
+
+
+
+Stop receiving this newsletter
+http://chronicle.com/myaccount/newsletters
+
+Updates From Huntsville
+
+Husband of Accused Huntsville Killer Amy Bishop Speaks Out
+http://chronicle.com/blogPost/Husband-of-Accused-Huntsville/21254/?sid=3D=
+bn&utm_source=3Dbn&utm_medium=3Den
+
+In his first interview about Friday's mass shooting, James Anderson said =
+he
+didn't know that his wife, Amy Bishop, had a gun when he dropped her off =
+at
+a faculty meeting. But he knew that she felt she had been unfairly denied
+tenure.
+
+
+
+Slain Department Head Supported Accused Killer's Tenure Bid
+http://chronicle.com/blogPost/Slain-Department-Head/21250/?sid=3Dbn&utm_s=
+ource=3Dbn&utm_medium=3Den
+
+The chairman of the biology department at the University of Alabama at
+Huntsville, Gopi K. Podila, had supported the tenure bid of Amy Bishop, t=
+he
+biology professor who has been accused of killing him and two other
+professors and critically injuring two more.
+
+
+Full Chronicle Coverage
+
+As the University of Alabama at Huntsville copes with the aftermath of
+Friday's shooting spree, Chronicle reporters Tom Bartlett and Robin Wilso=
+n
+will continue to file dispatches live from the scene. Follow the
+Brainstorm: Gina Barreca on Amy Bishop
+http://chronicle.com/blogPost/Amy-Bishop-Shot-Her-Brother-As/21248/
+
+
+
+Did a friend send you this?  Go here for your own copy
+http://chronicle.com/myaccount/newsletters.
+In addition to this report, The Chronicle publishes free e-mail newslette=
+rs
+http://chronicle.com/myaccount/newsletters on technology, community
+colleges, hiring, and the world of ideas. You can also create an unlimite=
+d
+number of search agents so that you receive e-mail notification of
+available jobs in academe that meet your criteria.
+
+The Chronicle of Higher Education website contains a mix of free and
+premium content.  For full access to the premium content, please purchase=
+ a
+subscription
+http://chronicle.com/subscribe/ to our weekly newspaper.
+
+Manage your account:
+http://chronicle.com/myaccount
+
+Retrieve user name
+http://chronicle.com/myaccount/forgotusername |
+Reset your password
+http://chronicle.com/myaccount/forgotpassword |
+(c) 2010 The Chronicle of Higher Education
+
+1255 23rd Street NW
+
+Washington, DC 20037
+
+
+
+
+
+
+--------------f3b190387c2b219c0963513dca170ceb
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+
+
+
+<html>
+	<body leftmargin=3D"0" marginwidth=3D"0" topmargin=3D"0" marginheight=3D=
+"0" offset=3D"0" bgcolor=3D"#ffffff">
+		<style>
+		=09
+			a {text-decoration:none; color:#004276;}
+			a:hover {text-decoration:underline; color:#0F5D9A;}
+			p {padding:0 0 11px; margin:0; font-size:12px;}
+		=09
+		</style>
+		<table width=3D"100%" cellpadding=3D"10" cellspacing=3D"0" class=3D"bac=
+kgroundTable" bgcolor=3D"#ffffff">
+			<tbody>
+				<tr>
+					<td valign=3D"top" align=3D"center">
+						<table width=3D"600" cellpadding=3D"0" cellspacing=3D"0" style=3D"b=
+order:1px solid #a0a0a0;">
+							<tr>
+								<td valign=3D"top">
+									<!-- header -->
+									<table width=3D"469" cellpadding=3D"0" cellspacing=3D"0" height=3D=
+"80">
+	<tbody>
+		<tr>
+			<td valign=3D"top" align=3D"left">
+				<!-- image of header -->
+				<img src=3D"http://chronicle.com/img/che_header.jpg" alt=3D"Chronicle=
+ of Higher Education" height=3D"34" width=3D"469" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<span style=3D"font-size:37px; font-family:Arial, Helvetica; margin-l=
+eft:75px; font-weight:bold;">Breaking News Extra</span>
+			</td>
+		</tr>										=09
+		<tr>
+			<td>
+				<table>
+					<tr>
+						<td bgcolor=3D"#FFFFFF" width=3D"300" align=3D"left">
+							<p style=3D"font-family:Georgia; font-size:13px; font-weight:bold;=
+ padding:0;">Sunday February 14, 2010</p>						</td>
+						<td bgcolor=3D"#FFFFFF" valign=3D"top" align=3D"right">
+							<a href=3D"http://chronicle.com/subscribe/" style=3D"color:#246A88=
+; font-weight:bold; font-size:12px; font-family:Arial;">Subscribe to the =
+Chronicle!</a>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</tbody>
+</table>=09
+								</td>
+								<td valign=3D"top">
+									<table width=3D"131" cellpadding=3D"0" cellspacing=3D"0">
+										<tbody>
+											<tr>
+												<td>
+													<a style=3D"text-decoration:none;" href=3D"http://chronicle.=
+com/subscribe/"><!-- image of subscribe --><img style=3D"border:0;" src=3D=
+"http://chronicle.com/img/banner_promo.jpg" alt=3D"subscribe now" width=3D=
+"131" height=3D"80" /></a>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</table>
+						<table width=3D"602" cellpadding=3D"6" cellspacing=3D"0" bgcolor=3D=
+"#FFFFFF" style=3D"border:1px solid #a0a0a0; border-width: 0 1px 1px">
+							<tbody>
+								<tr>
+									<td bgcolor=3D"#FFFFFF" valign=3D"top" align=3D"right">
+										<span style=3D"font-family:Arial; font-size:10px;"><a href=3D"h=
+ttp://chronicle.com/myaccount/newsletters">Subscribe to this newsletter</=
+a> | <a href=3D"http://chronicle.com/myaccount/newsletters">Stop receivin=
+g this newsletter</a></span>
+									</td>							=09
+								</tr>
+								<tr>
+									<td bgcolor=3D"#FFFFFF" valign=3D"top" align=3D"left" style=3D"f=
+ont-size:12px;color:#000000;line-height:150%;font-family:Georgia, Arial;"=
+>
+										<div id=3D"portal" class=3D"che-newsletter">
+											<div class=3D"portal-column large" id=3D"center" title=3D"Main=
+ zone">
+															<p style=3D"font-size:14px; color:#171717; font-family:Ari=
+al; font-weight:bold; border: 1px solid #E5E5E3; border-width:0 0 3px; pa=
+dding-bottom:5px; margin-bottom:9px;">Updates From Huntsville</p>
+			=09
+																   <table>
+  <tr>
+  <td align=3D"left">
+						<p>
+												=09
+								<span style=3D"font-size:14px; font-weight:bold; font-family:Aria=
+l;"><a href=3D"http://chronicle.com/blogPost/Husband-of-Accused-Huntsvill=
+e/21254/?sid=3Dbn&utm_source=3Dbn&utm_medium=3Den">Husband of Accused Hun=
+tsville Killer Amy Bishop Speaks Out</a></span>
+				<br />
+				<span style=3D"font-size:14px;">In his first interview about Friday's=
+ mass shooting, James Anderson said he didn't know that his wife, Amy Bis=
+hop, had a gun when he dropped her off at a faculty meeting. But he knew =
+that she felt she had been unfairly denied tenure.</span>
+				<br />
+											</p>
+       </td>
+  </tr>
+  </table>
+    =20
+
+	=09
+		=09
+																   <table>
+  <tr>
+  <td align=3D"left">
+						<p>
+												=09
+								<span style=3D"font-size:14px; font-weight:bold; font-family:Aria=
+l;"><a href=3D"http://chronicle.com/blogPost/Slain-Department-Head/21250/=
+?sid=3Dbn&utm_source=3Dbn&utm_medium=3Den">Slain Department Head Supporte=
+d Accused Killer's Tenure Bid</a></span>
+				<br />
+				<span style=3D"font-size:14px;">The chairman of the biology departmen=
+t at the University of Alabama at Huntsville, Gopi K. Podila, had support=
+ed the tenure bid of Amy Bishop, the biology professor who has been accus=
+ed of killing him and two other professors and critically injuring two mo=
+re.</span>
+				<br />
+											</p>
+       </td>
+  </tr>
+  </table>
+    =20
+
+	=09
+				<p style=3D"font-size:14px; color:#171717; font-family:Arial; font-we=
+ight:bold; border: 1px solid #E5E5E3; border-width:0 0 3px; padding-botto=
+m:5px; margin-bottom:9px;">Full Chronicle Coverage</p>
+=09
+											 <table>
+  <tr>
+  <td align=3D"left">
+				<p style=3D"min-height:60px; font-size:14px;">
+								As the University of Alabama at Huntsville copes with the afterma=
+th of Friday's shooting spree, Chronicle reporters Tom Bartlett and Robin=
+ Wilson will continue to file dispatches live from the scene. Follow the =
+<a href=3D"http://www.twitter.com/chronicle">Chronicle on Twitter</a> and=
+ read on for updates and analysis:<br /><br /> <a href=3D"http://chronicl=
+e.com/forums/index.php/topic,66539.0.html">Chronicle Forums: Personnel Po=
+licies and Workplace Violence</a><br /><a href=3D"http://chronicle.com/bl=
+ogPost/Amy-Bishop-Shot-Her-Brother-As/21248/">Brainstorm: Gina Barreca on=
+ Amy Bishop</a>								</p>
+       </td>
+  </tr>
+  </table>
+														</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td style=3D"background-color:#F6F5EF;margin:5px;" width=3D"590"=
+ valign=3D"top" align=3D"left">
+										<!-- footer -->
+									=09
+<table cellspacing=3D"0" cellpadding=3D"10" align=3D"center" width=3D"580=
+" style=3D"background:#ffffff; border:1px solid #A0A0A0;">
+	<tbody>
+		<tr>
+			<td>
+				<p style=3D"font-family:Arial; font-size:11px;">Did a friend send you=
+ this?  <a href=3D"http://chronicle.com/myaccount/newsletters">Go here fo=
+r your own copy</a>.</p>													=09
+				<p style=3D"font-family:Arial; font-size:11px;">In addition to this r=
+eport, The Chronicle publishes free <a href=3D"http://chronicle.com/myacc=
+ount/newsletters">e-mail newsletters</a> on technology, community college=
+s, hiring, and the world of ideas. You can also create an unlimited numbe=
+r of search agents so that you receive e-mail notification of available j=
+obs in academe that meet your criteria.</p>
+
+				<p style=3D"font-family:Arial; font-size:11px;">The Chronicle of High=
+er Education website contains a mix of free and premium content.  For ful=
+l access to the premium content, please <a href=3D"http://chronicle.com/s=
+ubscribe/">purchase a subscription</a> to our weekly newspaper.</p>						=
+		=09
+				<p style=3D"background:#FAF5EB; font-family:Arial; font-size:11px; pa=
+dding:3px;">
+					<span style=3D"font-weight:bold;"><a href=3D"http://chronicle.com/my=
+account">Manage your account:</a></span>
+					<br />
+					<a href=3D"http://chronicle.com/myaccount/forgotusername">Retrieve u=
+ser name</a> |
+					<a href=3D"http://chronicle.com/myaccount/forgotpassword">Reset your=
+ password</a> |
+				</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p style=3D"font-size:13px;">
+	<span>(c) 2010 The Chronicle of Higher Education</span>
+	<br />
+	<span>1255 23rd Street NW</span>
+	<br />
+	<span>Washington, DC 20037</span>
+</p>
+									</td>
+								</tr>
+							</tbody>=09
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+=09
+	</body>
+</html>
+
+
+
+--------------f3b190387c2b219c0963513dca170ceb--
+
+
+

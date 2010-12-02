@@ -1,0 +1,94 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.sakaiproject.nakamura</groupId>
+    <artifactId>org.sakaiproject.nakamura.eventexplorer</artifactId>
+    <version>0.10-SNAPSHOT</version>
+  </parent>
+  <groupId>org.sakaiproject.nakamura</groupId>
+  <artifactId>org.sakaiproject.nakamura.eventexplorer.cassandra-thrift</artifactId>
+  <packaging>bundle</packaging>
+  <version>0.10-SNAPSHOT</version>
+  <name>Sakai Nakamura :: Sakai Cassandra-Thrift implementation.</name>
+  <description>The thrift class files that are needed to talk to Cassandra.</description>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-scr-plugin</artifactId>
+        <configuration>
+          <sourceExcludes>**/thrift/**</sourceExcludes>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <Bundle-Category>sakai-nakamura</Bundle-Category>
+            <Export-Package>
+              org.apache.cassandra.thrift.*,
+              org.apache.thrift.*,
+              org.sakaiproject.nakamura.eventexplorer.api.cassandra
+			</Export-Package>
+            <Private-Package>org.sakaiproject.nakamura.eventexplorer.cassandra.*</Private-Package>
+            <Embed-Dependency>libthrift,apache-cassandra</Embed-Dependency>
+          </instructions>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>embed-dependencies</id>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <includeArtifactIds>libthrift</includeArtifactIds>
+              <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+    <!--  Obviously we need thrift. -->
+    <dependency>
+      <groupId>org.apache.thrift</groupId>
+      <artifactId>libthrift</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.cassandra.thrift</groupId>
+      <artifactId>apache-cassandra</artifactId>
+    </dependency>
+
+    <!-- We also need slf4j -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+    </dependency>
+
+    <!--  Since we will be running in OSGi we also include the following -->
+    <dependency>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>org.osgi.core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>org.osgi.compendium</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>org.apache.felix.scr.annotations</artifactId>
+    </dependency>
+  </dependencies>
+</project>

@@ -1,0 +1,324 @@
+{
+       "types": {
+           "LearningCapability": {
+               "pluralLabel":  "Learning Capabilities"
+           },
+		   "RequirementPath" : {
+               "pluralLabel":  "Requirement Paths"
+		   },
+		   "PointOfView" : {
+               "pluralLabel":  "Points Of View"
+		   },
+		   "ImplementationPhase" : {
+               "pluralLabel":  "ImplementationPhases"
+		   },
+           "UserDesire": {
+               "pluralLabel":  "Users Desires"
+           },
+           "Screen": {
+               "pluralLabel":  "Screens"
+           }
+
+       },
+       "properties": {
+           "age": {
+               "valueType":    "number"
+           },
+		   "sakai-pov" : {
+		     "label": "Point Of View",
+			 "valueType": "item"
+		   },
+           "requirementpath": {
+               "label":        "satisfied by",
+               "reverseLabel": "satisfies",
+               "valueType":    "item"
+           },
+           "parent": {
+               "label":        "child Of",
+               "reverseLabel": "parent Of",
+               "valueType":    "item"
+           },
+           "implementationphase": {
+               "label":        "implementated in",
+               "reverseLabel": "contains",
+               "valueType":    "item"
+           },
+           "sakai-requirment": {
+               "label":        "references",
+               "reverseLabel": "referenced by",
+               "valueType":    "item"
+           }
+       },
+       "items": [
+		{
+			"id" : "student",
+			"label" : "Student or Undergraduate",
+			"type" : "PointOfView",
+			"tasks" : [
+				"going to class",
+				"prepare for class",
+				"write papers (small ones)",
+				"prepare for supervisions",
+				"attend supervisions",
+				"study / digest theory",
+				"digest / read books, reports, documents",
+				"find resources" 
+			],
+			"description" : "A Student"
+		},
+     	{
+			"id" : "postgraduate",
+			"label" : "Postgraduate",
+			"type" : "PointOfView",
+			"tasks" : [
+				"some:going to class",
+				"some:prepare for class",
+				"some:prepare for supervisions",
+				"some:attend supervisions",
+				"some:find funding",
+				"write papers ",
+				"find resources",
+				"study / digest theory",
+				"do research: interviews, reading, testing, analysing, documenting"
+			],
+			"description" : "A Postgraduate"
+		},
+     	{
+			"id" : "instructor",
+			"label" : "Instructor or Lecturer",
+			"type" : "PointOfView",
+			"tasks" : [
+				"prepare for classes",
+				"lecture, teach",
+				"create resources for students",
+				"share resources with students",
+				"prepare for exams",
+				"create exams",
+				"grade exams",
+				"plan lessons, make year planning, curriculum",
+				"digest resources and information (e.g. part of preparation) "
+			],
+			"description" : "A Student"
+		},
+     	{
+			"id" : "supervisor",
+			"label" : "Supervisor or Director of Studies",
+			"type" : "PointOfView",
+			"tasks" : [
+				"arrange, plan supervision ",
+				"inform students",
+				"prepare for supervision / DOS session",
+				"create resources for students",
+				"share resources with students",
+				"keep supervision / DOS session",
+				"Document / report supervisions - keep track of student’s progression ",
+				"inform students"
+			],
+			"description" : "A Supervisor or Director of Studies"
+		},
+     	{
+			"id" : "everyone",
+			"label" : "Everyone",
+			"type" : "PointOfView",
+			"tasks" : [
+			],
+			"description" : "Everyone including non anon"
+		},
+     	{
+			"id" : "administrative",
+			"label" : "Administrative Staff",
+			"type" : "PointOfView",
+			"tasks" : [
+				"find resources",
+				"digest resources",
+				"inform people",
+				"share resources",
+				"manage and arrange (other people’s) time, places and finances (e.g. book rooms)",
+				"create and update documents to share time, places, and finances with other people"
+			],
+			"description" : "An administrative member of the Institution"
+		},		
+     	{
+			"id" : "administrator",
+			"label" : "Administrator",
+			"type" : "PointOfView",
+			"tasks" : [
+			],
+			"description" : "A member of the administrators group"
+		},
+     	{
+			"id" : "examiner",
+			"label" : "Examiner",
+			"type" : "PointOfView",
+			"tasks" : [
+			],
+			"description" : "An Examiner"
+		},
+		{
+			"id" : "researcher",
+			"label" : "Researcher",
+			"type" : "PointOfView",
+			"tasks" : [
+				"data gathering (e.g. interviews)",
+				"find resources",
+				"digest resources",
+				"analyse data",
+				"document, write papers",
+				"publish / disseminate paper and/or ideas"
+			],
+			"description" : "An Researcher"
+		},
+		{
+			"id" : "system",
+			"label" : "System",
+			"type" : "PointOfView",
+			"tasks" : [
+			],
+			"description" : "The System, Automated"
+		},
+		{
+			"id" : "isobel",
+			"label" : "Isobel",
+			"type" : "Persona",
+			"as-student" : [
+				"Isobel is a new first year undergraduate student and she's still a bit figuring out how to fit in. She has classes tomorrow afternoon. She thinks it would be a good idea to call her new friend Kate in order to prepare the lessons together...\"Why not?!\" Without thinking too much about it, she calls Sophie and a bit later they're sitting in Cafe Nero where they're discussing a lot of the topics and questions as preparation for that lesson. ",
+				"The next day she realises she still wanted to ask Peter some other questions. On her way to the department, she passes by and together they walk to class, discussing a lot of things from the preparation on their way. During class she asks a lot of questions every time something isn't that clear to her. After class, she also goes to the lecturer to ask him those questions she couldn't answer during class.",
+				"That evening she needs to write an essay but she doubts about some things the lecturer said. She looks it up but can't find it immediately, so after 5 minutes she sends an email to ask her lecturer about it.",
+				"In order to prepare her supervision for next week, she sees she noted down in her agenda to go to the library. She sits there whole afternoon studying and digesting papers and books, while talking to random people in the library hall...they seemed quite interesting anyway and after all they seemed to have shared a lot of interesting thoughts. They also helped her to find some books she couldn't find immediately. Now she knows she can ask those people in the future in case she would have other questions."
+			],
+			"as-postgraduate" : [
+				"Isobel is a first year master student. Half of the time she needs to attend classes but she also needs to spend a lot of time on collaborative projects and individual research. ",
+				"She doesn't have that much time to prepare a lot for class because she has so many other things to do, but she quickly looks into some documents and books which were on the reading list she got from her lecturer. She's not sure how to digest all those books in the next months though.",
+				"She thinks it would be a good idea though to start some kind of 'study group'. She heard some people organising a study group before where they divide the books which are on the reading list as there are too many books to read on your own. They could also discuss them together, she thinks discussing is great to get more insights anyway.",
+				"She thinks it's a good idea to get people with a lot of different skills and opinions in the group, and maybe even people who aren't friends yet because she already discusses these topics with her friends anyway. When going to class, she actively starts talking to people and asks them whether they want to take part in her study group. After class, she sends out emails to all of them and starts to create a work plan. ",
+				"For the collaborative project, her lecturer has put her together with some random other students to work together on this project. She immediately acknowledges some people aren't that interactive and it might be hard to communicate via email. She reckons it might be hard to send emails over and over again when you're collaboratively writing on a paper anyway. She remembers using Google Docs from another project to collaboratively write on the same document so she suggests to the other group members to use this. After everyone started using Google Docs, she still sends out reminders from time to time to meet up and discuss in real life as she thinks this is really an important aspect for not loosing track. ",
+				"For the individual project, she works together with a company in the US. The contact person in this company who functions as her mentor, suggest they start with clear instructions and rules. Isobel really appreciates this approach. She makes the suggestion to have regular Skype calls to keep the discussions as 'personal' and 'real' as possible. ",
+				"She types up all her notes from the conversations and other findings. She can use this later when she starts typing up her paper, but also to use during conversation with her supervisor. That reminds her she still needs to contact her supervisor as he said they should meet again in the near future. She's also going to ask him whether he knows some more good books or documents to read she could use during her project." 
+			],
+			"as-researcher" : [
+				"Isobel is a researcher who's early in her career. She's mainly working on a lot of research projects, mostly whilst working collaboratively on it with colleagues, which she really appreciates as she reckons she can then discuss and come to better conclusions. It's really valuable to her to learn from all her colleagues as well. ",
+				"She recently started with a new project, also in a collaborative way with her colleagues. She starts her research and data gathering by mainly trying to gain this by talking to people, rather than only reading information in books, documents or online. As soon as this new project started, she created a new blogsite where she intends to blog a new post quite often to let other people now what she and her colleagues are working on. She might also read some interesting readings though, which she got suggested by her colleagues, friends or gurus. When reading those documents or books, she also appreciates discussing them with her colleagues to make sure she really understands it, but also to get better insights on the matter. After discussing theses, she immediately types up the conversation and shares it online with her colleagues.",
+				"When finding people to get her data from, she tries to combine a lot of methods like recruiting people through surveys, but she will try not to forget to simply ask people she already knows as they might suggest some interesting interview participants as well. While doing interviews, she writes down the notes but she might also type them up afterwards or record the interview and store it afterwards and share it with her colleagues. ",
+				"When analysing the data, she again thinks it's important to meet with her colleagues as much as possible to make sure  they both think about the data in the same way. She appreciates discussing the data with other people apart from her colleagues as well, such as people working on the same matter abroad, but then she would like to have it as personal as possible as she thinks face to face is always the best and easiest way to have discussions, so skype or other video calls would be ideal to her. ",
+				"Some weeks later in the process of the project, she flies over to a big event in Canada which is really related to her project. Her project manager suggested it to her, after Isobel asked her manager whether she knew some interesting events she could go to. Isobel also asked her colleagues before about some talks or events, but they could only come up with some small talks which she couldn't always attend. She's really delighted to go to this event in Canada, so she immediately blogs about it. On the event itself, she gets to know so many interesting people. She actively attends all the interesting talks there and exchanges lots of business cards which she stores very carefully. She also tells them to visit the blog as she's very proud of the project and wants everybody to know about it. ",
+				"Some months later, she and her colleagues start writing up the paper. They're using all the gathered data and are therefore referring to the sets of data they've stored on various computers and other places. They decide to use Google Docs as they all have an account and because they think this is the easiest way to work on it collaboratively."
+			],
+			"as-lecturer" : [
+				"Isobel is a lecturer who has been teaching for some years now, but since this year she got a job in another university so this whole university and its habits are quite new to her.",
+				"Next week she needs to lecture some lessons about a topic from her field, Engineering. She knows that because she got a year planning from the departmental director. She starts preparing this lesson, using her background knowledge from her studies and previous teaching job, as well as her study books and lecture books she got from the library.",
+				"However, she doesn't find that many useful lecture materials from this set of resources. That is mainly because she likes to lecture in a very interactive and intensive way, where students need to think, interact and work in groups in order they would understand it better, but most handbooks have very different approaches, of which she thinks they're very outdated, boring and aren't giving the students a lot of possibilities to think intensively. ",
+				"She decides to think of some more interactive exercises herself. Next day, she meets another lecturer in the lecture room who seems to be teaching Engineering as well, and he seems to have experiences in the same field as well. ",
+				"Apparently he has some preparations on his computer and is happy to share it with Isobel through email. Isobel asks whether he would mind discussing the preparation of the lesson afterwards as there were some topics which seemed quite vague to her. Her colleague agrees and they make an appointment to meet the next day.",
+				"She also creates some resources like a Powerpoint presentation and a set of questions as an exercise package for the students. As she prepaired it, the lecture the week after that, is quite interactive. She tells her students they can now access the PowerPoint, used during the session, and the other information on the University's Virtual Learning Environment. After that lecture, she starts thinking more about that Virtual Learning Environment that the University provides them with. She thinks she could actually use this more to make her teaching even better and useful for the students. She looks up some training courses about it, and decides to attend it.",
+				"At this training course, she meets a lot of other lecturers who have the same teaching ideology as she has. Besides from learning how she can use this system in a better way to support her teaching, she also made some new acquaintances of which she thinks they can be useful in later situations. When back in the lecture room that next day, she leaves a leaflet on the main table and tells everybody about the amazing things she learned on how they could make their teaching much better by using these ways of online systems. She talked about how great it is to share useful websites with students, organise study groups, share materials online, let students deliver their tasks through this system, sharing your online calendar and so forth. Some lecturers seemed to be ignoring Isobel's input, but she's already glad there were some people who spoke to her about it later that day. ",
+				"Later that year she starts preparing for the exames. In doing so, she uses all the background information she learned during the year. She shares the dates of the exames with her students through this Online environment, through the calendar. She wants her students to know about it, so she tells it during lectures as well as sending them a reminder. After creating the exam questions, she asks her new acquaintances from the training course and her Engineering colleague to go through the questions together. She doesn't want to share it online because she's still aware there might be people who would hack her details. ",
+				"After students filled out their exams, Isobel got an assistant who helped marking all the exams. They put the marks into this online system as well where the students can now access their marks. "
+			
+			],
+			"image" : "images/isobel.jpg"
+		},
+		{
+			"id" : "peter",
+			"label" : "Peter",
+			"type" : "Persona",
+			"as-student" : [
+				"Peter is a new first year undergraduate who's still figuring out how to fit in. He has classes tomorrow afternoon. He starts preparing for it, reading some of his theory books. He doesn't understand the whole concept in the book, so he looks it up in other documents. In the end, he thinks he understands most of it, but he's not really worried as he's sure it will all become clear during class.",
+				"The next day he plans to go to class on his own when suddenly Isobel comes by to ask him some questions while walking to the department. He didn't intend to go with someone else, but now Isobel is there he's quite happy he can finally discuss his ideas with someone else. Now his doubts become clear, while if Isobel wouldn't have passed by, he wouldn't have understood it that well.",
+				"During class he has some small questions, but he reckons to first look it up in his books when he's home, before asking someone else. When he finally wouldn't find it after all, he might email his lecturer instead of Isobel because he's convinced he can trust the lecturer's answer more than a student's.",
+				"He needs to write an essay but some things aren't that clear. He doubts whether he would email his lecturer right away, but he imagines his lecturer is probably very busy himself so he doesn't want to bother him right away. Instead, he looks it up in his books. After half an hour he finds the solution to his problem. He's glad he found the answer, but he doesn't realise he would probably have received the answer much quicker if he would have asked someone else first.",
+				"He needs to prepare for his supervision of next week but can't exactly remember what it was, so he checks his emails. He's totally overwhelmed when he discovers he has hundreds of unread emails...apparently he didn't read his emails for weeks but he just forgot and keeps on forgetting it's actually expected from him to read his emails fairly often.",
+				"After an hour digesting his emails, he realises he should probably get some books from the library. Because he has been spending so much time on checking his emails, the library has almost closed meanwhile so he needs to hurry up.",
+				"Normally he would prefer to look up the book in the library's computer as then he doesn't need to bother the librarians, but he imagines he better asks them now right away if he wants to save time."
+			],
+			"as-postgraduate" : [
+				"Peter is a postgraduate research student but from time to time he needs to attend courses. Next week he needs to attend some classes as well so he might start preparing for it. \"Hmm...not sure what we actually needed to prepare again...Oh no, where can I find the task?!\" He looks in all the shelves and finally he can find it. Now he reads it but still doesn't really understand it. \"I could ask Isobel?...Or maybe that's not such a good idea, I don't want to bother her because she's probably very busy anyway. Okay, I'll contact Kate then because she knows probably more about that topic anyway. But I'm not going to call her because she might be too busy as well. I'll just send her an email. In that case she can answer whenever she wants.\" ",
+				"He ends up on his email account and realises it has been 3 days ago he checked his emails, so it seems to be a little bit overwhelming... 2 hours later while still checking his emails, he finds an interesting email from someone who would like to collaborate next year, in order to facilitate the funding process. \"Wow, luckily this person asked me because otherwise I still wouldn't have found out about any funding opportunities.\" ",
+				"A bit later he continues working on his paper so he heads off to the library. He has some questions but he first tries to find answers by looking it up into books, rather than asking his supervisor..."			
+			],
+			"as-researcher" : [
+				"Peter is a researcher who's quite early in his career. He doesn't mind working collaboratively on projects, but he would prefer working on project with a smaller group as he thinks this gives less problems or confusions.",
+				"Last week his manager has put him on quite a big project which will probably take longer than a year.",
+				"The projects involves gathering data from stakeholders and afterwards analysing it and writing a paper together with his colleagues.",
+				"He wonders how he could gather data and suggests to run an online survey. He thinks this is useful because it saves a lot of time rather than doing interviews which requires much more time and effort. He also thinks it's not such a bad idea for running a survey because he doesn't want to bother people by doing interviews and probably people are more willing to fulfill a survey they can take any time.",
+				"He thinks he should also be gathering some background information so he gets a better understanding of the project subject. He thinks he might talk to his colleagues later but they all seem to be very busy so he considers looking up some interesting books and papers. His colleagues who's really early in her career suggested a book, but he's not quite sure whether he would spend time on reading that, as he thinks she's very early in her career and maybe he should better read books of people who're senior and more experienced as he thinks those people probably know better what they're talking about. ",
+				"He looks up one of his gurus on the internet and find his online profile where he suggests some books he wrote himself. He immediately has a look at the preview online, and orders it on Amazone. ",
+				"When reading the document, he makes a short summary for himself about the book. He thinks about sharing it with his colleagues but doesn't email it to them because he's afraid they'll judge him if they think it's not that good. However, when they would ask about it, he would share it with them.",
+				"When discussing the survey results with his colleagues, he tries to listen to all of them, whether it's his colleague who's early in her career, or the colleague who's more senior. When he's doubting about some conclusions though, he's more likely to ask the senior colleague first because he thinks she has more experience and he might learn more from her.",
+				"At the end of the project, they start working on writing the paper. He appreciates it when his colleagues come up with the idea to write on it collaboratively using Google Docs or the online Wiki, however when he would need to do it on his own, he would be more likely to write it just in Word. ",
+				"When publishing the paper, he acknowledges it's important to let other people know about this awesome paper. He types up his email in draft first and afterwards copies it into an email, with the paper in the attachment. He sends it to the most important people and institutions who might be interested in this paper. His colleagues later also send it to the smaller institutions and convince Peter these might be important as well." 
+			],
+			"as-lecturer" : [
+				"Peter is a lecturer who has been teaching for some years now in the same University.",
+				"Next week he needs to lecture some lessons about a topic from his field, Engineering. He knows that because he got a year planning from the departmental director some years ago, and he assumes that's still quite the same. However, he's not sure but he assumes it still is. He starts preparing his lesson, which he basically does by reusing the lessons from last year. However, he also needs to prepare some new lessons and therefore he has a look at some handbooks and lecture books. He's not that picky about the type of lessons, he's fine with the offered ones and is probably not going to make his lessons very interactive as he thinks his students should be mature enough to digest frontal-taught lessons as well. He doesn't prepare that much resources for during the lesson, he imagines reusing the exercises from the handbook rather than making new interactive ones. ",
+				"This means that when he does share some resources with his students, he rather does this in class handing it over hand to hand rather than putting it in an online environment. He thinks this is also a good idea because students who don't attend classes, won't get the information either which should stimulate them to come to class.",
+				"One of Peter's colleagues attended a training session to use an online environment for making learning easier and more effective, like for sharing resources online and much more other options. He heard about that online environment before, but he never thought about it in depth. He thinks he might start looking into it to start using it next academic year, even if it would just be to check whether students downloaded things or not. He imagines at least using it in a basic way and would like to get a lot of benefits from it, but doesn't imagine putting a lot of effort in it because he has so many other important things to do.",
+				"A bit later that year, he should be preparing for the exams. He would like to reuse questions from last year to save time, but he imagines students might have got the questions from other students from last year, so he decides to change the questions slightly. He could have asked one of his colleagues because he might have got more exam questions, but he didn't because he image that person being very busy as well at this time of the year.",
+				"When correcting the exams, he wished he had an assistant to help him out because it's quite overwhelming. He decides to use Excel to put in all the marks. This spreadsheet lives on his own computer and nowhere else because he wouldn't trust that. He prints it out hands it over to the departmental secretary so she could then send letters to the students with their marks. He doesn't send this spreadsheet via email, because he can imagine bright students hacking his account."
+			],
+			"image" : "images/peter.jpg"
+		},
+		{
+			"id" : "kate",
+			"label" : "Kate",
+			"type" : "Persona",
+			"as-student" : [
+				"Kate is a third year undergraduate student. She has classes tomorrow afternoon. As she usually does to prepare the next big lesson, she's meeting with her best friends from class, Ann and Sarah in the pub. Last year one of them suggested to meet weekly in order to get regular updates and discussion. Since then, she hasn't missed one!",
+				"When going to the department, she realises she still needs to send out some emails as she's the vice-organiser of the university sports club. Luckily she's still right on time for class. During class, she notes down all the questions she has and goes to the lecturer after class to ask him again. ",
+				"When leaving the building, she bumps into Chris, a first year student who she knows from her college and who's doing the same subject as she's doing. Chris seemed to have been looking for Kate to ask her some questions about the subject. Kate doesn't mind. In fact, she likes it when people ask her questions because she's always willing to help and she has all the knowledge, so why keeping it for yourselves anyway? However, Kate needs to leave fairly soon so she shares her email address. ",
+				"That evening she needs to write an essay but she has some doubts about some things the lecturer said. She knows she can always ask Ann and Sarah so calls them right away. They don't pick up immediately so she sends them an email in that case. ",
+				"While waiting for a response, she doesn't want to waste her time and starts preparing a bit for the supervision of last week. She doubts what it was they needed to prepare, but she always notes down everything in her personal agenda so she finds the answers to her problem immediately. 5 minutes later she enters the library. She's very busy though because she still needs to go to the sports club, so she can't spend stay too long. Luckily, from her experience, she knows exactly where to find the books she needs. "
+			],
+			"as-postgraduate" : [
+				"Kate is a second year PhD student. She's doing it part-time though, because these studies are too expensive so she needs to work as well and when she's not working she's working very hard on her PhD. This is the only way to do it because she couldn't find any funding, even after looking for it desperately. Because she's part-time, she's incredibly busy and time-pressured because people who start their full-time studies after she started, could actually finish before her and therefore steal her ideas. This limits her conversations with people, because she really wants to discuss the topics but she can't because of the possibility of them stealing her ideas. ",
+				"She's mainly focusing on research as she doesn't have that much classes. When she does have classes, she might not spend too much time on preparing them because of the main focus on her research. She might read some documents though which could be interesting for the class as well as for her research.",
+				"In order to do her research, she's constantly looking for talks and events which could be relevant to her topic. This is really hard though, so she subscribed to an email list which warns her every time there is something going on. In that case, she needs to work it out with her job so she can take a day off from work. ",
+				"When she can attend an event, which is sometimes at the other side of the world, she books her flight and hotel. When she's at the event, she finally gets the opportunity to talk to people within the same field, who are really hard to find because it's such a small field. She looks for people she desperately wanted to meet and exchanges contact details in case she would have any questions in the future. Like that she builds up a mental model of all her contacts and she knows perfectly who to contact in what situation. Once she couldn't attend an event, which was a shame, so she immediately emailed the organiser of the event to get more information.",
+				"Apart from attending events to accomplish her research, she's also constantly looking for interesting books. This is sometimes a hard job because some books and documents are so rare that she needs to travel long distances again. Mostly she find out about them by reading the list of content at the back of the books she's already reading or by people suggesting it to her, when attending an event for example. However, if she wouldn't undertake these steps, or if people wouldn't give her this information, she would never find out about it.",
+				"She doesn't have that much supervisions any more, but luckily her supervisor recognises her time-pressures, so it's up to Kate to arrange a meeting with her supervisor in case of questions or problems."
+			],
+			"as-researcher" : [
+				"Kate is the lead researcher within her department. She is quite senior in her career and therefore has a lot of experience. Some weeks ago she started on a new big research project, together with some colleagues who're more early in their career.",
+				"When starting data gathering for this project, she knows immediately what methods to use in this case, as she did some many projects before. She decides to do interviews in combination with workshops, as this probably will give an overlap in information and therefore exclude doubtful areas. She thinks it would also be useful to have a survey running at the same moment, as this will gather information while she can do the interviews and workshops. When deciding to do all these methods, she carefully explains her early-career colleagues why she would opt for doing this but listens to the arguments they have to make. Peter, one of her colleagues, doesn't immediately see the overlapping methods being useful, and therefore she listens to his arguments. At the same time she also suggests him to read some online documents and papers she thought might be useful for him to read. She came across these documents, books and papers in the past and thought they could be useful in the future. Therefore she bookmarked them and even made a list like a database with useful links she can now from time to time share with other people. ",
+				"Isobel, another early-career colleague, suggests to start a blog, which Kate think is a really good idea and she lets her go about creating this blogsite.",
+				"When analysing the information from the interviews, workshops and surveys, she again already has an idea on how about doing this. She thinks of using a spreadsheet which can be shared and viewed with her colleagues at the same time, something like Google Docs. Like that everyone can work on the same document. However, she first asks her colleagues about their opinions as she's always open for new inputs, but she's also aware they might be more motivated if they get the opportunity to have more input in the process.",
+				"When starting to write and document the paper, she suggests to her colleagues to use an online wiki or Google Docs so they can again work on it collaboratively rather than each writing documents and then needing to email it to each other over and over again every time something changed.",
+				"When finally at the end of the project they need to publish the paper, she sends it to acquaintances who she knows are important and asks them to disseminate it as well. She knows peers are very important but tells her colleagues to send it to other external known and unknown institutions as well so the word gets spread."
+			],
+			"as-lecturer" : [
+				"Kate is a senior lecturer in her department, she has been in this role for various years.",
+				"Next week she needs to lecture again about a topic from her field, Engineering. ",
+				"She knows that just because she has so much experience; she knows perfectly when the academic year starts and when she has to teach what subject etc.",
+				"She doesn't have the need to prepare these lessons, because she has already been teaching them over and over again and so they have already been prepared and she actually already knows them by heart as well. However she doesn't intend to change the lessons a lot, she always tries to adapt them a bit to the interests of the students of that year. She knows for example a lot of the students are orginially from China, so she tries to adapt the lessons a bit to their cultural background.",
+				"When lecturing, she doesn't only does frontal teaching, but she also tries to incorporate some groupwork. She doesn't really doubt what method to use in what situation; she knows perfectly how to handle in every lecture situation.",
+				"During the lessons, she also shares resources with her students she has prepared some years ago and which she has reused each year. Those resources are mostly the Powerpoint presentation used during that lesson, exercises and extra website links, books and other useful background information. She intends to share the most important information during the lesson itself, because she experienced that not all students attend classes, but like that they actually need to attend them in order to get hold of all the information. She shares all the other information through the online environment she has been used for years; the files, books and files are shared, as well as the links. She also puts calendars etc on this environment. ",
+				"As preparation to the exams, she wants the students to deliver some tasks. Some years ago, she made them deliver it through this online system as well, rather than posting it in her mailbox at the department. She thinks this is handy for her because there's no hassle with all the paper or lost exemplars. She can also immediately annotate the marks for each of the tasks in a marking spreadsheet which is embedded in this system. ",
+				"For the exames, she doesn't really need to prepare that much anymore. Over the years, she has created 7 different sets of exam questions which she now uses as a database she can choose from every year. They're stored safely on a usb stick and her local computer.",
+				"To mark the exams, she hands them over to an assistant. After that assistant has marked them, Kate asks to hand over that mark spreadsheet via a USB stick rather than email. She later than enters the marks on the online environment so the students get an announcement with their scores. "
+			],
+			"as-supervisor" : [
+				"Kate  is a scientist who normally works on the science park developing new drug technology. She has stayed in touch with her old college and couldn't say no when they asked her to supervise two years ago. Now she has 6 supervision pairs, final year Chemists taking specialist modules, and this is also her first year as a DOS. Kate knows real world scientists make great supervisors and DOSs for students in their 3rd/4th year, who are thinking about careers, but it's tricky to schedule supervision meetings around her real job, and she has to drive to college on the far side of town which takes time too. She hopes to be able to schedule the supervisions together so she can fit them in to only two or three trips out of the office.  She wants to do a good job for her college and students, but knows that sometimes work is on her mind when she needs to be thinking about teaching.  She's glad that Sakai exists to help her track what her supervisees are up to week to week, and (less regularly!) what the students she DOSs are doing, including their academics across all subjects, and a glance at their social activity if she can see it, to check they aren't too distracted! Not living in college makes it harder to keep up with much needed gossipy information, like whether Bob is drinking a lot and being silly, or if Bill's rowing schedule means he tends to miss early morning lectures. "
+			],
+			"image" : "images/kate.jpg"
+		},
+		{
+			"id" : "phase1",
+			"label" : "Implementation Phase 1",
+			"type" : "ImplementationPhase",
+			"due" : "2010-06-01"
+		},
+		{
+			"id" : "phase2",
+			"label" : "Implementation Phase 2",
+			"type" : "ImplementationPhase",
+			"due" : "2010-10-01"
+		},
+		{
+			"id" : "phase3",
+			"label" : "Implementation Phase 3",
+			"type" : "ImplementationPhase",
+			"due" : "2011-02-01"
+		}
+		
+
+       ]
+   }

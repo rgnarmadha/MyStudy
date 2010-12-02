@@ -1,0 +1,180 @@
+[INFO] Scanning for projects...
+[ERROR] The build could not read 57 projects -> [Help 1]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.testutils:0.10-SNAPSHOT (C:\Users\God\nakamura\libraries\testutils\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Failure to find org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT in http://powermock.googlecode.com/svn/repo/ was cached in the local repository, resolution will not be reattempted until the update interval of powermock-repo has elapsed or updates are forced and 'parent.relativePath' points at wrong local POM @ line 22, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.utils:0.10-SNAPSHOT (C:\Users\God\nakamura\libraries\utils\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 22, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.formauth:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\formauth\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 16, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.auth.trusted:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\trustedauth\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 19, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.securityloader:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\securityloader\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 16, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.jpaprovider:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\jpaprovider\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 21, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.persistence:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\persistence\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 22, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.configuration:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\configuration\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 15, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.connections:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\connections\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 16, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.version:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\version\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 22, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.memory:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\memory\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 22, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.jaxp-api:1.3.0 (C:\Users\God\nakamura\bundles\jaxp-api\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 22, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.json-lib:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\json-lib\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 22, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.eclipse.persistence.jpa:1.1.0-0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\jpa\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 15, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.eclipse.persistence.core:1.1.0 (C:\Users\God\nakamura\bundles\jpacore\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 15, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.jetty-config:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\jetty-config\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 15, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.jcr:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\jcr\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 22, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.locking:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\locking\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 22, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.messaging:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\messaging\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 22, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.files:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\files\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 15, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.personal:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\personal\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 16, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.presence:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\presence\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 22, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.resource:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\resource\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 22, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.meservice:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\meservice\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 22, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.apache.sling.jcr.jackrabbit.server:2.1.0-0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\server\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 15, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.image:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\image\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 2, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.proxy:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\proxy\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 2, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.site:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\site\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 16, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.search:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\search\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 16, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.discussion:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\discussion\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 22, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.smtp:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\smtp\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 16, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.user:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\user\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 16, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.events:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\events\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 21, column 10 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.batch:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\batch\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 16, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:javax.activation-mail:${javax.activation.version}-${javax.mail.version}-0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\activation-mail\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 15, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.email.outgoing:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\email-outgoing\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 4, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.commons.commons-httpclient:3.1-0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\commons\commons-httpclient\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 22, column 13 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.activemq:5.3.0-0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\activemq\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 2, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.activity:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\activity\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 16, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.cluster:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\cluster\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 19, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.chat:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\chat\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 18, column 10 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.doc:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\doc\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 19, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.docproxy:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\docproxy\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 3, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.google-collections:0.8-0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\google-collections\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 22, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.woodstox:4.0.7-0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\woodstox\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 22, column 10 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.calendar:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\calendar\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Failure to find org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT in http://m2.modularity.net.au/snapshots was cached in the local repository, resolution will not be reattempted until the update interval of modularity-snapshots has elapsed or updates are forced and 'parent.relativePath' points at wrong local POM @ line 18, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.authz:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\authz\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 16, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.basiclti:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\basiclti\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 18, column 10 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.profile:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\profile\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 5, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.tika:0.7-0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\tika\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 19, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.captcha:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\captcha\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 19, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.webdav:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\webdav\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 17, column 10 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.privacy:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\privacy\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 5, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.pages:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\pages\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 2, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.userinitializer:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\userinitializer\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 16, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.http:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\http\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 19, column 11 -> [Help 2]
+[ERROR]   
+[ERROR]   The project org.sakaiproject.nakamura:org.sakaiproject.nakamura.robots.txt:0.10-SNAPSHOT (C:\Users\God\nakamura\bundles\robots.txt\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM: Could not find artifact org.sakaiproject.nakamura:base:pom:0.10-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 22, column 10 -> [Help 2]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/ProjectBuildingException
+[ERROR] [Help 2] http://cwiki.apache.org/confluence/display/MAVEN/UnresolvableModelException

@@ -1,0 +1,18 @@
+{
+  "sakai:query-language": "xpath",
+  "sakai:query-template": "/{_myFeed}//*[@sling:resourceType='sakai/activity'] order by @{sortOn|jcr:created} {sortOrder|descending}",
+  "sling:resourceType": "sakai/search",
+  "sakai:propertyprovider": "Activity",
+  "sakai:title": "Activity - My feed.",
+  "sakai:shortDescription": "Shows the latest activities for the current user.",
+  "sakai:parameters" : [
+                        "{\"name\" : \"sortOn\", \"description\" : \"The property you want to sort on.\"}",
+                        "{\"name\" : \"sortOrder\", \"description\" : \"The way of ordering. 'ascending' or 'descending'.\"}"      
+      ],
+  "sakai:description": [
+                        "Shows the activities that are in the current logged in user's feed."
+                        ],
+  "sakai:response": [
+                     "Doing a standard query searching for all nodes matching 'awesomeness'.<br /> Example: Request to: /var/search/sitecontent.json?q=awesomeness<br /><pre class=\"json\">{\n   \"query\": \"//*[jcr:contains(.,\"awesomeness\")]\",\n   \"items\": 25,\n   \"total\": 1,\n   \"results\": [\n       {\n           \"acl\": \"parent\",\n           \"type\": \"webpage\",\n           \"id\": \"awesomeness\",\n           \"sling:resourceType\": \"sakai/page\",\n           \"position\": \"300000\",\n           \"jcr:created\": \"2009-12-21T18:18:15\",\n           \"jcr:mixinTypes\": [\n               \"mix:lockable\"\n           ],\n           \"jcr:primaryType\": \"sling:Folder\",\n           \"title\": \"Awesomeness\"\n       }\n   ]</pre>"
+                    ]
+}

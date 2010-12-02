@@ -1,0 +1,24 @@
+Files
+-----
+hybrid.conf: should be placed in your existing apache2.2 conf.d config directory.
+nightly.sh: shell script used to build and run the nightly instances of hybrid mode (i.e. Sakai 2+3).
+server.xml: The tomcat5.5.x config used to bind tomcat to non-default ports to avoid conflict with K2 ports.
+
+Notes
+-----
+1) For nightly.sh to work, you must have apache-tomcat-5.5.30.tar.gz in $BUILD_DIR.
+
+2) To install apache2.2 on Mac OS X, I used MacPorts; see:
+http://confluence.sakaiproject.org/display/KERNDOC/Installing+git
+
+Then install apache2 using the following command:
+sudo port install apache2 +no_startupitem
+
+I then have an alias I use for starting and stopping apache (this avoids the apache 1.3.x installed with Mac OS X):
+alias apache2ctl='sudo /opt/local/apache2/bin/apachectl'
+
+For example: apache2ctl start; apache2ctl stop; apache2ctl restart
+
+3) To add the necessary proxy settings to your apache2.2 config: copy hybrid.conf to your local apache2 conf.d directory: e.g.: /opt/local/apache2/conf.d/hybrid.conf.
+
+4) The server.xml from ./server.xml also needs to replace the one in $TOMCAT_HOME/conf/server.xml (just to bind to different ports than k2). The ./nightly.sh performs this step for you, so this is just an FYI.

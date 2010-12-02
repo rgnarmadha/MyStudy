@@ -1,0 +1,6 @@
+{
+	"sling:resourceType": "sakai/external-repository-search",
+	"sakai:repository-processor": "url",
+	"sakai:search-prop-starts-with": "{starts-with}",
+	"sakai:search-prop-ends-with": "{ends-with}"
+}

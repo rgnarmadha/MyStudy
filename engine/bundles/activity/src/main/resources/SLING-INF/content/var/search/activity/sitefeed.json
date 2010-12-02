@@ -1,0 +1,19 @@
+{
+  "sakai:query-language": "xpath",
+  "sakai:query-template": "/{_siteFeed}//*[@sling:resourceType='sakai/activity'] order by @{sortOn|jcr:created} {sortOrder|descending}",
+  "sling:resourceType": "sakai/search",
+  "sakai:propertyprovider": "Activity",
+  "sakai:title": "Activity - Site.",
+  "sakai:shortDescription": "Shows the latest activities for a site.",
+  "sakai:parameters" : [
+                        "{\"name\" : \"site\", \"description\" : \"The absolute path to the site.\"}",
+                        "{\"name\" : \"sortOn\", \"description\" : \"The property you want to sort on.\"}",
+                        "{\"name\" : \"sortOrder\", \"description\" : \"The way of ordering. 'ascending' or 'descending'.\"}"      
+      ],
+  "sakai:description": [
+                        "Shows the activities that are in the feed of a specified site.."
+                        ],
+  "sakai:response": [
+                     ""
+                    ]
+}

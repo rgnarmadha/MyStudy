@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<bundles>
+  <startLevel level="0">
+    <bundle>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>1.4</version>
+    </bundle>
+    <bundle>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
+      <version>1.2.1</version>
+    </bundle>
+    <bundle>
+      <groupId>commons-collections</groupId>
+      <artifactId>commons-collections</artifactId>
+      <version>3.2.1</version>
+    </bundle>
+    <bundle>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>2.4</version>
+    </bundle>
+    <bundle>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+      <version>1.1.1</version>
+    </bundle>
+    <bundle>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>org.apache.felix.http.whiteboard</artifactId>
+      <version>2.0.4</version>
+    </bundle>
+  </startLevel>
+  <startLevel level="1">
+
+    <!--
+      We probably shouldn't be binding to Sling releases, but the
+      logging is too nice not to have.
+    -->
+    <bundle>
+      <groupId>org.apache.sling</groupId>
+      <artifactId>org.apache.sling.commons.log</artifactId>
+      <version>2.0.7-SNAPSHOT</version>
+    </bundle>
+
+    <!-- To bring in JMS we need all the geronimo bundles -->
+    <bundle>
+      <groupId>org.apache.geronimo.specs</groupId>
+      <artifactId>geronimo-jta_1.1_spec</artifactId>
+      <version>1.1.1</version>
+    </bundle>
+    <bundle>
+      <groupId>org.apache.geronimo.specs</groupId>
+      <artifactId>geronimo-j2ee-connector_1.5_spec</artifactId>
+      <version>2.0.0</version>
+    </bundle>
+    <!--  To bring in JMX we need the ejb specs -->
+    <bundle>
+      <groupId>org.sakaiproject.nakamura</groupId>
+      <artifactId>org.sakaiproject.nakamura.specs.ejb</artifactId>
+      <version>0.10-SNAPSHOT</version>
+    </bundle>
+  </startLevel>
+  <startLevel level="5">
+
+    <!-- Bring in the JMS and JMX bundles for all of our activemq stuff -->
+    <bundle>
+      <groupId>org.sakaiproject.nakamura</groupId>
+      <artifactId>org.sakaiproject.nakamura.specs.jms</artifactId>
+      <version>0.10-SNAPSHOT</version>
+    </bundle>
+    <bundle>
+      <groupId>org.sakaiproject.nakamura</groupId>
+      <artifactId>org.sakaiproject.nakamura.specs.jmx</artifactId>
+      <version>0.10-SNAPSHOT</version>
+    </bundle>
+
+    <bundle>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>org.apache.felix.webconsole</artifactId>
+      <version>3.0.0</version>
+    </bundle>
+    <bundle>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>org.apache.felix.webconsole.plugins.event</artifactId>
+      <version>1.0.2</version>
+    </bundle>
+    <bundle>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>org.apache.felix.webconsole.plugins.memoryusage
+      </artifactId>
+      <version>1.0.0</version>
+    </bundle>
+    <bundle>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>org.apache.felix.bundlerepository</artifactId>
+      <version>1.4.0</version>
+    </bundle>
+  </startLevel>
+  <startLevel level="10">
+    <bundle>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>org.apache.felix.eventadmin</artifactId>
+      <version>1.0.0</version>
+    </bundle>
+    <bundle>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>org.apache.felix.scr</artifactId>
+      <version>1.4.0</version>
+    </bundle>
+    <bundle>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>org.apache.felix.configadmin</artifactId>
+      <version>1.2.4</version>
+    </bundle>
+    <bundle>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>org.apache.felix.metatype</artifactId>
+      <version>1.0.4</version>
+    </bundle>
+    <bundle>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>org.apache.felix.fileinstall</artifactId>
+      <version>1.2.0</version>
+    </bundle>
+  </startLevel>
+  <startLevel level="11">
+    <bundle>
+      <groupId>org.sakaiproject.nakamura</groupId>
+      <artifactId>org.sakaiproject.nakamura.commons.commons-pool
+      </artifactId>
+      <version>1.5.2-0.10-SNAPSHOT</version>
+    </bundle>
+    <bundle>
+      <groupId>org.sakaiproject.nakamura</groupId>
+      <artifactId>org.sakaiproject.nakamura.commons.commons-httpclient
+      </artifactId>
+      <version>3.1-0.10-SNAPSHOT</version>
+    </bundle>
+    <bundle>
+      <groupId>org.sakaiproject.nakamura</groupId>
+      <artifactId>org.sakaiproject.nakamura.commons.commons-codec
+      </artifactId>
+      <version>1.4-0.10-SNAPSHOT</version>
+    </bundle>
+    <bundle>
+      <groupId>org.sakaiproject.nakamura</groupId>
+      <artifactId>org.sakaiproject.nakamura.eventexplorer.cassandra-thrift</artifactId>
+      <version>0.10-SNAPSHOT</version>
+    </bundle>
+    <!-- include a local AMQ broker -->
+    <bundle>
+      <groupId>org.sakaiproject.nakamura</groupId>
+      <artifactId>org.sakaiproject.nakamura.activemq</artifactId>
+      <version>5.3.0-0.10-SNAPSHOT</version>
+    </bundle>
+  </startLevel>
+  <!--
+    Start of Sakai Bundles, add new Sakai bundles below this point at
+    the appropriate run level
+  -->
+  <startLevel level="15">
+    <bundle>
+      <groupId>org.sakaiproject.nakamura</groupId>
+      <artifactId>org.sakaiproject.nakamura.eventexplorer.listeners</artifactId>
+      <version>0.10-SNAPSHOT</version>
+    </bundle>
+    <bundle>
+      <groupId>org.sakaiproject.nakamura</groupId>
+      <artifactId>org.sakaiproject.nakamura.eventexplorer.ui</artifactId>
+      <version>0.10-SNAPSHOT</version>
+    </bundle>
+  </startLevel>
+</bundles>

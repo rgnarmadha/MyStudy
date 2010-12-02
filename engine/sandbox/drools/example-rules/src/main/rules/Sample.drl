@@ -1,0 +1,27 @@
+package com.sample
+ 
+import com.sample.DroolsTest.Message;
+import javax.jcr.Session;
+import java.util.Map;
+
+global Session session;
+global Map results;
+
+rule "Hello World"
+	when
+		m : Message( status == Message.HELLO, myMessage : message )
+	then
+		System.out.println( myMessage ); 
+		m.setMessage( "Goodbye cruel world" );
+		m.setStatus( Message.GOODBYE );
+		results.put("helloMessageFinal", m);
+		update( m );
+end
+
+rule "GoodBye"
+	when
+		Message( status == Message.GOODBYE, myMessage : message )
+	then
+		System.out.println( myMessage );
+		results.put("goodbyMessageFinal", "Bye");
+end

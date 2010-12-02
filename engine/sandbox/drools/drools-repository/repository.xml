@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+  <!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements. See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to you under the Apache License, Version
+    2.0 (the "License"); you may not use this file except in compliance
+    with the License. You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0 Unless required by
+    applicable law or agreed to in writing, software distributed under
+    the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+    OR CONDITIONS OF ANY KIND, either express or implied. See the
+    License for the specific language governing permissions and
+    limitations under the License.
+  -->
+<!DOCTYPE Repository
+          PUBLIC "-//The Apache Software Foundation//DTD Jackrabbit 2.0//EN"
+          "http://jackrabbit.apache.org/dtd/repository-2.0.dtd">
+<Repository>
+    <FileSystem class='org.apache.jackrabbit.core.fs.mem.MemoryFileSystem'>
+    </FileSystem>
+
+  <Security appName="Jackrabbit">
+        <!--
+            security manager:
+            class: FQN of class implementing the JackrabbitSecurityManager interface
+        -->
+        <SecurityManager class="org.apache.jackrabbit.core.security.simple.SimpleSecurityManager" workspaceName="security">
+            <!--
+            workspace access:
+            class: FQN of class implementing the WorkspaceAccessManager interface
+            -->
+            <!-- <WorkspaceAccessManager class="..."/> -->
+            <!-- <param name="config" value="${rep.home}/security.xml"/> -->
+        </SecurityManager>
+
+        <!--
+            access manager:
+            class: FQN of class implementing the AccessManager interface
+        -->
+        <AccessManager class="org.apache.jackrabbit.core.security.simple.SimpleAccessManager">
+            <!-- <param name="config" value="${rep.home}/access.xml"/> -->
+        </AccessManager>
+
+        <LoginModule class="org.apache.jackrabbit.core.security.simple.SimpleLoginModule">
+           <!-- 
+              anonymous user name ('anonymous' is the default value)
+            -->
+           <param name="anonymousId" value="anonymous"/>
+           <!--
+              administrator user id (default value if param is missing is 'admin')
+            -->
+           <param name="adminId" value="admin"/>
+        </LoginModule>
+  </Security>
+
+  <Workspaces rootPath="${rep.home}/workspaces"
+    defaultWorkspace="default" />
+
+
+
+
+  <Workspace name="${wsp.name}">
+    <FileSystem class='org.apache.jackrabbit.core.fs.mem.MemoryFileSystem'>
+    </FileSystem>
+
+    <PersistenceManager
+      class="org.apache.jackrabbit.core.persistence.mem.InMemPersistenceManager">
+      <param name="persistent" value="false" />
+    </PersistenceManager>
+    <SearchIndex class="org.apache.jackrabbit.core.query.lucene.SearchIndex">
+      <param name="path" value="${wsp.home}/index" />
+      <!--
+        I think this is default for JR2 <param name="textFilterClasses"
+        value="org.apache.jackrabbit.extractor.MsWordTextExtractor,org.apache.jackrabbit.extractor.MsExcelTextExtractor,org.apache.jackrabbit.extractor.MsPowerPointTextExtractor,org.apache.jackrabbit.extractor.PdfTextExtractor,org.apache.jackrabbit.extractor.OpenOfficeTextExtractor,org.apache.jackrabbit.extractor.RTFTextExtractor,org.apache.jackrabbit.extractor.HTMLTextExtractor,org.apache.jackrabbit.extractor.XMLTextExtractor,org.apache.jackrabbit.extractor.PlainTextExtractor"/>
+        <param name="extractorPoolSize" value="2"/>
+      -->
+      <!--
+        this is the batch size of the search get, we probably only want
+        100 items at any one time.
+      -->
+      <param name="resultFetchSize" value="100" />
+      <param name="supportHighlighting" value="true" />
+    </SearchIndex>
+  </Workspace>
+
+  <Versioning rootPath="${rep.home}/version">
+    <FileSystem class='org.apache.jackrabbit.core.fs.mem.MemoryFileSystem'>
+    </FileSystem>
+
+    <PersistenceManager
+      class="org.apache.jackrabbit.core.persistence.mem.InMemPersistenceManager">
+      <param name="persistent" value="false" />
+    </PersistenceManager>
+  </Versioning>
+
+  <SearchIndex class="org.apache.jackrabbit.core.query.lucene.SearchIndex">
+    <param name="path" value="${rep.home}/repository/index" />
+    <param name="supportHighlighting" value="true" />
+  </SearchIndex>
+
+</Repository>

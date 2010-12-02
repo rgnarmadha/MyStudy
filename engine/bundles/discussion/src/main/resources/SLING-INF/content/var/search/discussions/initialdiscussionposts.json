@@ -1,0 +1,16 @@
+{
+  "sakai:query-language": "xpath",
+  "sakai:query-template": "/{_path}//*[@sling:resourceType=\"sakai/message\" and @sakai:type=\"discussion\" and @sakai:sendstate=\"notified\" and @sakai:initialpost=\"true\"] order by @{sortOn|jcr:score} {sortOrder|descending}",
+  "sling:resourceType": "sakai/search",
+  "sakai:resultprocessor": "Message",
+  "sakai:propertyprovider": "DiscussionInitialPost",
+  "sakai:title": "Discussion - Initial posts",
+  "sakai:shortDescription": "Retrieves all the initial posts under a certain path.",
+  "sakai:parameters" : [
+      "{\"name\" : \"path\", \"description\" : \"The path to look under. It's recommended to use a messagestore\"}",
+      "{\"name\" : \"sortOn\", \"description\" : \"The name of the property you wish to sort on. This only has any affect if it is used with the sortOrder parameter. Default is sakai:filename\"}",
+      "{\"name\" : \"sortOrder\", \"description\" : \"The order you wish to sort in. Either 'ascending' or 'descending'.\"}"      
+      ],
+  "sakai:description": "This will look for initial discussion posts under a certain path.",
+  "sakai:response": "Doing a query for discusson posts identified by id26656626 on the my-course-site.<br /> Example: /var/search/discussions/threaded.json?marker=id26656626&path=/sites/my-course-site<br /><pre class=\"json\">{\n   \"query\": \"//sites/my-course-site/store//*[@sling:resourceType=\"sakai/message\" and @sakai:type=\"discussion\" and @sakai:sendstate=\"notified\" and @sakai:initialpost=\"true\"]\",\n   \"items\": 25,\n   \"total\": 1,\n   \"results\": [\n       {\n           \"sakai:from\": \"simong\",\n           \"sakai:sendstate\": \"notified\",\n           \"sakai:id\": \"66afb63945a908a150bf436c4e63099670a9a43a\",\n           \"sakai:body\": \"Why do you think sakai 3 will be so much better then sakai 2?\",\n           \"sakai:subject\": \"Why 3akai is awesome.\",\n           \"sling:resourceType\": \"sakai/message\",\n           \"jcr:mixinTypes\": [\n               \"rep:AccessControllable\"\n           ],\n           \"sakai:messagebox\": \"inbox\",\n           \"sakai:to\": \"s-my-course-site\",\n           \"sakai:initialpost\": \"true\",\n           \"sakai:writeto\": \"/sites/my-course-site/store/\",\n           \"sakai:read\": \"true\",\n           \"sakai:marker\": \"id26656626\",\n           \"jcr:primaryType\": \"nt:unstructured\",\n           \"sakai:type\": \"discussion\",\n           \"sakai:created\": \"2009-12-22 03:25:58+0000\"\n       }\n   ]</pre>"
+}

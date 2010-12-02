@@ -1,0 +1,494 @@
+{"items": [
+    {
+        "id": "Content.Authored-Content.Auto-Created-Pages",
+        "implementationphase": "phase2",
+        "label": "Content.Authored-Content.Auto-Created-Pages",
+        "parent": "Content.Authored-Content",
+        "requiredby": "",
+        "requirementpath": [
+            "Content",
+            "Content.Authored-Content"
+        ],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Content.External",
+        "implementationphase": "phase1",
+        "label": "Content.External",
+        "parent": "Content",
+        "requiredby": "",
+        "requirementpath": ["Content"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Content.Widgets.Viewers",
+        "implementationphase": "phase3",
+        "label": "Content.Widgets.Viewers",
+        "parent": "Content.Widgets",
+        "requiredby": "",
+        "requirementpath": [
+            "Content.Widgets",
+            "Content"
+        ],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Sites.Associated-Authorizables",
+        "implementationphase": "phase1",
+        "label": "Sites.Associated-Authorizables",
+        "parent": "Sites",
+        "requiredby": "",
+        "requirementpath": ["Sites"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Networking.messaging.email",
+        "implementationphase": "phase1",
+        "label": "Networking.messaging.email",
+        "parent": "Networking.messaging",
+        "requiredby": "",
+        "requirementpath": [
+            "Networking.messaging",
+            "Networking"
+        ],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Networking.messaging.System-Notification",
+        "implementationphase": "phase2",
+        "label": "Networking.messaging.System-Notification",
+        "parent": "Networking.messaging",
+        "requiredby": "",
+        "requirementpath": [
+            "Networking.messaging",
+            "Networking"
+        ],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Networking.profile",
+        "implementationphase": "phase1",
+        "label": "Networking.profile",
+        "parent": "Networking",
+        "requiredby": "",
+        "requirementpath": ["Networking"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Content.Uploaded.Media-Objects",
+        "implementationphase": "phase3",
+        "label": "Content.Uploaded.Media-Objects",
+        "parent": "Content.Uploaded",
+        "requiredby": "",
+        "requirementpath": [
+            "Content.Uploaded",
+            "Content"
+        ],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Content.ImportExport",
+        "implementationphase": "phase2",
+        "label": "Content.ImportExport",
+        "parent": "Content",
+        "requiredby": "",
+        "requirementpath": ["Content"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "UI-Requirements",
+        "implementationphase": "phase1",
+        "label": "UI-Requirements",
+        "parent": "",
+        "requiredby": "",
+        "requirementpath": [],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Content.Uploaded",
+        "implementationphase": "phase1",
+        "label": "Content.Uploaded",
+        "parent": "Content",
+        "requiredby": "",
+        "requirementpath": ["Content"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Sites.Collection-of-Content",
+        "implementationphase": "phase3",
+        "label": "Sites.Collection-of-Content",
+        "parent": "Sites",
+        "requiredby": "",
+        "requirementpath": ["Sites"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Content.Access-Control-of-Content",
+        "implementationphase": "phase1",
+        "label": "Content.Access-Control-of-Content",
+        "parent": "Content",
+        "requiredby": "",
+        "requirementpath": ["Content"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "UI-Requirements.Keyboard",
+        "implementationphase": "phase2",
+        "label": "UI-Requirements.Keyboard",
+        "parent": "UI-Requirements",
+        "requiredby": "",
+        "requirementpath": ["UI-Requirements"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Sites.Templated-Sites",
+        "implementationphase": "phase2",
+        "label": "Sites.Templated-Sites",
+        "parent": "Sites",
+        "requiredby": "",
+        "requirementpath": ["Sites"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Networking.Presence",
+        "implementationphase": "phase1",
+        "label": "Networking.Presence",
+        "parent": "Networking",
+        "requiredby": "",
+        "requirementpath": ["Networking"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Content.Personal-Space",
+        "implementationphase": "phase1",
+        "label": "Content.Personal-Space",
+        "parent": "Content",
+        "requiredby": "",
+        "requirementpath": ["Content"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Content.Authored-Content.Graphical-Content",
+        "implementationphase": "phase3",
+        "label": "Content.Authored-Content.Graphical-Content",
+        "parent": "Content.Authored-Content",
+        "requiredby": "",
+        "requirementpath": [
+            "Content",
+            "Content.Authored-Content"
+        ],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Content.Authored-Content",
+        "implementationphase": "phase2",
+        "label": "Content.Authored-Content",
+        "parent": "Content",
+        "requiredby": "",
+        "requirementpath": ["Content"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Sites.Templated-Sites.Courses",
+        "implementationphase": "phase2",
+        "label": "Sites.Templated-Sites.Courses",
+        "parent": "Sites.Templated-Sites",
+        "requiredby": "",
+        "requirementpath": [
+            "Sites",
+            "Sites.Templated-Sites"
+        ],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Networking.messaging.chat",
+        "implementationphase": "phase1",
+        "label": "Networking.messaging.chat",
+        "parent": "Networking.messaging",
+        "requiredby": "",
+        "requirementpath": [
+            "Networking.messaging",
+            "Networking"
+        ],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Content.Commenting-annotations",
+        "implementationphase": "phase1",
+        "label": "Content.Commenting-annotations",
+        "parent": "Content",
+        "requiredby": "",
+        "requirementpath": ["Content"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Sites.Templated-Sites.Projects",
+        "implementationphase": "phase1",
+        "label": "Sites.Templated-Sites.Projects",
+        "parent": "Sites.Templated-Sites",
+        "requiredby": "",
+        "requirementpath": [
+            "Sites",
+            "Sites.Templated-Sites"
+        ],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Networking.messaging",
+        "implementationphase": "phase1",
+        "label": "Networking.messaging",
+        "parent": "Networking",
+        "requiredby": "",
+        "requirementpath": ["Networking"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Networking",
+        "implementationphase": "phase1",
+        "label": "Networking",
+        "parent": "",
+        "requiredby": "",
+        "requirementpath": [],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Content.Tagging",
+        "implementationphase": "pahse1",
+        "label": "Content.Tagging",
+        "parent": "Content",
+        "requiredby": "",
+        "requirementpath": ["Content"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Networking.contacts",
+        "implementationphase": "phase1",
+        "label": "Networking.contacts",
+        "parent": "Networking",
+        "requiredby": "",
+        "requirementpath": ["Networking"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Content.Widgets.JournalorBlog",
+        "implementationphase": "phase2",
+        "label": "Content.Widgets.JournalorBlog",
+        "parent": "Content.Widgets",
+        "requiredby": "",
+        "requirementpath": [
+            "Content.Widgets",
+            "Content"
+        ],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Content.Searching",
+        "implementationphase": "phase1",
+        "label": "Content.Searching",
+        "parent": "Content",
+        "requiredby": "",
+        "requirementpath": ["Content"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Authorizables.Groups.Membership",
+        "implementationphase": "phase2",
+        "label": "Authorizables.Groups.Membership",
+        "parent": "Authorizables.Groups",
+        "requiredby": "",
+        "requirementpath": [
+            "Authorizables",
+            "Authorizables.Groups"
+        ],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Content.Widgets",
+        "implementationphase": "pahse1",
+        "label": "Content.Widgets",
+        "parent": "Content",
+        "requiredby": "",
+        "requirementpath": ["Content"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Sites.Collection-of-Content.Structured-organization",
+        "implementationphase": "phase1",
+        "label": "Sites.Collection-of-Content.Structured-organization",
+        "parent": "Sites.Collection-of-Content",
+        "requiredby": "",
+        "requirementpath": [
+            "Sites",
+            "Sites.Collection-of-Content"
+        ],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Authorizables.Users.Impersonation",
+        "implementationphase": "phase1",
+        "label": "Authorizables.Users.Impersonation",
+        "parent": "Authorizables.Users",
+        "requiredby": "",
+        "requirementpath": [
+            "Authorizables",
+            "Authorizables.Users"
+        ],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Content",
+        "implementationphase": "phase1",
+        "label": "Content",
+        "parent": "Content",
+        "requiredby": "",
+        "requirementpath": [],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Sites.Templated-Sites.Portfolios",
+        "implementationphase": "phase2",
+        "label": "Sites.Templated-Sites.Portfolios",
+        "parent": "Sites.Templated-Sites",
+        "requiredby": "",
+        "requirementpath": [
+            "Sites",
+            "Sites.Templated-Sites"
+        ],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Authorizables.Assignments",
+        "implementationphase": "phase2",
+        "label": "Authorizables.Assignments",
+        "parent": "Authorizables",
+        "requiredby": "",
+        "requirementpath": ["Authorizables"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Authorizables.Grading",
+        "implementationphase": "phase3",
+        "label": "Authorizables.Grading",
+        "parent": "Authorizables",
+        "requiredby": "",
+        "requirementpath": ["Authorizables"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Sites",
+        "implementationphase": "phase1",
+        "label": "Sites",
+        "parent": "Sites",
+        "requiredby": "",
+        "requirementpath": [],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Authorizables.TrackingandEvents",
+        "implementationphase": "phase1",
+        "label": "Authorizables.TrackingandEvents",
+        "parent": "Authorizables",
+        "requiredby": "",
+        "requirementpath": ["Authorizables"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Networking.Events",
+        "implementationphase": "phase2",
+        "label": "Networking.Events",
+        "parent": "Networking",
+        "requiredby": "",
+        "requirementpath": ["Networking"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Content.Citation-Lists",
+        "implementationphase": "phase2",
+        "label": "Content.Citation-Lists",
+        "parent": "Content",
+        "requiredby": "",
+        "requirementpath": ["Content"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Authorizables",
+        "implementationphase": "phase1",
+        "label": "Authorizables",
+        "parent": "",
+        "requiredby": "",
+        "requirementpath": [],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Authorizables.Groups",
+        "implementationphase": "phase1",
+        "label": "Authorizables.Groups",
+        "parent": "Authorizables",
+        "requiredby": "",
+        "requirementpath": ["Authorizables"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Content.Versioning",
+        "implementationphase": "phase1",
+        "label": "Content.Versioning",
+        "parent": "Content",
+        "requiredby": "",
+        "requirementpath": ["Content"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Authorizables.Users",
+        "implementationphase": "phase1",
+        "label": "Authorizables.Users",
+        "parent": "Authorizables",
+        "requiredby": "",
+        "requirementpath": ["Authorizables"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Content.ManagedWorkflow",
+        "implementationphase": "phase2",
+        "label": "Content.ManagedWorkflow",
+        "parent": "Content",
+        "requiredby": "",
+        "requirementpath": ["Content"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Authorizables.Assesments",
+        "implementationphase": "phase3",
+        "label": "Authorizables.Assesments",
+        "parent": "Authorizables",
+        "requiredby": "",
+        "requirementpath": ["Authorizables"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Authorizables.Activity",
+        "implementationphase": "phase1",
+        "label": "Authorizables.Activity",
+        "parent": "Authorizables",
+        "requiredby": "",
+        "requirementpath": ["Authorizables"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "UI-Requirements.Mobile-devices",
+        "implementationphase": "phase3",
+        "label": "UI-Requirements.Mobile-devices",
+        "parent": "UI-Requirements",
+        "requiredby": "",
+        "requirementpath": ["UI-Requirements"],
+        "type": "RequirementPath"
+    },
+    {
+        "id": "Content.Analytics-of-Use",
+        "implementationphase": "phase2",
+        "label": "Content.Analytics-of-Use",
+        "parent": "Content",
+        "requiredby": "",
+        "requirementpath": ["Content"],
+        "type": "RequirementPath"
+    }
+]}

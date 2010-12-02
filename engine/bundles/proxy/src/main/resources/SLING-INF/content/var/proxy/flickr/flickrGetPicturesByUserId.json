@@ -1,0 +1,16 @@
+{
+    "sling:resourceType": "sakai/proxy",
+    "sakai:request-proxy-endpoint": 'http://api.flickr.com/services/rest/?method=flickr.people.getPublicPhotos&api_key=${config.flickr_api_key}&user_id=${userid}&safe_search=true&per_page=${per_page}&page=${page}&format=json&nojsoncallback=1',
+    "sakai:request-proxy-method": "GET",
+    "sakai:title": "flickr- Get the public pictures fromn a user",
+    "sakai:shortDescription": "Get the user details based on the name",
+    "sakai:description": [
+        "This proxy will get the public pictures from a user",
+        "This template requires an API key. It can be defined at ./load/org.sakaiproject.nakamura.proxy.ProxyClientServiceImpl-config.cfg<br /><code>flickr_api_key=93a86c06dc382a19bff0d4d24872ecab</code>"
+    ],
+     "sakai:parameters" : [
+        "{\"name\" : \"userid\", \"description\" : \"(Required)The user id\"}",
+        "{\"name\" : \"page\", \"description\" : \"(Required)The page\"}",
+        "{\"name\" : \"per_page\", \"description\" : \"(Required)Images per page\"}"
+    ]
+}

@@ -1,0 +1,48 @@
+{
+    "groups" : {
+        "collaborators" : {
+            "name" : "g-mysite-collaborators",
+            "members" : ["simong"]
+        },
+        "viewers" : {
+            "name" : "g-mysite-viewers",
+            "members" : ["user5", "user6", "user7"]
+        }
+    },
+    "site" : {
+        "properties" : {
+            "title" : "My site",
+            "id" : "mysite",
+            "skin" : "blue",
+            "private" : false,
+            "int" : 2,
+            "double" : 2.3,
+            "long" : 12345678912345 
+        },
+        "user" : {
+            "creator" : "simong"
+        },
+        "pages" : [
+            {
+                "id" : "week-i",
+                "type" : "webpage",
+                "position" : 1000,
+                "title" : "Week I",
+                "sections" : [
+                    {"id" : "section0", "content":"<h1>Week I</h1>"},
+                    {"id" : "section1", "content":"All you badass students are going to fail."}
+                ]
+            },
+            {
+                "id" : "week-ii",
+                "type" : "webpage",
+                "position" : 1000,
+                "title" : "Week II",
+                "sections" : [
+                    {"id" : "section0", "content":"<h1>Week II</h1>"},
+                    {"id" : "section1", "content":"All you crappy students are going to cry."}
+                ]
+            }
+        ]
+    }
+ }

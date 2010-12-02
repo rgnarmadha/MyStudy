@@ -1,0 +1,4 @@
+{
+    "sling:resourceType":"sakai/external-repository",
+    "sakai:repository-processor":"remotefiles"
+}

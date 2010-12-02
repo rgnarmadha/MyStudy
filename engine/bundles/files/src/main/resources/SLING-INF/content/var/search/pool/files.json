@@ -1,0 +1,16 @@
+{
+  "sakai:query-language": "xpath",
+  "sakai:query-template": "//element(*, sakai:pooled-content)[members/*/*/{group}/@sakai:pooled-content-manager='{group}' or members/*/*/{group}/@sakai:pooled-content-viewer='{group}'] order by @{sortOn|jcr:score} {sortOrder|descending}",
+  "sling:resourceType": "sakai/search",
+  "sakai:batchresultprocessor": "PooledContent",
+  "sakai:propertyprovider": "PooledContent",
+  "sakai:aggregate-search-results": [ "sakai:tags" ],
+  "sakai:aggregate-search-results-children": "false",
+  "sakai:title": "Pooled Content - Group search",
+  "sakai:shortDescription": "Finds all the files where a group is a manager or a viewer.",
+  "sakai:parameters" : [
+      "{\"name\" : \"group\", \"description\" : \"The id of the group you wish to look for.\"}",
+      "{\"name\" : \"sortOn\", \"description\" : \"The name of the property you wish to sort on. This only has any affect if it is used with the sortOrder parameter. Default is sakai:filename\"}",
+      "{\"name\" : \"sortOrder\", \"description\" : \"The order you wish to sort in. Either 'ascending' or 'descending'.\"}"      
+  ],
+}

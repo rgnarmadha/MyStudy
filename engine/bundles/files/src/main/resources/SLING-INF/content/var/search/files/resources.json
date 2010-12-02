@@ -1,0 +1,17 @@
+{
+  "sakai:query-language": "xpath",
+  "sakai:query-template": "/{path}//*[{_resourceTypes}] order by @{sortOn|jcr:score} {sortOrder|descending}",
+  "sling:resourceType": "sakai/search",
+  "sakai:resultprocessor": "Files",
+  "sakai:propertyprovider": "Files",
+  "sakai:aggregate-search-results": [ "sakai:tags" ],
+  "sakai:aggregate-search-results-children": "false",
+  "sakai:title": "Files - Resources.",
+  "sakai:shortDescription": "Looks for sakai/link or sakai/folder nodes at a certain path.",
+  "sakai:parameters" : [
+      "{\"name\" : \"path\", \"description\" : \"The path where to look under.\"}",
+      "{\"name\" : \"resource\", \"description\" : \"Either 'link', 'folder' or empty. An empty string will look for both links and folders.\"}"      
+      ],
+  "sakai:description": "Looks for sakai/link or sakai/folder nodes at a certain path.",
+  "sakai:response": "Find all the sakai/link's under my-course-site.<br /> Example: /var/search/files/resources.json?path=/sites/my-course-site/_files&resource=sakai/link<br /><pre class=\"json\">{\n   \"query\": \"//sites/my-course-site/_files//*[@sling:resourceType=\"sakai/link\" or @sling:resourceType=\"sakai/folder\"]\",\n   \"items\": 25,\n   \"total\": 2,\n   \"results\": [\n       {\n           \"sakai:filename\": \"Hong Kong.gif\",\n           \"sling:resourceType\": \"sakai/link\",\n           \"jcr:reference\": \"39a77398-0aa7-454f-bac1-ac627105d674\",\n           \"jcr:primaryType\": \"nt:unstructured\",\n           \"jcr:mixinTypes\": [\n               \"mix:referenceable\"\n           ],\n           \"jcr:uuid\": \"f5c409a4-9d9b-4e4e-a1c0-df0482efa94b\",\n           \"sakai:link\": \"jcrinternal:/_user/files/AdhH3eQ-\"\n       },\n       {\n           \"sakai:filename\": \"Greece.gif\",\n           \"sling:resourceType\": \"sakai/link\",\n           \"jcr:reference\": \"e10b8fdb-77d3-4d66-9341-0faadf80943e\",\n           \"jcr:primaryType\": \"nt:unstructured\",\n           \"jcr:mixinTypes\": [\n               \"mix:referenceable\"\n           ],\n           \"jcr:uuid\": \"9825750c-20ad-45eb-9f00-235d98ecf176\",\n           \"sakai:link\": \"jcrinternal:/_user/files/AdhH20A-\"\n       }\n   ],\n   \"totals\": {\n       \"sakai:tags\": [\n           \n       ]\n   }</pre>"
+}

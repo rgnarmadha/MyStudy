@@ -1,0 +1,9 @@
+{
+  "sakai:query-language": "xpath",
+  "sakai:query-template": "/{path}//*[{_typesWhere}{_tags}{_ids}{_sites}] order by @{sortOn|jcr:score} {sortOrder|descending}",
+  "sling:resourceType": "sakai/search",
+  "sakai:batchresultprocessor": "Files",
+  "sakai:propertyprovider": "Files",
+  "sakai:aggregate-search-results": [ "sakai:tags" ],
+  "sakai:aggregate-search-results-children": "false" 
+}

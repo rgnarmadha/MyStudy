@@ -1,0 +1,16 @@
+{
+  "sakai:query-language": "xpath",
+  "sakai:query-template" : "/jcr:root{_event-path}/signup/participants//*[@sling:resourceType='sakai/event-signup-participant']/jcr:deref(@sakai:calendar-profile-link,'*') order by @{sortOn|lastName} {sortOrder|ascending}",
+  "sling:resourceType": "sakai/search",
+  "sakai:resultprocessor": "Calendar",
+  "sakai:propertyprovider" : "Calendar",
+  "sakai:title": "Calendar - Day feed",
+  "sakai:shortDescription": "Find all calendar items for a certain day.",
+  "sakai:parameters" : [
+      "{\"name\" : \"event-path\", \"description\" : \"A path that points to the location of a sakai/calendar-event.\"}",
+      "{\"name\" : \"sortOn\", \"description\" : \"The name of the property you wish to sort on. This only has any affect if it is used with the sortOrder parameter. Default is sakai:vcal-DTSTART\"}",
+      "{\"name\" : \"sortOrder\", \"description\" : \"The order you wish to sort in. Either 'ascending' or 'descending'.\"}"      
+      ],
+  "sakai:description": "This will look for all the calendar items for a certain day.",
+  "sakai:response": ""
+}

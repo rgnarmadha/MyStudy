@@ -1,0 +1,20 @@
+{
+  "sakai:query-language": "xpath",
+  "sakai:query-template": "//*[@sling:resourceType='sakai/user-home' and (jcr:contains(public/*/*/*/*/*,'{q}') or jcr:contains(public/*/*/*/*,'{q}') or jcr:contains(public/*/*/*,'{q}') or jcr:contains(public/*/*,'{q}') or jcr:contains(public/*,'{q}') or jcr:contains(pages/*/*/*/*/*,'{q}') or jcr:contains(pages/*/*/*/*,'{q}') or jcr:contains(pages/*/*/*,'{q}') or jcr:contains(pages/*/*,'{q}') or jcr:contains(pages/*,'{q}'))] order by @{sortOn|jcr:score} {sortOrder|descending}",
+  "sakai:query-template-q=%2A": "//*[@sling:resourceType='sakai/user-home'] order by @{sortOn|jcr:score} {sortOrder|descending}",
+  "sling:resourceType": "sakai/search",
+  "sakai:resultprocessor": "Profile",
+  "sakai:title": "Users",
+  "sakai:shortDescription": "Get profile nodes out of the repository.",
+  "sakai:parameters" : [
+      "{\"name\" : \"q\", \"description\" : \"The term you want to match against. This will match any property on the user profile\"}",
+      "{\"name\" : \"sortOn\", \"description\" : \"The name of the property you wish to sort on. This only has any affect if it is used with the sortOrder parameter. The default is jcr:score\"}",
+      "{\"name\" : \"sortOrder\", \"description\" : \"The order you wish to sort in. Either 'ascending' or 'descending'.\"}"
+      ],
+  "sakai:description": [
+                        "Get user profile nodes out of the repository filtered by a username.",
+                        ],
+  "sakai:response": [
+                     "Doing a standard query searching for all profiles matching 'simong'.<br /> Example: Request to: /var/search/users.json?q=simong<br /><pre class=\"json\">{\n    \"query\": \"//*[@sling:resourceType=\"sakai/user-profile\" and jcr:contains(.,\"simong\")]\",\n    \"items\": 25,\n    \"total\": 1,\n    \"results\": [\n        {\n            \"picture\": \"{\"name\":\"256x256_profilepicture\",\"_name\":\"profilepicture\"}\",\n            \"email\": [\n                \"gaeremyncks@gmail.com\"\n            ],\n            \"firstName\": [\n                \"Simon\"\n            ],\n            \"sling:resourceType\": \"sakai/user-profile\",\n            \"jcr:created\": \"2009-11-30T16:23:18\",\n            \"rep:userId\": [\n                \"simong\"\n            ],\n            \"lastName\": [\n                \"Gaeremynck\"\n            ],\n            \"jcr:primaryType\": \"sling:Folder\",\n            \"jcr:uuid\": [\n                \"1295479e-c673-46cc-a63c-52c6d19f4b44\"\n            ]\n        }\n    ]\n}</pre>"
+                    ]
+}

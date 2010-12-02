@@ -1,0 +1,18 @@
+{
+  "sakai:query-language": "xpath",
+  "sakai:query-template" : "/jcr:root{_calendar-path}//*[(@sakai:vcal-DTSTART >= xs:dateTime('{_date-start}') and @sakai:vcal-DTSTART <= xs:dateTime('{_date-end}')) and jcr:like(@sling:resourceType, 'sakai/calendar%')] order by @{sortOn|sakai:vcal-DTSTART} {sortOrder|ascending}",
+  "sling:resourceType": "sakai/search",
+  "sakai:resultprocessor": "Calendar",
+  "sakai:propertyprovider" : "Calendar",
+  "sakai:title": "Calendar - Day feed",
+  "sakai:shortDescription": "Find all calendar items for a certain day.",
+  "sakai:parameters" : [
+      "{\"name\" : \"start\", \"description\" : \"The day to start retrieving the items for. This has to be in the following format: <i>yyyy-mm-dd</i>. This has to be used in combination with the start paramers.\"}",
+      "{\"name\" : \"end\", \"description\" : \"The day that marks the last day. (Note, the results for this day will not be included.) This has to be in the following format: <i>yyyy-mm-dd</i>. This has to be used in combination with the start paramers.\"}",
+      "{\"name\" : \"calendar-path\", \"description\" : \"A path that points to the location of a sakai/calendar. If this parameter is ommitted, then the calendar of logged-in user will be used.\"}",
+      "{\"name\" : \"sortOn\", \"description\" : \"The name of the property you wish to sort on. This only has any affect if it is used with the sortOrder parameter. Default is sakai:vcal-DTSTART\"}",
+      "{\"name\" : \"sortOrder\", \"description\" : \"The order you wish to sort in. Either 'ascending' or 'descending'.\"}"      
+      ],
+  "sakai:description": "This will look for all the calendar items for a certain day.",
+  "sakai:response": ""
+}

@@ -1,0 +1,21 @@
+{
+  "sakai:query-language": "xpath",
+  "sakai:query-template": "//element(*, nt:file)[((jcr:contains(., '{q}') or jcr:contains(jcr:content, '{q}'))){_mysites?}{_usedin?}{_tags?}] order by @{sortOn|jcr:score} {sortOrder|descending}",
+  "sling:resourceType": "sakai/search",
+  "sakai:batchresultprocessor": "Files",
+  "sakai:propertyprovider": "Files",
+  "sakai:aggregate-search-results": [ "sakai:tags" ],
+  "sakai:aggregate-search-results-children": "false",
+  "sakai:title": "Files - My sites.",
+  "sakai:shortDescription": "Performs a search trough all the site files you are a member of.",
+  "sakai:parameters" : [
+      "{\"name\" : \"q\", \"description\" : \"The querystring to match the file against. This can either be the content of the file, or any property on the filenode.\"}",
+      "{\"name\" : \"sakai:tags\", \"description\" : \"A comma seperated list of tags that the file(s) should match\"}",
+      "{\"name\" : \"usedin\", \"description\" : \"Filter files based on where they are used (linked to.) This can be a multivalued parameter.\"}",
+      "{\"name\" : \"sortOn\", \"description\" : \"The name of the property you wish to sort on. This only has any affect if it is used with the sortOrder parameter. Default is sakai:filename\"}",
+      "{\"name\" : \"sortOrder\", \"description\" : \"The order you wish to sort in. Either 'ascending' or 'descending'.\"}"      
+      ],
+  "sakai:description": "This allows one to search for files that are linked on sites. It will only go trough sites where the current user is a member of.",
+  "sakai:response": "Doing a standard query searching for '*'.<br /> Example: <br /><pre class=\"json\">{\n    \"query\": \"//*[(@sling:resourceType='sakai/file' and (jcr:contains(., '*') or jcr:contains(jcr:content, '*')))] order by @sakai:filename ascending\",\n    \"items\": 25,\n    \"total\": 14,\n    \"results\": [\n        {\n            \"sakai:filename\": \"Argentina.gif\",\n            \"jcr:versionHistory\": \"b76d7fcb-14dd-45d7-95f0-2b9657d0c622\",\n            \"sakai:id\": \"AdNr5cY-\",\n            \"jcr:isCheckedOut\": \"true\",\n            \"jcr:created\": \"2009-12-21T17:20:31\",\n            \"sling:resourceType\": \"sakai/file\",\n            \"jcr:baseVersion\": \"409140de-dc70-4438-b591-1659750caa30\",\n            \"jcr:mixinTypes\": [\n                \"sakai:propertiesmix\",\n                \"rep:AccessControllable\",\n                \"mix:referenceable\"\n            ],\n            \"jcr:primaryType\": \"nt:file\",\n            \"sakai:user\": \"simong\",\n            \"jcr:uuid\": \"ce322d2f-030c-4759-bd8f-6bad580c4370\",\n            \"jcr:predecessors\": [\n                \"409140de-dc70-4438-b591-1659750caa30\"\n            ],\n            \"permissions\": {\n                \"set_property\": true,\n                \"read\": true,\n                \"remove\": false\n            },\n            \"path\": \"/_user/files/AdNr5cY-\",\n            \"jcr:lastModified\": \"2009-12-21T05:20:31\",\n            \"sakai:mimeType\": \"image/gif\",\n            \"filesize\": 2513,\n            \"usedIn\": {\n                \"sites\": [\n                    \n                ],\n                \"total\": 0\n            }\n        },\n      ....\n    ],\n    \"totals\": {\n        \"sakai:tags\": [\n            {\n                \"name\": \"Car\",\n                \"count\": 2\n            }\n        ]\n    }\n}</pre>"
+}
+}

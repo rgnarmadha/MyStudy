@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>eventexplorer</artifactId>
+    <groupId>org.sakaiproject.nakamura</groupId>
+    <version>0.10-SNAPSHOT</version>
+  </parent>
+  <packaging>pom</packaging>
+  <name>Sakai Nakamura :: Event listeners Project</name>
+  <groupId>org.sakaiproject.nakamura</groupId>
+  <artifactId>org.sakaiproject.nakamura.eventexplorer</artifactId>
+  <modules>
+    <module>cassandrathrift</module>
+    <module>listeners</module>
+    <module>app</module>
+  </modules>
+</project>
+

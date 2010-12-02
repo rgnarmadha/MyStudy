@@ -1,0 +1,29 @@
+body {
+    font-family: "georgia", "times", "times new roman", serif;
+    font-size: 12px;
+    margin: 0;
+    quotes: "Ò" "ã" "Ô" "Õ";
+}
+
+h1 {
+    background-color: #EEEEEE;
+    border-bottom: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+    margin: 15px 0px 35px;
+    padding: 3px 8px 3px 12px;
+    color: #666666;
+}
+
+#content {
+    padding: 0px 10px 10px 10px;
+}
+
+fieldset {
+    border: 1px solid #CCCCCC;
+}
+
+label {
+    width: 100px;
+    display: inline-block;
+}
+

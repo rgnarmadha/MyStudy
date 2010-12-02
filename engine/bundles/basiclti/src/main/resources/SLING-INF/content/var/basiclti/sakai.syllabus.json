@@ -1,0 +1,18 @@
+{
+    "ltiurl":"http://localhost/imsblti/provider/sakai.syllabus",
+    "ltiurl_lock":true,
+    "ltikey_lock":true,
+    "ltisecret_lock":true,
+    "release_names":true,
+    "release_names_lock":true,
+    "frame_height":"100",
+    "release_email":true,
+    "release_email_lock":true,
+    "release_principal_name":true,
+    "release_principal_name_lock":true,
+    "debug":false,
+    "ltiKeys": {
+      "ltikey":"12345",
+      "ltisecret":"secret"
+    }
+}

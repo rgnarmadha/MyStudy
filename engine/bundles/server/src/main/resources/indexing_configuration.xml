@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE configuration SYSTEM "http://jackrabbit.apache.org/dtd/indexing-configuration-1.2.dtd">
+<configuration xmlns:jcr="http://www.jcp.org/jcr/1.0"
+               xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+               xmlns:sakai="http://www.sakaiproject.org/nakamura/2.0">
+  <!-- 
+  <index-rule nodeType="nt:unstructured" >
+    <property boost="0.0" nodeScopeIndex="false"  >jcr:createdBy</property>
+  </index-rule>
+  <index-rule nodeType="nt:file" >
+    <property boost="0.0" nodeScopeIndex="false"  >jcr:createdBy</property>
+  </index-rule>
+  <index-rule nodeType="nt:folder" >
+    <property boost="0.0" nodeScopeIndex="false"  >jcr:createdBy</property>
+  </index-rule>
+  <index-rule nodeType="sakai:user-home" >
+    <property boost="0.0" nodeScopeIndex="false" >jcr:createdBy</property>
+  </index-rule>
+  <index-rule nodeType="sakai:group-home" >
+    <property boost="0.0" nodeScopeIndex="false" >jcr:createdBy</property>
+  </index-rule>
+  <aggregate primaryType="sakai:user-home" >
+    <include>public/*</include>
+    <include>public/*/*</include>
+    <include>public/*/*/*</include>
+    <include>public/*/*/*/*</include>
+    <include>public/*/*/*/*/*</include>
+    <include>pages/*</include>
+    <include>pages/*/*</include>
+    <include>pages/*/*/*</include>
+    <include>pages/*/*/*/*</include>
+    <include>pages/*/*/*/*/*</include>
+  </aggregate>
+  -->
+ </configuration>

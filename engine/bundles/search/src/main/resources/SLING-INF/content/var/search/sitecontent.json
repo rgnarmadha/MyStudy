@@ -1,0 +1,25 @@
+{
+  "sakai:query-language": "xpath",
+  "sakai:query-template": "//*[@sling:resourceType='sakai/site'{_site?}]//*[@jcr:primaryType != 'nt:frozenNode' and @sling:resourceType and (jcr:contains(.,'{q}') or jcr:contains(jcr:content,'{q}'))]/rep:excerpt() order by @{sortOn|jcr:score} {sortOrder|descending}",
+  "sakai:query-template-q=%2A": "//*[@sling:resourceType='sakai/site'{_site?}]//*[@jcr:primaryType != 'nt:frozenNode' and @sling:resourceType]/rep:excerpt() order by @{sortOn|jcr:score} {sortOrder|descending}",
+  "sling:resourceType": "sakai/search",
+  "sakai:batchresultprocessor": "SiteContent",
+  "sakai:propertyprovider": "Content",
+  "sakai:excerpt-param": "jcr:content",
+  "sakai:title": "Content - Sites.",
+  "sakai:shortDescription": "Search for any type node of node under a site that matches the searchterm, is at the latest version and has a sling:resourceType property.",
+  "sakai:parameters" : [
+                        "{\"name\" : \"q\", \"description\" : \"The term you want to match against. This will match any property AND content on the node\"}",
+                        "{\"name\" : \"site\", \"description\" : \"This will filter the nodes to look for all nodes who have a property 'sakai:site' matching the value of this request parameter.\"}"
+      ],
+  "sakai:description": [
+                        "Search under all the sites looking for nodes that have properties or content matching the searchterm.",
+                        "This search option is more specific then <a href=\"/var/search/content.json\">content.json</a> as it only looks at the current versions of a node and nodes who have a sling:resourceType.",
+                        "It will then give you 5 things in the result object.",
+                        "<ul><li>The path to the node</li><li>The excerpt with the matched searchterm.</li><li>A data object that represents the node as it would be represented by the according search processor</li><li>The sling:resourceType</li><li>The site object for this resource</li></ul>",
+                        "This data object holds a representation that you would usually get for this type of node.<br /> Example:<br />A message node is displayed differently then a page node."
+                        ],
+  "sakai:response": [
+                     "Doing a standard query searching for all nodes matching 'awesomeness'.<br /> Example: Request to: /var/search/sitecontent.json?q=awesomeness<br /><pre class=\"json\">{\n   \"query\": \"//*[jcr:contains(.,\"awesomeness\")]\",\n   \"items\": 25,\n   \"total\": 1,\n   \"results\": [\n       {\n           \"acl\": \"parent\",\n           \"type\": \"webpage\",\n           \"id\": \"awesomeness\",\n           \"sling:resourceType\": \"sakai/page\",\n           \"position\": \"300000\",\n           \"jcr:created\": \"2009-12-21T18:18:15\",\n           \"jcr:mixinTypes\": [\n               \"mix:lockable\"\n           ],\n           \"jcr:primaryType\": \"sling:Folder\",\n           \"title\": \"Awesomeness\"\n       }\n   ]</pre>"
+                    ]
+}

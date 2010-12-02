@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components xmlns:scr="http://www.osgi.org/xmlns/scr/v1.0.0">
+    <scr:component enabled="true" immediate="true" name="org.apache.sling.jcr.jackrabbit.server.JndiRegistrationSupport">
+        <implementation class="org.apache.sling.jcr.jackrabbit.server.impl.JndiRegistrationSupport"/>
+        <property name="java.naming.factory.initial" value="org.apache.jackrabbit.core.jndi.provider.DummyInitialContextFactory"/>
+        <property name="java.naming.provider.url" value="http://sling.apache.org"/>
+        <property name="service.vendor" value="The Apache Software Foundation"/>
+        <property name="service.description" value="JNDI Repository Registration"/>
+        <property name="service.pid" value="org.apache.sling.jcr.jackrabbit.server.JndiRegistrationSupport"/>
+        <reference name="Log" interface="org.osgi.service.log.LogService" cardinality="0..1" policy="dynamic" bind="bindLog" unbind="unbindLog"/>
+        <reference name="Repository" interface="javax.jcr.Repository" cardinality="0..n" policy="dynamic" bind="bindRepository" unbind="unbindRepository"/>
+    </scr:component>
+    <scr:component enabled="true" immediate="true" name="org.apache.sling.jcr.jackrabbit.server.RmiRegistrationSupport">
+        <implementation class="org.apache.sling.jcr.jackrabbit.server.impl.RmiRegistrationSupport"/>
+        <property name="service.vendor" value="The Apache Software Foundation"/>
+        <property name="service.description" value="RMI based Repository Registration"/>
+        <property name="port" type="Integer" value="1098"/>
+        <property name="service.pid" value="org.apache.sling.jcr.jackrabbit.server.RmiRegistrationSupport"/>
+        <reference name="Log" interface="org.osgi.service.log.LogService" cardinality="0..1" policy="dynamic" bind="bindLog" unbind="unbindLog"/>
+        <reference name="Repository" interface="javax.jcr.Repository" cardinality="0..n" policy="dynamic" bind="bindRepository" unbind="unbindRepository"/>
+    </scr:component>
+    <scr:component enabled="true" name="org.apache.sling.jcr.jackrabbit.server.SlingServerRepository">
+        <implementation class="org.apache.sling.jcr.jackrabbit.server.impl.SlingServerRepository"/>
+        <property name="service.vendor" value="The Apache Software Foundation"/>
+        <property name="service.description" value="Factory for embedded Jackrabbit Repository Instances"/>
+        <property name="config" value=""/>
+        <property name="home" value=""/>
+        <property name="name" value=""/>
+        <property name="defaultWorkspace" value=""/>
+        <property name="anonymous.name" type="String" value="anonymous"/>
+        <property name="anonymous.password" type="String" value="anonymous"/>
+        <property name="admin.name" type="String" value="admin"/>
+        <property name="admin.password" type="String" value="admin"/>
+        <property name="poll.active" type="Integer" value="10"/>
+        <property name="pool.maxActiveWait" type="Integer" value="1"/>
+        <property name="pool.maxIdle" type="Integer" value="10"/>
+        <property name="poll.inactive" type="Integer" value="10"/>
+        <property name="pool.maxActive" type="Integer" value="-1"/>
+        <property name="pool.maxIdle" type="Integer" value="0"/>
+        <property name="service.pid" value="org.apache.sling.jcr.base.AbstractSlingRepository"/>
+        <reference name="log" interface="org.osgi.service.log.LogService" cardinality="1..1" policy="static" bind="bindLog" unbind="unbindLog"/>
+    </scr:component>
+    <scr:component enabled="true" immediate="true" name="org.apache.jackrabbit.core.security.authorization.acl.RulesPrincipalProvider">
+        <implementation class="org.apache.jackrabbit.core.security.authorization.acl.RulesPrincipalProvider"/>
+        <service servicefactory="false">
+            <provide interface="org.apache.jackrabbit.core.security.principal.PrincipalProvider"/>
+        </service>
+        <property name="service.vendor" value="The Sakai Foundation"/>
+        <property name="service.pid" value="org.sakaiproject.nakamura.api.discussion.DiscussionManager"/>
+    </scr:component>
+</components>
