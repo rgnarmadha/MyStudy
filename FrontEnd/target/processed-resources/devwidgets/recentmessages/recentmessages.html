@@ -1,0 +1,50 @@
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="/devwidgets/recentmessages/css/recentmessages.css" />
+
+<!-- ERRORS -->
+<div id="recentmessages_error" style="display:none;">
+    <div id="recentmessages_error_nomessages" class="recentmessages_error">__MSG__NO_MESSAGES_AVAILABLE__</div>
+    <div id="recentmessages_error_notconnected" class="recentmessages_error">__MSG__NOT_CONNECTED__</div>
+</div>
+
+<!-- CONTENT -->
+<div class="recentmessages_widget">
+
+    <div class="fl-widget-content s3d-widget-content" id="recentmessages_container">
+    </div>
+    <div id="recentmessages_template"><!--
+        <ul>
+            {for message in results}
+                <li {if message_index % 2} class="recentmessages_alterrow"{/if}>
+                    <span {if message["sakai:read"]==="false"} class="recentmessages_notread" {/if} title="${sakai.api.User.getDisplayName(message.userFrom[0])}">${sakai.api.User.getDisplayName(message.userFrom[0])} {if message.userFrom.length > 1} __MSG__AND_OTHERS__...{/if}:</span>
+                    
+                    <a href="inbox.html#message=${message.id}" class="s3d-regular-links s3d-bold">
+                        {if message["sakai:type"] === "chat"}
+                            <span class="ellipsis_text" title="__MSG__CHAT_MESSAGE__">
+                                __MSG__CHAT_MESSAGE__
+                            </span>
+                        {else}
+                            <span class="ellipsis_text" title="${message["sakai:subject"]}">
+                                ${message["sakai:subject"]}
+                            </span>
+                        {/if}
+                    </a>
+                </li>
+            {/for}
+        </ul>
+    --></div>
+    <div class="fl-widget-options fl-fix">
+        <div class="widget-options-inner">
+            <ul>
+                <li><a href="inbox.html">__MSG__VIEW_AND_MANAGE_ALL_MY_MESSAGES__</a></li>
+            </ul>
+        </div>
+        <div class="s3d-widget-options-footer-left">
+            <div class="s3d-widget-options-footer-right">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JAVASCRIPT -->
+<script type="text/javascript" src="/devwidgets/recentmessages/javascript/recentmessages.js"></script>

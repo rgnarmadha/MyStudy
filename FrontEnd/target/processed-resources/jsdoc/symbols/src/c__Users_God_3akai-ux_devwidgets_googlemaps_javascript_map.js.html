@@ -1,0 +1,180 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/*
+<span class='line'>  2</span>  * Licensed to the Sakai Foundation (SF) under one
+<span class='line'>  3</span>  * or more contributor license agreements. See the NOTICE file
+<span class='line'>  4</span>  * distributed with this work for additional information
+<span class='line'>  5</span>  * regarding copyright ownership. The SF licenses this file
+<span class='line'>  6</span>  * to you under the Apache License, Version 2.0 (the
+<span class='line'>  7</span>  * "License"); you may not use this file except in compliance
+<span class='line'>  8</span>  * with the License. You may obtain a copy of the License at
+<span class='line'>  9</span>  *
+<span class='line'> 10</span>  *  http://www.apache.org/licenses/LICENSE-2.0
+<span class='line'> 11</span>  *
+<span class='line'> 12</span>  * Unless required by applicable law or agreed to in writing,
+<span class='line'> 13</span>  * software distributed under the License is distributed on an
+<span class='line'> 14</span>  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+<span class='line'> 15</span>  * KIND, either express or implied. See the License for the
+<span class='line'> 16</span>  * specific language governing permissions and limitations under the License.
+<span class='line'> 17</span>  */</span><span class="WHIT">
+<span class='line'> 18</span> 
+<span class='line'> 19</span> </span><span class="COMM">// Init google map object with Cambridge location as the center position</span><span class="WHIT">
+<span class='line'> 20</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">map</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">google.maps.Map</span><span class="PUNC">(</span><span class="NAME">document.getElementById</span><span class="PUNC">(</span><span class="STRN">"googlemaps_map_canvas"</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 21</span> </span><span class="WHIT">    </span><span class="NAME">zoom</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">8</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 22</span> </span><span class="WHIT">    </span><span class="NAME">center</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">google.maps.LatLng</span><span class="PUNC">(</span><span class="NUMB">52.2025441</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0.1312368</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="WHIT">    </span><span class="NAME">mapTypeControlOptions</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="NAME">style</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">google.maps.MapTypeControlStyle.DROPDOWN_MENU</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 24</span> </span><span class="WHIT">    </span><span class="NAME">mapTypeId</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">google.maps.MapTypeId.ROADMAP</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 25</span> </span><span class="WHIT">    </span><span class="NAME">navigationControlOptions</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="NAME">style</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">google.maps.NavigationControlStyle.ZOOM_PAN</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 26</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 27</span> 
+<span class='line'> 28</span> </span><span class="COMM">// Init google marker object with Cambridge location as the center position</span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">marker</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">google.maps.Marker</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 30</span> </span><span class="WHIT">    </span><span class="NAME">position</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">google.maps.LatLng</span><span class="PUNC">(</span><span class="NUMB">52.2025441</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0.1312368</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="WHIT">    </span><span class="NAME">title</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Point A'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 32</span> </span><span class="WHIT">    </span><span class="NAME">map</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">map</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 33</span> </span><span class="WHIT">    </span><span class="NAME">draggable</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 35</span> 
+<span class='line'> 36</span> </span><span class="COMM">// Init a google maps infor window object to open a info window to show the location info</span><span class="WHIT">
+<span class='line'> 37</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">infoWindow</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">google.maps.InfoWindow</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="WHIT">    </span><span class="NAME">content</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">""</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 40</span> 
+<span class='line'> 41</span> </span><span class="COMM">// Init a json object which inlcudes the basic properties of the google map</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">json</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="WHIT">    </span><span class="STRN">"lat"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">map.getCenter</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">lat</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="WHIT">    </span><span class="STRN">"lng"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">map.getCenter</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">lng</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="WHIT">    </span><span class="STRN">"mapzoom"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">map.getZoom</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="WHIT">    </span><span class="STRN">"mapinput"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="WHIT">    </span><span class="STRN">"mapsize"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="WHIT">    </span><span class="STRN">"maphtml"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"Cambridge, UK"</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 50</span> 
+<span class='line'> 51</span> </span><span class="COMM">/**
+<span class='line'> 52</span>  * Update the content in infoWindow
+<span class='line'> 53</span>  */</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">updateInfoWindow</span><span class="PUNC">(</span><span class="NAME">html</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">infoWindow</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">        </span><span class="NAME">infoWindow.close</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 58</span> 
+<span class='line'> 59</span> </span><span class="WHIT">    </span><span class="NAME">json.maphtml</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">html</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">    </span><span class="NAME">infoWindow</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">google.maps.InfoWindow</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="WHIT">        </span><span class="NAME">content</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"&lt;h4>"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">html</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"&lt;/h4>"</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">    </span><span class="NAME">infoWindow.open</span><span class="PUNC">(</span><span class="NAME">map</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">marker</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 65</span> 
+<span class='line'> 66</span> </span><span class="COMM">/**
+<span class='line'> 67</span>  * Find the closest position near the marker's location
+<span class='line'> 68</span>  * @param {Object} position of the closest location
+<span class='line'> 69</span>  */</span><span class="WHIT">
+<span class='line'> 70</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">geocodePosition</span><span class="PUNC">(</span><span class="NAME">position</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 71</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">geocoder</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">google.maps.Geocoder</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">geocoder</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="WHIT">        </span><span class="NAME">geocoder.geocode</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="WHIT">            </span><span class="NAME">latLng</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">position</span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">responses</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">responses</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">responses.length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">html</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">responses</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">formatted_address</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 78</span> </span><span class="WHIT">                </span><span class="NAME">updateInfoWindow</span><span class="PUNC">(</span><span class="NAME">html</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 79</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 80</span> </span><span class="WHIT">            </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 81</span> </span><span class="WHIT">                </span><span class="NAME">alert</span><span class="PUNC">(</span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#map_no_address"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">html</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 82</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 83</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 84</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 85</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 86</span> 
+<span class='line'> 87</span> </span><span class="COMM">/**
+<span class='line'> 88</span>  * Find the closest position near the marker's location
+<span class='line'> 89</span>  * @param {Object} address the position of the closest location
+<span class='line'> 90</span>  */</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">geocodeAddress</span><span class="PUNC">(</span><span class="NAME">address</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">geocoder</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">google.maps.Geocoder</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 93</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">geocoder</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 94</span> </span><span class="WHIT">        </span><span class="NAME">geocoder.geocode</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 95</span> </span><span class="WHIT">            </span><span class="STRN">"address"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">address</span><span class="WHIT">
+<span class='line'> 96</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">results</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">status</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 97</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">status</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NAME">google.maps.GeocoderStatus.OK</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 98</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">position</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">results</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">geometry.location</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 99</span> </span><span class="WHIT">                </span><span class="NAME">map.setCenter</span><span class="PUNC">(</span><span class="NAME">position</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>100</span> </span><span class="WHIT">                </span><span class="NAME">marker.setMap</span><span class="PUNC">(</span><span class="NAME">map</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>101</span> </span><span class="WHIT">                </span><span class="NAME">marker.setPosition</span><span class="PUNC">(</span><span class="NAME">position</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>102</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">html</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">address</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">                </span><span class="NAME">updateInfoWindow</span><span class="PUNC">(</span><span class="NAME">html</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>104</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="WHIT">            </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>106</span> </span><span class="WHIT">                </span><span class="NAME">alert</span><span class="PUNC">(</span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#map_no_address"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">html</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>107</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>108</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>109</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>110</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>111</span> 
+<span class='line'>112</span> </span><span class="COMM">/**
+<span class='line'>113</span>  * Get the json object
+<span class='line'>114</span>  */</span><span class="WHIT">
+<span class='line'>115</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">getJSON</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>116</span> </span><span class="WHIT">    </span><span class="COMM">// use marker rather than map because </span><span class="WHIT">
+<span class='line'>117</span> </span><span class="WHIT">    </span><span class="COMM">// map use 14 decimal places while marker uses only 6 decimal places </span><span class="WHIT">
+<span class='line'>118</span> </span><span class="WHIT">    </span><span class="COMM">// causing marker to appear on wrong spot</span><span class="WHIT">
+<span class='line'>119</span> </span><span class="WHIT">    </span><span class="NAME">json.lat</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">marker.getPosition</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">lat</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>120</span> </span><span class="WHIT">    </span><span class="NAME">json.lng</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">marker.getPosition</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">lng</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>121</span> </span><span class="WHIT">    </span><span class="NAME">json.mapzoom</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">map.getZoom</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>122</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">json</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>123</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>124</span> 
+<span class='line'>125</span> </span><span class="COMM">/**
+<span class='line'>126</span>  * Search the corresponded city between the target location
+<span class='line'>127</span>  * @param {string} keyword the target location
+<span class='line'>128</span>  * @param {string} The region where Google will perform the search
+<span class='line'>129</span>  */</span><span class="WHIT">
+<span class='line'>130</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">search</span><span class="PUNC">(</span><span class="NAME">keyword</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">region</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>131</span> 
+<span class='line'>132</span> </span><span class="WHIT">    </span><span class="COMM">// If region is provided, attach it ot the search query</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="WHIT">    </span><span class="COMM">// TO DO: This later will need to be moved to the Google API</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">region</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="WHIT">        </span><span class="NAME">geocodeAddress</span><span class="PUNC">(</span><span class="NAME">keyword</span><span class="PUNC">+</span><span class="STRN">", "</span><span class="PUNC">+</span><span class="NAME">region</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>136</span> </span><span class="WHIT">        </span><span class="NAME">json.mapinput</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">keyword</span><span class="PUNC">+</span><span class="STRN">", "</span><span class="PUNC">+</span><span class="NAME">region</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>137</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>138</span> </span><span class="WHIT">        </span><span class="NAME">geocodeAddress</span><span class="PUNC">(</span><span class="NAME">keyword</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="WHIT">        </span><span class="NAME">json.mapinput</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">keyword</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>141</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>142</span> 
+<span class='line'>143</span> </span><span class="COMM">/**
+<span class='line'>144</span>  * Set the map initial property (center an zoom)
+<span class='line'>145</span>  * @param {Object} jsonTarget the json object includes map's properties
+<span class='line'>146</span>  */</span><span class="WHIT">
+<span class='line'>147</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">setMap</span><span class="PUNC">(</span><span class="NAME">jsonTarget</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>148</span> </span><span class="WHIT">    </span><span class="NAME">json</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">jsonTarget</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>149</span> 
+<span class='line'>150</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">latLng</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">google.maps.LatLng</span><span class="PUNC">(</span><span class="NAME">json.lat</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">json.lng</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>151</span> </span><span class="WHIT">    </span><span class="NAME">map.setCenter</span><span class="PUNC">(</span><span class="NAME">latLng</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>152</span> </span><span class="WHIT">    </span><span class="NAME">map.setZoom</span><span class="PUNC">(</span><span class="NAME">json.mapzoom</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>153</span> </span><span class="WHIT">    </span><span class="NAME">marker.setPosition</span><span class="PUNC">(</span><span class="NAME">latLng</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>154</span> 
+<span class='line'>155</span> </span><span class="WHIT">    </span><span class="COMM">// Init the infoWindow object and decide to open it or not</span><span class="WHIT">
+<span class='line'>156</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">json.maphtml</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>157</span> </span><span class="WHIT">        </span><span class="NAME">updateInfoWindow</span><span class="PUNC">(</span><span class="NAME">json.maphtml</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>158</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>159</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>160</span> 
+<span class='line'>161</span> </span><span class="COMM">/**
+<span class='line'>162</span>  * Init the listeners of marker
+<span class='line'>163</span>  */</span><span class="WHIT">
+<span class='line'>164</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">init</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>165</span> 
+<span class='line'>166</span> </span><span class="WHIT">    </span><span class="COMM">//alert(new google.maps.LatLng(google.loader.ClientLocation.latitude, google.loader.ClientLocation.longitude))</span><span class="WHIT">
+<span class='line'>167</span> </span><span class="WHIT">    </span><span class="NAME">google.maps.event.addListener</span><span class="PUNC">(</span><span class="NAME">marker</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"click"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>168</span> </span><span class="WHIT">        </span><span class="NAME">geocodePosition</span><span class="PUNC">(</span><span class="NAME">marker.getPosition</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>169</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>170</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>171</span> 
+<span class='line'>172</span> </span><span class="NAME">init</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>173</span> </span></pre></body></html>

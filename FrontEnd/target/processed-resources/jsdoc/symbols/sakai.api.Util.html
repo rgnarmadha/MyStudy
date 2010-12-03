@@ -1,0 +1,960 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>JsDoc Reference - sakai.api.Util</title>
+
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 24px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2 { font-size: 110%; }
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul.inheritsList
+{
+	list-style: square;
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px; 
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->	
+		<!-- begin static/header.html -->
+		<div id="header">
+</div>
+		<!-- end static/header.html -->
+
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div align="center"><a href="../index.html">Class Index</a>
+| <a href="../files.html">File Index</a></div>
+<hr />
+<h2>Classes</h2>
+<ul class="classList">
+	
+	<li><a href="../symbols/%24.html">$</a></li>
+	
+	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+	
+	<li><a href="../symbols/Array.html">Array</a></li>
+	
+	<li><a href="../symbols/sakai.html">sakai</a></li>
+	
+	<li><a href="../symbols/sakai.addcontent.html">sakai.addcontent</a></li>
+	
+	<li><a href="../symbols/sakai.api.html">sakai.api</a></li>
+	
+	<li><a href="../symbols/sakai.api.Activity.html">sakai.api.Activity</a></li>
+	
+	<li><a href="../symbols/sakai.api.Communication.html">sakai.api.Communication</a></li>
+	
+	<li><a href="../symbols/sakai.api.Groups.html">sakai.api.Groups</a></li>
+	
+	<li><a href="../symbols/sakai.api.i18n.html">sakai.api.i18n</a></li>
+	
+	<li><a href="../symbols/sakai.api.i18n.General.html">sakai.api.i18n.General</a></li>
+	
+	<li><a href="../symbols/sakai.api.i18n.Widgets.html">sakai.api.i18n.Widgets</a></li>
+	
+	<li><a href="../symbols/sakai.api.l10n.html">sakai.api.l10n</a></li>
+	
+	<li><a href="../symbols/sakai.api.Security.html">sakai.api.Security</a></li>
+	
+	<li><a href="../symbols/sakai.api.Server.html">sakai.api.Server</a></li>
+	
+	<li><a href="../symbols/sakai.api.Skinning.html">sakai.api.Skinning</a></li>
+	
+	<li><a href="../symbols/sakai.api.UI.html">sakai.api.UI</a></li>
+	
+	<li><a href="../symbols/sakai.api.UI.entity.html">sakai.api.UI.entity</a></li>
+	
+	<li><a href="../symbols/sakai.api.User.html">sakai.api.User</a></li>
+	
+	<li><a href="../symbols/sakai.api.Util.html">sakai.api.Util</a></li>
+	
+	<li><a href="../symbols/sakai.api.Util.notification.html">sakai.api.Util.notification</a></li>
+	
+	<li><a href="../symbols/sakai.api.Util.notification.type.html">sakai.api.Util.notification.type</a></li>
+	
+	<li><a href="../symbols/sakai.api.Util.Sorting.html">sakai.api.Util.Sorting</a></li>
+	
+	<li><a href="../symbols/sakai.api.Widgets.html">sakai.api.Widgets</a></li>
+	
+	<li><a href="../symbols/sakai.api.Widgets.Container.html">sakai.api.Widgets.Container</a></li>
+	
+	<li><a href="../symbols/sakai.basiclti.html">sakai.basiclti</a></li>
+	
+	<li><a href="../symbols/sakai.changepic.html">sakai.changepic</a></li>
+	
+	<li><a href="../symbols/sakai.chat.html">sakai.chat</a></li>
+	
+	<li><a href="../symbols/sakai.comments.html">sakai.comments</a></li>
+	
+	<li><a href="../symbols/sakai.contentpicker.html">sakai.contentpicker</a></li>
+	
+	<li><a href="../symbols/sakai.creategroup.html">sakai.creategroup</a></li>
+	
+	<li><a href="../symbols/sakai.createpage.html">sakai.createpage</a></li>
+	
+	<li><a href="../symbols/sakai.deletecontent.html">sakai.deletecontent</a></li>
+	
+	<li><a href="../symbols/sakai.discussion.html">sakai.discussion</a></li>
+	
+	<li><a href="../symbols/sakai.embedcontent.html">sakai.embedcontent</a></li>
+	
+	<li><a href="../symbols/sakai.entity.html">sakai.entity</a></li>
+	
+	<li><a href="../symbols/sakai.faceted.html">sakai.faceted</a></li>
+	
+	<li><a href="../symbols/sakai.fileupload.html">sakai.fileupload</a></li>
+	
+	<li><a href="../symbols/sakai.footer.html">sakai.footer</a></li>
+	
+	<li><a href="../symbols/sakai.ggadget.html">sakai.ggadget</a></li>
+	
+	<li><a href="../symbols/sakai.googlemaps.html">sakai.googlemaps</a></li>
+	
+	<li><a href="../symbols/sakai.groupbasicinfo.html">sakai.groupbasicinfo</a></li>
+	
+	<li><a href="../symbols/sakai.grouppermissions.html">sakai.grouppermissions</a></li>
+	
+	<li><a href="../symbols/sakai.helloworld.html">sakai.helloworld</a></li>
+	
+	<li><a href="../symbols/sakai.joinrequests.html">sakai.joinrequests</a></li>
+	
+	<li><a href="../symbols/sakai.listgeneral.html">sakai.listgeneral</a></li>
+	
+	<li><a href="../symbols/sakai.listpeople.html">sakai.listpeople</a></li>
+	
+	<li><a href="../symbols/sakai.listpeoplewrappergroup.html">sakai.listpeoplewrappergroup</a></li>
+	
+	<li><a href="../symbols/sakai.lists.html">sakai.lists</a></li>
+	
+	<li><a href="../symbols/sakai.mycontacts.html">sakai.mycontacts</a></li>
+	
+	<li><a href="../symbols/sakai.mycontent.html">sakai.mycontent</a></li>
+	
+	<li><a href="../symbols/sakai.mygroups.html">sakai.mygroups</a></li>
+	
+	<li><a href="../symbols/sakai.myprofile.html">sakai.myprofile</a></li>
+	
+	<li><a href="../symbols/sakai.navigation.html">sakai.navigation</a></li>
+	
+	<li><a href="../symbols/sakai.pickeradvanced.html">sakai.pickeradvanced</a></li>
+	
+	<li><a href="../symbols/sakai.pickeruser.html">sakai.pickeruser</a></li>
+	
+	<li><a href="../symbols/sakai.poll.html">sakai.poll</a></li>
+	
+	<li><a href="../symbols/sakai.profilesection.html">sakai.profilesection</a></li>
+	
+	<li><a href="../symbols/sakai.recentmessages.html">sakai.recentmessages</a></li>
+	
+	<li><a href="../symbols/sakai.remotecontent.html">sakai.remotecontent</a></li>
+	
+	<li><a href="../symbols/sakai.rss.html">sakai.rss</a></li>
+	
+	<li><a href="../symbols/sakai.s23courses.html">sakai.s23courses</a></li>
+	
+	<li><a href="../symbols/sakai.sakai2tools.html">sakai.sakai2tools</a></li>
+	
+	<li><a href="../symbols/sakai.sendmessage.html">sakai.sendmessage</a></li>
+	
+	<li><a href="../symbols/sakai.sitemembers.html">sakai.sitemembers</a></li>
+	
+	<li><a href="../symbols/sakai.siterecentactivity.html">sakai.siterecentactivity</a></li>
+	
+	<li><a href="../symbols/sakai.sites.html">sakai.sites</a></li>
+	
+	<li><a href="../symbols/sakai.sitespages.html">sakai.sitespages</a></li>
+	
+	<li><a href="../symbols/sakai.topnavigation.html">sakai.topnavigation</a></li>
+	
+	<li><a href="../symbols/sakai.uploadcontent.html">sakai.uploadcontent</a></li>
+	
+	<li><a href="../symbols/sakai.userprofile.html">sakai.userprofile</a></li>
+	
+	<li><a href="../symbols/sakai.video.html">sakai.video</a></li>
+	
+</ul>
+<hr />
+			<!-- end publish.classesIndex -->
+		</div>
+		
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Namespace sakai.api.Util
+			</h1>
+
+<!-- ============================== class summary ========================== -->			
+			<p class="description">
+				
+				
+			
+				General utility functions
+				
+				
+					<br /><i>Defined in: </i> <a href="../symbols/src/c__Users_God_3akai-ux_dev_lib_sakai_sakai.api.util.js.html">sakai.api.util.js</a>.
+				
+			</p>
+
+<!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class sakai.api.Util.">
+				<caption>Namespace Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/sakai.api.Util.html#constructor">sakai.api.Util</a></b>
+							</div>
+							<div class="description">General utility functions which implement commonly used low level operationsand unifies practices across codebase.</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class sakai.api.Util.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">sakai.api.Util.<b><a href="../symbols/sakai.api.Util.html#.convertToHumanReadableFileSize">convertToHumanReadableFileSize</a></b>((Integer))
+								</div>
+								<div class="description">Convert a file's size to a human readable sizeexample: 2301 = 2.301kB</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">sakai.api.Util.<b><a href="../symbols/sakai.api.Util.html#.createSakaiDate">createSakaiDate</a></b>(date, format, offset)
+								</div>
+								<div class="description">Parse a JavaScript date object to a JCR date string (2009-10-12T10:25:19)<p>    Accepted values for the format [1-6]:    <ol>        <li>Year: YYYY (eg 1997)</li>        <li>Year and month: YYYY-MM <br /> (eg 1997-07)</li>        <li>Complete date: YYYY-MM-DD <br /> (eg 1997-07-16)</li>        <li>Complete date plus hours and minutes: YYYY-MM-DDThh:mmTZD <br /> (eg 1997-07-16T19:20+01:00)</li>        <li>Complete date plus hours, minutes and seconds: YYYY-MM-DDThh:mm:ssTZD <br /> (eg 1997-07-16T19:20:30+01:00)</li>        <li>Complete date plus hours, minutes, seconds and a decimal fraction of a second YYYY-MM-DDThh:mm:ss.sTZD <br /> (eg 1997-07-16T19:20:30.45+01:00)</li>    </ol></p><p>    External links:    <ul>        <li><a href="http://www.w3.org/TR/NOTE-datetime">W3C datetime documentation</a></li>        <li><a href="http://delete.me.uk/2005/03/iso8601.html">ISO8601 JavaScript function</a></li>        <li><a href="http://confluence.sakaiproject.org/display/KERNDOC/KERN-643+Multiple+date+formats+in+the+back-end">Specification</a></li>    </ul></p></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">sakai.api.Util.<b><a href="../symbols/sakai.api.Util.html#.formatTags">formatTags</a></b>(inputTags)
+								</div>
+								<div class="description">Formats a comma separated string of text to an array of usable tagsFilters out unwanted tags (eg empty tags)Returns the array of tags, if no tags were provided or none were valid an empty array is returnedExample: inputTags = "tag1, tag2, , , tag3, , tag4" returns ["tag1","tag2","tag3","tag4"]</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">sakai.api.Util.<b><a href="../symbols/sakai.api.Util.html#.parseRFC822Date">parseRFC822Date</a></b>(dateString)
+								</div>
+								<div class="description">Parse an RFC822 date into a JavaScript date object.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">sakai.api.Util.<b><a href="../symbols/sakai.api.Util.html#.parseSakaiDate">parseSakaiDate</a></b>(dateInput)
+								</div>
+								<div class="description">Parse a ISO8601 date into a JavaScript date object.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">sakai.api.Util.<b><a href="../symbols/sakai.api.Util.html#.removeJCRObjects">removeJCRObjects</a></b>(i_object)
+								</div>
+								<div class="description">Removes JCR or Sling properties from a JSON object</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">sakai.api.Util.<b><a href="../symbols/sakai.api.Util.html#.shortenString">shortenString</a></b>(input, maxlength)
+								</div>
+								<div class="description">Shorten a string and add 3 dots if the string is too long</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">sakai.api.Util.<b><a href="../symbols/sakai.api.Util.html#.tagEntity">tagEntity</a></b>((String), (Array), (Array), (Function))
+								</div>
+								<div class="description">Add and delete tags from an entityThe two arrays, newTags and currentTags, represent the state of tags on the entitynewTags should be the tags that you want on the entity, the whole setcurrentTags should be the set of tags the entity had before the user modified ittagEntity will delete any tags in currentTags but not in newTags, and add any innewTags that aren't in currentTags</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">sakai.api.Util.<b><a href="../symbols/sakai.api.Util.html#.updateChatStatusElement">updateChatStatusElement</a></b>(element, status)
+								</div>
+								<div class="description">Sets the chat bullets after update of status byadding the right status css class on an element.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== constructor details ==================== -->		
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Namespace Detail
+				</div>
+				
+				<div class="fixedFont">
+						<b>sakai.api.Util</b>
+				</div>
+				
+				<div class="description">
+					General utility functions which implement commonly used low level operationsand unifies practices across codebase.
+					
+				</div>
+				
+				
+				
+				
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== field details ========================== -->		
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name=".convertToHumanReadableFileSize"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">sakai.api.Util.</span><b>convertToHumanReadableFileSize</b>((Integer))
+					
+					</div>
+					<div class="description">
+						Convert a file's size to a human readable sizeexample: 2301 = 2.301kB
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>(Integer)</b>
+									
+								</dt>
+								<dd>filesize The file's size to convert</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>(String) the file's size in human readable format</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".createSakaiDate"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{String}</span>
+					<span class="light">sakai.api.Util.</span><b>createSakaiDate</b>(date, format, offset)
+					
+					</div>
+					<div class="description">
+						Parse a JavaScript date object to a JCR date string (2009-10-12T10:25:19)<p>    Accepted values for the format [1-6]:    <ol>        <li>Year: YYYY (eg 1997)</li>        <li>Year and month: YYYY-MM <br /> (eg 1997-07)</li>        <li>Complete date: YYYY-MM-DD <br /> (eg 1997-07-16)</li>        <li>Complete date plus hours and minutes: YYYY-MM-DDThh:mmTZD <br /> (eg 1997-07-16T19:20+01:00)</li>        <li>Complete date plus hours, minutes and seconds: YYYY-MM-DDThh:mm:ssTZD <br /> (eg 1997-07-16T19:20:30+01:00)</li>        <li>Complete date plus hours, minutes, seconds and a decimal fraction of a second YYYY-MM-DDThh:mm:ss.sTZD <br /> (eg 1997-07-16T19:20:30.45+01:00)</li>    </ol></p><p>    External links:    <ul>        <li><a href="http://www.w3.org/TR/NOTE-datetime">W3C datetime documentation</a></li>        <li><a href="http://delete.me.uk/2005/03/iso8601.html">ISO8601 JavaScript function</a></li>        <li><a href="http://confluence.sakaiproject.org/display/KERNDOC/KERN-643+Multiple+date+formats+in+the+back-end">Specification</a></li>    </ul></p>
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Date}</span> <b>date</b>
+									
+								</dt>
+								<dd>JavaScript date object.    If not set, the current date is used.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Integer}</span> <b>format</b>
+									
+								</dt>
+								<dd>The format you want to put out</dd>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>offset</b>
+									
+								</dt>
+								<dd>Optional timezone offset +HH:MM or -HH:MM,    if not set Z(ulu) or UTC is used</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{String}</span> a JCR date string</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".formatTags"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Array.html">Array</a>}</span>
+					<span class="light">sakai.api.Util.</span><b>formatTags</b>(inputTags)
+					
+					</div>
+					<div class="description">
+						Formats a comma separated string of text to an array of usable tagsFilters out unwanted tags (eg empty tags)Returns the array of tags, if no tags were provided or none were valid an empty array is returnedExample: inputTags = "tag1, tag2, , , tag3, , tag4" returns ["tag1","tag2","tag3","tag4"]
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>inputTags</b>
+									
+								</dt>
+								<dd>Unformatted, comma separated, string of tags put in by a user</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Array.html">Array</a>}</span> Array of formatted tags</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".parseRFC822Date"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Date}</span>
+					<span class="light">sakai.api.Util.</span><b>parseRFC822Date</b>(dateString)
+					
+					</div>
+					<div class="description">
+						Parse an RFC822 date into a JavaScript date object.Examples of RFC822 dates:Wed, 02 Oct 2002 13:00:00 GMTWed, 02 Oct 2002 13:00:00 +0200
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>dateString</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Date}</span> a Javascript date object</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".parseSakaiDate"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Date}</span>
+					<span class="light">sakai.api.Util.</span><b>parseSakaiDate</b>(dateInput)
+					
+					</div>
+					<div class="description">
+						Parse a ISO8601 date into a JavaScript date object.<p>    Supported date formats:    <ul>        <li>2010</li>        <li>2010-02</li>        <li>2010-02-18</li>        <li>2010-02-18T07:44Z</li>        <li>1997-07-16T19:20+01:00</li>        <li>1997-07-16T19:20:30+01:00</li>        <li>1269331220896</li>    </ul></p><p>    External links:    <ul>        <li><a href="http://www.w3.org/TR/NOTE-datetime">W3C datetime documentation</a></li>        <li><a href="http://delete.me.uk/2005/03/iso8601.html">ISO8601 JavaScript function</a></li>        <li><a href="http://confluence.sakaiproject.org/display/KERNDOC/KERN-643+Multiple+date+formats+in+the+back-end">Specification</a></li>    </ul></p>
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Integer}</span> <b>dateInput</b>
+									
+								</dt>
+								<dd>The date that needs to be converted to a JavaScript date object.    If the format is in milliseconds, you need to provide an integer, otherwise a string</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Date}</span> JavaScript date object</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".removeJCRObjects"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">sakai.api.Util.</span><b>removeJCRObjects</b>(i_object)
+					
+					</div>
+					<div class="description">
+						Removes JCR or Sling properties from a JSON object
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>i_object</b>
+									
+								</dt>
+								<dd>The JSON object you want to remove the JCR object from</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>void</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".shortenString"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{String}</span>
+					<span class="light">sakai.api.Util.</span><b>shortenString</b>(input, maxlength)
+					
+					</div>
+					<div class="description">
+						Shorten a string and add 3 dots if the string is too long
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>input</b>
+									
+								</dt>
+								<dd>The string you want to shorten</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Int}</span> <b>maxlength</b>
+									
+								</dt>
+								<dd>Maximum length of the string</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{String}</span> The shortened string with 3 dots</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".tagEntity"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">sakai.api.Util.</span><b>tagEntity</b>((String), (Array), (Array), (Function))
+					
+					</div>
+					<div class="description">
+						Add and delete tags from an entityThe two arrays, newTags and currentTags, represent the state of tags on the entitynewTags should be the tags that you want on the entity, the whole setcurrentTags should be the set of tags the entity had before the user modified ittagEntity will delete any tags in currentTags but not in newTags, and add any innewTags that aren't in currentTags
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>(String)</b>
+									
+								</dt>
+								<dd>tagLocation the URL to the tag, ie. (~userid/public/authprofile)</dd>
+							
+								<dt>
+									<b>(Array)</b>
+									
+								</dt>
+								<dd>newTags The set of tags you wish to be on the entity</dd>
+							
+								<dt>
+									<b>(Array)</b>
+									
+								</dt>
+								<dd>currentTags The set of tags on the current entity</dd>
+							
+								<dt>
+									<b>(Function)</b>
+									
+								</dt>
+								<dd>callback The callback function</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".updateChatStatusElement"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">sakai.api.Util.</span><b>updateChatStatusElement</b>(element, status)
+					
+					</div>
+					<div class="description">
+						Sets the chat bullets after update of status byadding the right status css class on an element.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>element</b>
+									
+								</dt>
+								<dd>the jquery element you wish to add the class to</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>status</b>
+									
+								</dt>
+								<dd>the status</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+			
+			<hr />
+		</div>
+
+		
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.3.2 on Wed Nov 24 2010 01:03:45 GMT+0530 (IST)
+		</div>
+	</body>
+</html>

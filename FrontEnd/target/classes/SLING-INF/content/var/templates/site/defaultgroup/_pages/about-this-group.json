@@ -1,0 +1,8 @@
+{
+	"sling:resourceType": "sakai/page",
+	"pageTitle": "About This Group",
+	"pageType": "profile",
+	"deletable": false,
+	"pagePosition": 200000,
+	"jcr:mixinTypes": "sakai:propertiesmix"
+}

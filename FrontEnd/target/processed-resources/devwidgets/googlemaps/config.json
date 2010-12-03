@@ -1,0 +1,20 @@
+{
+    "userpages": true,
+    "userdashboard": true,
+    "grouppages": true,
+    "groupdashboard": true,
+    "hasSettings": true,
+    "description":"Google maps",
+    "i18n": {
+        "default": "/devwidgets/googlemaps/bundles/default.properties",
+        "en_US": "/devwidgets/googlemaps/bundles/en_US.properties",
+        "zh_CN": "/devwidgets/googlemaps/bundles/zh_CN.properties"
+    },
+    "id":"googlemaps",
+    "img":"/devwidgets/googlemaps/images/googlemaps.png",
+    "name":"Google maps",
+    "showinsakaigoodies":true,
+    "type":"sakai",
+    "enabled":true,
+    "url":"/devwidgets/googlemaps/googlemaps.html"
+}

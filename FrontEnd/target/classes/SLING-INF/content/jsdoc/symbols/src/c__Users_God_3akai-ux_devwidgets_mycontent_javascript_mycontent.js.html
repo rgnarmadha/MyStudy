@@ -1,0 +1,198 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/*
+<span class='line'>  2</span>  * Licensed to the Sakai Foundation (SF) under one
+<span class='line'>  3</span>  * or more contributor license agreements. See the NOTICE file
+<span class='line'>  4</span>  * distributed with this work for additional information
+<span class='line'>  5</span>  * regarding copyright ownership. The SF licenses this file
+<span class='line'>  6</span>  * to you under the Apache License, Version 2.0 (the
+<span class='line'>  7</span>  * "License"); you may not use this file except in compliance
+<span class='line'>  8</span>  * with the License. You may obtain a copy of the License at
+<span class='line'>  9</span>  *
+<span class='line'> 10</span>  *     http://www.apache.org/licenses/LICENSE-2.0
+<span class='line'> 11</span>  *
+<span class='line'> 12</span>  * Unless required by applicable law or agreed to in writing,
+<span class='line'> 13</span>  * software distributed under the License is distributed on an
+<span class='line'> 14</span>  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+<span class='line'> 15</span>  * KIND, either express or implied. See the License for the
+<span class='line'> 16</span>  * specific language governing permissions and limitations under the License.
+<span class='line'> 17</span>  */</span><span class="WHIT">
+<span class='line'> 18</span> </span><span class="COMM">/*global $, Config, jQuery, sakai */</span><span class="WHIT">
+<span class='line'> 19</span> 
+<span class='line'> 20</span> </span><span class="COMM">/**
+<span class='line'> 21</span>  * @name sakai.mycontent
+<span class='line'> 22</span>  *
+<span class='line'> 23</span>  * @class mycontent
+<span class='line'> 24</span>  *
+<span class='line'> 25</span>  * @description
+<span class='line'> 26</span>  * The 'My Content' widget shows the five most recently updated
+<span class='line'> 27</span>  * content items the user manages.
+<span class='line'> 28</span>  *
+<span class='line'> 29</span>  * @version 0.0.1
+<span class='line'> 30</span>  * @param {String} tuid Unique id of the widget
+<span class='line'> 31</span>  * @param {Boolean} showSettings Show the settings of the widget or not
+<span class='line'> 32</span>  */</span><span class="WHIT">
+<span class='line'> 33</span> </span><span class="NAME">sakai.mycontent</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">tuid</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">showSettings</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 34</span> 
+<span class='line'> 35</span> 
+<span class='line'> 36</span> </span><span class="WHIT">    </span><span class="COMM">/////////////////////////////</span><span class="WHIT">
+<span class='line'> 37</span> </span><span class="WHIT">    </span><span class="COMM">// Configuration variables //</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="WHIT">    </span><span class="COMM">/////////////////////////////</span><span class="WHIT">
+<span class='line'> 39</span> 
+<span class='line'> 40</span> </span><span class="WHIT">    </span><span class="COMM">// DOM identifiers</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">tuid</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">uploadLink</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"#upload_link"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">fileuploadContainer</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"#fileupload_container"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">noContentMsg</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"#mycontent_nocontent"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">dataErrorMsg</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"#mycontent_data_error"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">contentList</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"#mycontent_list"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">listTemplate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"#mycontent_list_template"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ellipsisContainer</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">".mycontent_ellipsis_container"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 49</span> 
+<span class='line'> 50</span> 
+<span class='line'> 51</span> </span><span class="WHIT">    </span><span class="COMM">///////////////////////</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">    </span><span class="COMM">// Utility functions //</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">    </span><span class="COMM">///////////////////////</span><span class="WHIT">
+<span class='line'> 54</span> 
+<span class='line'> 55</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 56</span>      * Parses an individual JSON search result (returned from the
+<span class='line'> 57</span>      * /var/search/pool/me/manager.json data feed) to be displayed in
+<span class='line'> 58</span>      * mycontent.html.
+<span class='line'> 59</span>      * @param {Object} result - individual result object from JSON data feed
+<span class='line'> 60</span>      * @return {Object} object containing item.name, item.path, item.type (mimetype)
+<span class='line'> 61</span>      *   and item.type_img_url (URL for mimetype icon) for the given result
+<span class='line'> 62</span>      */</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">parseDataResult</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">result</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="WHIT">        </span><span class="COMM">// initialize parsed item with default values</span><span class="WHIT">
+<span class='line'> 65</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">item</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 66</span> </span><span class="WHIT">            </span><span class="NAME">name</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">result</span><span class="PUNC">[</span><span class="STRN">"sakai:pooled-content-file-name"</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="WHIT">            </span><span class="NAME">path</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"/p/"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">result</span><span class="PUNC">[</span><span class="STRN">"jcr:name"</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="WHIT">            </span><span class="NAME">type</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">sakai.config.MimeTypes.other.description</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 69</span> </span><span class="WHIT">            </span><span class="NAME">type_img_url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">sakai.config.MimeTypes.other.URL</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 70</span> </span><span class="WHIT">            </span><span class="NAME">size</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">""</span><span class="WHIT">
+<span class='line'> 71</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 72</span> 
+<span class='line'> 73</span> </span><span class="WHIT">        </span><span class="COMM">// set the mimetype and corresponding image</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">type</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">result</span><span class="PUNC">[</span><span class="STRN">"jcr:content"</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="STRN">"jcr:mimeType"</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">sakai.config.MimeTypes</span><span class="PUNC">[</span><span class="NAME">type</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">            </span><span class="COMM">// we have a recognized file type - set the description and img URL</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT">            </span><span class="NAME">item.type</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai.config.MimeTypes</span><span class="PUNC">[</span><span class="NAME">type</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">description</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 78</span> </span><span class="WHIT">            </span><span class="NAME">item.type_img_url</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai.config.MimeTypes</span><span class="PUNC">[</span><span class="NAME">type</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">URL</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 79</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 80</span> 
+<span class='line'> 81</span> </span><span class="WHIT">        </span><span class="COMM">// set file name without the extension</span><span class="WHIT">
+<span class='line'> 82</span> </span><span class="WHIT">        </span><span class="COMM">// be aware that links don't have an extension</span><span class="WHIT">
+<span class='line'> 83</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">lastDotIndex</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">result</span><span class="PUNC">[</span><span class="STRN">"sakai:pooled-content-file-name"</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">lastIndexOf</span><span class="PUNC">(</span><span class="STRN">"."</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 84</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">lastDotIndex</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 85</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">type</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">"x-sakai/link"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 86</span> </span><span class="WHIT">                </span><span class="COMM">// extension found</span><span class="WHIT">
+<span class='line'> 87</span> </span><span class="WHIT">                </span><span class="NAME">item.name</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">result</span><span class="PUNC">[</span><span class="STRN">"sakai:pooled-content-file-name"</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">slice</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">lastDotIndex</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 88</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 89</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 90</span> 
+<span class='line'> 91</span> </span><span class="WHIT">        </span><span class="COMM">// set the file size</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">size</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">result</span><span class="PUNC">[</span><span class="STRN">"jcr:content"</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="STRN">"jcr:data"</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 93</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">size</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">size.indexOf</span><span class="PUNC">(</span><span class="STRN">"binary-length:"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 94</span> </span><span class="WHIT">            </span><span class="COMM">// the value exists and contains a binary length that we can turn</span><span class="WHIT">
+<span class='line'> 95</span> </span><span class="WHIT">            </span><span class="COMM">// into a human readable file size</span><span class="WHIT">
+<span class='line'> 96</span> </span><span class="WHIT">            </span><span class="NAME">item.size</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"("</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">sakai.api.Util.convertToHumanReadableFileSize</span><span class="PUNC">(</span><span class="NAME">size.split</span><span class="PUNC">(</span><span class="STRN">":"</span><span class="PUNC">)</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">")"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 97</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 98</span> 
+<span class='line'> 99</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">item</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>100</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>101</span> 
+<span class='line'>102</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>103</span>      * This AJAX callback function handles the search result data returned from
+<span class='line'>104</span>      * /var/search/pool/me/manager.json.  If the call was successful, up to 5 of
+<span class='line'>105</span>      * the most recently created files are presented to the user.
+<span class='line'>106</span>      * @param {Object} success - indicates the status of the AJAX call
+<span class='line'>107</span>      * @param {Object} data - JSON data from /var/search/pool/me/manager.json
+<span class='line'>108</span>      * @return None
+<span class='line'>109</span>      */</span><span class="WHIT">
+<span class='line'>110</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">handleContentData</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">success</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>111</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">success</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>112</span> </span><span class="WHIT">            </span><span class="COMM">// parse & render data</span><span class="WHIT">
+<span class='line'>113</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">data.total</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>114</span> </span><span class="WHIT">                </span><span class="COMM">// user manages no content</span><span class="WHIT">
+<span class='line'>115</span> </span><span class="WHIT">                </span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">noContentMsg</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">show</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>116</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>117</span> </span><span class="WHIT">                </span><span class="COMM">// user manages content</span><span class="WHIT">
+<span class='line'>118</span> </span><span class="WHIT">                </span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">noContentMsg</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">hide</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>119</span> </span><span class="WHIT">                </span><span class="COMM">// build array of up to five items; reverse chronological order</span><span class="WHIT">
+<span class='line'>120</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">contentjson</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>121</span> </span><span class="WHIT">                    </span><span class="NAME">items</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="WHIT">
+<span class='line'>122</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>123</span> </span><span class="WHIT">                </span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">data.total</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">5</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>124</span> </span><span class="WHIT">                    </span><span class="NAME">contentjson.items.push</span><span class="PUNC">(</span><span class="NAME">parseDataResult</span><span class="PUNC">(</span><span class="NAME">data.results</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>125</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>126</span> </span><span class="WHIT">                </span><span class="COMM">// pass the array to HTML view</span><span class="WHIT">
+<span class='line'>127</span> </span><span class="WHIT">                </span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">contentList</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">html</span><span class="PUNC">(</span><span class="NAME">$.TemplateRenderer</span><span class="PUNC">(</span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">listTemplate</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">contentjson</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>128</span> </span><span class="WHIT">                </span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">contentList</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">show</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>129</span> 
+<span class='line'>130</span> </span><span class="WHIT">                </span><span class="COMM">// make sure the newly added content is properly styled with</span><span class="WHIT">
+<span class='line'>131</span> </span><span class="WHIT">                </span><span class="COMM">// threedots truncation</span><span class="WHIT">
+<span class='line'>132</span> </span><span class="WHIT">                </span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">ellipsisContainer</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">css</span><span class="PUNC">(</span><span class="STRN">"width"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">ellipsisContainer</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">width</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"px"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="WHIT">                </span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">ellipsisContainer</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">ThreeDots</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="WHIT">                    </span><span class="NAME">max_rows</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="WHIT">                    </span><span class="NAME">text_span_class</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"mycontent_ellipsis_text"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>136</span> </span><span class="WHIT">                    </span><span class="NAME">e_span_class</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"mycontent_e_span_class"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>137</span> </span><span class="WHIT">                    </span><span class="NAME">whole_word</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>138</span> </span><span class="WHIT">                    </span><span class="NAME">alt_text_t</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>141</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>142</span> </span><span class="WHIT">            </span><span class="COMM">// display something useful to the user</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="WHIT">            </span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">dataErrorMsg</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">show</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>144</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>145</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>146</span> 
+<span class='line'>147</span> 
+<span class='line'>148</span> </span><span class="WHIT">    </span><span class="COMM">////////////////////</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="WHIT">    </span><span class="COMM">// Event Handlers //</span><span class="WHIT">
+<span class='line'>150</span> </span><span class="WHIT">    </span><span class="COMM">////////////////////</span><span class="WHIT">
+<span class='line'>151</span> 
+<span class='line'>152</span> </span><span class="WHIT">    </span><span class="COMM">// Clicking to upload content</span><span class="WHIT">
+<span class='line'>153</span> </span><span class="WHIT">    </span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">uploadLink</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">click</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">ev</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>154</span> </span><span class="WHIT">        </span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">window</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">trigger</span><span class="PUNC">(</span><span class="STRN">"sakai-fileupload-init"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>155</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>156</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>157</span> 
+<span class='line'>158</span> </span><span class="WHIT">    </span><span class="COMM">// Listen for sakai-fileupload-complete event (from the fileupload widget)</span><span class="WHIT">
+<span class='line'>159</span> </span><span class="WHIT">    </span><span class="COMM">// to refresh this widget's file listing</span><span class="WHIT">
+<span class='line'>160</span> </span><span class="WHIT">    </span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">window</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">bind</span><span class="PUNC">(</span><span class="STRN">"sakai-fileupload-complete"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>161</span> </span><span class="WHIT">        </span><span class="NAME">init</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>162</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>163</span> 
+<span class='line'>164</span> 
+<span class='line'>165</span> </span><span class="WHIT">    </span><span class="COMM">/////////////////////////////</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="WHIT">    </span><span class="COMM">// Initialization function //</span><span class="WHIT">
+<span class='line'>167</span> </span><span class="WHIT">    </span><span class="COMM">/////////////////////////////</span><span class="WHIT">
+<span class='line'>168</span> 
+<span class='line'>169</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>170</span>      * Initiates fetching content data to be displayed in the My Content widget
+<span class='line'>171</span>      * @return None
+<span class='line'>172</span>      */</span><span class="WHIT">
+<span class='line'>173</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">init</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>174</span> </span><span class="WHIT">        </span><span class="COMM">// get list of content items</span><span class="WHIT">
+<span class='line'>175</span> </span><span class="WHIT">        </span><span class="NAME">sakai.api.Server.loadJSON</span><span class="PUNC">(</span><span class="STRN">"/var/search/pool/me/manager.1.json"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>176</span> </span><span class="WHIT">            </span><span class="NAME">handleContentData</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>177</span> </span><span class="WHIT">                </span><span class="STRN">"q"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"*"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>178</span> </span><span class="WHIT">                </span><span class="STRN">"sortOn"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"jcr:created"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>179</span> </span><span class="WHIT">                </span><span class="STRN">"sortOrder"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"descending"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>180</span> </span><span class="WHIT">                </span><span class="STRN">"page"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"0"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>181</span> </span><span class="WHIT">                </span><span class="STRN">"items"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"5"</span><span class="WHIT">
+<span class='line'>182</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>183</span> </span><span class="WHIT">        </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>184</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>185</span> 
+<span class='line'>186</span> </span><span class="WHIT">    </span><span class="COMM">// run init() function when sakai.content object loads</span><span class="WHIT">
+<span class='line'>187</span> </span><span class="WHIT">    </span><span class="NAME">init</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>188</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>189</span> 
+<span class='line'>190</span> </span><span class="NAME">sakai.api.Widgets.widgetLoader.informOnLoad</span><span class="PUNC">(</span><span class="STRN">"mycontent"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>191</span> </span></pre></body></html>

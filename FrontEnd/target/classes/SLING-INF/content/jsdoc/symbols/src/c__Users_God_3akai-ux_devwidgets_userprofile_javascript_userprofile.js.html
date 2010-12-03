@@ -1,0 +1,656 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/*
+<span class='line'>  2</span>  * Licensed to the Sakai Foundation (SF) under one
+<span class='line'>  3</span>  * or more contributor license agreements. See the NOTICE file
+<span class='line'>  4</span>  * distributed with this work for additional information
+<span class='line'>  5</span>  * regarding copyright ownership. The SF licenses this file
+<span class='line'>  6</span>  * to you under the Apache License, Version 2.0 (the
+<span class='line'>  7</span>  * "License"); you may not use this file except in compliance
+<span class='line'>  8</span>  * with the License. You may obtain a copy of the License at
+<span class='line'>  9</span>  *
+<span class='line'> 10</span>  *     http://www.apache.org/licenses/LICENSE-2.0
+<span class='line'> 11</span>  *
+<span class='line'> 12</span>  * Unless required by applicable law or agreed to in writing,
+<span class='line'> 13</span>  * software distributed under the License is distributed on an
+<span class='line'> 14</span>  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+<span class='line'> 15</span>  * KIND, either express or implied. See the License for the
+<span class='line'> 16</span>  * specific language governing permissions and limitations under the License.
+<span class='line'> 17</span>  */</span><span class="WHIT">
+<span class='line'> 18</span> 
+<span class='line'> 19</span> </span><span class="COMM">/*global $ */</span><span class="WHIT">
+<span class='line'> 20</span> 
+<span class='line'> 21</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">sakai</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 22</span> 
+<span class='line'> 23</span> </span><span class="COMM">/**
+<span class='line'> 24</span>  * @name sakai.userprofile
+<span class='line'> 25</span>  *
+<span class='line'> 26</span>  * @class userprofile
+<span class='line'> 27</span>  *
+<span class='line'> 28</span>  * @description
+<span class='line'> 29</span>  * Initialize the userprofile widget
+<span class='line'> 30</span>  *
+<span class='line'> 31</span>  * @version 0.0.1
+<span class='line'> 32</span>  * @param {String} tuid Unique id of the widget
+<span class='line'> 33</span>  * @param {Boolean} showSettings Show the settings of the widget or not
+<span class='line'> 34</span>  */</span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="NAME">sakai.userprofile</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">tuid</span><span class="PUNC">,</span><span class="NAME">showSettings</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 36</span> 
+<span class='line'> 37</span> </span><span class="WHIT">    </span><span class="COMM">/////////////////////////////</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="WHIT">    </span><span class="COMM">// CONFIGURATION VARIABLES //</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="WHIT">    </span><span class="COMM">/////////////////////////////</span><span class="WHIT">
+<span class='line'> 40</span> 
+<span class='line'> 41</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">userprofile</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">querystring</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// Variable that will contain the querystring object of the page</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">authprofileURL</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">readySections</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// Profile sections that have saved their data to sakai.profile.main</span><span class="WHIT">
+<span class='line'> 45</span> 
+<span class='line'> 46</span> </span><span class="WHIT">    </span><span class="COMM">///////////////////</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="WHIT">    </span><span class="COMM">// CSS SELECTORS //</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="WHIT">    </span><span class="COMM">///////////////////</span><span class="WHIT">
+<span class='line'> 49</span> 
+<span class='line'> 50</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$rootel</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">tuid</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$profile_actions</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#userprofile_actions"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$rootel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$profile_actions_button_edit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#userprofile_actions_button_edit"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$rootel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$profile_actions_template</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#userprofile_actions_template"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$rootel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$profile_error</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#userprofile_error"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$rootel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$profile_error_form_error_server</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#userprofile_error_form_error_server"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$profile_error</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$profile_error_form_errors</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#userprofile_error_form_errors"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$profile_error</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$profile_field_default_template</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#userprofile_field_default_template"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$rootel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$profile_form</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#userprofile_form"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$rootel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$profile_footer</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#userprofile_footer"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$rootel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$profile_footer_button_update</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#userprofile_footer_button_update"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$rootel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$profile_footer_button_dontupdate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#userprofile_footer_button_dontupdate"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$rootel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$profile_footer_template</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#userprofile_footer_template"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$rootel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$profile_message</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#userprofile_message"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$rootel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$profile_message_form_successful</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#userprofile_message_form_successful"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$profile_message</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 65</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$profile_sectionwidgets_container</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#userprofile_sectionwidgets_container"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$rootel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 66</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$profile_sectionwidgets_container_template</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#userprofile_sectionwidgets_container_template"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$rootel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 67</span> 
+<span class='line'> 68</span> 
+<span class='line'> 69</span> </span><span class="WHIT">    </span><span class="COMM">////////////////////</span><span class="WHIT">
+<span class='line'> 70</span> </span><span class="WHIT">    </span><span class="COMM">// UTIL FUNCTIONS //</span><span class="WHIT">
+<span class='line'> 71</span> </span><span class="WHIT">    </span><span class="COMM">////////////////////</span><span class="WHIT">
+<span class='line'> 72</span> 
+<span class='line'> 73</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 74</span>      * Change the mode of the current profile
+<span class='line'> 75</span>      * @param {String} mode The mode for the profile (view | edit)
+<span class='line'> 76</span>      */</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">setProfileMode</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">mode</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 78</span> 
+<span class='line'> 79</span> </span><span class="WHIT">        </span><span class="COMM">// Check the mode parameter</span><span class="WHIT">
+<span class='line'> 80</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$.inArray</span><span class="PUNC">(</span><span class="NAME">mode</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sakai.profile.main.mode.options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 81</span> 
+<span class='line'> 82</span> </span><span class="WHIT">            </span><span class="COMM">// Set the correct profile mode</span><span class="WHIT">
+<span class='line'> 83</span> </span><span class="WHIT">            </span><span class="NAME">sakai.profile.main.mode.value</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">mode</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 84</span> 
+<span class='line'> 85</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 86</span> </span><span class="WHIT">        </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 87</span> 
+<span class='line'> 88</span> </span><span class="WHIT">            </span><span class="COMM">// Use the standard profile mode</span><span class="WHIT">
+<span class='line'> 89</span> </span><span class="WHIT">            </span><span class="NAME">sakai.profile.main.mode.value</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai.profile.main.mode.options</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 90</span> 
+<span class='line'> 91</span> </span><span class="WHIT">            </span><span class="COMM">// Print a log message that the supplied mode isn't valid</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="WHIT">            </span><span class="NAME">debug.info</span><span class="PUNC">(</span><span class="STRN">"profile - setProfileMode - the supplied mode '"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">mode</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"' is not a valid profile mode. Using the default mode instead"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 93</span> 
+<span class='line'> 94</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 95</span> 
+<span class='line'> 96</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 97</span> 
+<span class='line'> 98</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 99</span>      * Get the profile mode from the querystring
+<span class='line'>100</span>      */</span><span class="WHIT">
+<span class='line'>101</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">getProfileMode</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>102</span> 
+<span class='line'>103</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">querystring.contains</span><span class="PUNC">(</span><span class="STRN">"mode"</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>104</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">querystring.get</span><span class="PUNC">(</span><span class="STRN">"mode"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>106</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>107</span> 
+<span class='line'>108</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>109</span> 
+<span class='line'>110</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>111</span>      * Change the profile mode
+<span class='line'>112</span>      * This will fire a redirect
+<span class='line'>113</span>      * @param {String} mode The mode you want to change to
+<span class='line'>114</span>      */</span><span class="WHIT">
+<span class='line'>115</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">changeProfileMode</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">mode</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>116</span> 
+<span class='line'>117</span> </span><span class="WHIT">         </span><span class="COMM">// Check the mode parameter</span><span class="WHIT">
+<span class='line'>118</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$.inArray</span><span class="PUNC">(</span><span class="NAME">mode</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sakai.profile.main.mode.options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>119</span> 
+<span class='line'>120</span> </span><span class="WHIT">            </span><span class="COMM">// Perform the redirect</span><span class="WHIT">
+<span class='line'>121</span> </span><span class="WHIT">            </span><span class="COMM">//window.location = window.location.pathname + "?mode=" + mode; // TODO fix this, jquery.bbq it, and do not force a refresh</span><span class="WHIT">
+<span class='line'>122</span> 
+<span class='line'>123</span> </span><span class="WHIT">            </span><span class="KEYW">switch</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">mode</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>124</span> </span><span class="WHIT">                </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">"edit"</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>125</span> </span><span class="WHIT">                    </span><span class="NAME">window.location</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai.config.URL.PROFILE_EDIT_URL</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"?user="</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">sakai.profile.main.currentuser</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>126</span> </span><span class="WHIT">                    </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>127</span> </span><span class="WHIT">                </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">"view"</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>128</span> </span><span class="WHIT">                    </span><span class="NAME">window.location</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"/~"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">sakai.profile.main.currentuser</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>129</span> </span><span class="WHIT">                    </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>130</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>131</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>132</span> 
+<span class='line'>133</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>134</span> 
+<span class='line'>135</span> 
+<span class='line'>136</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>137</span>      * Check whether the user is editing/looking at it's own profile or not
+<span class='line'>138</span>      * We do this because if it is the current user, we don't need to perform an extra search
+<span class='line'>139</span>      */</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">setIsMe</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>141</span> 
+<span class='line'>142</span> </span><span class="WHIT">        </span><span class="COMM">// Check whether there is a user parameter in the querystring,</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="WHIT">        </span><span class="COMM">// if so, check whether the userid is not the same as the user parameter</span><span class="WHIT">
+<span class='line'>144</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">querystring.contains</span><span class="PUNC">(</span><span class="STRN">"user"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">querystring.get</span><span class="PUNC">(</span><span class="STRN">"user"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="NAME">sakai.data.me.user.userid</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>145</span> </span><span class="WHIT">            </span><span class="NAME">sakai.profile.main.isme</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>146</span> </span><span class="WHIT">            </span><span class="NAME">sakai.profile.main.currentuser</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">querystring.get</span><span class="PUNC">(</span><span class="STRN">"user"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>147</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>148</span> </span><span class="WHIT">        </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="WHIT">            </span><span class="NAME">sakai.profile.main.isme</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>150</span> </span><span class="WHIT">            </span><span class="NAME">sakai.profile.main.currentuser</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai.data.me.user.userid</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>151</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>152</span> 
+<span class='line'>153</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>154</span> 
+<span class='line'>155</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>156</span>      * Checks if the user has a custom profile type set
+<span class='line'>157</span>      */</span><span class="WHIT">
+<span class='line'>158</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">checkProfileType</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>159</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">userType</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai.profile.main.data.userType</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>160</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">userType</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">sakai.config.Profile.configuration</span><span class="PUNC">[</span><span class="NAME">userType</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>161</span> </span><span class="WHIT">            </span><span class="NAME">sakai.profile.main.config</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai.config.Profile.configuration</span><span class="PUNC">[</span><span class="NAME">userType</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>162</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>163</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>164</span> 
+<span class='line'>165</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>166</span>      * Construct the ACL list
+<span class='line'>167</span>      */</span><span class="WHIT">
+<span class='line'>168</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">constructACL</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>169</span> 
+<span class='line'>170</span> </span><span class="WHIT">        </span><span class="NAME">sakai.profile.main.acls</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>171</span> </span><span class="WHIT">            </span><span class="STRN">"options"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>172</span> </span><span class="WHIT">                </span><span class="STRN">"everybody"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>173</span> </span><span class="WHIT">                    </span><span class="STRN">"label"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"__MSG__EVERYBODY__"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>174</span> </span><span class="WHIT">                    </span><span class="STRN">"postparams"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>175</span> </span><span class="WHIT">                        </span><span class="STRN">"principalId"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"anonymous"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>176</span> </span><span class="WHIT">                        </span><span class="STRN">"privilege@jcr:read"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"granted"</span><span class="WHIT">
+<span class='line'>177</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>178</span> </span><span class="WHIT">                        </span><span class="STRN">"principalId"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"everyone"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>179</span> </span><span class="WHIT">                        </span><span class="STRN">"privilege@jcr:read"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"granted"</span><span class="WHIT">
+<span class='line'>180</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>181</span> </span><span class="WHIT">                        </span><span class="STRN">"principalId"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"g-contacts-"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">sakai.profile.main.currentuser</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>182</span> </span><span class="WHIT">                        </span><span class="STRN">"privilege@jcr:read"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"granted"</span><span class="WHIT">
+<span class='line'>183</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>184</span> </span><span class="WHIT">                        </span><span class="STRN">"principalId"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">sakai.profile.main.currentuser</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>185</span> </span><span class="WHIT">                        </span><span class="STRN">"privilege@jcr:read"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"granted"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>186</span> </span><span class="WHIT">                        </span><span class="STRN">"privilege@jcr:write"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"granted"</span><span class="WHIT">
+<span class='line'>187</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">]</span><span class="WHIT">
+<span class='line'>188</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>189</span> </span><span class="WHIT">                </span><span class="STRN">"institution"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>190</span> </span><span class="WHIT">                    </span><span class="STRN">"label"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"__MSG__INSTITUTION_ONLY__"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>191</span> </span><span class="WHIT">                    </span><span class="STRN">"postparams"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>192</span> </span><span class="WHIT">                        </span><span class="STRN">"principalId"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"anonymous"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>193</span> </span><span class="WHIT">                        </span><span class="STRN">"privilege@jcr:read"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"denied"</span><span class="WHIT">
+<span class='line'>194</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>195</span> </span><span class="WHIT">                        </span><span class="STRN">"principalId"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"everyone"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>196</span> </span><span class="WHIT">                        </span><span class="STRN">"privilege@jcr:read"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"granted"</span><span class="WHIT">
+<span class='line'>197</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>198</span> </span><span class="WHIT">                        </span><span class="STRN">"principalId"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"g-contacts-"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">sakai.profile.main.currentuser</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>199</span> </span><span class="WHIT">                        </span><span class="STRN">"privilege@jcr:read"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"none"</span><span class="WHIT">
+<span class='line'>200</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>201</span> </span><span class="WHIT">                        </span><span class="STRN">"principalId"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">sakai.profile.main.currentuser</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>202</span> </span><span class="WHIT">                        </span><span class="STRN">"privilege@jcr:read"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"granted"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>203</span> </span><span class="WHIT">                        </span><span class="STRN">"privilege@jcr:write"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"granted"</span><span class="WHIT">
+<span class='line'>204</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">]</span><span class="WHIT">
+<span class='line'>205</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>206</span> </span><span class="WHIT">                </span><span class="STRN">"contacts"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>207</span> </span><span class="WHIT">                    </span><span class="STRN">"label"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"__MSG__CONTACTS_ONLY__"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>208</span> </span><span class="WHIT">                    </span><span class="STRN">"postparams"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>209</span> </span><span class="WHIT">                        </span><span class="STRN">"principalId"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"anonymous"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>210</span> </span><span class="WHIT">                        </span><span class="STRN">"privilege@jcr:read"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"denied"</span><span class="WHIT">
+<span class='line'>211</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>212</span> </span><span class="WHIT">                        </span><span class="STRN">"principalId"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"everyone"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>213</span> </span><span class="WHIT">                        </span><span class="STRN">"privilege@jcr:read"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"denied"</span><span class="WHIT">
+<span class='line'>214</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>215</span> </span><span class="WHIT">                        </span><span class="STRN">"principalId"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"g-contacts-"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">sakai.profile.main.currentuser</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>216</span> </span><span class="WHIT">                        </span><span class="STRN">"privilege@jcr:read"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"granted"</span><span class="WHIT">
+<span class='line'>217</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>218</span> </span><span class="WHIT">                        </span><span class="STRN">"principalId"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">sakai.profile.main.currentuser</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>219</span> </span><span class="WHIT">                        </span><span class="STRN">"privilege@jcr:read"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"granted"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>220</span> </span><span class="WHIT">                        </span><span class="STRN">"privilege@jcr:write"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"granted"</span><span class="WHIT">
+<span class='line'>221</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">]</span><span class="WHIT">
+<span class='line'>222</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>223</span> </span><span class="WHIT">                </span><span class="STRN">"onlyme"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>224</span> </span><span class="WHIT">                    </span><span class="STRN">"label"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"__MSG__ONLY_ME__"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>225</span> </span><span class="WHIT">                    </span><span class="STRN">"postparams"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>226</span> </span><span class="WHIT">                        </span><span class="STRN">"principalId"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"anonymous"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>227</span> </span><span class="WHIT">                        </span><span class="STRN">"privilege@jcr:read"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"denied"</span><span class="WHIT">
+<span class='line'>228</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>229</span> </span><span class="WHIT">                        </span><span class="STRN">"principalId"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"everyone"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>230</span> </span><span class="WHIT">                        </span><span class="STRN">"privilege@jcr:read"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"denied"</span><span class="WHIT">
+<span class='line'>231</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>232</span> </span><span class="WHIT">                        </span><span class="STRN">"principalId"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"g-contacts-"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">sakai.profile.main.currentuser</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>233</span> </span><span class="WHIT">                        </span><span class="STRN">"privilege@jcr:read"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"denied"</span><span class="WHIT">
+<span class='line'>234</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>235</span> </span><span class="WHIT">                        </span><span class="STRN">"principalId"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">sakai.profile.main.currentuser</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>236</span> </span><span class="WHIT">                        </span><span class="STRN">"privilege@jcr:read"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"granted"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>237</span> </span><span class="WHIT">                        </span><span class="STRN">"privilege@jcr:write"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"granted"</span><span class="WHIT">
+<span class='line'>238</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">]</span><span class="WHIT">
+<span class='line'>239</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>240</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>241</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>242</span> 
+<span class='line'>243</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>244</span> 
+<span class='line'>245</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>246</span>      * Check whether there is a valid picture for the user
+<span class='line'>247</span>      * @param {Object} profile The profile object that could contain the profile picture
+<span class='line'>248</span>      * @return {String}
+<span class='line'>249</span>      * The complete URL of the profile picture
+<span class='line'>250</span>      * Will be an empty string if there is no picture
+<span class='line'>251</span>      */</span><span class="WHIT">
+<span class='line'>252</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">constructProfilePicture</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">profile</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>253</span> 
+<span class='line'>254</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">profile.basic.elements.picture</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">profile.basic.elements.picture.value</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">profile</span><span class="PUNC">[</span><span class="STRN">"rep:userId"</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>255</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">"/~"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">profile</span><span class="PUNC">[</span><span class="STRN">"rep:userId"</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"/public/profile/"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">profile.basic.elements.picture.value.name</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>256</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>257</span> </span><span class="WHIT">        </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>258</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>259</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>260</span> 
+<span class='line'>261</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>262</span> 
+<span class='line'>263</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>264</span>      * Filter some JCR properties, we need to do this because some properties
+<span class='line'>265</span>      * can not be used by the import operation in Slin
+<span class='line'>266</span>      * @param {Object} i_object The object you want to filter
+<span class='line'>267</span>      */</span><span class="WHIT">
+<span class='line'>268</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">filterJCRProperties</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">i_object</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>269</span> 
+<span class='line'>270</span> </span><span class="WHIT">        </span><span class="COMM">// Remove the "rep:policy" property</span><span class="WHIT">
+<span class='line'>271</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i_object</span><span class="PUNC">[</span><span class="STRN">"rep:policy"</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>272</span> </span><span class="WHIT">            </span><span class="KEYW">delete</span><span class="WHIT"> </span><span class="NAME">i_object</span><span class="PUNC">[</span><span class="STRN">"rep:policy"</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>273</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>274</span> 
+<span class='line'>275</span> </span><span class="WHIT">        </span><span class="COMM">// Also run over the other objects within this object</span><span class="WHIT">
+<span class='line'>276</span> </span><span class="WHIT">        </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">i_object</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>277</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i_object.hasOwnProperty</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">$.isPlainObject</span><span class="PUNC">(</span><span class="NAME">i_object</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>278</span> </span><span class="WHIT">              </span><span class="NAME">filterJCRProperties</span><span class="PUNC">(</span><span class="NAME">i_object</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>279</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>280</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>281</span> 
+<span class='line'>282</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>283</span> 
+<span class='line'>284</span> 
+<span class='line'>285</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>286</span>      * Save the Access control list for the profile
+<span class='line'>287</span>      */</span><span class="WHIT">
+<span class='line'>288</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">saveProfileACL</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>289</span> 
+<span class='line'>290</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">requests</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// Variable used to contain all the information we need to send to the batch post</span><span class="WHIT">
+<span class='line'>291</span> 
+<span class='line'>292</span> </span><span class="WHIT">        </span><span class="COMM">// Remove the ACL's on the authprofile URL</span><span class="WHIT">
+<span class='line'>293</span> </span><span class="WHIT">        </span><span class="NAME">requests</span><span class="PUNC">[</span><span class="NAME">requests.length</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>294</span> </span><span class="WHIT">            </span><span class="COMM">// Construct the right URL</span><span class="WHIT">
+<span class='line'>295</span> </span><span class="WHIT">            </span><span class="STRN">"url"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">authprofileURL</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">".deleteAce.html"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>296</span> </span><span class="WHIT">            </span><span class="STRN">"method"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"POST"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>297</span> </span><span class="WHIT">            </span><span class="STRN">"parameters"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>298</span> </span><span class="WHIT">                </span><span class="STRN">":applyTo"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="NAME">sakai.profile.main.currentuser</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"anonymous"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"everyone"</span><span class="PUNC">]</span><span class="WHIT">
+<span class='line'>299</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>300</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>301</span> 
+<span class='line'>302</span> </span><span class="WHIT">        </span><span class="COMM">// Run over all the elements in the config file</span><span class="WHIT">
+<span class='line'>303</span> </span><span class="WHIT">        </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">sakai.profile.main.config</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>304</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">sakai.profile.main.config.hasOwnProperty</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">$.isPlainObject</span><span class="PUNC">(</span><span class="NAME">sakai.profile.main.config</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>305</span> 
+<span class='line'>306</span> </span><span class="WHIT">                </span><span class="COMM">// Create a sectionobject for caching purposes</span><span class="WHIT">
+<span class='line'>307</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">sectionObject</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai.profile.main.data</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>308</span> 
+<span class='line'>309</span> </span><span class="WHIT">                </span><span class="COMM">// Check whether it is also in the data object</span><span class="WHIT">
+<span class='line'>310</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">sakai.profile.main.data</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">$.isPlainObject</span><span class="PUNC">(</span><span class="NAME">sakai.profile.main.data</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>311</span> 
+<span class='line'>312</span> </span><span class="WHIT">                    </span><span class="COMM">// Array containing the postparams for the specific access property</span><span class="WHIT">
+<span class='line'>313</span> </span><span class="WHIT">                    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">aclArray</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai.profile.main.acls.options</span><span class="PUNC">[</span><span class="NAME">sectionObject.access</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">postparams</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>314</span> 
+<span class='line'>315</span> </span><span class="WHIT">                    </span><span class="COMM">// Run over all the elements in the array</span><span class="WHIT">
+<span class='line'>316</span> </span><span class="WHIT">                    </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">j</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">jl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">aclArray.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">j</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">jl</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">j</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>317</span> 
+<span class='line'>318</span> </span><span class="WHIT">                        </span><span class="COMM">// Add the object to the requests array</span><span class="WHIT">
+<span class='line'>319</span> </span><span class="WHIT">                        </span><span class="NAME">requests</span><span class="PUNC">[</span><span class="NAME">requests.length</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>320</span> </span><span class="WHIT">                            </span><span class="COMM">// Construct the right URL</span><span class="WHIT">
+<span class='line'>321</span> </span><span class="WHIT">                            </span><span class="STRN">"url"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">authprofileURL</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"/"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">".modifyACE.json"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">// Todo change to JSON</span><span class="WHIT">
+<span class='line'>322</span> </span><span class="WHIT">                            </span><span class="STRN">"method"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"POST"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>323</span> </span><span class="WHIT">                            </span><span class="STRN">"parameters"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">aclArray</span><span class="PUNC">[</span><span class="NAME">j</span><span class="PUNC">]</span><span class="WHIT">
+<span class='line'>324</span> </span><span class="WHIT">                        </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>325</span> 
+<span class='line'>326</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>327</span> 
+<span class='line'>328</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>329</span> 
+<span class='line'>330</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>331</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>332</span> 
+<span class='line'>333</span> </span><span class="WHIT">        </span><span class="COMM">/*for(var k = 0, kl = requests.length; k &lt; kl; k++){
+<span class='line'>334</span> 
+<span class='line'>335</span>             $.ajax({
+<span class='line'>336</span>                 url: requests[k].url,
+<span class='line'>337</span>                 traditional: true,
+<span class='line'>338</span>                 type: requests[k].method,
+<span class='line'>339</span>                 data: requests[k].parameters,
+<span class='line'>340</span>                 async: false,
+<span class='line'>341</span>                 success: function(){
+<span class='line'>342</span> 
+<span class='line'>343</span>                     if(k === requests.length-1){
+<span class='line'>344</span>                         alert("ok");
+<span class='line'>345</span>                     }
+<span class='line'>346</span> 
+<span class='line'>347</span>                 }
+<span class='line'>348</span>             });
+<span class='line'>349</span> 
+<span class='line'>350</span>         }*/</span><span class="WHIT">
+<span class='line'>351</span> 
+<span class='line'>352</span> 
+<span class='line'>353</span> </span><span class="WHIT">        </span><span class="COMM">// Send the Ajax request to the batch servlet</span><span class="WHIT">
+<span class='line'>354</span> </span><span class="WHIT">        </span><span class="COMM">// depends on KERN-909</span><span class="WHIT">
+<span class='line'>355</span> </span><span class="WHIT">        </span><span class="NAME">$.ajax</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>356</span> </span><span class="WHIT">            </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">sakai.config.URL.BATCH</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>357</span> </span><span class="WHIT">            </span><span class="NAME">traditional</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>358</span> </span><span class="WHIT">            </span><span class="NAME">type</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"POST"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>359</span> </span><span class="WHIT">            </span><span class="NAME">data</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>360</span> </span><span class="WHIT">                </span><span class="NAME">requests</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">$.toJSON</span><span class="PUNC">(</span><span class="NAME">requests</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>361</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>362</span> </span><span class="WHIT">            </span><span class="NAME">success</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>363</span> 
+<span class='line'>364</span> </span><span class="WHIT">                </span><span class="COMM">// Show a successful notification to the user</span><span class="WHIT">
+<span class='line'>365</span> </span><span class="WHIT">                </span><span class="NAME">sakai.api.Util.notification.show</span><span class="PUNC">(</span><span class="STRN">""</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$profile_message_form_successful.text</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sakai.api.Util.notification.type.INFORMATION</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>366</span> 
+<span class='line'>367</span> </span><span class="WHIT">                </span><span class="COMM">// Wait for 2 seconds</span><span class="WHIT">
+<span class='line'>368</span> </span><span class="WHIT">                </span><span class="NAME">setTimeout</span><span class="PUNC">(</span><span class="WHIT">
+<span class='line'>369</span> </span><span class="WHIT">                    </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>370</span> </span><span class="WHIT">                        </span><span class="COMM">// Change the profile mode if the save was successful</span><span class="WHIT">
+<span class='line'>371</span> </span><span class="WHIT">                        </span><span class="NAME">changeProfileMode</span><span class="PUNC">(</span><span class="STRN">"view"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>372</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">2000</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>373</span> 
+<span class='line'>374</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>375</span> </span><span class="WHIT">            </span><span class="NAME">error</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">xhr</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">textStatus</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">thrownError</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>376</span> 
+<span class='line'>377</span> </span><span class="WHIT">                </span><span class="COMM">// Show an error message to the user</span><span class="WHIT">
+<span class='line'>378</span> </span><span class="WHIT">                </span><span class="NAME">sakai.api.Util.notification.show</span><span class="PUNC">(</span><span class="STRN">""</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$profile_error_form_error_server.text</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sakai.api.Util.notification.type.ERROR</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>379</span> 
+<span class='line'>380</span> </span><span class="WHIT">                </span><span class="COMM">// Log an error message</span><span class="WHIT">
+<span class='line'>381</span> </span><span class="WHIT">                </span><span class="NAME">debug.error</span><span class="PUNC">(</span><span class="STRN">"sakai.profile - saveProfileACL - the profile ACL's couldn't be saved successfully"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>382</span> 
+<span class='line'>383</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>384</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>385</span> 
+<span class='line'>386</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>387</span> 
+<span class='line'>388</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>389</span>      * Save the current profile data to the repository
+<span class='line'>390</span>      */</span><span class="WHIT">
+<span class='line'>391</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">saveProfileData</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>392</span> 
+<span class='line'>393</span> </span><span class="WHIT">        </span><span class="COMM">// Trigger the profile save method, this is event is bound in every sakai section</span><span class="WHIT">
+<span class='line'>394</span> </span><span class="WHIT">        </span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">window</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">trigger</span><span class="PUNC">(</span><span class="STRN">"sakai-profile-save"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>395</span> 
+<span class='line'>396</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>397</span> 
+<span class='line'>398</span> </span><span class="WHIT">    </span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">window</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">bind</span><span class="PUNC">(</span><span class="STRN">"sakai-profile-data-ready"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sectionName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>399</span> 
+<span class='line'>400</span> </span><span class="WHIT">        </span><span class="COMM">// keep track of all the sections that are ready</span><span class="WHIT">
+<span class='line'>401</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$.inArray</span><span class="PUNC">(</span><span class="NAME">sectionName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">readySections</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>402</span> </span><span class="WHIT">            </span><span class="NAME">readySections.push</span><span class="PUNC">(</span><span class="NAME">sectionName</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>403</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>404</span> 
+<span class='line'>405</span> </span><span class="WHIT">        </span><span class="COMM">// if all sections are ready, we'll pass over this loop. otherwise, return and wait</span><span class="WHIT">
+<span class='line'>406</span> </span><span class="WHIT">        </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">sakai.profile.main.config</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>407</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">sakai.profile.main.config.hasOwnProperty</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>408</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$.inArray</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">readySections</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>409</span> </span><span class="WHIT">                    </span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>410</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>411</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>412</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>413</span> 
+<span class='line'>414</span> </span><span class="WHIT">        </span><span class="COMM">// Filter some JCR properties</span><span class="WHIT">
+<span class='line'>415</span> </span><span class="WHIT">        </span><span class="NAME">filterJCRProperties</span><span class="PUNC">(</span><span class="NAME">sakai.profile.main.data</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>416</span> 
+<span class='line'>417</span> </span><span class="WHIT">        </span><span class="COMM">// Save the profile properties</span><span class="WHIT">
+<span class='line'>418</span> </span><span class="WHIT">        </span><span class="NAME">sakai.api.Server.saveJSON</span><span class="PUNC">(</span><span class="NAME">authprofileURL</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sakai.profile.main.data</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">success</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>419</span> 
+<span class='line'>420</span> </span><span class="WHIT">            </span><span class="COMM">// Check whether is was successful</span><span class="WHIT">
+<span class='line'>421</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">success</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>422</span> 
+<span class='line'>423</span> </span><span class="WHIT">                </span><span class="COMM">// Save the profile acl</span><span class="WHIT">
+<span class='line'>424</span> </span><span class="WHIT">                </span><span class="NAME">saveProfileACL</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>425</span> 
+<span class='line'>426</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>427</span> </span><span class="WHIT">            </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>428</span> 
+<span class='line'>429</span> </span><span class="WHIT">                </span><span class="COMM">// Show an error message to the user</span><span class="WHIT">
+<span class='line'>430</span> </span><span class="WHIT">                </span><span class="NAME">sakai.api.Util.notification.show</span><span class="PUNC">(</span><span class="STRN">""</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$profile_error_form_error_server.text</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sakai.api.Util.notification.type.ERROR</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>431</span> 
+<span class='line'>432</span> </span><span class="WHIT">                </span><span class="COMM">// Log an error message</span><span class="WHIT">
+<span class='line'>433</span> </span><span class="WHIT">                </span><span class="NAME">debug.error</span><span class="PUNC">(</span><span class="STRN">"sakai.profile - saveProfileData - the profile data couldn't be saved successfully"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>434</span> 
+<span class='line'>435</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>436</span> 
+<span class='line'>437</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>438</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>439</span> 
+<span class='line'>440</span> 
+<span class='line'>441</span> </span><span class="WHIT">    </span><span class="COMM">///////////////////////</span><span class="WHIT">
+<span class='line'>442</span> </span><span class="WHIT">    </span><span class="COMM">// BINDING FUNCTIONS //</span><span class="WHIT">
+<span class='line'>443</span> </span><span class="WHIT">    </span><span class="COMM">///////////////////////</span><span class="WHIT">
+<span class='line'>444</span> 
+<span class='line'>445</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>446</span>      * Add binding to the footer elements
+<span class='line'>447</span>      */</span><span class="WHIT">
+<span class='line'>448</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">addBindingFooter</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>449</span> 
+<span class='line'>450</span> </span><span class="WHIT">        </span><span class="COMM">// Reinitialise jQuery objects</span><span class="WHIT">
+<span class='line'>451</span> </span><span class="WHIT">        </span><span class="NAME">$profile_footer_button_dontupdate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">$profile_footer_button_dontupdate.selector</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>452</span> </span><span class="WHIT">        </span><span class="COMM">//$profile_footer_button_update = $($profile_footer_button_update.selector);</span><span class="WHIT">
+<span class='line'>453</span> 
+<span class='line'>454</span> </span><span class="WHIT">        </span><span class="COMM">// Bind the don't update</span><span class="WHIT">
+<span class='line'>455</span> </span><span class="WHIT">        </span><span class="NAME">$profile_footer_button_dontupdate.bind</span><span class="PUNC">(</span><span class="STRN">"click"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>456</span> 
+<span class='line'>457</span> </span><span class="WHIT">            </span><span class="COMM">// Change the profile mode</span><span class="WHIT">
+<span class='line'>458</span> </span><span class="WHIT">            </span><span class="NAME">changeProfileMode</span><span class="PUNC">(</span><span class="STRN">"view"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>459</span> 
+<span class='line'>460</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>461</span> 
+<span class='line'>462</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>463</span> 
+<span class='line'>464</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>465</span>      * Add binding to the action elements
+<span class='line'>466</span>      */</span><span class="WHIT">
+<span class='line'>467</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">addBindingActions</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>468</span> 
+<span class='line'>469</span> </span><span class="WHIT">        </span><span class="COMM">// Reinitialise jQuery objects</span><span class="WHIT">
+<span class='line'>470</span> </span><span class="WHIT">        </span><span class="NAME">$profile_actions_button_edit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">$profile_actions_button_edit.selector</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>471</span> 
+<span class='line'>472</span> </span><span class="WHIT">        </span><span class="COMM">// Bind the edit button</span><span class="WHIT">
+<span class='line'>473</span> </span><span class="WHIT">        </span><span class="NAME">$profile_actions_button_edit.live</span><span class="PUNC">(</span><span class="STRN">"click"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>474</span> 
+<span class='line'>475</span> </span><span class="WHIT">            </span><span class="COMM">// Change the profile mode</span><span class="WHIT">
+<span class='line'>476</span> </span><span class="WHIT">            </span><span class="NAME">changeProfileMode</span><span class="PUNC">(</span><span class="STRN">"edit"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>477</span> 
+<span class='line'>478</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>479</span> 
+<span class='line'>480</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>481</span> 
+<span class='line'>482</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>483</span>      * Add binding to the profile form
+<span class='line'>484</span>      */</span><span class="WHIT">
+<span class='line'>485</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">addBindingForm</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>486</span> </span><span class="COMM">/*
+<span class='line'>487</span>         // Reinitialize the jQuery form selector
+<span class='line'>488</span>         $profile_form = $($profile_form.selector);
+<span class='line'>489</span> 
+<span class='line'>490</span>         // Initialize the validate plug-in
+<span class='line'>491</span>         $profile_form.validate({
+<span class='line'>492</span>             debug: true,
+<span class='line'>493</span>             messages: {
+<span class='line'>494</span>                 required: "test"
+<span class='line'>495</span>             },
+<span class='line'>496</span>             submitHandler: saveProfileData,
+<span class='line'>497</span>             invalidHandler: function(form, validator){
+<span class='line'>498</span> 
+<span class='line'>499</span>                 // Remove all the current notifications
+<span class='line'>500</span>                 sakai.api.Util.notification.removeAll();
+<span class='line'>501</span> 
+<span class='line'>502</span>                 // Show a notification which states that you have errors
+<span class='line'>503</span>                 sakai.api.Util.notification.show("", $profile_error_form_errors.text(), sakai.api.Util.notification.type.ERROR);
+<span class='line'>504</span>             },
+<span class='line'>505</span>             ignore: ".profile_validation_ignore", // Class
+<span class='line'>506</span>             errorClass: "profilesection_validation_error",
+<span class='line'>507</span>             validClass: "profilesection_validation_valid",
+<span class='line'>508</span>             ignoreTitle: true // Ignore the title attribute, this can be removed as soon as we use the data-path attribute
+<span class='line'>509</span>         });
+<span class='line'>510</span> */</span><span class="WHIT">
+<span class='line'>511</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>512</span> 
+<span class='line'>513</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>514</span>      * Add binding to all the elements on the page
+<span class='line'>515</span>      */</span><span class="WHIT">
+<span class='line'>516</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">addBinding</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>517</span> 
+<span class='line'>518</span> </span><span class="WHIT">        </span><span class="COMM">// Add binding to the actions elements</span><span class="WHIT">
+<span class='line'>519</span> </span><span class="WHIT">        </span><span class="NAME">addBindingActions</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>520</span> 
+<span class='line'>521</span> </span><span class="WHIT">        </span><span class="COMM">// Add binding to the profile form</span><span class="WHIT">
+<span class='line'>522</span> </span><span class="WHIT">        </span><span class="NAME">addBindingForm</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>523</span> 
+<span class='line'>524</span> </span><span class="WHIT">        </span><span class="COMM">// Add binding to footer elements</span><span class="WHIT">
+<span class='line'>525</span> </span><span class="WHIT">        </span><span class="NAME">addBindingFooter</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>526</span> 
+<span class='line'>527</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>528</span> 
+<span class='line'>529</span> 
+<span class='line'>530</span> </span><span class="WHIT">    </span><span class="COMM">////////////////////////</span><span class="WHIT">
+<span class='line'>531</span> </span><span class="WHIT">    </span><span class="COMM">// TEMPLATE FUNCTIONS //</span><span class="WHIT">
+<span class='line'>532</span> </span><span class="WHIT">    </span><span class="COMM">////////////////////////</span><span class="WHIT">
+<span class='line'>533</span> 
+<span class='line'>534</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>535</span>      * Insert a profile section widget
+<span class='line'>536</span>      * @param {String} sectionname The name of the section e.g. basic/talks/aboutme
+<span class='line'>537</span>      */</span><span class="WHIT">
+<span class='line'>538</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">insertProfileSectionWidget</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">sectionname</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>539</span> 
+<span class='line'>540</span> </span><span class="WHIT">        </span><span class="COMM">// Create a JSON object to pass the sectionname along</span><span class="WHIT">
+<span class='line'>541</span> </span><span class="WHIT">        </span><span class="COMM">// Trimpath needs an object to be passed (not only a variable)</span><span class="WHIT">
+<span class='line'>542</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">sectionobject</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>543</span> </span><span class="WHIT">            </span><span class="STRN">"sectionname"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"profilesection-"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">sectionname</span><span class="WHIT">
+<span class='line'>544</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>545</span> 
+<span class='line'>546</span> </span><span class="WHIT">        </span><span class="COMM">// Construct the html for the widget</span><span class="WHIT">
+<span class='line'>547</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">toAppend</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$.TemplateRenderer</span><span class="PUNC">(</span><span class="NAME">$profile_sectionwidgets_container_template</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sectionobject</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>548</span> </span><span class="WHIT">        </span><span class="NAME">$profile_sectionwidgets_container.append</span><span class="PUNC">(</span><span class="NAME">toAppend</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>549</span> 
+<span class='line'>550</span> </span><span class="WHIT">        </span><span class="COMM">// Bind a global event that can be triggered by the profilesection widgets</span><span class="WHIT">
+<span class='line'>551</span> </span><span class="WHIT">        </span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">window</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">bind</span><span class="PUNC">(</span><span class="STRN">"sakai-"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">sectionobject.sectionname</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">eventtype</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>552</span> 
+<span class='line'>553</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$.isFunction</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>554</span> </span><span class="WHIT">                </span><span class="NAME">callback</span><span class="PUNC">(</span><span class="NAME">sectionname</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>555</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>556</span> 
+<span class='line'>557</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>558</span> 
+<span class='line'>559</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>560</span> 
+<span class='line'>561</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>562</span>      * Insert the profile section widgets
+<span class='line'>563</span>      */</span><span class="WHIT">
+<span class='line'>564</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">insertProfileSectionWidgets</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>565</span> 
+<span class='line'>566</span> </span><span class="WHIT">        </span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">sakai.profile.main.config</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>567</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">sakai.profile.main.config.hasOwnProperty</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>568</span> 
+<span class='line'>569</span> </span><span class="WHIT">                </span><span class="COMM">// Insert a separate widget for each profile section widget</span><span class="WHIT">
+<span class='line'>570</span> </span><span class="WHIT">                </span><span class="NAME">insertProfileSectionWidget</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>571</span> 
+<span class='line'>572</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>573</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>574</span> </span><span class="WHIT">        </span><span class="NAME">sakai.api.Widgets.widgetLoader.insertWidgets</span><span class="PUNC">(</span><span class="NAME">tuid</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>575</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>576</span> 
+<span class='line'>577</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>578</span>      * Render the footer for profile
+<span class='line'>579</span>      */</span><span class="WHIT">
+<span class='line'>580</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">renderTemplateFooter</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>581</span> 
+<span class='line'>582</span> </span><span class="WHIT">        </span><span class="COMM">// Render the profile footer</span><span class="WHIT">
+<span class='line'>583</span> </span><span class="WHIT">        </span><span class="NAME">$profile_footer.html</span><span class="PUNC">(</span><span class="NAME">$.TemplateRenderer</span><span class="PUNC">(</span><span class="NAME">$profile_footer_template</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sakai.profile.main</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>584</span> 
+<span class='line'>585</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>586</span> 
+<span class='line'>587</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">renderTemplateActions</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>588</span> 
+<span class='line'>589</span> </span><span class="WHIT">        </span><span class="COMM">// Render the actions for the profile</span><span class="WHIT">
+<span class='line'>590</span> </span><span class="WHIT">        </span><span class="NAME">$.TemplateRenderer</span><span class="PUNC">(</span><span class="NAME">$profile_actions_template</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sakai.profile.main</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$profile_actions</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>591</span> 
+<span class='line'>592</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>593</span> 
+<span class='line'>594</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>595</span>      * Parse and render all the templates on the page
+<span class='line'>596</span>      */</span><span class="WHIT">
+<span class='line'>597</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">renderTemplates</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>598</span> 
+<span class='line'>599</span> </span><span class="WHIT">        </span><span class="COMM">// Render the profile actions</span><span class="WHIT">
+<span class='line'>600</span> </span><span class="WHIT">        </span><span class="NAME">renderTemplateActions</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>601</span> 
+<span class='line'>602</span> </span><span class="WHIT">        </span><span class="COMM">// Render the footer buttons</span><span class="WHIT">
+<span class='line'>603</span> </span><span class="WHIT">        </span><span class="NAME">renderTemplateFooter</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>604</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>605</span> 
+<span class='line'>606</span> 
+<span class='line'>607</span> </span><span class="WHIT">    </span><span class="COMM">////////////////////</span><span class="WHIT">
+<span class='line'>608</span> </span><span class="WHIT">    </span><span class="COMM">// INITIALISATION //</span><span class="WHIT">
+<span class='line'>609</span> </span><span class="WHIT">    </span><span class="COMM">////////////////////</span><span class="WHIT">
+<span class='line'>610</span> 
+<span class='line'>611</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">doInit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>612</span> 
+<span class='line'>613</span> </span><span class="WHIT">        </span><span class="COMM">// Set the querystring object variable</span><span class="WHIT">
+<span class='line'>614</span> </span><span class="WHIT">        </span><span class="COMM">// We use the following parameters:</span><span class="WHIT">
+<span class='line'>615</span> </span><span class="WHIT">        </span><span class="COMM">//    mode -> mode of the profile</span><span class="WHIT">
+<span class='line'>616</span> </span><span class="WHIT">        </span><span class="COMM">//    user -> the id of the user for which you want to see the profile</span><span class="WHIT">
+<span class='line'>617</span> </span><span class="WHIT">        </span><span class="NAME">querystring</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Querystring</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>618</span> 
+<span class='line'>619</span> </span><span class="WHIT">        </span><span class="COMM">// Get and set the profile mode</span><span class="WHIT">
+<span class='line'>620</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">profilemode</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">getProfileMode</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>621</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">profilemode</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>622</span> </span><span class="WHIT">            </span><span class="NAME">setProfileMode</span><span class="PUNC">(</span><span class="NAME">profilemode</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>623</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>624</span> 
+<span class='line'>625</span> </span><span class="WHIT">        </span><span class="COMM">// Check if you are looking at the logged-in user</span><span class="WHIT">
+<span class='line'>626</span> </span><span class="WHIT">        </span><span class="NAME">setIsMe</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>627</span> 
+<span class='line'>628</span> </span><span class="WHIT">        </span><span class="COMM">// Construct the authprofile URL</span><span class="WHIT">
+<span class='line'>629</span> </span><span class="WHIT">        </span><span class="NAME">authprofileURL</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"/~"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">sakai.profile.main.currentuser</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"/public/authprofile"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>630</span> 
+<span class='line'>631</span> </span><span class="WHIT">        </span><span class="COMM">// Construct the ACL list</span><span class="WHIT">
+<span class='line'>632</span> </span><span class="WHIT">        </span><span class="NAME">constructACL</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>633</span> 
+<span class='line'>634</span> </span><span class="WHIT">        </span><span class="COMM">// Check user profile type</span><span class="WHIT">
+<span class='line'>635</span> </span><span class="WHIT">        </span><span class="NAME">checkProfileType</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>636</span> 
+<span class='line'>637</span> </span><span class="WHIT">        </span><span class="NAME">renderTemplates</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>638</span> 
+<span class='line'>639</span> </span><span class="WHIT">        </span><span class="NAME">insertProfileSectionWidgets</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>640</span> 
+<span class='line'>641</span> </span><span class="WHIT">        </span><span class="NAME">addBinding</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>642</span> 
+<span class='line'>643</span> 
+<span class='line'>644</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>645</span> 
+<span class='line'>646</span> </span><span class="WHIT">    </span><span class="NAME">doInit</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>647</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>648</span> 
+<span class='line'>649</span> </span><span class="NAME">sakai.api.Widgets.widgetLoader.informOnLoad</span><span class="PUNC">(</span><span class="STRN">"userprofile"</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>

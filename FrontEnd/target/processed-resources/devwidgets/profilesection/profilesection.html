@@ -1,0 +1,190 @@
+<!-- CSS -->
+<link href="/devwidgets/profilesection/css/profilesection.css" type="text/css" />
+
+<!-- GENERAL INFO -->
+<div id="profilesection_generalinfo" class="fl-push"><!-- --></div>
+
+<!-- GENERAL INFO TEMPLATE -->
+<div id="profilesection_generalinfo_template"><!--
+    {var i_count = 0}
+    {for i in config}
+        <div class="profilesection_generalinfo_header{if i_count === 0} profilesection_generalinfo_header_first{/if}">
+            <h2 class="fl-force-left">${i.label}</h2>
+
+            {if (mode.value === "viewmy" || mode.value === "edit") && config.modifyacl !== false}
+                {var _access = "everybody"}
+                {if sakai.profile.main.data[i_index].access}
+                    {var _access = sakai.profile.main.data[i_index].access}
+                {/if}
+                <div class="profilesection_generalinfo_acl fl-force-right">
+                    {if mode.value === "viewmy"}
+                        <span>__MSG__WHO_CAN_VIEW_OR_SEARCH_THIS__</span>
+                        <a href="profile_edit.html">${sakai.profile.main.acls.options[_access].label}</a>
+                    {else}
+                        <label for="profilesection_generalinfo_access_${i_index}">__MSG__WHO_CAN_VIEW_OR_SEARCH_THIS__</label>
+                        <select id="profilesection_generalinfo_access_${i_index}" name="profilesection_generalinfo_access_${i_index}" class="profilesection_generalinfo_access">
+                            {for ace in sakai.profile.main.acls.options}
+                                <option{if _access === ace_index} selected="selected"{/if}>${ace.label}</option>
+                            {/for}
+                        </select>
+                    {/if}
+                </div>
+            {/if}
+
+        </div>
+
+        {for element in i.elements}
+
+            {var _elements = sakai.profile.main.data[i_index].elements}
+            {var _element = _elements[element_index]}
+            {var isarray = $.isArray(_elements)}
+
+            <div class="profilesection_generalinfo_subcontainer">
+                <span class="profilesection_generalinfo_label">${element.label}:</span>
+                <div class="profilesection_generalinfo_content">
+                    {if !isarray}
+                        ${_element.value}
+                    {else}
+                        {for _subelement in _elements}
+                            ${_subelement[element_index]}
+                        {/for}
+                    {/if}
+                </div>
+            </div>
+        {/for}
+        ${i_count++ |eat}
+    {/for}
+--></div>
+
+<!-- SECTION TEMPLATES -->
+<div id="profilesection_default_template"><!--
+    {var mode = sakai.profile.main.mode}
+    {if fields}
+        {if config && config.label}
+            <div class="profilesection_generalinfo_header">
+                <h2 class="fl-force-left">${config.label}</h2>
+
+                {if (mode.value === "viewmy" || mode.value === "edit") && config.modifyacl !== false}
+                        {var _access = "everybody"}
+                    {if data && data.access}
+                        {var _access = data.access}
+                    {/if}
+                    <div class="profilesection_generalinfo_acl fl-force-right">
+                        {if mode.value === "viewmy"}
+                            <span>__MSG__WHO_CAN_VIEW_OR_SEARCH_THIS__</span>
+                            <a href="profile_edit.html">${sakai.profile.main.acls.options[_access].label}</a>
+                        {else}
+                            <label for="profilesection_generalinfo_access_${currentsection}">__MSG__WHO_CAN_VIEW_OR_SEARCH_THIS__</label>
+                            <select id="profilesection_generalinfo_${currentsection}_access" name="profilesection_generalinfo_access_${currentsection}" class="profilesection_generalinfo_access">
+                                {for ace in sakai.profile.main.acls.options}
+                                    <option{if _access === ace_index} selected="selected"{/if} value="${ace_index}">${ace.label}</option>
+                                {/for}
+                            </select>
+                        {/if}
+                    </div>
+                {/if}
+            </div>
+        {/if}
+
+        ${fields}
+    {/if}
+--></div>
+
+<!-- MULTIPLE INSTANCE ADD ANOTHER TEMPLATE -->
+<div id="profilesection_add_section_template"><!--
+<a href="javascript:;" class="profilesection_add_section s3d-add_another_location" id="profilesection_add_link_${parentid}"><span>Add another ${config.multipleLabel}</span></a>
+--></div>
+
+<!-- MULTIPLE INSTANCE REMOVE SECTION TEMPLATE -->
+<div id="profilesection_remove_section_template"><!--
+    <a href="javascript:;" class="profilesection_remove_section" id="profilesection_remove_link_${parentid}"><span>Remove this ${config.multipleLabel}</span></a>
+    <hr/>
+--></div>
+
+<!-- MULTIPLE INSTANCE SECTION DIVIDER TEMPLATE -->
+<div id="profilesection_section_divider_template"><!--
+    <hr/>
+--></div>
+
+<!-- FIELD TEMPLATES -->
+<div id="profilesection_field_default_template"><!--
+    {var mode = sakai.profile.main.mode}
+    {var stringtypes = ["string", "date", "email", "oldDate"]}
+    {if mode.value === "edit"}
+        {if data}
+            <div class="profilesection_generalinfo_subcontainer">
+                <label class="profilesection_generalinfo_label" for="profilesection_generalinfo_${path.replace(/\./g,"_")}">${config.label}:</label>
+                {if config.editable === false}
+                    <span class="profilesection_generalinfo_content">${data.value}</span>
+                {else}
+                    {if !config.type || $.inArray(config.type, stringtypes) >= 0}
+                        <input type="text"
+                    {elseif config.type === "textarea"}
+                        <textarea rows="3" 
+                    {elseif config.type === "select"}
+                        <select
+                    {/if}
+                        class="profilesection_generalinfo_content
+                        {if config.required} required{/if}
+                        {if config.validation} ${config.validation}
+                        {elseif config.type} ${config.type}
+                        {/if}"
+                    {if !config.type || $.inArray(config.type, stringtypes) >= 0}
+                        {if config.type === "date" || config.type === "oldDate"}
+                            value="{if data.value}${sakai.api.l10n.transformDate(new Date(data.value))}{/if}"
+                        {else}
+                            value="{if data.value}${data.value.replace(/\"/g, "&quot;")}{/if}"
+                        {/if}
+                    {/if}
+                        id="profilesection_generalinfo_${path.replace(/\./g,"_")}" name="${config.label}" title="${config.label}"
+                    {if !config.type || $.inArray(config.type, stringtypes) >= 0}
+                        />
+                    {elseif config.type === "select"}
+                        >
+                        <option value=""></option>
+                        {for i in config.select_elements}
+                            <option value="${i_index}"{if i_index === data.value} selected="selected"{/if}>${i}</option>
+                        {/for}
+                        </select>
+                    {elseif config.type === "textarea"}
+                        >${data.value}</textarea>
+                    {/if}
+                    {if config.example}
+                        <p class="profilesection_generalinfo_example">
+                            ${config.example}
+                        </p>
+                    {/if}
+                {/if}
+            </div>
+        {/if}
+    {else}
+        {if data && data.value}
+            <div class="profilesection_generalinfo_subcontainer">
+                <span class="profilesection_generalinfo_label">${config.label}:</span>
+                <div class="profilesection_generalinfo_content">
+                {if config.tagField}
+                    {var tagsArray = data.value.split(",")}
+                    {for tag in tagsArray}
+                        <a href="/dev/search.html#tag=/tags/${escape(tag)}" class="s3d-action">${tag}</a>{if tag_index < tagsArray.length-1},{/if}
+                    {/for}
+                {elseif config.type !== "select"}
+                    {if config.limitDisplayLength}
+                        ${sakai.api.Util.shortenString(data.value, config.limitDisplayLength)}
+                    {else}
+                        {if config.type === "date" || config.type === "oldDate"}
+                        ${sakai.api.l10n.transformDate(new Date(data.value))}
+                        {else}
+                        ${data.value}
+                        {/if}
+                    {/if}
+                {else}
+                    ${config.select_elements[data.value]}
+                {/if}
+                </div>
+            </div>
+        {/if}
+    {/if}
+--></div>
+
+<!-- JAVASCRIPT -->
+<script src="/devwidgets/profilesection/javascript/profilesection.js" type="application/javascript"></script>

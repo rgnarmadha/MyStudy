@@ -1,0 +1,67 @@
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="/devwidgets/mycontent/css/mycontent.css" />
+
+<div class="mycontent_widget">
+    <div class="fl-widget-content s3d-widget-content">
+        <!-- ERRORS -->
+        <div id="mycontent_nocontent" style="display:none;">
+            <p class="mycontent_error_msg">__MSG__NO_CONTENT__</p>
+        </div>
+        <div id="mycontent_data_error" style="display:none;">
+            <p class="mycontent_error_msg">__MSG__DATA_ERROR__</p>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div id="mycontent_list" style="display:none;"><!-- TEMPLATE GOES HERE --></div>
+
+        <div id="mycontent_list_template"><!--
+            {var i = 0}
+            {for item in items}
+                {eval} i++; {/eval}
+                <div class="mycontent_item{if i % 2 == 0} s3d-highlight_area_background{/if}">
+                    <div class="mycontent_item_img fl-force-left">
+                        <img class="mycontent_item_mime" src="${item.type_img_url}" />
+                    </div>
+                    <div class="mycontent_item_info">
+                        <p class="mycontent_item_title">
+                            <a class="mycontent_item_link s3d-regular-links"
+                                href="/dev/content_profile.html#content_path=${item.path}">
+                                <div class="mycontent_ellipsis_container">
+                                    <span class="mycontent_ellipsis_text">${item.name}</span>
+                                </div>
+                            </a>
+                        </p>
+                        <p class="mycontent_item_meta">${item.type}{if item.type !== "URL Link"}{if item.size} ${item.size}{/if}{/if}</p>
+                    </div>
+                </div>
+            {/for}
+        --></div>
+    </div>
+
+    <!-- WIDGET FOOTER -->
+    <div class="fl-widget-options fl-fix">
+        <div class="widget-options-inner">
+            <ul>
+                <li>
+                    <a href="/dev/search_content.html#q=*&facet=manage">__MSG__VIEW_ALL_CONTENT_I_MANAGED__</a>
+                </li>
+                <li><span class="pipe_divider">|</span></li>
+                <li>
+                    <a href="javascript:;" id="upload_link">__MSG__ADD_FILES_OR_LINKS__</a>
+                </li>
+            </ul>
+        </div>
+        <div class="s3d-widget-options-footer-left">
+            <div class="s3d-widget-options-footer-right">
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Content Widget Container -->
+    <div id="fileupload_container" style="display:none;">
+        <div id="widget_fileupload" class="widget_inline"></div>
+    </div>
+</div>
+
+<!-- JAVASCRIPT -->
+<script type="text/javascript" src="/devwidgets/mycontent/javascript/mycontent.js"></script>

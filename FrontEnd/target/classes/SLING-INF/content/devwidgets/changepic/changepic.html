@@ -1,0 +1,75 @@
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="/devwidgets/changepic/css/changepic.css" />
+
+<!-- HTML -->
+<div style="display:none" class="dialog dailog_changepic" id="changepic_container">
+    <div class="dialog_header">
+        <div class="dialog_header_inner">
+            <h1>__MSG__SELECT_YOUR_PROFILE_PICTURE__</h1>
+            <a href="javascript:;" class="jqmClose dialog_close_image" title="__MSG__CLOSE_DIALOG__">__MSG__CLOSE_DIALOG__</a>
+        </div>
+    </div>
+    <div class="dialog_content">
+
+        <!-- TABS -->
+        <ul class="fl-tabs fl-tabs-left search_tab_nav">
+            <li id="changepic_select" class="fl-tabs-active search_tab_selected s3d-tab-active"><a href="javascript:;">__MSG__SELECT_PICTURE__</a></li>
+            <li id="changepic_upload"><a href="javascript:;">__MSG__UPLOAD_A_NEW_PICTURE__</a></li>
+        </ul>
+
+        <!-- SELECT AREA -->
+        <div id="changepic_selectpicture">
+            <h4>__MSG__SELECT_THE_AREA_YOU_WANT__</h4>
+            <div id="changepic_picture_selectarea">
+                <div id="changepic_uploaded_picture" class="fl-force-left">
+                    <p>__MSG__YOUR_UPLOADED_PICTURE__:</p>
+                    <p><img id="changepic_fullpicture" alt="__MSG__SELECT_AN_AREA_TO_CREATE__" src="" /></p>
+                </div>
+                <div class="fl-force-left">
+                    <p>__MSG__YOUR_PROFILE_PICTURE__:</p>
+                    <div id="thumbnail_container">
+                        <img id="thumbnail" alt="__MSG__THUMBNAIL_PREVIEW__" src="" />
+                    </div>
+                </div>
+            </div>
+
+            <div id="changepic_selectpic_buttons" class="dialog_buttons">
+                <button type="button" class="s3d-button jqmClose" id="save_new_selection_cancel"><span class="s3d-button-inner">__MSG__CANCEL__</span></button>
+                <button type="button" class="s3d-button s3d-button-primary" id="save_new_selection"><span class="s3d-button-inner">__MSG__SAVE_NEW_SELECTION__</span></button>
+            </div>
+        </div>
+
+        <!-- UPLOAD NEW PIC -->
+        <div id="changepic_uploadnew" style="display:none;">
+
+            <form id="changepic_form" method="post" enctype="multipart/form-data">
+                <h4>__MSG__UPLOAD_A_NEW_PICTURE__</h4>
+                <p><input type="file" name="profilepicture" id="profilepicture" size="40"/></p>
+                <p id="changepic_nofile_error" style="display:none;">__MSG__PLEASE_SELECT_A_FILE__</p>
+                <!-- BUTTONS -->
+                <p id="changepic_processing_msg" style="display:none;">__MSG__PROCESSING__</p>
+                <div id="changepic_uploadnew_buttons" class="dialog_buttons">
+                    <!-- THIS HAS TO BE A SUBMIT BUTTON SINCE WE WILL DO A POST TO JCR. -->
+                    <button type="button" class="s3d-button jqmClose" id="profile_upload_cancel"><span class="s3d-button-inner">__MSG__CANCEL__</span></button>
+                    <button type="submit" class="s3d-button s3d-button-primary" id="profile_upload"><span class="s3d-button-inner">__MSG__UPLOAD__</span></button>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- DIALOG FOOTER -->
+    <div class="dialog_footer">
+        <div class="dialog_footer_inner"><!-- --></div>
+    </div>
+</div>
+
+<!--
+THIS CONTAINER WILL HOLD THE NEWLY UPLOADED PICTURE.
+THIS WILL BE USED TO CHECK THE WIDTH AND HEIGHT OF THE UPLOADED IMAGE.
+ -->
+<div id="picture_measurer"></div>
+
+<!-- JAVASCRIPT -->
+<script type="text/javascript" src="/devwidgets/changepic/javascript/changepic.js" />

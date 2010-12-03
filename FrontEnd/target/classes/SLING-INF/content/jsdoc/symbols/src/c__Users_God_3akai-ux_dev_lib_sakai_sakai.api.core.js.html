@@ -1,0 +1,1088 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  *
+<span class='line'>  3</span>  * Licensed to the Sakai Foundation (SF) under one
+<span class='line'>  4</span>  * or more contributor license agreements. See the NOTICE file
+<span class='line'>  5</span>  * distributed with this work for additional information
+<span class='line'>  6</span>  * regarding copyright ownership. The SF licenses this file
+<span class='line'>  7</span>  * to you under the Apache License, Version 2.0 (the
+<span class='line'>  8</span>  * "License"); you may not use this file except in compliance
+<span class='line'>  9</span>  * with the License. You may obtain a copy of the License at
+<span class='line'> 10</span>  *
+<span class='line'> 11</span>  *     http://www.apache.org/licenses/LICENSE-2.0
+<span class='line'> 12</span>  *
+<span class='line'> 13</span>  * Unless required by applicable law or agreed to in writing,
+<span class='line'> 14</span>  * software distributed under the License is distributed on an
+<span class='line'> 15</span>  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+<span class='line'> 16</span>  * KIND, either express or implied. See the License for the
+<span class='line'> 17</span>  * specific language governing permissions and limitations under the License.
+<span class='line'> 18</span>  *
+<span class='line'> 19</span>  */</span><span class="WHIT">
+<span class='line'> 20</span> 
+<span class='line'> 21</span> </span><span class="COMM">/**
+<span class='line'> 22</span>  * @name sakai
+<span class='line'> 23</span>  * @namespace
+<span class='line'> 24</span>  * Main sakai namespace
+<span class='line'> 25</span>  *
+<span class='line'> 26</span>  * @description
+<span class='line'> 27</span>  * Main sakai namespace. This is where all the initial namespaces should be defined
+<span class='line'> 28</span>  */</span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">sakai</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 30</span> 
+<span class='line'> 31</span> </span><span class="COMM">/**
+<span class='line'> 32</span>  * @name sakai.data
+<span class='line'> 33</span>  */</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="NAME">sakai.data</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 35</span> 
+<span class='line'> 36</span> </span><span class="COMM">/**
+<span class='line'> 37</span>  * @name sakai.api
+<span class='line'> 38</span>  *
+<span class='line'> 39</span>  * @namespace
+<span class='line'> 40</span>  * Main API Namespace
+<span class='line'> 41</span>  *
+<span class='line'> 42</span>  * @class api
+<span class='line'> 43</span>  *
+<span class='line'> 44</span>  * @description
+<span class='line'> 45</span>  * Convenience functions to aid Sakai 3 front-end development.
+<span class='line'> 46</span>  * This class is the basis of all Sakai 3 front-end development. This should
+<span class='line'> 47</span>  * be included on all pages, along with the sakai_api.js which is an extension
+<span class='line'> 48</span>  * of this class, providing higher level functions.
+<span class='line'> 49</span>  *
+<span class='line'> 50</span>  * @requires
+<span class='line'> 51</span>  * jQuery-1.3.2, Fluid, Trimpath
+<span class='line'> 52</span>  *
+<span class='line'> 53</span>  * @version 0.0.1
+<span class='line'> 54</span>  *
+<span class='line'> 55</span>  */</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="NAME">sakai.api</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 57</span> 
+<span class='line'> 58</span> </span><span class="WHIT">    </span><span class="COMM">/** API Major version number */</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">    </span><span class="NAME">API_VERSION_MAJOR</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 60</span> 
+<span class='line'> 61</span> </span><span class="WHIT">    </span><span class="COMM">/** API minor version number */</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">    </span><span class="NAME">API_VERSION_MINOR</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 63</span> 
+<span class='line'> 64</span> </span><span class="WHIT">    </span><span class="COMM">/** API build number  */</span><span class="WHIT">
+<span class='line'> 65</span> </span><span class="WHIT">    </span><span class="NAME">API_VERSION_BUILD</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="WHIT">
+<span class='line'> 66</span> 
+<span class='line'> 67</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 68</span> 
+<span class='line'> 69</span> </span><span class="COMM">/**
+<span class='line'> 70</span>  * window.debug, a console dot log wrapper
+<span class='line'> 71</span>  * adapted from html5boilerplate.com's window.log and Ben Alman's window.debug
+<span class='line'> 72</span>  *
+<span class='line'> 73</span>  * Only logs information when sakai.config.displayDebugInfo is switched on
+<span class='line'> 74</span>  *
+<span class='line'> 75</span>  * debug.log, debug.error, debug.warn, debug.debug, debug.info
+<span class='line'> 76</span>  * usage: debug.log("argument", {more:"arguments"})
+<span class='line'> 77</span>  *
+<span class='line'> 78</span>  * paulirish.com/2009/log-a-lightweight-wrapper-for-consolelog/
+<span class='line'> 79</span>  * benalman.com/projects/javascript-debug-console-log/
+<span class='line'> 80</span>  * https://gist.github.com/466188
+<span class='line'> 81</span>  */</span><span class="WHIT">
+<span class='line'> 82</span> </span><span class="NAME">window.debug</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 83</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">that</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 84</span> </span><span class="WHIT">        </span><span class="NAME">methods</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="WHIT"> </span><span class="STRN">'error'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'warn'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'info'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'debug'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'log'</span><span class="WHIT"> </span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 85</span> </span><span class="WHIT">        </span><span class="NAME">idx</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">methods.length</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 86</span> 
+<span class='line'> 87</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">createLogMethod</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">method</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 88</span> </span><span class="WHIT">        </span><span class="NAME">that</span><span class="PUNC">[</span><span class="NAME">method</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 89</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">window.console</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">sakai.config.displayDebugInfo</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">console.firebug</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 93</span> </span><span class="WHIT">                </span><span class="NAME">console</span><span class="PUNC">[</span><span class="NAME">method</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">apply</span><span class="PUNC">(</span><span class="NAME">console</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">arguments</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 94</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">console</span><span class="PUNC">[</span><span class="NAME">method</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 95</span> </span><span class="WHIT">                </span><span class="NAME">console</span><span class="PUNC">[</span><span class="NAME">method</span><span class="PUNC">]</span><span class="PUNC">(</span><span class="NAME">Array.prototype.slice.call</span><span class="PUNC">(</span><span class="NAME">arguments</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 96</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 97</span> </span><span class="WHIT">                </span><span class="NAME">console.log</span><span class="PUNC">(</span><span class="NAME">Array.prototype.slice.call</span><span class="PUNC">(</span><span class="NAME">arguments</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 98</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 99</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>100</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>101</span> 
+<span class='line'>102</span> </span><span class="WHIT">    </span><span class="KEYW">while</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">--</span><span class="NAME">idx</span><span class="PUNC">>=</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">        </span><span class="NAME">createLogMethod</span><span class="PUNC">(</span><span class="NAME">methods</span><span class="PUNC">[</span><span class="NAME">idx</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>104</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>105</span> 
+<span class='line'>106</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">that</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>107</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>108</span> 
+<span class='line'>109</span> </span><span class="COMM">/**
+<span class='line'>110</span>  * @class Activity
+<span class='line'>111</span>  *
+<span class='line'>112</span>  * @description
+<span class='line'>113</span>  * Activity related convenience functions which build on the top of Nakamura's
+<span class='line'>114</span>  * event system.
+<span class='line'>115</span>  * This should only hold functions which are used across multiple pages,
+<span class='line'>116</span>  * and does not constitute functionality
+<span class='line'>117</span>  * related to a single area/page
+<span class='line'>118</span>  *
+<span class='line'>119</span>  * @namespace
+<span class='line'>120</span>  * Events related functions
+<span class='line'>121</span>  */</span><span class="WHIT">
+<span class='line'>122</span> </span><span class="NAME">sakai.api.Activity</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai.api.Activity</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>123</span> 
+<span class='line'>124</span> 
+<span class='line'>125</span> </span><span class="COMM">/**
+<span class='line'>126</span>  * Wrapper function for creating a Nakamura activity
+<span class='line'>127</span>  *
+<span class='line'>128</span>  * @param nodeUrl {String} The URL of the node we would like the activity to be
+<span class='line'>129</span>  * stored on
+<span class='line'>130</span>  * @param appID {String} The ID of the application/functionality creating the
+<span class='line'>131</span>  * activity
+<span class='line'>132</span>  * @param templateID {String} The ID of the activity template
+<span class='line'>133</span>  * @param extraData {Object} Any extra data which will be stored on the activity
+<span class='line'>134</span>  * node
+<span class='line'>135</span>  * @param callback {Function} Callback function executed at the end of the
+<span class='line'>136</span>  * operation
+<span class='line'>137</span>  * @returns void
+<span class='line'>138</span>  */</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="NAME">sakai.api.Activity.createActivity</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">nodeUrl</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">appID</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">templateID</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">extraData</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>140</span> 
+<span class='line'>141</span> </span><span class="WHIT">    </span><span class="COMM">// Check required params</span><span class="WHIT">
+<span class='line'>142</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">appID</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">"string"</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">appID</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="WHIT">        </span><span class="NAME">debug.error</span><span class="PUNC">(</span><span class="STRN">"sakai.api.Activity.createActivity(): appID is required argument!"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>144</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>145</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>146</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">templateID</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">"string"</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">templateID</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>147</span> </span><span class="WHIT">        </span><span class="NAME">debug.error</span><span class="PUNC">(</span><span class="STRN">"sakai.api.Activity.createActivity(): templateID is required argument!"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>148</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>149</span> 
+<span class='line'>150</span> </span><span class="WHIT">    </span><span class="COMM">// Create event url with appropriate selector</span><span class="WHIT">
+<span class='line'>151</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">activityUrl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">nodeUrl</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">".activity.json"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>152</span> 
+<span class='line'>153</span> </span><span class="WHIT">    </span><span class="COMM">// Create data object to send</span><span class="WHIT">
+<span class='line'>154</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">dataToSend</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>155</span> </span><span class="WHIT">        </span><span class="STRN">"sakai:activity-appid"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">appID</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>156</span> </span><span class="WHIT">        </span><span class="STRN">"sakai:activity-templateid"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">templateID</span><span class="WHIT">
+<span class='line'>157</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>158</span> </span><span class="WHIT">    </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">extraData</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>159</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">extraData.hasOwnProperty</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>160</span> </span><span class="WHIT">            </span><span class="NAME">dataToSend</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">extraData</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>161</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>162</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>163</span> 
+<span class='line'>164</span> </span><span class="WHIT">    </span><span class="COMM">// Send request to create the activity</span><span class="WHIT">
+<span class='line'>165</span> </span><span class="WHIT">    </span><span class="NAME">$.ajax</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="WHIT">        </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">activityUrl</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>167</span> </span><span class="WHIT">        </span><span class="NAME">traditional</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>168</span> </span><span class="WHIT">        </span><span class="NAME">type</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"POST"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>169</span> </span><span class="WHIT">        </span><span class="NAME">data</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">dataToSend</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>170</span> </span><span class="WHIT">        </span><span class="NAME">success</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>171</span> 
+<span class='line'>172</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$.isFunction</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>173</span> </span><span class="WHIT">                </span><span class="NAME">callback</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>174</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>175</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>176</span> </span><span class="WHIT">        </span><span class="NAME">error</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">xhr</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">textStatus</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">thrownError</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>177</span> 
+<span class='line'>178</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$.isFunction</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>179</span> </span><span class="WHIT">                </span><span class="NAME">callback</span><span class="PUNC">(</span><span class="NAME">xhr.status</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>180</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>181</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>182</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>183</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>184</span> 
+<span class='line'>185</span> </span><span class="COMM">/**
+<span class='line'>186</span>  * @class Skinning
+<span class='line'>187</span>  *
+<span class='line'>188</span>  * @description
+<span class='line'>189</span>  * &lt;p>Skinning support for Sakai&lt;/p>
+<span class='line'>190</span>  */</span><span class="WHIT">
+<span class='line'>191</span> </span><span class="NAME">sakai.api.Skinning</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai.api.Skinning</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>192</span> 
+<span class='line'>193</span> </span><span class="COMM">/**
+<span class='line'>194</span>  * loadSkins
+<span class='line'>195</span>  * Loads in any skins defined in sakai.config.skinCSS
+<span class='line'>196</span>  */</span><span class="WHIT">
+<span class='line'>197</span> </span><span class="NAME">sakai.api.Skinning.loadSkinsFromConfig</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>198</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">sakai.config.skinCSS</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">sakai.config.skinCSS.length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>199</span> </span><span class="WHIT">        </span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">sakai.config.skinCSS</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">each</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">,</span><span class="NAME">val</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>200</span> </span><span class="WHIT">            </span><span class="NAME">sakai.api.Util.include.css</span><span class="PUNC">(</span><span class="NAME">val</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>201</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>202</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>203</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>204</span> 
+<span class='line'>205</span> </span><span class="COMM">/**
+<span class='line'>206</span>  * @class Security
+<span class='line'>207</span>  *
+<span class='line'>208</span>  * @description
+<span class='line'>209</span>  * Security and authorisation related related convenience functions
+<span class='line'>210</span>  * This should only hold functions
+<span class='line'>211</span>  * which are used across multiple pages, and does not constitute functionality
+<span class='line'>212</span>  * related to a single area/page
+<span class='line'>213</span>  *
+<span class='line'>214</span>  * @namespace
+<span class='line'>215</span>  * Security and authorisation related functionality
+<span class='line'>216</span>  */</span><span class="WHIT">
+<span class='line'>217</span> </span><span class="NAME">sakai.api.Security</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai.api.Security</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>218</span> 
+<span class='line'>219</span> </span><span class="COMM">/**
+<span class='line'>220</span>  * Encodes the HTML characters inside a string so that the HTML characters (e.g. &lt;, >, ...)
+<span class='line'>221</span>  * are treated as text and not as HTML entities
+<span class='line'>222</span>  *
+<span class='line'>223</span>  * @param {String} inputString  String of which the HTML characters have to be encoded
+<span class='line'>224</span>  *
+<span class='line'>225</span>  * @returns {String} HTML Encoded string
+<span class='line'>226</span>  */</span><span class="WHIT">
+<span class='line'>227</span> </span><span class="NAME">sakai.api.Security.escapeHTML</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">inputString</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>228</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">inputString</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>229</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"&lt;div/>"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">text</span><span class="PUNC">(</span><span class="NAME">inputString</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">html</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">replace</span><span class="PUNC">(</span><span class="REGX">/"/g</span><span class="PUNC">,</span><span class="STRN">"&quot;"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>230</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>231</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>232</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>233</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>234</span> 
+<span class='line'>235</span> </span><span class="COMM">/**
+<span class='line'>236</span>  * Sanitizes HTML content. All untrusted (user) content should be run through
+<span class='line'>237</span>  * this function before putting it into the DOM
+<span class='line'>238</span>  *
+<span class='line'>239</span>  * @param inputHTML {String} The content string we would like to sanitize
+<span class='line'>240</span>  *
+<span class='line'>241</span>  * @returns {String} Escaped and sanitized string
+<span class='line'>242</span>  */</span><span class="WHIT">
+<span class='line'>243</span> </span><span class="NAME">sakai.api.Security.saneHTML</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">inputHTML</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>244</span> 
+<span class='line'>245</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">inputHTML</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>246</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>247</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>248</span> 
+<span class='line'>249</span> 
+<span class='line'>250</span> </span><span class="WHIT">    </span><span class="COMM">// Filter which runs through every url in inputHTML</span><span class="WHIT">
+<span class='line'>251</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">filterUrl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">url</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>252</span> 
+<span class='line'>253</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">url</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>254</span> 
+<span class='line'>255</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>256</span> 
+<span class='line'>257</span> </span><span class="WHIT">    </span><span class="COMM">// Filter which runs through every name id and class</span><span class="WHIT">
+<span class='line'>258</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">filterNameIdClass</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">nameIdClass</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>259</span> 
+<span class='line'>260</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">nameIdClass</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>261</span> 
+<span class='line'>262</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>263</span> 
+<span class='line'>264</span> </span><span class="WHIT">    </span><span class="NAME">html4.ELEMENTS</span><span class="PUNC">[</span><span class="STRN">"video"</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>265</span> </span><span class="WHIT">    </span><span class="NAME">html4.ATTRIBS</span><span class="PUNC">[</span><span class="STRN">"video::src"</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>266</span> </span><span class="WHIT">    </span><span class="NAME">html4.ATTRIBS</span><span class="PUNC">[</span><span class="STRN">"video::class"</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>267</span> </span><span class="WHIT">    </span><span class="NAME">html4.ATTRIBS</span><span class="PUNC">[</span><span class="STRN">"video::autoplay"</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>268</span> </span><span class="WHIT">    </span><span class="NAME">html4.ELEMENTS</span><span class="PUNC">[</span><span class="STRN">"embed"</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>269</span> </span><span class="WHIT">    </span><span class="NAME">html4.ELEMENTS</span><span class="PUNC">[</span><span class="STRN">"i"</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>270</span> </span><span class="WHIT">    </span><span class="NAME">html4.ATTRIBS</span><span class="PUNC">[</span><span class="STRN">"embed::src"</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>271</span> </span><span class="WHIT">    </span><span class="NAME">html4.ATTRIBS</span><span class="PUNC">[</span><span class="STRN">"embed::class"</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>272</span> </span><span class="WHIT">    </span><span class="NAME">html4.ATTRIBS</span><span class="PUNC">[</span><span class="STRN">"embed::autostart"</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>273</span> </span><span class="WHIT">    </span><span class="COMM">// A slightly modified version of Caja's sanitize_html function to allow style="display:none;"</span><span class="WHIT">
+<span class='line'>274</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">sakaiHtmlSanitize</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">htmlText</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">opt_urlPolicy</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">opt_nmTokenPolicy</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>275</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">out</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>276</span> </span><span class="WHIT">        </span><span class="NAME">html.makeHtmlSanitizer</span><span class="PUNC">(</span><span class="WHIT">
+<span class='line'>277</span> </span><span class="WHIT">            </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">sanitizeAttribs</span><span class="PUNC">(</span><span class="NAME">tagName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">attribs</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>278</span> </span><span class="WHIT">                </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">attribs.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>279</span> </span><span class="WHIT">                    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">attribName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">attribs</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>280</span> </span><span class="WHIT">                    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">attribs</span><span class="PUNC">[</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>281</span> </span><span class="WHIT">                    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">atype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">attribKey</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>282</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">html4.ATTRIBS.hasOwnProperty</span><span class="PUNC">(</span><span class="NAME">tagName</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'::'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">attribName</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>283</span> </span><span class="WHIT">                        </span><span class="NAME">attribKey</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">tagName</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'::'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">attribName</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>284</span> </span><span class="WHIT">                        </span><span class="NAME">atype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">html4.ATTRIBS</span><span class="PUNC">[</span><span class="NAME">attribKey</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>285</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">html4.ATTRIBS.hasOwnProperty</span><span class="PUNC">(</span><span class="STRN">'*::'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">attribName</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>286</span> </span><span class="WHIT">                        </span><span class="NAME">attribKey</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'*::'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">attribName</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>287</span> </span><span class="WHIT">                        </span><span class="NAME">atype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">html4.ATTRIBS</span><span class="PUNC">[</span><span class="NAME">attribKey</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>288</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>289</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">atype</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>290</span> </span><span class="WHIT">                        </span><span class="KEYW">switch</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">atype</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>291</span> </span><span class="WHIT">                            </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="NAME">html4.atype.SCRIPT</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>292</span> </span><span class="WHIT">                            </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="NAME">html4.atype.STYLE</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>293</span> </span><span class="WHIT">                                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">accept</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="STRN">"color"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"display"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"background-color"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"font-weight"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"font-family"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>294</span> </span><span class="WHIT">                                              </span><span class="STRN">"padding"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"padding-left"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"padding-right"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"text-align"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"font-style"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>295</span> </span><span class="WHIT">                                              </span><span class="STRN">"text-decoration"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"border"</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>296</span> </span><span class="WHIT">                                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">sanitizedValue</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>297</span> </span><span class="WHIT">                                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">value</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>298</span> </span><span class="WHIT">                                    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">vals</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">value.split</span><span class="PUNC">(</span><span class="STRN">";"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>299</span> </span><span class="WHIT">                                    </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">attrid</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">attrid</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">vals.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">attrid</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>300</span> </span><span class="WHIT">                                        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">attrValue</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$.trim</span><span class="PUNC">(</span><span class="NAME">vals</span><span class="PUNC">[</span><span class="NAME">attrid</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">split</span><span class="PUNC">(</span><span class="STRN">":"</span><span class="PUNC">)</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">toLowerCase</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>301</span> </span><span class="WHIT">                                        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$.inArray</span><span class="PUNC">(</span><span class="NAME">attrValue</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">accept</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>302</span> </span><span class="WHIT">                                            </span><span class="NAME">sanitizedValue</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">vals</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>303</span> </span><span class="WHIT">                                        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>304</span> </span><span class="WHIT">                                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>305</span> </span><span class="WHIT">                                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">sanitizedValue</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>306</span> </span><span class="WHIT">                                        </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>307</span> </span><span class="WHIT">                                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>308</span> </span><span class="WHIT">                                </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>309</span> </span><span class="WHIT">                                    </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sanitizedValue</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>310</span> </span><span class="WHIT">                                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>311</span> </span><span class="WHIT">                                </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>312</span> </span><span class="WHIT">                            </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="NAME">html4.atype.IDREF</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>313</span> </span><span class="WHIT">                            </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="NAME">html4.atype.IDREFS</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>314</span> </span><span class="WHIT">                            </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="NAME">html4.atype.GLOBAL_NAME</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>315</span> </span><span class="WHIT">                            </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="NAME">html4.atype.LOCAL_NAME</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>316</span> </span><span class="WHIT">                            </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="NAME">html4.atype.CLASSES</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>317</span> </span><span class="WHIT">                                </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">opt_nmTokenPolicy</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">opt_nmTokenPolicy</span><span class="PUNC">(</span><span class="NAME">value</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>318</span> </span><span class="WHIT">                                </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>319</span> </span><span class="WHIT">                            </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="NAME">html4.atype.URI</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>320</span> </span><span class="WHIT">                                </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">opt_urlPolicy</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">opt_urlPolicy</span><span class="PUNC">(</span><span class="NAME">value</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>321</span> </span><span class="WHIT">                                </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>322</span> </span><span class="WHIT">                            </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="NAME">html4.atype.URI_FRAGMENT</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>323</span> </span><span class="WHIT">                                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="STRN">'#'</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">value.charAt</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>324</span> </span><span class="WHIT">                                    </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">opt_nmTokenPolicy</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">opt_nmTokenPolicy</span><span class="PUNC">(</span><span class="NAME">value</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>325</span> </span><span class="WHIT">                                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">value</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>326</span> </span><span class="WHIT">                                        </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'#'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>327</span> </span><span class="WHIT">                                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>328</span> </span><span class="WHIT">                                </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>329</span> </span><span class="WHIT">                                    </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>330</span> </span><span class="WHIT">                                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>331</span> </span><span class="WHIT">                                </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>332</span> </span><span class="WHIT">                        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>333</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>334</span> </span><span class="WHIT">                        </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>335</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>336</span> </span><span class="WHIT">                    </span><span class="NAME">attribs</span><span class="PUNC">[</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>337</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>338</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">attribs</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>339</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">(</span><span class="NAME">htmlText</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">out</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>340</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">out.join</span><span class="PUNC">(</span><span class="STRN">''</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>341</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>342</span> 
+<span class='line'>343</span> </span><span class="WHIT">    </span><span class="COMM">// Call a slightly modified version of Caja's sanitizer</span><span class="WHIT">
+<span class='line'>344</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">sakaiHtmlSanitize</span><span class="PUNC">(</span><span class="NAME">inputHTML</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">filterUrl</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">filterNameIdClass</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>345</span> 
+<span class='line'>346</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>347</span> 
+<span class='line'>348</span> 
+<span class='line'>349</span> </span><span class="COMM">/**
+<span class='line'>350</span>  * Checks whether the given value is valid as defined by the given
+<span class='line'>351</span>  * permissionsProperty.
+<span class='line'>352</span>  *
+<span class='line'>353</span>  * @param {Object} permissionsProperty Permissions property object
+<span class='line'>354</span>  *   (i.e. sakai.config.Permissions.Groups.joinable) with valid values to check
+<span class='line'>355</span>  *   against
+<span class='line'>356</span>  * @param {Object} value Value to investigate
+<span class='line'>357</span>  * @return true if the value has a valid property value, false otherwise
+<span class='line'>358</span>  */</span><span class="WHIT">
+<span class='line'>359</span> </span><span class="NAME">sakai.api.Security.isValidPermissionsProperty</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">permissionsProperty</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>360</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>361</span> </span><span class="WHIT">        </span><span class="COMM">// value is empty - not valid</span><span class="WHIT">
+<span class='line'>362</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>363</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>364</span> </span><span class="WHIT">    </span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">index</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">permissionsProperty</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>365</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">permissionsProperty.hasOwnProperty</span><span class="PUNC">(</span><span class="NAME">index</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>366</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">permissionsProperty</span><span class="PUNC">[</span><span class="NAME">index</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>367</span> </span><span class="WHIT">                </span><span class="COMM">// value is valid</span><span class="WHIT">
+<span class='line'>368</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>369</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>370</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>371</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>372</span> </span><span class="WHIT">    </span><span class="COMM">// value is not valid</span><span class="WHIT">
+<span class='line'>373</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>374</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>375</span> 
+<span class='line'>376</span> 
+<span class='line'>377</span> </span><span class="COMM">/** Description - TO DO */</span><span class="WHIT">
+<span class='line'>378</span> </span><span class="NAME">sakai.api.Security.setPermissions</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">target</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">permissions_object</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>379</span> 
+<span class='line'>380</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>381</span> 
+<span class='line'>382</span> </span><span class="COMM">/** Description - TO DO */</span><span class="WHIT">
+<span class='line'>383</span> </span><span class="NAME">sakai.api.Security.getPermissions</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">target</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">permissions_object</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>384</span> 
+<span class='line'>385</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>386</span> 
+<span class='line'>387</span> </span><span class="COMM">/**
+<span class='line'>388</span>  * Function that can be called by pages that can't find the content they are supposed to
+<span class='line'>389</span>  * show.
+<span class='line'>390</span>  */</span><span class="WHIT">
+<span class='line'>391</span> </span><span class="NAME">sakai.api.Security.send404</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>392</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">redurl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">window.location.pathname</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">window.location.hash</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>393</span> </span><span class="WHIT">    </span><span class="NAME">document.location</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"/dev/404.html?redurl="</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">escape</span><span class="PUNC">(</span><span class="NAME">window.location.pathname</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">window.location.search</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">window.location.hash</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>394</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>395</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>396</span> 
+<span class='line'>397</span> </span><span class="COMM">/**
+<span class='line'>398</span>  * Function that can be called by pages that don't have the permission to show the content
+<span class='line'>399</span>  * they should be showing
+<span class='line'>400</span>  */</span><span class="WHIT">
+<span class='line'>401</span> </span><span class="NAME">sakai.api.Security.send403</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>402</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">redurl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">window.location.pathname</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">window.location.hash</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>403</span> </span><span class="WHIT">    </span><span class="NAME">document.location</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"/dev/403.html?redurl="</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">escape</span><span class="PUNC">(</span><span class="NAME">window.location.pathname</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">window.location.search</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">window.location.hash</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>404</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>405</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>406</span> 
+<span class='line'>407</span> </span><span class="COMM">/**
+<span class='line'>408</span>  * Function that can be called by pages that require a login first
+<span class='line'>409</span>  */</span><span class="WHIT">
+<span class='line'>410</span> </span><span class="NAME">sakai.api.Security.sendToLogin</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>411</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">redurl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">window.location.pathname</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">window.location.hash</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>412</span> </span><span class="WHIT">    </span><span class="NAME">document.location</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai.config.URL.GATEWAY_URL</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"?url="</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">escape</span><span class="PUNC">(</span><span class="NAME">window.location.pathname</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">window.location.search</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">window.location.hash</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>413</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>414</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>415</span> 
+<span class='line'>416</span> </span><span class="NAME">sakai.api.Security.showPage</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>417</span> </span><span class="WHIT">    </span><span class="COMM">// Show the background images used on anonymous user pages</span><span class="WHIT">
+<span class='line'>418</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$.inArray</span><span class="PUNC">(</span><span class="NAME">window.location.pathname</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sakai.config.requireAnonymous</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>419</span> </span><span class="WHIT">        </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">'html'</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">addClass</span><span class="PUNC">(</span><span class="STRN">"requireAnon"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>420</span> </span><span class="WHIT">    </span><span class="COMM">// Show the normal background</span><span class="WHIT">
+<span class='line'>421</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>422</span> </span><span class="WHIT">        </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">'html'</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">addClass</span><span class="PUNC">(</span><span class="STRN">"requireUser"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>423</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>424</span> </span><span class="WHIT">    </span><span class="NAME">sakai.api.Skinning.loadSkinsFromConfig</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>425</span> </span><span class="WHIT">    </span><span class="COMM">// Put the title inside the page</span><span class="WHIT">
+<span class='line'>426</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">pageTitle</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai.api.i18n.General.getValueForKey</span><span class="PUNC">(</span><span class="NAME">sakai.config.PageTitles.prefix</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>427</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">sakai.config.PageTitles.pages</span><span class="PUNC">[</span><span class="NAME">window.location.pathname</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>428</span> </span><span class="WHIT">        </span><span class="NAME">pageTitle</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai.api.i18n.General.getValueForKey</span><span class="PUNC">(</span><span class="NAME">sakai.config.PageTitles.pages</span><span class="PUNC">[</span><span class="NAME">window.location.pathname</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>429</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>430</span> </span><span class="WHIT">    </span><span class="NAME">document.title</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pageTitle</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>431</span> </span><span class="WHIT">    </span><span class="COMM">// Show the actual page content</span><span class="WHIT">
+<span class='line'>432</span> </span><span class="WHIT">    </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">'body'</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">show</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>433</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>434</span> 
+<span class='line'>435</span> 
+<span class='line'>436</span> </span><span class="COMM">/**
+<span class='line'>437</span>  * @class Server
+<span class='line'>438</span>  *
+<span class='line'>439</span>  * @description
+<span class='line'>440</span>  * Server communication and batch processing. This should only hold functions
+<span class='line'>441</span>  * which are used across multiple pages, and does not constitute functionality
+<span class='line'>442</span>  * related to a single area/page
+<span class='line'>443</span>  *
+<span class='line'>444</span>  * @namespace
+<span class='line'>445</span>  * Server related convenience functions and communication
+<span class='line'>446</span>  */</span><span class="WHIT">
+<span class='line'>447</span> </span><span class="NAME">sakai.api.Server</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai.api.Server</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>448</span> 
+<span class='line'>449</span> </span><span class="COMM">/** Description - TO DO */</span><span class="WHIT">
+<span class='line'>450</span> </span><span class="NAME">sakai.api.Server.batchGet</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>451</span> 
+<span class='line'>452</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>453</span> 
+<span class='line'>454</span> </span><span class="COMM">/** Description - TO DO */</span><span class="WHIT">
+<span class='line'>455</span> </span><span class="NAME">sakai.api.Server.batchPost</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>456</span> 
+<span class='line'>457</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>458</span> 
+<span class='line'>459</span> </span><span class="COMM">/**
+<span class='line'>460</span>  * Saves a specified JSON object to a specified URL in JCR. The structure of JSON data will be re-created in JCR as a node hierarchy.
+<span class='line'>461</span>  *
+<span class='line'>462</span>  * @param {String} i_url The path to the preference where it needs to be
+<span class='line'>463</span>  * saved
+<span class='line'>464</span>  * @param {Object} i_data A JSON object whic we would like to save
+<span class='line'>465</span>  * (max 200 child object of each object)
+<span class='line'>466</span>  * @param {Function} callback A callback function which is executed at the
+<span class='line'>467</span>  * end of the operation
+<span class='line'>468</span>  *
+<span class='line'>469</span>  * @returns {Void}
+<span class='line'>470</span>  */</span><span class="WHIT">
+<span class='line'>471</span> </span><span class="NAME">sakai.api.Server.saveJSON</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">i_url</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">i_data</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>472</span> 
+<span class='line'>473</span> </span><span class="WHIT">    </span><span class="COMM">// Argument check</span><span class="WHIT">
+<span class='line'>474</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">i_url</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">i_data</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>475</span> 
+<span class='line'>476</span> </span><span class="WHIT">        </span><span class="COMM">// Log the error message</span><span class="WHIT">
+<span class='line'>477</span> </span><span class="WHIT">        </span><span class="NAME">debug.warn</span><span class="PUNC">(</span><span class="STRN">"sakai.api.Server.saveJSON: Not enough or empty arguments!"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>478</span> 
+<span class='line'>479</span> </span><span class="WHIT">        </span><span class="COMM">// Still invoke the callback function</span><span class="WHIT">
+<span class='line'>480</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$.isFunction</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>481</span> </span><span class="WHIT">            </span><span class="NAME">callback</span><span class="PUNC">(</span><span class="KEYW">false</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"The supplied arguments were incorrect."</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>482</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>483</span> 
+<span class='line'>484</span> </span><span class="WHIT">        </span><span class="COMM">// Make sure none of the other code in this function is executed</span><span class="WHIT">
+<span class='line'>485</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>486</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>487</span> 
+<span class='line'>488</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>489</span>      * &lt;p>Convert all the arrays in an object to an object with a unique key.&lt;br />
+<span class='line'>490</span>      * Mixed arrays (arrays with multiple types) are not supported.
+<span class='line'>491</span>      * &lt;/p>
+<span class='line'>492</span>      * &lt;code>
+<span class='line'>493</span>      * {
+<span class='line'>494</span>      *     "boolean": true,
+<span class='line'>495</span>      *     "array_object": [{ "key1": "value1", "key2": "value2"}, { "key1": "value1", "key2": "value2"}]
+<span class='line'>496</span>      * }
+<span class='line'>497</span>      * &lt;/code>
+<span class='line'>498</span>      * to
+<span class='line'>499</span>      * &lt;code>
+<span class='line'>500</span>      * {
+<span class='line'>501</span>      *     "boolean": true,
+<span class='line'>502</span>      *     "array_object": {
+<span class='line'>503</span>      *         "__array__0__": { "key1": "value1", "key2": "value2"},
+<span class='line'>504</span>      *         "__array__1__": { "key1": "value1", "key2": "value2"}
+<span class='line'>505</span>      *     }
+<span class='line'>506</span>      * }
+<span class='line'>507</span>      * &lt;/code>
+<span class='line'>508</span>      * @param {Object} obj The Object that you want to use to convert all the arrays to objects
+<span class='line'>509</span>      * @return {Object} An object where all the arrays are converted into objects
+<span class='line'>510</span>      */</span><span class="WHIT">
+<span class='line'>511</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">convertArrayToObject</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">obj</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>512</span> 
+<span class='line'>513</span> </span><span class="WHIT">        </span><span class="COMM">// Since the native createTree method doesn't support an array of objects natively,</span><span class="WHIT">
+<span class='line'>514</span> </span><span class="WHIT">        </span><span class="COMM">// we need to write extra functionality for this.</span><span class="WHIT">
+<span class='line'>515</span> </span><span class="WHIT">        </span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">obj</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>516</span> 
+<span class='line'>517</span> </span><span class="WHIT">            </span><span class="COMM">// Check if the element is an array, whether it is empty and if it contains any elements</span><span class="WHIT">
+<span class='line'>518</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">obj.hasOwnProperty</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">$.isArray</span><span class="PUNC">(</span><span class="NAME">obj</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">obj</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>519</span> 
+<span class='line'>520</span> </span><span class="WHIT">                </span><span class="COMM">// Deep copy the array</span><span class="WHIT">
+<span class='line'>521</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">arrayCopy</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$.extend</span><span class="PUNC">(</span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">obj</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>522</span> 
+<span class='line'>523</span> </span><span class="WHIT">                </span><span class="COMM">// Set the original array to an empty object</span><span class="WHIT">
+<span class='line'>524</span> </span><span class="WHIT">                </span><span class="NAME">obj</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>525</span> 
+<span class='line'>526</span> </span><span class="WHIT">                </span><span class="COMM">// Add all the elements that were in the original array to the object with a unique id</span><span class="WHIT">
+<span class='line'>527</span> </span><span class="WHIT">                </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">j</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">jl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">arrayCopy.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">j</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">jl</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">j</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>528</span> 
+<span class='line'>529</span> </span><span class="WHIT">                    </span><span class="COMM">// Copy each object from the array and add it to the object</span><span class="WHIT">
+<span class='line'>530</span> </span><span class="WHIT">                    </span><span class="NAME">obj</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="STRN">"__array__"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">j</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"__"</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">arrayCopy</span><span class="PUNC">[</span><span class="NAME">j</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>531</span> 
+<span class='line'>532</span> </span><span class="WHIT">                    </span><span class="COMM">// Run recursively</span><span class="WHIT">
+<span class='line'>533</span> </span><span class="WHIT">                    </span><span class="NAME">convertArrayToObject</span><span class="PUNC">(</span><span class="NAME">arrayCopy</span><span class="PUNC">[</span><span class="NAME">j</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>534</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>535</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>536</span> 
+<span class='line'>537</span> </span><span class="WHIT">            </span><span class="COMM">// If there are array elements inside</span><span class="WHIT">
+<span class='line'>538</span> </span><span class="WHIT">            </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$.isPlainObject</span><span class="PUNC">(</span><span class="NAME">obj</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>539</span> </span><span class="WHIT">                </span><span class="NAME">convertArrayToObject</span><span class="PUNC">(</span><span class="NAME">obj</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>540</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>541</span> 
+<span class='line'>542</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>543</span> 
+<span class='line'>544</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">obj</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>545</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>546</span> 
+<span class='line'>547</span> </span><span class="WHIT">    </span><span class="COMM">// Convert the array of objects to only objects</span><span class="WHIT">
+<span class='line'>548</span> </span><span class="WHIT">    </span><span class="COMM">// We also need to deep copy the object so we don't modify the input parameter</span><span class="WHIT">
+<span class='line'>549</span> </span><span class="WHIT">    </span><span class="NAME">i_data</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">convertArrayToObject</span><span class="PUNC">(</span><span class="NAME">$.extend</span><span class="PUNC">(</span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">i_data</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>550</span> 
+<span class='line'>551</span> </span><span class="WHIT">    </span><span class="COMM">// Send request</span><span class="WHIT">
+<span class='line'>552</span> </span><span class="WHIT">    </span><span class="NAME">$.ajax</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>553</span> </span><span class="WHIT">        </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">i_url</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>554</span> </span><span class="WHIT">        </span><span class="NAME">type</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"POST"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>555</span> </span><span class="WHIT">        </span><span class="NAME">data</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>556</span> </span><span class="WHIT">            </span><span class="STRN">":operation"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"import"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>557</span> </span><span class="WHIT">            </span><span class="STRN">":contentType"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"json"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>558</span> </span><span class="WHIT">            </span><span class="STRN">":content"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">$.toJSON</span><span class="PUNC">(</span><span class="NAME">i_data</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>559</span> </span><span class="WHIT">            </span><span class="STRN">":replace"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>560</span> </span><span class="WHIT">            </span><span class="STRN">":replaceProperties"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="WHIT">
+<span class='line'>561</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>562</span> </span><span class="WHIT">        </span><span class="NAME">dataType</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"json"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>563</span> 
+<span class='line'>564</span> </span><span class="WHIT">        </span><span class="NAME">success</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>565</span> 
+<span class='line'>566</span> </span><span class="WHIT">            </span><span class="COMM">// If a callback function is specified in argument, call it</span><span class="WHIT">
+<span class='line'>567</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$.isFunction</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>568</span> </span><span class="WHIT">                </span><span class="NAME">callback</span><span class="PUNC">(</span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>569</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>570</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>571</span> 
+<span class='line'>572</span> </span><span class="WHIT">        </span><span class="NAME">error</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">xhr</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">status</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">e</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>573</span> 
+<span class='line'>574</span> </span><span class="WHIT">            </span><span class="COMM">// Log error</span><span class="WHIT">
+<span class='line'>575</span> </span><span class="WHIT">            </span><span class="NAME">debug.error</span><span class="PUNC">(</span><span class="STRN">"sakai.api.Server.saveJSON: There was an error saving JSON data to: "</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">this.url</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>576</span> 
+<span class='line'>577</span> </span><span class="WHIT">            </span><span class="COMM">// If a callback function is specified in argument, call it</span><span class="WHIT">
+<span class='line'>578</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$.isFunction</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>579</span> </span><span class="WHIT">                </span><span class="NAME">callback</span><span class="PUNC">(</span><span class="KEYW">false</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">xhr</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>580</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>581</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>582</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>583</span> 
+<span class='line'>584</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>585</span> 
+<span class='line'>586</span> </span><span class="COMM">/**
+<span class='line'>587</span>  * Loads structured preference data from a specified URL (and it's node subtree)
+<span class='line'>588</span>  *
+<span class='line'>589</span>  * @param {String} i_url The path to the preference which needs to be loaded
+<span class='line'>590</span>  * @param {Function} callback A callback function which is executed at the end
+<span class='line'>591</span>  * of the operation
+<span class='line'>592</span>  * @param {Object} data The data to pass to the url
+<span class='line'>593</span>  *
+<span class='line'>594</span>  * @returns {Void}
+<span class='line'>595</span>  */</span><span class="WHIT">
+<span class='line'>596</span> </span><span class="NAME">sakai.api.Server.loadJSON</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">i_url</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>597</span> </span><span class="WHIT">    </span><span class="COMM">// Argument check</span><span class="WHIT">
+<span class='line'>598</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">i_url</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>599</span> 
+<span class='line'>600</span> </span><span class="WHIT">        </span><span class="COMM">// Log the error message</span><span class="WHIT">
+<span class='line'>601</span> </span><span class="WHIT">        </span><span class="NAME">debug.info</span><span class="PUNC">(</span><span class="STRN">"sakai.api.Server.loadJSON: Not enough or empty arguments!"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>602</span> 
+<span class='line'>603</span> </span><span class="WHIT">        </span><span class="COMM">// Still invoke the callback function</span><span class="WHIT">
+<span class='line'>604</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$.isFunction</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>605</span> </span><span class="WHIT">            </span><span class="NAME">callback</span><span class="PUNC">(</span><span class="KEYW">false</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"The supplied arguments were incorrect."</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>606</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>607</span> 
+<span class='line'>608</span> </span><span class="WHIT">        </span><span class="COMM">// Make sure none of the other code in this function is executed</span><span class="WHIT">
+<span class='line'>609</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>610</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>611</span> 
+<span class='line'>612</span> </span><span class="WHIT">    </span><span class="COMM">// append .infinity.json if .json isn't present in the url</span><span class="WHIT">
+<span class='line'>613</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i_url.indexOf</span><span class="PUNC">(</span><span class="STRN">".json"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>614</span> </span><span class="WHIT">        </span><span class="NAME">i_url</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">".infinity.json"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>615</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>616</span> 
+<span class='line'>617</span> </span><span class="WHIT">    </span><span class="NAME">$.ajax</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>618</span> </span><span class="WHIT">        </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">i_url</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>619</span> </span><span class="WHIT">        </span><span class="NAME">cache</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>620</span> </span><span class="WHIT">        </span><span class="NAME">dataType</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"json"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>621</span> </span><span class="WHIT">        </span><span class="NAME">data</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>622</span> </span><span class="WHIT">        </span><span class="NAME">success</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>623</span> 
+<span class='line'>624</span> </span><span class="WHIT">            </span><span class="COMM">// Remove keys which are created by JCR or Sling</span><span class="WHIT">
+<span class='line'>625</span> </span><span class="WHIT">            </span><span class="NAME">sakai.api.Util.removeJCRObjects</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>626</span> 
+<span class='line'>627</span> </span><span class="WHIT">            </span><span class="COMM">// Convert the special objects to arrays</span><span class="WHIT">
+<span class='line'>628</span> </span><span class="WHIT">            </span><span class="NAME">data</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai.api.Server.loadJSON.convertObjectToArray</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>629</span> 
+<span class='line'>630</span> </span><span class="WHIT">            </span><span class="COMM">// Call callback function if present</span><span class="WHIT">
+<span class='line'>631</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$.isFunction</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>632</span> </span><span class="WHIT">                </span><span class="NAME">callback</span><span class="PUNC">(</span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>633</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>634</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>635</span> </span><span class="WHIT">        </span><span class="NAME">error</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">xhr</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">status</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">e</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>636</span> 
+<span class='line'>637</span> </span><span class="WHIT">            </span><span class="COMM">// Log error</span><span class="WHIT">
+<span class='line'>638</span> </span><span class="WHIT">            </span><span class="NAME">debug.warn</span><span class="PUNC">(</span><span class="STRN">"sakai.api.Server.loadJSON: There was an error loading JSON data from: "</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">this.url</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>639</span> 
+<span class='line'>640</span> </span><span class="WHIT">            </span><span class="COMM">// Call callback function if present</span><span class="WHIT">
+<span class='line'>641</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$.isFunction</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>642</span> </span><span class="WHIT">                </span><span class="NAME">callback</span><span class="PUNC">(</span><span class="KEYW">false</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">xhr</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>643</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>644</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>645</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>646</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>647</span> 
+<span class='line'>648</span> </span><span class="COMM">/**
+<span class='line'>649</span>  * &lt;p>Convert all the objects with format __array__?__ in an object to an array&lt;/p>
+<span class='line'>650</span>  * &lt;code>
+<span class='line'>651</span>  * {
+<span class='line'>652</span>  *     "boolean": true,
+<span class='line'>653</span>  *     "array_object": {
+<span class='line'>654</span>  *         "__array__0__": {
+<span class='line'>655</span>  *             "key1": "value1",
+<span class='line'>656</span>  *             "key2": "value2"
+<span class='line'>657</span>  *         }
+<span class='line'>658</span>  *     }
+<span class='line'>659</span>  * }
+<span class='line'>660</span>  * &lt;/code>
+<span class='line'>661</span>  * to
+<span class='line'>662</span>  * &lt;code>
+<span class='line'>663</span>  * {
+<span class='line'>664</span>  *     "boolean": true,
+<span class='line'>665</span>  *     "array_object": [
+<span class='line'>666</span>  *         {
+<span class='line'>667</span>  *             "key1": "value1",
+<span class='line'>668</span>  *             "key2": "value2"
+<span class='line'>669</span>  *        }
+<span class='line'>670</span>  *     ]
+<span class='line'>671</span>  * }
+<span class='line'>672</span>  * &lt;/code>
+<span class='line'>673</span>  * @param {Object} specficObj The Object that you want to use to convert all the objects with the special format to arrays
+<span class='line'>674</span>  * @param {Object} [globalObj] The parent object, we need this to run over the elements recursively
+<span class='line'>675</span>  * @param {Object} [objIndex] The index of the parent object
+<span class='line'>676</span>  * @return {Object} An object where all the objects with the special format are converted into arrays
+<span class='line'>677</span>  */</span><span class="WHIT">
+<span class='line'>678</span> </span><span class="NAME">sakai.api.Server.loadJSON.convertObjectToArray</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">specficObj</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">globalObj</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">objIndex</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>679</span> 
+<span class='line'>680</span> </span><span class="WHIT">    </span><span class="COMM">// Run over all the items in the object</span><span class="WHIT">
+<span class='line'>681</span> </span><span class="WHIT">    </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">specficObj</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>682</span> 
+<span class='line'>683</span> </span><span class="WHIT">        </span><span class="COMM">// If exists and it's an object recurse</span><span class="WHIT">
+<span class='line'>684</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">specficObj.hasOwnProperty</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>685</span> 
+<span class='line'>686</span> </span><span class="WHIT">            </span><span class="COMM">// If it's a non-empty array-object it will have a first element with the key "__array__0__"</span><span class="WHIT">
+<span class='line'>687</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"__array__0__"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>688</span> 
+<span class='line'>689</span> </span><span class="WHIT">                </span><span class="COMM">// We need to get the number of items in the object</span><span class="WHIT">
+<span class='line'>690</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">arr</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>691</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">count</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>692</span> </span><span class="WHIT">                </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">j</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">specficObj</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>693</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">specficObj.hasOwnProperty</span><span class="PUNC">(</span><span class="NAME">j</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>694</span> </span><span class="WHIT">                        </span><span class="NAME">count</span><span class="PUNC">++</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>695</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>696</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>697</span> 
+<span class='line'>698</span> </span><span class="WHIT">                </span><span class="COMM">// Construct array of objects</span><span class="WHIT">
+<span class='line'>699</span> </span><span class="WHIT">                </span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">k</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">kl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">count</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">k</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">kl</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">k</span><span class="WHIT"> </span><span class="PUNC">++</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>700</span> </span><span class="WHIT">                    </span><span class="NAME">arr.push</span><span class="PUNC">(</span><span class="NAME">specficObj</span><span class="PUNC">[</span><span class="STRN">"__array__"</span><span class="PUNC">+</span><span class="NAME">k</span><span class="PUNC">+</span><span class="STRN">"__"</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>701</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>702</span> 
+<span class='line'>703</span> </span><span class="WHIT">                </span><span class="NAME">globalObj</span><span class="PUNC">[</span><span class="NAME">objIndex</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">arr</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>704</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>705</span> 
+<span class='line'>706</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$.isPlainObject</span><span class="PUNC">(</span><span class="NAME">specficObj</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>707</span> </span><span class="WHIT">                </span><span class="NAME">sakai.api.Server.loadJSON.convertObjectToArray</span><span class="PUNC">(</span><span class="NAME">specficObj</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">specficObj</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>708</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>709</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>710</span> 
+<span class='line'>711</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>712</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">specficObj</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>713</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>714</span> 
+<span class='line'>715</span> </span><span class="COMM">/**
+<span class='line'>716</span>  * Remove the JSON for a specific node in JCR
+<span class='line'>717</span>  *
+<span class='line'>718</span>  * @param {String} i_url The path of the node you want to remove
+<span class='line'>719</span>  * @param {Function} callback Callback function which is executed at the
+<span class='line'>720</span>  * end of the operation
+<span class='line'>721</span>  *
+<span class='line'>722</span>  * @returns {Void}
+<span class='line'>723</span>  */</span><span class="WHIT">
+<span class='line'>724</span> </span><span class="NAME">sakai.api.Server.removeJSON</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">i_url</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>725</span> 
+<span class='line'>726</span> </span><span class="WHIT">    </span><span class="COMM">// Argument check</span><span class="WHIT">
+<span class='line'>727</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">i_url</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>728</span> 
+<span class='line'>729</span> </span><span class="WHIT">        </span><span class="COMM">// Log the error message</span><span class="WHIT">
+<span class='line'>730</span> </span><span class="WHIT">        </span><span class="NAME">debug.info</span><span class="PUNC">(</span><span class="STRN">"sakai.api.Server.removeJSON: Not enough or empty arguments!"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>731</span> 
+<span class='line'>732</span> </span><span class="WHIT">        </span><span class="COMM">// Still invoke the callback function</span><span class="WHIT">
+<span class='line'>733</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$.isFunction</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>734</span> </span><span class="WHIT">            </span><span class="NAME">callback</span><span class="PUNC">(</span><span class="KEYW">false</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"The supplied arguments were incorrect."</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>735</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>736</span> 
+<span class='line'>737</span> </span><span class="WHIT">        </span><span class="COMM">// Make sure none of the other code in this function is executed</span><span class="WHIT">
+<span class='line'>738</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>739</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>740</span> 
+<span class='line'>741</span> </span><span class="WHIT">    </span><span class="COMM">// Send request</span><span class="WHIT">
+<span class='line'>742</span> </span><span class="WHIT">    </span><span class="NAME">$.ajax</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>743</span> </span><span class="WHIT">        </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">i_url</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>744</span> </span><span class="WHIT">        </span><span class="COMM">// Note that the type DELETE doesn't work with sling if you do /test.json</span><span class="WHIT">
+<span class='line'>745</span> </span><span class="WHIT">        </span><span class="COMM">// You can only perform a DELETE on /test (without extension)</span><span class="WHIT">
+<span class='line'>746</span> </span><span class="WHIT">        </span><span class="COMM">// http://sling.apache.org/site/manipulating-content-the-slingpostservlet-servletspost.html</span><span class="WHIT">
+<span class='line'>747</span> </span><span class="WHIT">        </span><span class="NAME">type</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"POST"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>748</span> </span><span class="WHIT">        </span><span class="NAME">data</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>749</span> </span><span class="WHIT">            </span><span class="STRN">":operation"</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"delete"</span><span class="WHIT">
+<span class='line'>750</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>751</span> </span><span class="WHIT">        </span><span class="NAME">success</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>752</span> 
+<span class='line'>753</span> </span><span class="WHIT">            </span><span class="COMM">// If a callback function is specified in argument, call it</span><span class="WHIT">
+<span class='line'>754</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$.isFunction</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>755</span> </span><span class="WHIT">                </span><span class="NAME">callback</span><span class="PUNC">(</span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>756</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>757</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>758</span> 
+<span class='line'>759</span> </span><span class="WHIT">        </span><span class="NAME">error</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">xhr</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">status</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">e</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>760</span> 
+<span class='line'>761</span> </span><span class="WHIT">            </span><span class="COMM">// Log error</span><span class="WHIT">
+<span class='line'>762</span> </span><span class="WHIT">            </span><span class="NAME">debug.error</span><span class="PUNC">(</span><span class="STRN">"sakai.api.Server.removeJSON: There was an error removing the JSON on: "</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">this.url</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>763</span> 
+<span class='line'>764</span> </span><span class="WHIT">            </span><span class="COMM">// If a callback function is specified in argument, call it</span><span class="WHIT">
+<span class='line'>765</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$.isFunction</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>766</span> </span><span class="WHIT">                </span><span class="NAME">callback</span><span class="PUNC">(</span><span class="KEYW">false</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">xhr</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>767</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>768</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>769</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>770</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>771</span> 
+<span class='line'>772</span> </span><span class="NAME">sakai.api.Server.JCRPropertiesToDelete</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="STRN">"rep:policy"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"jcr:path"</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>773</span> 
+<span class='line'>774</span> </span><span class="NAME">sakai.api.Server.filterJCRProperties</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>775</span> </span><span class="WHIT">    </span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">sakai.api.Server.JCRPropertiesToDelete</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">each</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">,</span><span class="NAME">val</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>776</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">[</span><span class="NAME">val</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>777</span> </span><span class="WHIT">            </span><span class="KEYW">delete</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">[</span><span class="NAME">val</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>778</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>779</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>780</span> 
+<span class='line'>781</span> </span><span class="WHIT">    </span><span class="COMM">// Also run over the other objects within this object</span><span class="WHIT">
+<span class='line'>782</span> </span><span class="WHIT">    </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>783</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">data.hasOwnProperty</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">$.isPlainObject</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>784</span> </span><span class="WHIT">          </span><span class="NAME">sakai.api.Server.filterJCRProperties</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>785</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>786</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>787</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>788</span> 
+<span class='line'>789</span> </span><span class="COMM">/**
+<span class='line'>790</span>  * @class UI
+<span class='line'>791</span>  *
+<span class='line'>792</span>  * @description
+<span class='line'>793</span>  * User interface elements within Sakai 3 which require JS to work.
+<span class='line'>794</span>  * All UI element init functions should be defined here.
+<span class='line'>795</span>  *
+<span class='line'>796</span>  * @namespace
+<span class='line'>797</span>  * Standard Sakai 3 UI elements
+<span class='line'>798</span>  */</span><span class="WHIT">
+<span class='line'>799</span> </span><span class="NAME">sakai.api.UI</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai.api.UI</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>800</span> 
+<span class='line'>801</span> 
+<span class='line'>802</span> 
+<span class='line'>803</span> </span><span class="COMM">// -----------------------------------------------------------------------------</span><span class="WHIT">
+<span class='line'>804</span> 
+<span class='line'>805</span> </span><span class="COMM">/**
+<span class='line'>806</span>  * @name $
+<span class='line'>807</span>  * @namespace
+<span class='line'>808</span>  * jQuery Plugins and overrides for Sakai.
+<span class='line'>809</span>  */</span><span class="WHIT">
+<span class='line'>810</span> 
+<span class='line'>811</span> 
+<span class='line'>812</span> </span><span class="COMM">/*
+<span class='line'>813</span>  * Functionality that allows you to create HTML Templates and give that template
+<span class='line'>814</span>  * a JSON object. That template will then be rendered and all of the values from
+<span class='line'>815</span>  * the JSON object can be used to insert values into the rendered HTML. More information
+<span class='line'>816</span>  * and examples can be found over here:
+<span class='line'>817</span>  *
+<span class='line'>818</span>  * http://code.google.com/p/trimpath/wiki/JavaScriptTemplates
+<span class='line'>819</span>  *
+<span class='line'>820</span>  * Template should be defined like this:
+<span class='line'>821</span>  *  &lt;div>&lt;!--
+<span class='line'>822</span>  *   // Template here
+<span class='line'>823</span>  *  -->&lt;/div>
+<span class='line'>824</span>  *
+<span class='line'>825</span>  *  IMPORTANT: There should be no line breaks in between the div and the &lt;!-- declarations,
+<span class='line'>826</span>  *  because that line break will be recognized as a node and the template won't show up, as
+<span class='line'>827</span>  *  it's expecting the comments tag as the first one.
+<span class='line'>828</span>  *
+<span class='line'>829</span>  *  We do this because otherwise a template wouldn't validate in an HTML validator and
+<span class='line'>830</span>  *  also so that our template isn't visible in our page.
+<span class='line'>831</span>  */</span><span class="WHIT">
+<span class='line'>832</span> </span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">$</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>833</span> 
+<span class='line'>834</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>835</span>      * A cache that will keep a copy of every template we have parsed so far. Like this,
+<span class='line'>836</span>      * we avoid having to parse the same template over and over again.
+<span class='line'>837</span>      */</span><span class="WHIT">
+<span class='line'>838</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">templateCache</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>839</span> 
+<span class='line'>840</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>841</span>     * Trimpath Template Renderer: Renders the template with the given JSON object, inserts it into a certain HTML
+<span class='line'>842</span>     * element if required, and returns the rendered HTML string
+<span class='line'>843</span>     * @function
+<span class='line'>844</span>     * @param {String|Object} templateElement The name of the template HTML ID or a jQuery selection object.
+<span class='line'>845</span>     * @param {Object} templateData JSON object containing the template data
+<span class='line'>846</span>     * @param {Object} outputElement (Optional) jQuery element in which the template needs to be rendered
+<span class='line'>847</span>     * @param {Boolean} doSanitize (Optional) perform html sanitization. Defaults to true
+<span class='line'>848</span>     */</span><span class="WHIT">
+<span class='line'>849</span> </span><span class="WHIT">    </span><span class="NAME">$.TemplateRenderer</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">templateElement</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">templateData</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">outputElement</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">doSanitize</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>850</span> 
+<span class='line'>851</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">templateName</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>852</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">sanitize</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>853</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">doSanitize</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>854</span> </span><span class="WHIT">            </span><span class="NAME">sanitize</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">doSanitize</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>855</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>856</span> 
+<span class='line'>857</span> </span><span class="WHIT">        </span><span class="COMM">// The template name and the context object should be defined</span><span class="WHIT">
+<span class='line'>858</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">templateElement</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">templateData</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>859</span> </span><span class="WHIT">            </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="STRN">"$.TemplateRenderer: the template name or the templateData is not defined"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>860</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>861</span> 
+<span class='line'>862</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">templateElement</span><span class="WHIT"> </span><span class="KEYW">instanceof</span><span class="WHIT"> </span><span class="NAME">jQuery</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">templateElement</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>863</span> </span><span class="WHIT">            </span><span class="NAME">templateName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">templateElement</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">id</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>864</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>865</span> </span><span class="WHIT">        </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">templateElement</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"string"</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>866</span> </span><span class="WHIT">            </span><span class="NAME">templateName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">templateElement.replace</span><span class="PUNC">(</span><span class="STRN">"#"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>867</span> </span><span class="WHIT">            </span><span class="NAME">templateElement</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">templateName</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>868</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>869</span> </span><span class="WHIT">        </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>870</span> </span><span class="WHIT">            </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="STRN">"$.TemplateRenderer: The templateElement '"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">templateElement</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"' is not in a valid format or the template couldn't be found."</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>871</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>872</span> 
+<span class='line'>873</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">templateCache</span><span class="PUNC">[</span><span class="NAME">templateName</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>874</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">templateNode</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">templateElement.get</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>875</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">templateNode</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>876</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">firstNode</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">templateNode.firstChild</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>877</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">template</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>878</span> </span><span class="WHIT">                </span><span class="COMM">// Check whether the template is wrapped in &lt;!-- --></span><span class="WHIT">
+<span class='line'>879</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">firstNode</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">firstNode.nodeType</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NUMB">8</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">firstNode.nodeType</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NUMB">4</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>880</span> </span><span class="WHIT">                    </span><span class="NAME">template</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">firstNode.data.toString</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>881</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>882</span> </span><span class="WHIT">                </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>883</span> </span><span class="WHIT">                    </span><span class="NAME">template</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">templateNode.innerHTML.toString</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>884</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>885</span> </span><span class="WHIT">                </span><span class="COMM">// Parse the template through TrimPath and add the parsed template to the template cache</span><span class="WHIT">
+<span class='line'>886</span> </span><span class="WHIT">                </span><span class="NAME">templateCache</span><span class="PUNC">[</span><span class="NAME">templateName</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">TrimPath.parseTemplate</span><span class="PUNC">(</span><span class="NAME">template</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">templateName</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>887</span> 
+<span class='line'>888</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>889</span> </span><span class="WHIT">            </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>890</span> </span><span class="WHIT">                </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="STRN">"$.TemplateRenderer: The template '"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">templateName</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"' could not be found"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>891</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>892</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>893</span> 
+<span class='line'>894</span> </span><span class="WHIT">        </span><span class="COMM">// Run the template and feed it the given JSON object</span><span class="WHIT">
+<span class='line'>895</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">render</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">templateCache</span><span class="PUNC">[</span><span class="NAME">templateName</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">process</span><span class="PUNC">(</span><span class="NAME">templateData</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>896</span> 
+<span class='line'>897</span> </span><span class="WHIT">        </span><span class="COMM">// Run the rendered html through the sanitizer</span><span class="WHIT">
+<span class='line'>898</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">sanitize</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>899</span> </span><span class="WHIT">            </span><span class="NAME">render</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai.api.Security.saneHTML</span><span class="PUNC">(</span><span class="NAME">render</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>900</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>901</span> 
+<span class='line'>902</span> </span><span class="WHIT">        </span><span class="COMM">// Check it there was an output element defined</span><span class="WHIT">
+<span class='line'>903</span> </span><span class="WHIT">        </span><span class="COMM">// If so, put the rendered template in there</span><span class="WHIT">
+<span class='line'>904</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">outputElement</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>905</span> </span><span class="WHIT">            </span><span class="NAME">outputElement.html</span><span class="PUNC">(</span><span class="NAME">render</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>906</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>907</span> 
+<span class='line'>908</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">render</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>909</span> 
+<span class='line'>910</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>911</span> 
+<span class='line'>912</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">(</span><span class="NAME">jQuery</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>913</span> 
+<span class='line'>914</span> 
+<span class='line'>915</span> 
+<span class='line'>916</span> </span><span class="COMM">///////////////////////////</span><span class="WHIT">
+<span class='line'>917</span> </span><span class="COMM">// jQuery AJAX extention //</span><span class="WHIT">
+<span class='line'>918</span> </span><span class="COMM">///////////////////////////</span><span class="WHIT">
+<span class='line'>919</span> 
+<span class='line'>920</span> </span><span class="COMM">/*
+<span class='line'>921</span>  * We override the standard $.ajax error function, which is being executed when
+<span class='line'>922</span>  * a request fails. We will check whether the request has failed due to an authorization
+<span class='line'>923</span>  * required error, by checking the response code and then doing a request to the me service
+<span class='line'>924</span>  * to find out whether we are no longer logged in. If we are no longer logged in, and the
+<span class='line'>925</span>  * sendToLoginOnFail variable has been set in the options of the request, we will redirect
+<span class='line'>926</span>  * to the login page with the current URL encoded in the url. This will cause the system to
+<span class='line'>927</span>  * redirect to the page we used to be on once logged in.
+<span class='line'>928</span>  */</span><span class="WHIT">
+<span class='line'>929</span> </span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">$</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>930</span> 
+<span class='line'>931</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>932</span>     * Override default jQuery error behavior
+<span class='line'>933</span>     * @function
+<span class='line'>934</span>     * @param {String} s description
+<span class='line'>935</span>     * @param {Object} xhr xhr object
+<span class='line'>936</span>     * @param {String} status Status message
+<span class='line'>937</span>     * @param {Object} e Thrown error
+<span class='line'>938</span>     */</span><span class="WHIT">
+<span class='line'>939</span> </span><span class="WHIT">    </span><span class="NAME">$.handleError</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">s</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">xhr</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">status</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">e</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>940</span> 
+<span class='line'>941</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">requestStatus</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">xhr.status</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>942</span> 
+<span class='line'>943</span> </span><span class="WHIT">        </span><span class="COMM">// Sometimes jQuery comes back with a parse-error, although the request</span><span class="WHIT">
+<span class='line'>944</span> </span><span class="WHIT">        </span><span class="COMM">// was completely successful. In order to prevent the error method to be called</span><span class="WHIT">
+<span class='line'>945</span> </span><span class="WHIT">        </span><span class="COMM">// in this case, we need this if clause.</span><span class="WHIT">
+<span class='line'>946</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">requestStatus</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NUMB">200</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>947</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">s.success</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>948</span> </span><span class="WHIT">                </span><span class="NAME">s.success</span><span class="PUNC">(</span><span class="NAME">xhr.responseText</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>949</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>950</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>951</span> </span><span class="WHIT">        </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>952</span> </span><span class="WHIT">            </span><span class="COMM">// if the sendToLoginOnFail hasn't been set, we assume that we want to redirect when</span><span class="WHIT">
+<span class='line'>953</span> </span><span class="WHIT">            </span><span class="COMM">// a 403 comes back</span><span class="WHIT">
+<span class='line'>954</span> </span><span class="WHIT">            </span><span class="NAME">s.sendToLoginOnFail</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">s.sendToLoginOnFail</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>955</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">requestStatus</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NUMB">403</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">s.sendToLoginOnFail</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>956</span> 
+<span class='line'>957</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">decideLoggedIn</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">response</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">exists</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>958</span> </span><span class="WHIT">                    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">originalURL</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">document.location</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>959</span> </span><span class="WHIT">                    </span><span class="NAME">originalURL</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$.URLEncode</span><span class="PUNC">(</span><span class="NAME">originalURL.pathname</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">originalURL.search</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">originalURL.hash</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>960</span> </span><span class="WHIT">                    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">redirecturl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai.config.URL.GATEWAY_URL</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"?url="</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">originalURL</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>961</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">exists</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">response.preferences</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">response.preferences.uuid</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"anonymous"</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">response.preferences.uuid</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>962</span> </span><span class="WHIT">                        </span><span class="NAME">document.location</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">redirecturl</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>963</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>964</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>965</span> 
+<span class='line'>966</span> </span><span class="WHIT">                </span><span class="NAME">$.ajax</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>967</span> </span><span class="WHIT">                    </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">sakai.config.URL.ME_SERVICE</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>968</span> </span><span class="WHIT">                    </span><span class="NAME">cache</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>969</span> </span><span class="WHIT">                    </span><span class="NAME">success</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>970</span> </span><span class="WHIT">                        </span><span class="NAME">decideLoggedIn</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>971</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>972</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>973</span> 
+<span class='line'>974</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>975</span> 
+<span class='line'>976</span> </span><span class="WHIT">        </span><span class="COMM">// Handle HTTP conflicts thrown back by K2 (409) (for example when somebody tries to write to the same node at the very same time)</span><span class="WHIT">
+<span class='line'>977</span> </span><span class="WHIT">        </span><span class="COMM">// We do this by re-sending the original request with the data transparently, behind the curtains, until it succeeds.</span><span class="WHIT">
+<span class='line'>978</span> </span><span class="WHIT">        </span><span class="COMM">// This still does not eliminate a possibility of another conflict, but greatly reduces</span><span class="WHIT">
+<span class='line'>979</span> </span><span class="WHIT">        </span><span class="COMM">// the chance and works in the background until the request is successful (ie jQuery will try to re-send the initial request until the response is not 409</span><span class="WHIT">
+<span class='line'>980</span> </span><span class="WHIT">        </span><span class="COMM">// WARNING: This does not solve the locking/overwriting problem entirely, it merely takes care of high volume request related issues. Users</span><span class="WHIT">
+<span class='line'>981</span> </span><span class="WHIT">        </span><span class="COMM">// should be notified in advance by the UI when somebody else is editing a piece of content, and should actively try reduce the possibility of</span><span class="WHIT">
+<span class='line'>982</span> </span><span class="WHIT">        </span><span class="COMM">// overwriting.</span><span class="WHIT">
+<span class='line'>983</span> </span><span class="COMM">/*        if (requestStatus === 409) {
+<span class='line'>984</span>             // Retry initial post
+<span class='line'>985</span>             $.ajax(s);
+<span class='line'>986</span>         }*/</span><span class="WHIT">
+<span class='line'>987</span> 
+<span class='line'>988</span> </span><span class="WHIT">        </span><span class="COMM">// Call original error handler, but not in the case of 409 as we want that to be transparent for users</span><span class="WHIT">
+<span class='line'>989</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">s.error</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">requestStatus</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="NUMB">409</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>990</span> </span><span class="WHIT">          </span><span class="NAME">s.error</span><span class="PUNC">(</span><span class="NAME">xhr</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">status</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">e</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>991</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>992</span> 
+<span class='line'>993</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">s.global</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>994</span> </span><span class="WHIT">          </span><span class="NAME">$.event.trigger</span><span class="PUNC">(</span><span class="STRN">"ajaxError"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="NAME">xhr</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">status</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">e</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>995</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>996</span> </span><span class="WHIT">          </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>997</span> 
+<span class='line'>998</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>999</span> 
+<span class='line'>1000</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">(</span><span class="NAME">jQuery</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1001</span> 
+<span class='line'>1002</span> 
+<span class='line'>1003</span> </span><span class="COMM">/**
+<span class='line'>1004</span>  * Extend jQuery to include a serializeObject function
+<span class='line'>1005</span>  * which uses $.serializeArray to serialize the form
+<span class='line'>1006</span>  * and then creates an object from that array
+<span class='line'>1007</span>  *
+<span class='line'>1008</span>  * http://stackoverflow.com/questions/1184624/serialize-form-to-json-with-jquery
+<span class='line'>1009</span>  */</span><span class="WHIT">
+<span class='line'>1010</span> </span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">$</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1011</span> </span><span class="WHIT">    </span><span class="NAME">$.fn.serializeObject</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>1012</span> </span><span class="WHIT">    </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1013</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">o</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1014</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">a</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.serializeArray</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1015</span> </span><span class="WHIT">        </span><span class="NAME">$.each</span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1016</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">o</span><span class="PUNC">[</span><span class="NAME">this.name</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1017</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">o</span><span class="PUNC">[</span><span class="NAME">this.name</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">push</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1018</span> </span><span class="WHIT">                    </span><span class="NAME">o</span><span class="PUNC">[</span><span class="NAME">this.name</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="NAME">o</span><span class="PUNC">[</span><span class="NAME">this.name</span><span class="PUNC">]</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1019</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1020</span> </span><span class="WHIT">                </span><span class="NAME">o</span><span class="PUNC">[</span><span class="NAME">this.name</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">push</span><span class="PUNC">(</span><span class="NAME">this.value</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1021</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1022</span> </span><span class="WHIT">                </span><span class="NAME">o</span><span class="PUNC">[</span><span class="NAME">this.name</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.value</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1023</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1024</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1025</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">o</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1026</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1027</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">(</span><span class="NAME">jQuery</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1028</span> 
+<span class='line'>1029</span> </span><span class="COMM">/**
+<span class='line'>1030</span>  * @name Array
+<span class='line'>1031</span>  * @namespace
+<span class='line'>1032</span>  * Array extensions for Sakai
+<span class='line'>1033</span>  */</span><span class="WHIT">
+<span class='line'>1034</span> </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">Array.hasOwnProperty</span><span class="PUNC">(</span><span class="STRN">"indexOf"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1035</span> 
+<span class='line'>1036</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1037</span>     * Finds the first occurrence of an element in an array and returns its
+<span class='line'>1038</span>     * position. This only kicks in when the native .indexOf method is not
+<span class='line'>1039</span>     * available in the browser.
+<span class='line'>1040</span>     *
+<span class='line'>1041</span>     * @param {Object/String/Integer} obj The element we are looking for
+<span class='line'>1042</span>     * @param {Integer} start Where the search starts within the array
+<span class='line'>1043</span>     *
+<span class='line'>1044</span>     * @returns Returns the position of the first matched element
+<span class='line'>1045</span>     * @type Integer
+<span class='line'>1046</span>     */</span><span class="WHIT">
+<span class='line'>1047</span> </span><span class="WHIT">    </span><span class="NAME">Array.prototype.indexOf</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">obj</span><span class="PUNC">,</span><span class="NAME">start</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1048</span> 
+<span class='line'>1049</span> </span><span class="WHIT">        </span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">=</span><span class="PUNC">(</span><span class="NAME">start</span><span class="PUNC">||</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="NAME">j</span><span class="PUNC">=</span><span class="NAME">this.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">&lt;</span><span class="NAME">j</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1050</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">===</span><span class="NAME">obj</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1051</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1052</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1053</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1054</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1055</span> 
+<span class='line'>1056</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1057</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1058</span> 
+<span class='line'>1059</span> 
+<span class='line'>1060</span> </span><span class="COMM">/**
+<span class='line'>1061</span>  * Entry point for functions which needs to automatically start on each page
+<span class='line'>1062</span>  * load.
+<span class='line'>1063</span>  *
+<span class='line'>1064</span>  * @returns {Void}
+<span class='line'>1065</span>  */</span><span class="WHIT">
+<span class='line'>1066</span> </span><span class="NAME">sakai.api.autoStart</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1067</span> 
+<span class='line'>1068</span> </span><span class="WHIT">    </span><span class="COMM">// When DOM is ready...</span><span class="WHIT">
+<span class='line'>1069</span> </span><span class="WHIT">    </span><span class="NAME">$</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1070</span> 
+<span class='line'>1071</span> </span><span class="WHIT">        </span><span class="COMM">// Load logged in user data</span><span class="WHIT">
+<span class='line'>1072</span> </span><span class="WHIT">        </span><span class="NAME">sakai.api.User.loadMeData</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">success</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1073</span> 
+<span class='line'>1074</span> </span><span class="WHIT">            </span><span class="COMM">// Start i18n</span><span class="WHIT">
+<span class='line'>1075</span> </span><span class="WHIT">            </span><span class="NAME">sakai.api.i18n.init</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1076</span> 
+<span class='line'>1077</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1078</span> 
+<span class='line'>1079</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1080</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1081</span> </span><span class="NAME">sakai.api.autoStart</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>

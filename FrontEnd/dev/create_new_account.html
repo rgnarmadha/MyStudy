@@ -1,0 +1,221 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+
+        <!-- Sakai Core CSS -->
+        <link rel="stylesheet" type="text/css" href="/dev/css/FSS/fss-base.css" />
+        <link rel="stylesheet" type="text/css" href="/dev/css/sakai/sakai.base.css"/>
+        <link rel="stylesheet" type="text/css" href="/dev/css/sakai/sakai.core.2.css" />
+        <link rel="stylesheet" type="text/css" href="/dev/css/sakai/sakai.3.css" />
+
+        <!-- Sakai Page CSS -->
+        <link rel="stylesheet" type="text/css" href="/dev/css/sakai/sakai.create_new_account.css" />
+
+        <!-- 3rd party CSS -->
+        <link rel="stylesheet" type="text/css" href="/dev/lib/jquery/plugins/gritter/css/jquery.gritter.css" />
+
+        <!-- Sakai Config JS -->
+        <script type="text/javascript" src="/dev/configuration/widgets.js"></script>
+        <script type="text/javascript" src="/var/widgets.json?callback=sakai.storeWidgets"></script>
+        <script type="text/javascript" src="/dev/configuration/config.js"></script>
+        <script type="text/javascript" src="/dev/configuration/config_custom.js"></script>
+
+        <!-- Core 3rd-party JS -->
+        <script type="text/javascript" src="/dev/lib/jquery/jquery.js"></script>
+        <script type="text/javascript" src="/dev/lib/jquery/jquery-ui.full.js"></script>
+        <script type="text/javascript" src="/dev/lib/fluid/3akai_Infusion.js"></script>
+        <script type="text/javascript" src="/dev/lib/misc/l10n/globalization.js"></script>
+        <script type="text/javascript" src="/dev/lib/jquery/plugins/jquery.json.js"></script>
+        <script type="text/javascript" src="/dev/lib/misc/google/html-sanitizer-minified.js"></script>
+        <script type="text/javascript" src="/dev/lib/jquery/plugins/jquery.validate.sakai-edited.js"></script>
+
+        <!-- Sakai Core JS -->
+        <script type="text/javascript" src="/dev/lib/sakai/sakai.api.core.js"></script>
+        <script type="text/javascript" src="/dev/lib/sakai/sakai.api.util.js"></script>
+        <script type="text/javascript" src="/dev/lib/sakai/sakai.api.i18n.js"></script>
+        <script type="text/javascript" src="/dev/lib/sakai/sakai.api.l10n.js"></script>
+        <script type="text/javascript" src="/dev/lib/sakai/sakai.api.user.js"></script>
+        <script type="text/javascript" src="/dev/lib/sakai/sakai.api.widgets.js"></script>
+        
+        <!-- reCAPTCHA js -->
+        <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+        <script type="text/javascript" src="/dev/lib/jquery/plugins/gritter/jquery.gritter.js"></script>
+
+
+    </head>
+
+    <body class="fl-centered create_account i18nable">
+
+        <!-- TOP BANNER -->
+        <div id="top_banner"><!-- --></div>
+
+        <!-- TOP NAV BAR -->
+        <div class="topnav" style="display: none;">
+            <ul>
+                <li><a href="javascript:;" class="topnav_sign_in">__MSG__SIGN_IN__</a></li>
+                <li><a href="javascript:;" class="topnav_about">__MSG__ABOUT__</a></li>
+                <li><a href="javascript:;" class="topnav_search">__MSG__SEARCH__</a></li>
+            </ul>
+        </div>
+
+        <!-- HEADER -->
+        <div class="fl-fix fl-centered header_container">
+            <div class="header-title">
+                <img src="/dev/images/sakai_logo_index.png" alt="__MSG__INSTANCE_NAME__"/>
+            </div>
+            <div class="header-byline">
+                __MSG__HEADER_BYLINE__
+            </div>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="fl-centered content">
+
+            <div class="content_top_corners"><!-- --></div>
+
+            <div class="content_inside s3d-main-container">
+
+                <!-- CONTENT HEADER -->
+                <h3>__MSG__CREATE_A_NEW_ACCOUNT__</h3>
+
+                <!-- TOP BORDER -->
+                <div class="content_top"><div class="content_top_inner"><!-- --></div></div>
+
+                <!-- PAGE CONTENT -->
+                <div class="content_main">
+
+                    <!-- Set fields red by adding the invalid class -->
+                    <form class="create_account_form" id="create_account_form" method="post" action="javascript:;">
+                        <table summary="Create a new account">
+                            <!-- FIRST NAME -->
+                            <tr>
+                                <td class="label_container"><label for="firstName">__MSG__FIRSTNAME__:</label></td>
+                                <td><input type="text" maxlength="255" id="firstName" name="firstName" class="create_account_input required" value="" /></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                            <!-- LAST NAME -->
+                            <tr>
+                                <td class="label_container"><label for="lastName">__MSG__LASTNAME__:</label></td>
+                                <td><input type="text" maxlength="255" id="lastName" name="lastName" class="create_account_input required" value="" /></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                            <!-- EMAIL -->
+                            <tr>
+                                <td class="label_container"><label for="email">__MSG__EMAIL__:</label></td>
+                                <td><input type="text" maxlength="255" id="email" name="email" class="create_account_input required email" /></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                            <!-- USERNAME -->
+                            <tr>
+                                <td class="label_container"><label id="username_label" for="username">__MSG__USERNAME__:</label></td>
+                                <td><input type="text" maxlength="255" id="username" name="username" class="create_account_input required" /></td>
+                                <td>
+                                    <button type="button" id="checkUserName" class="s3d-button" disabled="disabled">
+                                        <span class="s3d-button-inner">__MSG__CHECK_IF_USERNAME_IS_AVAILABLE__</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr id="username_error_container">
+                                <td></td>
+                                <td>
+                                    <label id="username_available" class="username_available" for="username" class="available" style="display:none">__MSG__THIS_USERNAME_IS_AVAILABLE__</label>
+                                    <label id="username_taken" class="create_account_error_msg error" style="display:none">__MSG__THIS_USERNAME_HAS_ALREADY_BEEN_TAKEN__!</label>
+                                </td>
+                            </tr>
+
+                            <!-- PASSWORD -->
+                            <tr>
+                                <td class="label_container"><label for="password">__MSG__PASSWORD__:</label></td>
+                                <td><input type="password" maxlength="255" id="password" name="password" class="create_account_input required" /></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                            <!-- PASSWORD REPEAT -->
+                            <tr>
+                                <td class="label_container"><label for="password_repeat">__MSG__RE_TYPE_PASSWORD__:</label></td>
+                                <td><input type="password" maxlength="255" id="password_repeat" name="password_repeat" class="create_account_input required" /></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                            <!-- CAPTCHA -->
+                            <tr>
+                                <td></td>
+                                <td class="captcha_container" id="captcha_box">
+                                    <div id="widget_captcha" class="widget_inline"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <label id="uword_nomatch" class="error" style="display:none">__MSG__THIS_DOES_NOT_MATCH__!</label>
+                                </td>
+                            </tr>
+
+                            <!-- BUTTONS -->
+                            <tr class="create_account_button_bar">
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <button id="save_account" class="s3d-button s3d-button-primary" type="submit"><span class="s3d-button-inner">__MSG__CREATE_ACCOUNT__</span></button>
+                                        <button id="cancel_button" class="s3d-button" type="reset"><span class="s3d-button-inner">__MSG__CANCEL__</span></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span id="success_message_title" style="display:none;">Account Created</span></td>
+                                <td><div id="success_message" class="success_message"><span id="success_message_value">__MSG__ACCOUNT_SUCCESSFULLY_CREATED__.</span> <a href="index.html">__MSG__CLICK_HERE_TO_LOGIN__.</a></div></td>
+                            </tr>
+
+                        </table>
+
+                    </form>
+                </div>
+
+                <!-- BOTTOM BORDER -->
+                <div class="s3d-widget-no-options"><div class="s3d-widget-no-options-inner"><!-- --></div></div>
+
+            </div>
+        </div>
+
+        <div id="error_msg_container" style="display:none">
+            <div id="firstName_empty" class="create_account_error_msg" style="display:none">__MSG__PLEASE_ENTER_YOUR_FIRST_NAME__!</div>
+            <div id="lastName_empty" class="create_account_error_msg" style="display:none">__MSG__PLEASE_ENTER_YOUR_LAST_NAME__!</div>
+            <div id="username_spaces" class="create_account_error_msg" style="display:none">__MSG__THE_USERNAME_SHOULDNT_CONTAIN_SPACES__!</div>
+            <div id="username_short" class="create_account_error_msg" style="display:none">__MSG__THE_USERNAME_SHOULD_BE_AT_LEAST_THREE_CHARACTERS_LONG__!</div>
+            <div id="username_empty" class="create_account_error_msg" style="display:none">__MSG__PLEASE_ENTER_YOUR_USERNAME__!</div>
+            <div id="email_empty" class="create_account_error_msg" style="display:none">__MSG__PLEASE_ENTER_YOUR_EMAIL_ADDRESS__!</div>
+            <div id="email_invalid" class="create_account_error_msg" style="display:none">__MSG__THIS_IS_AN_INVALID_EMAIL_ADDRESS__!</div>
+            <div id="password_empty" class="create_account_error_msg" style="display:none">__MSG__PLEASE_ENTER_YOUR_PASSWORD__!</div>
+            <div id="password_short" class="create_account_error_msg" style="display:none">__MSG__YOUR_PASSWORD_SHOULD_BE_FOUR_CHARACTERS_LONG__!</div>
+            <div id="password_repeat_empty" class="create_account_error_msg" style="display:none">__MSG__PLEASE_REPEART_YOUR_PASSWORD__!</div>
+            <div id="password_repeat_nomatch" class="create_account_error_msg" style="display:none">__MSG__THIS_PASSWORD_DOES_NOT_MATCH_THE_FIRST_ONE__!</div>
+        </div>
+
+        <!-- FOOTER WIDGET -->
+        <div id="widget_footer" class="widget_inline footercontainer"></div>
+
+        <script type="text/javascript" src="/dev/javascript/createnewaccount.js"></script>
+    </body>
+
+</html>

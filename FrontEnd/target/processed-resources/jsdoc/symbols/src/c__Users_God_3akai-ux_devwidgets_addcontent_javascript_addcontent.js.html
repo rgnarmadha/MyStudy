@@ -1,0 +1,277 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/*
+<span class='line'>  2</span>  * Licensed to the Sakai Foundation (SF) under one
+<span class='line'>  3</span>  * or more contributor license agreements. See the NOTICE file
+<span class='line'>  4</span>  * distributed with this work for additional information
+<span class='line'>  5</span>  * regarding copyright ownership. The SF licenses this file
+<span class='line'>  6</span>  * to you under the Apache License, Version 2.0 (the
+<span class='line'>  7</span>  * "License"); you may not use this file except in compliance
+<span class='line'>  8</span>  * with the License. You may obtain a copy of the License at
+<span class='line'>  9</span>  *
+<span class='line'> 10</span>  *     http://www.apache.org/licenses/LICENSE-2.0
+<span class='line'> 11</span>  *
+<span class='line'> 12</span>  * Unless required by applicable law or agreed to in writing,
+<span class='line'> 13</span>  * software distributed under the License is distributed on an
+<span class='line'> 14</span>  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+<span class='line'> 15</span>  * KIND, either express or implied. See the License for the
+<span class='line'> 16</span>  * specific language governing permissions and limitations under the License.
+<span class='line'> 17</span>  */</span><span class="WHIT">
+<span class='line'> 18</span> 
+<span class='line'> 19</span> </span><span class="COMM">/*global $ */</span><span class="WHIT">
+<span class='line'> 20</span> 
+<span class='line'> 21</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">sakai</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 22</span> 
+<span class='line'> 23</span> </span><span class="COMM">/**
+<span class='line'> 24</span>  * @name sakai.addcontent
+<span class='line'> 25</span>  *
+<span class='line'> 26</span>  * @class addcontent
+<span class='line'> 27</span>  *
+<span class='line'> 28</span>  * @description
+<span class='line'> 29</span>  * Initialize the add content widget - This widget adds content to a site
+<span class='line'> 30</span>  *
+<span class='line'> 31</span>  * @version 0.0.1
+<span class='line'> 32</span>  * @param {String} tuid Unique id of the widget
+<span class='line'> 33</span>  * @param {Boolean} showSettings Show the settings of the widget or not
+<span class='line'> 34</span>  */</span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="NAME">sakai.addcontent</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">tuid</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">showSettings</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 36</span> 
+<span class='line'> 37</span> 
+<span class='line'> 38</span> </span><span class="WHIT">    </span><span class="COMM">/////////////////////////////</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="WHIT">    </span><span class="COMM">// Configuration variables //</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="WHIT">    </span><span class="COMM">/////////////////////////////</span><span class="WHIT">
+<span class='line'> 41</span> 
+<span class='line'> 42</span> 
+<span class='line'> 43</span> </span><span class="WHIT">    </span><span class="COMM">///////////////////</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="WHIT">    </span><span class="COMM">// CSS selectors //</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="WHIT">    </span><span class="COMM">///////////////////</span><span class="WHIT">
+<span class='line'> 46</span> 
+<span class='line'> 47</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$rootel</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">tuid</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$addcontent_button</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#addcontent_button"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$rootel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$addcontent_button_cancel</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#addcontent_button_cancel"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$rootel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$addcontent_container_buttons</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#addcontent_container_buttons"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$rootel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$addcontent_container</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#addcontent_container"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$rootel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$addcontent_container_content</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#addcontent_container_content"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$rootel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$addcontent_container_content_box_container</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">".addcontent_container_content_box_container"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$rootel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$addcontent_container_content_box_selected</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">".addcontent_container_content_box_selected"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$rootel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$addcontent_container_content_template</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#addcontent_container_content_template"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$rootel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$addcontent_container_show</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#addcontent_container_show"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$rootel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$addcontent_container_show_box_download</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#addcontent_container_show_box_download"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$rootel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$addcontent_container_show_box_profile</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#addcontent_container_show_box_profile"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$rootel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">$addcontent_container_show_template</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#addcontent_container_show_template"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$rootel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 60</span> 
+<span class='line'> 61</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">addcontent_container_content_box_selected</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"addcontent_container_content_box_selected"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">addcontent_container_place_selected</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"addcontent_container_place_selected"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 63</span> 
+<span class='line'> 64</span> 
+<span class='line'> 65</span> </span><span class="WHIT">    </span><span class="COMM">//////////////////////</span><span class="WHIT">
+<span class='line'> 66</span> </span><span class="WHIT">    </span><span class="COMM">// General function //</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="WHIT">    </span><span class="COMM">//////////////////////</span><span class="WHIT">
+<span class='line'> 68</span> 
+<span class='line'> 69</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 70</span>      * Render the general template
+<span class='line'> 71</span>      * @param {Object} data A JSON object that is used by the main template
+<span class='line'> 72</span>      */</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">renderTemplate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 74</span> 
+<span class='line'> 75</span> </span><span class="WHIT">        </span><span class="COMM">// Execute the render function</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">        </span><span class="NAME">$.TemplateRenderer</span><span class="PUNC">(</span><span class="NAME">$addcontent_container_content_template</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$addcontent_container_content</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 77</span> 
+<span class='line'> 78</span> </span><span class="WHIT">        </span><span class="COMM">// Show the content container</span><span class="WHIT">
+<span class='line'> 79</span> </span><span class="WHIT">        </span><span class="NAME">$addcontent_container_content.show</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 80</span> 
+<span class='line'> 81</span> </span><span class="WHIT">        </span><span class="COMM">// Show the buttons</span><span class="WHIT">
+<span class='line'> 82</span> </span><span class="WHIT">        </span><span class="NAME">$addcontent_container_buttons.show</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 83</span> 
+<span class='line'> 84</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 85</span> 
+<span class='line'> 86</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 87</span>      * Render the show template (in non settings mode)
+<span class='line'> 88</span>      * @param {Object} data The JSON data you get back from the server
+<span class='line'> 89</span>      */</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">renderTemplateShow</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 91</span> 
+<span class='line'> 92</span> </span><span class="WHIT">        </span><span class="COMM">// Execute the render function</span><span class="WHIT">
+<span class='line'> 93</span> </span><span class="WHIT">        </span><span class="NAME">$.TemplateRenderer</span><span class="PUNC">(</span><span class="NAME">$addcontent_container_show_template</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$addcontent_container_show</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 94</span> 
+<span class='line'> 95</span> </span><span class="WHIT">        </span><span class="COMM">// Show the show container</span><span class="WHIT">
+<span class='line'> 96</span> </span><span class="WHIT">        </span><span class="NAME">$addcontent_container_show.show</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 97</span> 
+<span class='line'> 98</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 99</span> 
+<span class='line'>100</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>101</span>      * The general add binding function
+<span class='line'>102</span>      */</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">addBinding</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>104</span> 
+<span class='line'>105</span> </span><span class="WHIT">        </span><span class="COMM">// Reinitialize the jQuery object(s)</span><span class="WHIT">
+<span class='line'>106</span> </span><span class="WHIT">        </span><span class="NAME">$addcontent_container_content_box_container</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">$addcontent_container_content_box_container.selector</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>107</span> 
+<span class='line'>108</span> </span><span class="WHIT">        </span><span class="COMM">// Bind the click event to the content box container</span><span class="WHIT">
+<span class='line'>109</span> </span><span class="WHIT">        </span><span class="NAME">$addcontent_container_content_box_container.bind</span><span class="PUNC">(</span><span class="STRN">"click"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>110</span> 
+<span class='line'>111</span> </span><span class="WHIT">            </span><span class="COMM">// Reinitialize the jQuery object(s)</span><span class="WHIT">
+<span class='line'>112</span> </span><span class="WHIT">            </span><span class="NAME">$addcontent_container_content_box_selected</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">$addcontent_container_content_box_selected.selector</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>113</span> 
+<span class='line'>114</span> </span><span class="WHIT">            </span><span class="COMM">// Remove the previous selection(s)</span><span class="WHIT">
+<span class='line'>115</span> </span><span class="WHIT">            </span><span class="NAME">$addcontent_container_content_box_selected.removeClass</span><span class="PUNC">(</span><span class="NAME">addcontent_container_content_box_selected</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>116</span> 
+<span class='line'>117</span> </span><span class="WHIT">            </span><span class="COMM">// Add the selected class</span><span class="WHIT">
+<span class='line'>118</span> </span><span class="WHIT">            </span><span class="NAME">$</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">addClass</span><span class="PUNC">(</span><span class="NAME">addcontent_container_content_box_selected</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>119</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>120</span> 
+<span class='line'>121</span> </span><span class="WHIT">        </span><span class="COMM">// Bind the add content button</span><span class="WHIT">
+<span class='line'>122</span> </span><span class="WHIT">        </span><span class="NAME">$addcontent_button.bind</span><span class="PUNC">(</span><span class="STRN">"click"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>123</span> 
+<span class='line'>124</span> </span><span class="WHIT">            </span><span class="COMM">// Reinitialize the jQuery object(s)</span><span class="WHIT">
+<span class='line'>125</span> </span><span class="WHIT">            </span><span class="NAME">$addcontent_container_content_box_selected</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">$addcontent_container_content_box_selected.selector</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>126</span> 
+<span class='line'>127</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">data</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>128</span> </span><span class="WHIT">                </span><span class="NAME">path</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">$addcontent_container_content_box_selected.find</span><span class="PUNC">(</span><span class="STRN">"img"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">attr</span><span class="PUNC">(</span><span class="STRN">"src"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>129</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>130</span> 
+<span class='line'>131</span> </span><span class="WHIT">            </span><span class="COMM">// Save the widget data</span><span class="WHIT">
+<span class='line'>132</span> </span><span class="WHIT">            </span><span class="NAME">sakai.api.Widgets.saveWidgetData</span><span class="PUNC">(</span><span class="NAME">tuid</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">success</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">success</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="WHIT">                    </span><span class="NAME">sakai.api.Widgets.Container.informFinish</span><span class="PUNC">(</span><span class="NAME">tuid</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"addcontent"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>136</span> </span><span class="WHIT">                    </span><span class="NAME">debug.warn</span><span class="PUNC">(</span><span class="STRN">"Widget data could not be saved"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>137</span> </span><span class="WHIT">                    </span><span class="COMM">// TODO show a valid error message to the user</span><span class="WHIT">
+<span class='line'>138</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>140</span> 
+<span class='line'>141</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>142</span> 
+<span class='line'>143</span> </span><span class="WHIT">        </span><span class="COMM">// Bind the cancel buttons</span><span class="WHIT">
+<span class='line'>144</span> </span><span class="WHIT">        </span><span class="NAME">$addcontent_button_cancel.bind</span><span class="PUNC">(</span><span class="STRN">"click"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>145</span> </span><span class="WHIT">            </span><span class="NAME">sakai.api.Widgets.Container.informCancel</span><span class="PUNC">(</span><span class="NAME">tuid</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"addcontent"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>146</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>147</span> 
+<span class='line'>148</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>149</span> 
+<span class='line'>150</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>151</span>      * Add binding to the show container
+<span class='line'>152</span>      * @param {Object} json JSON object containing useful data
+<span class='line'>153</span>      */</span><span class="WHIT">
+<span class='line'>154</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">addBindingShow</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">json</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>155</span> 
+<span class='line'>156</span> </span><span class="WHIT">        </span><span class="COMM">// Reinitialise the jQuery selectors</span><span class="WHIT">
+<span class='line'>157</span> </span><span class="WHIT">        </span><span class="NAME">$addcontent_container_show_box_download</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">$addcontent_container_show_box_download.selector</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>158</span> </span><span class="WHIT">        </span><span class="NAME">$addcontent_container_show_box_profile</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">$addcontent_container_show_box_profile.selector</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>159</span> 
+<span class='line'>160</span> </span><span class="WHIT">        </span><span class="COMM">// Add binding to the download button</span><span class="WHIT">
+<span class='line'>161</span> </span><span class="WHIT">        </span><span class="NAME">$addcontent_container_show_box_download.bind</span><span class="PUNC">(</span><span class="STRN">"click"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>162</span> 
+<span class='line'>163</span> </span><span class="WHIT">            </span><span class="COMM">// Open a new window to download the actual resource</span><span class="WHIT">
+<span class='line'>164</span> </span><span class="WHIT">            </span><span class="NAME">window.open</span><span class="PUNC">(</span><span class="NAME">json.url</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>165</span> 
+<span class='line'>166</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>167</span> 
+<span class='line'>168</span> </span><span class="WHIT">        </span><span class="COMM">// Add binding to the profile button</span><span class="WHIT">
+<span class='line'>169</span> </span><span class="WHIT">        </span><span class="NAME">$addcontent_container_show_box_profile.bind</span><span class="PUNC">(</span><span class="STRN">"click"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>170</span> 
+<span class='line'>171</span> </span><span class="WHIT">            </span><span class="COMM">// Redirect the user to the profile page</span><span class="WHIT">
+<span class='line'>172</span> </span><span class="WHIT">            </span><span class="NAME">document.location</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"/dev/content_profile.html#content_path="</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">json.url.replace</span><span class="PUNC">(</span><span class="NAME">sakai.config.SakaiDomain</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"/"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>173</span> 
+<span class='line'>174</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>175</span> 
+<span class='line'>176</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>177</span> 
+<span class='line'>178</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">filesLoaded</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">bool</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>179</span> </span><span class="WHIT">        </span><span class="COMM">// Render the template for a file</span><span class="WHIT">
+<span class='line'>180</span> </span><span class="WHIT">        </span><span class="NAME">renderTemplate</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>181</span> </span><span class="WHIT">        </span><span class="WHIT">
+<span class='line'>182</span> </span><span class="WHIT">        </span><span class="COMM">// Add binding</span><span class="WHIT">
+<span class='line'>183</span> </span><span class="WHIT">        </span><span class="NAME">addBinding</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>184</span> </span><span class="WHIT">        </span><span class="WHIT">
+<span class='line'>185</span> </span><span class="WHIT">        </span><span class="COMM">// Show the container</span><span class="WHIT">
+<span class='line'>186</span> </span><span class="WHIT">        </span><span class="NAME">$addcontent_container.show</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>187</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>188</span> 
+<span class='line'>189</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>190</span>      * Load the files from a specific location
+<span class='line'>191</span>      * @param {String} location The location where you want to load the files from
+<span class='line'>192</span>      */</span><span class="WHIT">
+<span class='line'>193</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">loadFiles</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">location</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>194</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">location</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"myfiles"</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>195</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">data</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>196</span> </span><span class="WHIT">                </span><span class="NAME">q</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"*"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>197</span> </span><span class="WHIT">                </span><span class="NAME">sortOn</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"jcr:created"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>198</span> </span><span class="WHIT">                </span><span class="NAME">sortOrder</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"descending"</span><span class="WHIT">
+<span class='line'>199</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>200</span> </span><span class="WHIT">            </span><span class="NAME">sakai.api.Server.loadJSON</span><span class="PUNC">(</span><span class="STRN">"/var/search/pool/me/manager.1"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">filesLoaded</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>201</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>202</span> 
+<span class='line'>203</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>204</span> 
+<span class='line'>205</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>206</span>      * Load the information about a file
+<span class='line'>207</span>      */</span><span class="WHIT">
+<span class='line'>208</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">loadFileInfo</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>209</span> 
+<span class='line'>210</span> </span><span class="WHIT">        </span><span class="COMM">// Load the widget data</span><span class="WHIT">
+<span class='line'>211</span> </span><span class="WHIT">        </span><span class="NAME">sakai.api.Widgets.loadWidgetData</span><span class="PUNC">(</span><span class="NAME">tuid</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">success</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>212</span> 
+<span class='line'>213</span> </span><span class="WHIT">            </span><span class="COMM">// Only do something on success</span><span class="WHIT">
+<span class='line'>214</span> </span><span class="WHIT">            </span><span class="COMM">// TODO show a valid error message if something goes wrong</span><span class="WHIT">
+<span class='line'>215</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">success</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">data.path</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>216</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">sakai.content_profile.content_data</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">sakai.content_profile.content_data.data</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>217</span> </span><span class="WHIT">                    </span><span class="NAME">json</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai.content_profile.content_data</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>218</span> </span><span class="WHIT">                    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">splitslash</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai.content_profile.content_data.contentpath.split</span><span class="PUNC">(</span><span class="STRN">"/"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>219</span> </span><span class="WHIT">                    </span><span class="NAME">json.data.name</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">splitslash</span><span class="PUNC">[</span><span class="NAME">splitslash.length</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>220</span> </span><span class="WHIT">                    </span><span class="COMM">// Render the show template</span><span class="WHIT">
+<span class='line'>221</span> </span><span class="WHIT">                    </span><span class="NAME">renderTemplateShow</span><span class="PUNC">(</span><span class="NAME">json</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>222</span> 
+<span class='line'>223</span> </span><span class="WHIT">                    </span><span class="COMM">// Add binding to the show container</span><span class="WHIT">
+<span class='line'>224</span> </span><span class="WHIT">                    </span><span class="NAME">addBindingShow</span><span class="PUNC">(</span><span class="NAME">json</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>225</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>226</span> </span><span class="WHIT">                    </span><span class="NAME">sakai.content_profile.loadContentProfile</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">success</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>227</span> </span><span class="WHIT">                        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">success</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>228</span> </span><span class="WHIT">                            </span><span class="NAME">json</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai.content_profile.content_data</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>229</span> </span><span class="WHIT">                            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">splitslash</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai.content_profile.content_data.contentpath.split</span><span class="PUNC">(</span><span class="STRN">"/"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>230</span> </span><span class="WHIT">                            </span><span class="NAME">json.data.name</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">splitslash</span><span class="PUNC">[</span><span class="NAME">splitslash.length</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>231</span> </span><span class="WHIT">                            </span><span class="COMM">// Render the show template</span><span class="WHIT">
+<span class='line'>232</span> </span><span class="WHIT">                            </span><span class="NAME">renderTemplateShow</span><span class="PUNC">(</span><span class="NAME">json</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>233</span> 
+<span class='line'>234</span> </span><span class="WHIT">                            </span><span class="COMM">// Add binding to the show container</span><span class="WHIT">
+<span class='line'>235</span> </span><span class="WHIT">                            </span><span class="NAME">addBindingShow</span><span class="PUNC">(</span><span class="NAME">json</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>236</span> </span><span class="WHIT">                        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>237</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>238</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>239</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>240</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>241</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>242</span> 
+<span class='line'>243</span> 
+<span class='line'>244</span> </span><span class="WHIT">    </span><span class="COMM">////////////////////</span><span class="WHIT">
+<span class='line'>245</span> </span><span class="WHIT">    </span><span class="COMM">// Initialisation //</span><span class="WHIT">
+<span class='line'>246</span> </span><span class="WHIT">    </span><span class="COMM">////////////////////</span><span class="WHIT">
+<span class='line'>247</span> 
+<span class='line'>248</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>249</span>      * The main initialisation function
+<span class='line'>250</span>      */</span><span class="WHIT">
+<span class='line'>251</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">init</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>252</span> 
+<span class='line'>253</span> </span><span class="WHIT">        </span><span class="COMM">// Check whether it is in settings mode or not</span><span class="WHIT">
+<span class='line'>254</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">showSettings</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>255</span> 
+<span class='line'>256</span> </span><span class="WHIT">            </span><span class="NAME">loadFiles</span><span class="PUNC">(</span><span class="STRN">"myfiles"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>257</span> 
+<span class='line'>258</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>259</span> </span><span class="WHIT">        </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>260</span> 
+<span class='line'>261</span> </span><span class="WHIT">            </span><span class="NAME">loadFileInfo</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>262</span> 
+<span class='line'>263</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>264</span> 
+<span class='line'>265</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>266</span> 
+<span class='line'>267</span> </span><span class="WHIT">    </span><span class="COMM">// Execute the init function</span><span class="WHIT">
+<span class='line'>268</span> </span><span class="WHIT">    </span><span class="NAME">init</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>269</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>270</span> </span><span class="NAME">sakai.api.Widgets.widgetLoader.informOnLoad</span><span class="PUNC">(</span><span class="STRN">"addcontent"</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>

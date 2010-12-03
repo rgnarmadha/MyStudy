@@ -1,0 +1,238 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/*
+<span class='line'>  2</span>  * Licensed to the Sakai Foundation (SF) under one
+<span class='line'>  3</span>  * or more contributor license agreements. See the NOTICE file
+<span class='line'>  4</span>  * distributed with this work for additional information
+<span class='line'>  5</span>  * regarding copyright ownership. The SF licenses this file
+<span class='line'>  6</span>  * to you under the Apache License, Version 2.0 (the
+<span class='line'>  7</span>  * "License"); you may not use this file except in compliance
+<span class='line'>  8</span>  * with the License. You may obtain a copy of the License at
+<span class='line'>  9</span>  *
+<span class='line'> 10</span>  *  http://www.apache.org/licenses/LICENSE-2.0
+<span class='line'> 11</span>  *
+<span class='line'> 12</span>  * Unless required by applicable law or agreed to in writing,
+<span class='line'> 13</span>  * software distributed under the License is distributed on an
+<span class='line'> 14</span>  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+<span class='line'> 15</span>  * KIND, either express or implied. See the License for the
+<span class='line'> 16</span>  * specific language governing permissions and limitations under the License.
+<span class='line'> 17</span>  */</span><span class="WHIT">
+<span class='line'> 18</span> 
+<span class='line'> 19</span> </span><span class="COMM">/*global $, Config, addBinding */</span><span class="WHIT">
+<span class='line'> 20</span> 
+<span class='line'> 21</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">sakai</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sakai</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 22</span> 
+<span class='line'> 23</span> </span><span class="COMM">/**
+<span class='line'> 24</span>  * @name sakai.googlemaps
+<span class='line'> 25</span>  *
+<span class='line'> 26</span>  * @class googlemaps
+<span class='line'> 27</span>  *
+<span class='line'> 28</span>  * @description
+<span class='line'> 29</span>  * Initialize the googlemaps widget
+<span class='line'> 30</span>  *
+<span class='line'> 31</span>  * @version 0.0.1
+<span class='line'> 32</span>  * @param {String} tuid Unique id of the widget
+<span class='line'> 33</span>  * @param {Boolean} showSettings Show the settings of the widget or not
+<span class='line'> 34</span>  */</span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="NAME">sakai.googlemaps</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">tuid</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">showSettings</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 36</span> 
+<span class='line'> 37</span> 
+<span class='line'> 38</span> </span><span class="WHIT">    </span><span class="COMM">/////////////////////////////</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="WHIT">    </span><span class="COMM">// Configuration variables //</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="WHIT">    </span><span class="COMM">/////////////////////////////</span><span class="WHIT">
+<span class='line'> 41</span> 
+<span class='line'> 42</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">tuid</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">iframeContentWindow</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">json</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 45</span> 
+<span class='line'> 46</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 47</span>      * To finish the widget
+<span class='line'> 48</span>      */</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">finish</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="WHIT">        </span><span class="NAME">sakai.api.Widgets.Container.informFinish</span><span class="PUNC">(</span><span class="NAME">tuid</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"googlemaps"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 52</span> 
+<span class='line'> 53</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 54</span>      * This will saved the map data to backend server
+<span class='line'> 55</span>      */</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">saveToJCR</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">        </span><span class="NAME">json</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#googlemaps_iframe_map"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">contentWindow.getJSON</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 58</span> 
+<span class='line'> 59</span> </span><span class="WHIT">        </span><span class="COMM">// Set the value of mapsize according to the radio button selection status</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#googlemaps_radio_large"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">is</span><span class="PUNC">(</span><span class="STRN">":checked"</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="WHIT">            </span><span class="NAME">json.mapsize</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"LARGE"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">        </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="WHIT">            </span><span class="NAME">json.mapsize</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"SMALL"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 65</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 66</span> 
+<span class='line'> 67</span> </span><span class="WHIT">        </span><span class="COMM">// Store the corresponded map data into backend server</span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="WHIT">        </span><span class="NAME">sakai.api.Widgets.saveWidgetData</span><span class="PUNC">(</span><span class="NAME">tuid</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">json</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">finish</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 69</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 70</span> 
+<span class='line'> 71</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 72</span>      * To set the map initial size in the show panel
+<span class='line'> 73</span>      */</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">setMapSize</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">showSettings</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">            </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#googlemaps_size_options"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">hide</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">json</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">json.mapsize</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="STRN">"SMALL"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 78</span> 
+<span class='line'> 79</span> </span><span class="WHIT">                </span><span class="COMM">// Set the size of map according to the data stored on the backend server</span><span class="WHIT">
+<span class='line'> 80</span> </span><span class="WHIT">                </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#googlemaps_iframe_map"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">width</span><span class="PUNC">(</span><span class="STRN">"50%"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 81</span> </span><span class="WHIT">                </span><span class="COMM">//$("#googlemaps_iframe_map", rootel).css({"float": "right"});</span><span class="WHIT">
+<span class='line'> 82</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 83</span> </span><span class="WHIT">            </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 84</span> </span><span class="WHIT">                </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#googlemaps_iframe_map"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">width</span><span class="PUNC">(</span><span class="STRN">"95%"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 85</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 86</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 87</span> </span><span class="WHIT">        </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 88</span> </span><span class="WHIT">        </span><span class="WHIT">
+<span class='line'> 89</span> </span><span class="WHIT">            </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#googlemaps_size_options"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">show</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="WHIT">    </span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="WHIT">            </span><span class="COMM">// Show the search input textfield and save, search, cancel buttons</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="WHIT">            </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#googlemaps_form_search"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">show</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 93</span> </span><span class="WHIT">            </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#googlemaps_save_cancel_container"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">show</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 94</span> 
+<span class='line'> 95</span> </span><span class="WHIT">            </span><span class="COMM">// Add a submit listener so that the search function can be executed</span><span class="WHIT">
+<span class='line'> 96</span> </span><span class="WHIT">            </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#googlemaps_form_search"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">submit</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 97</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">input</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#googlemaps_input_text_location"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">val</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 98</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">input</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 99</span> 
+<span class='line'>100</span> </span><span class="WHIT">                    </span><span class="COMM">// Quick hack so that searches are more local - this will need to be done via the Google API</span><span class="WHIT">
+<span class='line'>101</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">input.indexOf</span><span class="PUNC">(</span><span class="STRN">","</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>102</span> </span><span class="WHIT">                        </span><span class="NAME">iframeContentWindow.search</span><span class="PUNC">(</span><span class="NAME">input</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sakai.data.me.user.locale.displayCountry</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>104</span> </span><span class="WHIT">                        </span><span class="NAME">iframeContentWindow.search</span><span class="PUNC">(</span><span class="NAME">input</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>106</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>107</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>108</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>109</span> 
+<span class='line'>110</span> </span><span class="WHIT">            </span><span class="COMM">// Add listener to save button</span><span class="WHIT">
+<span class='line'>111</span> </span><span class="WHIT">            </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#googlemaps_save"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">bind</span><span class="PUNC">(</span><span class="STRN">"click"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ui</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>112</span> </span><span class="WHIT">                </span><span class="NAME">saveToJCR</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>113</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>114</span> 
+<span class='line'>115</span> </span><span class="WHIT">            </span><span class="COMM">// Add listerner to cancel button</span><span class="WHIT">
+<span class='line'>116</span> </span><span class="WHIT">            </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#googlemaps_cancel"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">bind</span><span class="PUNC">(</span><span class="STRN">"click"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ui</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>117</span> </span><span class="WHIT">                </span><span class="NAME">sakai.api.Widgets.Container.informCancel</span><span class="PUNC">(</span><span class="NAME">tuid</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"googlemaps"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>118</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>119</span> 
+<span class='line'>120</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">json</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>121</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">json.mapsize</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="STRN">"SMALL"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>122</span> 
+<span class='line'>123</span> </span><span class="WHIT">                    </span><span class="COMM">// If the reserved mapsize is "SMALL", the "small" radio button should be checked</span><span class="WHIT">
+<span class='line'>124</span> </span><span class="WHIT">                    </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#googlemaps_radio_small"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">attr</span><span class="PUNC">(</span><span class="STRN">"checked"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"checked"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>125</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>126</span> </span><span class="WHIT">                </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">json.mapsize</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="STRN">"LARGE"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>127</span> 
+<span class='line'>128</span> </span><span class="WHIT">                    </span><span class="COMM">// If the reserved mapsize is "LARGE", the "large" radio button should be checked</span><span class="WHIT">
+<span class='line'>129</span> </span><span class="WHIT">                    </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#googlemaps_radio_large"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">attr</span><span class="PUNC">(</span><span class="STRN">"checked"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"checked"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>130</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>131</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>132</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>133</span> 
+<span class='line'>134</span> </span><span class="WHIT">        </span><span class="NAME">callback</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">  </span><span class="COMM">// Set the map center, zoom and infowindow in the map iframe</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>136</span> 
+<span class='line'>137</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>138</span>      * To set the map's center, zoom, size, info window content properties
+<span class='line'>139</span>      */</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">setMap</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>141</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">json</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>142</span> </span><span class="WHIT">            </span><span class="NAME">iframeContentWindow.setMap</span><span class="PUNC">(</span><span class="NAME">json</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>144</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>145</span> 
+<span class='line'>146</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>147</span>      * This is to get map zoom and center properties from backend server
+<span class='line'>148</span>      */</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">getFromJCR</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>150</span> 
+<span class='line'>151</span> </span><span class="WHIT">        </span><span class="NAME">sakai.api.Widgets.loadWidgetData</span><span class="PUNC">(</span><span class="NAME">tuid</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">success</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>152</span> 
+<span class='line'>153</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">success</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>154</span> 
+<span class='line'>155</span> </span><span class="WHIT">                </span><span class="COMM">// Get data from the backend server</span><span class="WHIT">
+<span class='line'>156</span> </span><span class="WHIT">                </span><span class="NAME">json</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>157</span> 
+<span class='line'>158</span> </span><span class="WHIT">                </span><span class="COMM">// Set the size of the map's iframe</span><span class="WHIT">
+<span class='line'>159</span> </span><span class="WHIT">                </span><span class="NAME">setMapSize</span><span class="PUNC">(</span><span class="NAME">setMap</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>160</span> 
+<span class='line'>161</span> </span><span class="WHIT">                </span><span class="COMM">// Set the initial value of search keyword input textbox</span><span class="WHIT">
+<span class='line'>162</span> </span><span class="WHIT">                </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#googlemaps_input_text_location"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">val</span><span class="PUNC">(</span><span class="NAME">json.mapinput</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>163</span> </span><span class="WHIT">                </span><span class="WHIT">
+<span class='line'>164</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>165</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">showSettings</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="WHIT">                    </span><span class="COMM">// Show the search input textfield and save, search, cancel buttons</span><span class="WHIT">
+<span class='line'>167</span> </span><span class="WHIT">                    </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#googlemaps_form_search"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">show</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>168</span> </span><span class="WHIT">                    </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#googlemaps_save_cancel_container"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">show</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>169</span> 
+<span class='line'>170</span> 
+<span class='line'>171</span> </span><span class="WHIT">                    </span><span class="COMM">// If the googlemaps is opened for the first time, the "large" radio button should be default checked</span><span class="WHIT">
+<span class='line'>172</span> </span><span class="WHIT">                    </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#googlemaps_radio_large"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">attr</span><span class="PUNC">(</span><span class="STRN">"checked"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"checked"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>173</span> 
+<span class='line'>174</span> 
+<span class='line'>175</span> </span><span class="WHIT">                    </span><span class="COMM">// Add a submit listener so that the search function can be executed</span><span class="WHIT">
+<span class='line'>176</span> </span><span class="WHIT">                    </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#googlemaps_form_search"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">submit</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>177</span> </span><span class="WHIT">                        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">input</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#googlemaps_input_text_location"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">val</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>178</span> </span><span class="WHIT">                        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">input</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>179</span> 
+<span class='line'>180</span> </span><span class="WHIT">                            </span><span class="COMM">// Quick hack so that searches are more local - this will need to be done via the Google API</span><span class="WHIT">
+<span class='line'>181</span> </span><span class="WHIT">                            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">input.indexOf</span><span class="PUNC">(</span><span class="STRN">","</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>182</span> </span><span class="WHIT">                                </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#googlemaps_input_text_location"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">val</span><span class="PUNC">(</span><span class="NAME">input</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">", "</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">sakai.data.me.user.locale.displayCountry</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>183</span> </span><span class="WHIT">                                </span><span class="NAME">iframeContentWindow.search</span><span class="PUNC">(</span><span class="NAME">input</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sakai.data.me.user.locale.displayCountry</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>184</span> </span><span class="WHIT">                            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>185</span> </span><span class="WHIT">                                </span><span class="NAME">iframeContentWindow.search</span><span class="PUNC">(</span><span class="NAME">input</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>186</span> </span><span class="WHIT">                            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>187</span> </span><span class="WHIT">                        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>188</span> </span><span class="WHIT">                        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>189</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>190</span> 
+<span class='line'>191</span> </span><span class="WHIT">                    </span><span class="COMM">// Add listener to save button</span><span class="WHIT">
+<span class='line'>192</span> </span><span class="WHIT">                    </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#googlemaps_save"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">bind</span><span class="PUNC">(</span><span class="STRN">"click"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ui</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>193</span> </span><span class="WHIT">                        </span><span class="NAME">saveToJCR</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>194</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>195</span> 
+<span class='line'>196</span> </span><span class="WHIT">                    </span><span class="COMM">// Add listerner to cancel button</span><span class="WHIT">
+<span class='line'>197</span> </span><span class="WHIT">                    </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#googlemaps_cancel"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">bind</span><span class="PUNC">(</span><span class="STRN">"click"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ui</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>198</span> </span><span class="WHIT">                        </span><span class="NAME">sakai.api.Widgets.Container.informCancel</span><span class="PUNC">(</span><span class="NAME">tuid</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"googlemaps"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>199</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>200</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>201</span> 
+<span class='line'>202</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>203</span> </span><span class="WHIT">            </span><span class="COMM">// show main div</span><span class="WHIT">
+<span class='line'>204</span> </span><span class="WHIT">            </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#main-content-div"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">show</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>205</span> </span><span class="WHIT">            </span><span class="COMM">// Set focus in location text box</span><span class="WHIT">
+<span class='line'>206</span> </span><span class="WHIT">            </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#googlemaps_input_text_location"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">focus</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>207</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>208</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>209</span> 
+<span class='line'>210</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>211</span>      * This is to init the google map and other controls
+<span class='line'>212</span>      */</span><span class="WHIT">
+<span class='line'>213</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">init</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>214</span> </span><span class="WHIT">        </span><span class="COMM">// hide main div to prevent showing default cambridge location while loading</span><span class="WHIT">
+<span class='line'>215</span> </span><span class="WHIT">        </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#main-content-div"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">hide</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>216</span> </span><span class="WHIT">        </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#googlemaps_iframe_map"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">load</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>217</span> 
+<span class='line'>218</span> </span><span class="WHIT">            </span><span class="COMM">// To set the map iframe's content as the iframeContentWindow (var)</span><span class="WHIT">
+<span class='line'>219</span> </span><span class="WHIT">            </span><span class="NAME">iframeContentWindow</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#googlemaps_iframe_map"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rootel</span><span class="PUNC">)</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">contentWindow</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>220</span> 
+<span class='line'>221</span> </span><span class="WHIT">            </span><span class="COMM">// Get the map zoom and center property data from backend server</span><span class="WHIT">
+<span class='line'>222</span> </span><span class="WHIT">            </span><span class="NAME">getFromJCR</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>223</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>224</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>225</span> 
+<span class='line'>226</span> </span><span class="WHIT">    </span><span class="NAME">init</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>227</span> 
+<span class='line'>228</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>229</span> 
+<span class='line'>230</span> </span><span class="NAME">sakai.api.Widgets.widgetLoader.informOnLoad</span><span class="PUNC">(</span><span class="STRN">"googlemaps"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>231</span> </span></pre></body></html>

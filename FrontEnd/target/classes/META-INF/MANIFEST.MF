@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Built-By: God
+Tool: Bnd-0.0.357
+Bundle-Category: sakai-nakamura
+Bundle-Name: Sakai 3 UX Loader
+Created-By: Apache Maven Bundle Plugin
+Sling-Initial-Content: SLING-INF/content/dev;path:=/dev;ignoreImportPr
+ oviders:="xml,json,html,jar,zip";uninstall:=false,                SLI
+ NG-INF/content/devwidgets;path:=/devwidgets;ignoreImportProviders:="x
+ ml,json,html,jar,zip";uninstall:=false,                SLING-INF/cont
+ ent/var/templates/site;path:=/var/templates/site;uninstall:=false,   
+              SLING-INF/content/var/ux-version;path:=/var/ux-version;u
+ ninstall:=false;overwriteProperties:=true,                SLING-INF/c
+ ontent/apps;path:=/apps;uninstall:=false,                SLING-INF/co
+ ntent/tests;path:=/tests,        SLING-INF/content/jsdoc;path:=/jsdoc
+ ,                SLING-INF/content/root;path:=/;uninstall:=false
+Bundle-Vendor: The Sakai Foundation
+Build-Jdk: 1.6.0_22
+Bundle-Version: 0.6.0.SNAPSHOT
+Bnd-LastModified: 1290541121521
+Bundle-ManifestVersion: 2
+Bundle-Description: Loads the Sakai 3 UI into the JCR
+Bundle-SymbolicName: org.sakaiproject.nakamura.uxloader
+Bundle-DocURL: http://groups.google.com/group/sakai-nakamura
+
